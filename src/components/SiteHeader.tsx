@@ -72,6 +72,9 @@ export function SiteFooter() {
     <footer className={`${styles.footer} no-print`}>
       <div className="container">
         <p className="hand">{t.footer}</p>
+        <p className={styles.footerLinks}>
+          <Link href="/developers">API</Link>
+        </p>
       </div>
     </footer>
   );

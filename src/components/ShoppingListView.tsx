@@ -1,48 +1,73 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import type { IngredientGroup } from "@/data/pantry";
 import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
-import { packLabel } from "@/i18n/ingredients";
-import type { RecipeSummary } from "@/lib/catalog";
+import { fetchShoppingList } from "@/lib/api/client";
+import type { ShoppingListResponse } from "@/lib/api/recipes";
 import { useMyPantry } from "@/lib/my-pantry";
 import { formatUsd } from "@/lib/nutrition";
 import { usePlan } from "@/lib/plan-store";
-import { buildShoppingList, shoppingListText, type ShoppingItem } from "@/lib/shopping";
+import { shoppingTextLine } from "@/lib/shopping";
 import styles from "./ShoppingListView.module.css";
 import ui from "./ui.module.css";
 
-export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
+type Item = ShoppingListResponse["items"][number];
+type State = { status: "loading" } | { status: "error" } | { status: "ready"; list: ShoppingListResponse };
+
+/**
+ * The combined shopping list, computed by POST /api/shopping-list. Checkmarks stay
+ * on the client so ticking an item is instant and does not refetch.
+ */
+export function ShoppingListView() {
   const { plan, toggleChecked, clearChecked } = usePlan();
   const lang = useLang();
   const d = useDict();
   const t = d.shopping;
   const { pantry } = useMyPantry();
   const [copied, setCopied] = useState(false);
+  const [state, setState] = useState<State>({ status: "loading" });
+  const [attempt, setAttempt] = useState(0);
 
-  const bySlug = useMemo(() => new Map(recipes.map((r) => [r.slug, r])), [recipes]);
-  const list = useMemo(
-    () => buildShoppingList(plan.entries, bySlug, pantry, lang),
-    [plan.entries, bySlug, pantry, lang],
-  );
+  // Refetch when the plan, pantry, or language changes; abort the previous request so a slow
+  // response can never overwrite a newer one.
+  const meals = plan.entries.map((e) => ({ slug: e.slug, servings: e.servings }));
+  const requestKey = JSON.stringify([meals, pantry, lang]);
+  useEffect(() => {
+    const [m, p, l] = JSON.parse(requestKey) as [typeof meals, typeof pantry, typeof lang];
+    const controller = new AbortController();
+    setState({ status: "loading" });
+    fetchShoppingList({ meals: m, pantry: { have: [...p.have], low: [...p.low] }, lang: l }, controller.signal)
+      .then((list) => setState({ status: "ready", list }))
+      .catch((err: unknown) => {
+        if (!controller.signal.aborted) {
+          console.error("Shopping list request failed", err);
+          setState({ status: "error" });
+        }
+      });
+    return () => controller.abort();
+  }, [requestKey, attempt]);
 
-  const toBuy = list.items.filter((i) => i.status !== "have");
-  const have = list.items.filter((i) => i.status === "have");
-  const groups = [...new Set(toBuy.map((i) => i.group))] as IngredientGroup[];
-  const remaining = toBuy.filter((i) => !plan.checked.includes(i.id));
+  if (state.status === "loading")
+    return (
+      <p className="hand" role="status">
+        {t.loading}
+      </p>
+    );
+  if (state.status === "error") {
+    return (
+      <div className={styles.empty} role="alert">
+        <p>{t.error}</p>
+        <button type="button" className={ui.button} onClick={() => setAttempt((a) => a + 1)}>
+          {t.retry}
+        </button>
+      </div>
+    );
+  }
 
-  const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(shoppingListText(list, plan.checked, (l) => packLabel(l, lang)));
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      window.alert(t.copyBlocked);
-    }
-  };
-
+  const { list } = state;
   if (list.items.length === 0) {
     return (
       <div className={styles.empty}>
@@ -54,7 +79,24 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
     );
   }
 
-  const renderItem = (item: ShoppingItem) => {
+  const toBuy = list.items.filter((i) => i.status !== "have");
+  const have = list.items.filter((i) => i.status === "have");
+  const groups = [...new Set(toBuy.map((i) => i.group))] as IngredientGroup[];
+  const remaining = toBuy.filter((i) => !plan.checked.includes(i.id));
+
+  const copy = async () => {
+    try {
+      await navigator.clipboard.writeText(
+        remaining.map((i) => shoppingTextLine(i.line, i.packages, i.packageLabel)).join("\n"),
+      );
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      window.alert(t.copyBlocked);
+    }
+  };
+
+  const renderItem = (item: Item) => {
     const done = plan.checked.includes(item.id);
     return (
       <li key={item.id} className={styles.item} data-done={done}>
@@ -65,8 +107,8 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
             {item.status === "low" && <span className={styles.low}>{t.low}</span>}
             <small>
               {item.packages > 0 &&
-                item.packLabel &&
-                t.buy(item.packages, packLabel(item.packLabel, lang), formatUsd(item.cost))}
+                item.packageLabel &&
+                t.buy(item.packages, item.packageLabel, formatUsd(item.costUsd))}
               {item.recipes.length > 0 ? t.for(item.recipes.join(", ")) : t.restock}
             </small>
           </span>
@@ -80,7 +122,7 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
       <div className={`${ui.card} ${styles.summary}`}>
         <div>
           <p className={styles.total}>
-            {t.about} <strong className="hand">{formatUsd(list.total)}</strong>
+            {t.about} <strong className="hand">{formatUsd(list.totalUsd)}</strong>
           </p>
           <p className={styles.sub}>{t.left(remaining.length, toBuy.length, plan.entries.length)}</p>
         </div>

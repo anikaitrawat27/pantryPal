@@ -188,6 +188,11 @@ export function buildShoppingList(
   return { items, total };
 }
 
+/** One line of the copyable list: "- 2 cans black beans (2 × 15 oz can)". */
+export function shoppingTextLine(line: string, packages: number, label: string | undefined | null): string {
+  return `- ${line}${packages > 0 && label ? ` (${packages} × ${label})` : ""}`;
+}
+
 /** Plain-text version for copying into a notes app or a text message. */
 export function shoppingListText(
   list: ShoppingList,
@@ -196,6 +201,6 @@ export function shoppingListText(
 ): string {
   return list.items
     .filter((i) => i.status !== "have" && !checked.includes(i.id))
-    .map((i) => `- ${i.line}${i.packages > 0 && i.packLabel ? ` (${i.packages} × ${label(i.packLabel)})` : ""}`)
+    .map((i) => shoppingTextLine(i.line, i.packages, i.packLabel && label(i.packLabel)))
     .join("\n");
 }

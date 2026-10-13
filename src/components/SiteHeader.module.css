@@ -99,3 +99,8 @@
   border: 1.5px solid var(--line);
   border-radius: var(--radius-pill);
 }
+
+.footerLinks {
+  margin-top: 4px !important;
+  font-size: 0.9rem;
+}

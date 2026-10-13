@@ -238,6 +238,9 @@ const en = {
     restock: "restock",
     low: "running low",
     have: (n: number) => `Already have (${n})`,
+    loading: "Adding up your list…",
+    error: "We could not load your list.",
+    retry: "Try again",
   },
   pantry: {
     heading: "My pantry",
@@ -572,6 +575,9 @@ const es: Dict = {
     restock: "reponer",
     low: "se está acabando",
     have: (n) => `Ya tiene (${n})`,
+    loading: "Sumando su lista…",
+    error: "No pudimos cargar su lista.",
+    retry: "Intentar de nuevo",
   },
   pantry: {
     heading: "Mi despensa",

@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ShoppingListView } from "@/components/ShoppingListView";
 import { localePath, type Lang } from "@/i18n/config";
 import { getDict } from "@/i18n/dict";
-import { RECIPES, toSummary } from "@/lib/catalog";
 
 export function ShoppingView({ lang }: { lang: Lang }) {
   const t = getDict(lang).shopping;
@@ -14,7 +13,7 @@ export function ShoppingView({ lang }: { lang: Lang }) {
       <h1>
         <span className="highlight">{t.heading}</span>
       </h1>
-      <ShoppingListView recipes={RECIPES.map((r) => toSummary(r, lang))} />
+      <ShoppingListView />
     </div>
   );
 }

@@ -38,6 +38,28 @@ The site runs at http://localhost:3000.
 | `npm run validate` | Checks every recipe and every Spanish translation against the content rules |
 | `npm run lint` | ESLint |
 
+## API
+
+The site has a public JSON API. It needs no key, and the same requests work against `localhost:3000` in development.
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/recipes` | Search and filter, with cursor pagination |
+| `GET /api/recipes/{slug}?servings=&swap=from:to&lang=` | One recipe, scaled, with swaps applied |
+| `POST /api/shopping-list` | Combine planned meals into one priced list |
+| `GET /api/openapi.json` | OpenAPI 3.1 description |
+
+```bash
+curl "http://localhost:3000/api/recipes/creamy-tomato-soup?servings=6&swap=chicken-broth:water&lang=es"
+```
+
+- **Validation:** every parameter and body field is validated with Zod. Unknown parameters are rejected, too.
+- **Errors:** errors share one shape, `{ "error": { "code", "message", "fields"? } }`, where `fields` maps each invalid input path to a message.
+- **Caching:** GET responses are cacheable at the CDN for an hour, because the catalog only changes on deploy.
+- **Docs:** `/developers` renders the OpenAPI description with live examples.
+- **Code layout:** the route handlers in `src/app/api/` stay thin. The logic lives in `src/lib/api/recipes.ts` and reuses the same filtering, scaling, and shopping code the pages use.
+- **Used by the site:** the shopping list page calls `POST /api/shopping-list`.
+
 ## How it is organized
 
 ```
@@ -55,6 +77,7 @@ src/
     recipes.ts         picks a recipe's text in the page language
     es/                Spanish ingredient glossary and recipe translations, one file per course
   lib/
+    api/               request schemas, endpoint logic, error handling, OpenAPI description, typed client
     catalog.ts         parses recipes and derives diet labels, nutrition, cost, and "uses extras"
     scale.ts           serving-size scaling and friendly fractions (1 1/2 cups, 3 tbsp -> 1/4 cup)
     nutrition.ts       weights, nutrition, and cost estimates
