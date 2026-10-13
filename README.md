@@ -9,6 +9,7 @@ What visitors can do:
 - Scale any recipe from 1 to 6 servings and swap ingredients. Diet labels, calories, and cost update with each swap.
 - Plan a week of meals by dragging recipes onto a calendar, then get one shopping list with amounts added together, grouped by aisle, priced, and minus what is already in the pantry.
 - Cook in a full-screen, one-step-at-a-time mode with timers read from the steps and a screen wake lock.
+- Ask a kitchen helper chatbot (signed-in users) which recipes fit, what they can make from their saved pantry, or to write a new recipe. Every generated recipe passes the same pantry-only, no-oven validation as the catalog before it is shown.
 
 It is a Next.js site deployed on Vercel. Recipe pages are generated at build time. A small backend, made of API routes plus Postgres, adds a public JSON API and optional accounts, so a visitor's pantry, meal plan, and favorites follow them across devices. Without an account, everything stays in the browser.
 
@@ -120,6 +121,25 @@ Diet labels (vegan, vegetarian, dairy-free, egg-free, gluten-free) are computed 
 
 English pages live at `/` and Spanish pages at `/es`, both generated at build time. Interface strings are in `src/i18n/dict.ts`; the Spanish dictionary must have the same shape as the English one, so a missing string is a type error. Recipe text is in `src/i18n/es/recipes/`, keyed by slug, and the build fails if any recipe is missing a translation, has a different number of steps or tips, or breaks the no-oven and no-amounts rules. Ingredient lines, units, and swap notes are generated in Spanish from the same data, so amounts always match the English.
 
+### Kitchen helper (chatbot)
+
+`/chat` talks to Claude Sonnet 5.5 (`claude-sonnet-5-5`) through `POST /api/chat`, which streams server-sent events: text as it is written, tool activity, recipe cards, and generated recipes. The code is in `src/server/chat/`.
+
+- **The loop (`loop.ts`)** is a hand-written streaming tool loop. Each model call can use four tools. The loop runs them in parallel, returns all results in one message, and stops after 6 model calls per user message. Refusals and cut-off replies are handled explicitly; a tool call cut off mid-input is never run. Effort is `low` for fast, cheap chat turns, and server-side fallbacks (`fallbacks: "default"`) are on.
+- **Tools (`tools.ts`):**
+  - `search_recipes`, `what_can_i_make` (which uses the user's saved pantry), and `get_recipe` reuse the same functions as the public API.
+  - `generate_recipe` writes a new recipe.
+  - Tool schemas are generated from Zod and marked `strict`. Every input is validated again before the tool runs, and invalid input goes back to the model as an error result.
+- **Recipe generation (`generate.ts`)** uses structured output, where ingredient IDs and units are enums, so off-list ingredients are impossible. The result then goes through the catalog validator: no oven words, tools matching steps, no amounts in steps, weighable units, and Spanish text checks for Spanish chats. Problems are sent back to the model for up to 3 attempts. Recipes that pass are stored, and users can save them to My recipes (`/my-recipes`).
+- **Conversations are stored server-side** with every content block, thinking and tool blocks included, and replayed append-only. That keeps the model's thinking valid across turns, keeps the prompt cache warm, and means a browser cannot forge earlier tool results.
+- **Cost controls:**
+  - 30 messages per user per day, with per-day token usage recorded in `chat_usage`.
+  - Prompt caching on the system prompt, tools, and history.
+  - 4,096 output tokens per call.
+  - Chat requires an account.
+
+Tests use a scripted fake client (`tests/unit/chat.test.ts`). The E2E tests run against a mock Anthropic API (`tests/e2e/mock-anthropic.ts`) through the real SDK, so CI needs no API key.
+
 ### Content rules
 
 The build fails if any recipe:
@@ -159,6 +179,7 @@ The theme choice stays in the browser only.
 1. Push the repository to GitHub.
 2. In Vercel, choose Add New Project and import the repository. The Next.js preset needs no changes.
 3. In the project's Storage tab, add a Neon Postgres database. This sets `DATABASE_URL` for every environment. The next build applies the migrations.
-4. Optional: set `NEXT_PUBLIC_SITE_URL` to the production URL (for example `https://pantrypal.example`) so the sitemap and social previews use it. Without it, they use `https://pantry-pal.vercel.app`.
+4. In Settings, then Environment Variables, add `ANTHROPIC_API_KEY` to enable the kitchen helper. Without it, the chat page explains that it is not set up yet.
+5. Optional: set `NEXT_PUBLIC_SITE_URL` to the production URL (for example `https://pantrypal.example`) so the sitemap and social previews use it. Without it, they use `https://pantry-pal.vercel.app`.
 
-Every push builds a preview deployment. The build fails if content validation or unit tests fail. Without a database, the site still works and only accounts are unavailable.
+Every push builds a preview deployment. The build fails if content validation or unit tests fail. Without a database, the site still works; only accounts and the chatbot are unavailable.

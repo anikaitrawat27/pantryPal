@@ -416,7 +416,8 @@ function ConfirmWithPassword({
 }
 
 export function AccountPanel() {
-  const t = useDict().auth;
+  const d = useDict();
+  const t = d.auth;
   const lang = useLang();
   const router = useRouter();
   const account = useAccount();
@@ -450,6 +451,9 @@ export function AccountPanel() {
     <FormShell title={t.accountTitle}>
       <p className={styles.who}>{t.signedInAs(account.username)}</p>
       <p>{t.syncNote}</p>
+      <p>
+        <Link href={localePath(lang, "/my-recipes")}>{d.nav.myRecipes}</Link>
+      </p>
       <p>
         {t.codesLeft(account.recoveryCodesLeft)} {account.recoveryCodesLeft <= 2 && <strong>{t.codesLow}</strong>}
       </p>

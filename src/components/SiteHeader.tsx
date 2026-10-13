@@ -81,8 +81,8 @@ export function SiteHeader() {
             <Link href={href("/recipes")}>{t.recipes}</Link>
             <Link href={href("/pantry")}>{t.pantry}</Link>
             <Link href={href("/plan")}>{t.plan}</Link>
+            <Link href={href("/chat")}>{t.chat}</Link>
             <Link href={href("/favorites")}>{t.favorites}</Link>
-            <Link href={href("/about")}>{t.about}</Link>
             <AccountLink />
             <Suspense fallback={null}>
               <LangSwitch />
@@ -98,11 +98,14 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const t = useDict();
+  const lang = useLang();
   return (
     <footer className={`${styles.footer} no-print`}>
       <div className="container">
         <p className="hand">{t.footer}</p>
         <p className={styles.footerLinks}>
+          <Link href={localePath(lang, "/about")}>{t.nav.about}</Link>
+          <Link href={localePath(lang, "/my-recipes")}>{t.nav.myRecipes}</Link>
           <Link href="/developers">API</Link>
         </p>
       </div>

@@ -1,5 +1,7 @@
 # Backend plan: API, accounts, and chatbot
 
+Status: all three phases are built. Two changes from the plan: recovery codes are hashed with SHA-256, because they are long random values and need no slow hash; and the chatbot uses a hand-written streaming loop instead of the SDK's beta tool runner, for explicit control over streaming events, refusals, and truncated tool input.
+
 Three phases, each shippable on its own. Everything deploys with the existing Next.js app on Vercel; there is no separate server.
 
 Decisions:

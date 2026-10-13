@@ -26,10 +26,12 @@ interface Props {
   notes: Record<string, string>;
   steps: string[];
   baseServings: number;
+  /** Generated recipes are not in the catalog, so they cannot go on the meal plan. */
+  plannable?: boolean;
 }
 
 /** Ingredients and steps, with live serving-size scaling, swaps, and a checklist. */
-export function RecipeBody({ slug, title, meal, ingredients, notes, steps, baseServings }: Props) {
+export function RecipeBody({ slug, title, meal, ingredients, notes, steps, baseServings, plannable = true }: Props) {
   const lang = useLang();
   const d = useDict();
   const t = d.recipe;
@@ -182,7 +184,7 @@ export function RecipeBody({ slug, title, meal, ingredients, notes, steps, baseS
           ))}
         </div>
 
-        <AddToPlan slug={slug} title={title} servings={servings} defaultMeal={meal} />
+        {plannable && <AddToPlan slug={slug} title={title} servings={servings} defaultMeal={meal} />}
       </section>
 
       <section className={styles.steps} aria-labelledby="steps-heading">

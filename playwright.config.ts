@@ -9,11 +9,24 @@ export default defineConfig({
   reporter: process.env.CI ? "list" : [["list"]],
   use: { baseURL: `http://localhost:${PORT}`, trace: "retain-on-failure" },
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
-  webServer: {
-    command: `npx next build && npx next start -p ${PORT}`,
-    env: { NEXT_DIST_DIR: ".next-e2e", PGLITE_DIR: "memory://" },
-    url: `http://localhost:${PORT}`,
-    timeout: 300_000,
-    reuseExistingServer: !process.env.CI,
-  },
+  webServer: [
+    {
+      // Stands in for the Anthropic API so chat tests run offline and free.
+      command: "npx tsx tests/e2e/mock-anthropic.ts",
+      url: "http://localhost:3199/health",
+      reuseExistingServer: !process.env.CI,
+    },
+    {
+      command: `npx next build && npx next start -p ${PORT}`,
+      url: `http://localhost:${PORT}`,
+      timeout: 300_000,
+      reuseExistingServer: !process.env.CI,
+      env: {
+        NEXT_DIST_DIR: ".next-e2e",
+        PGLITE_DIR: "memory://",
+        ANTHROPIC_BASE_URL: "http://localhost:3199",
+        ANTHROPIC_API_KEY: "test-key-for-mock-server",
+      },
+    },
+  ],
 });
