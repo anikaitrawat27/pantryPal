@@ -46,6 +46,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             <nav aria-label="Main" className={styles.nav}>
               <Link href="/recipes">Recipes</Link>
               <Link href="/pantry">My pantry</Link>
+              <Link href="/plan">Plan</Link>
               <Link href="/favorites">Favorites</Link>
               <Link href="/about">About</Link>
               <ThemeToggle />

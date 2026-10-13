@@ -89,7 +89,14 @@ export default async function RecipePage({ params }: Params) {
         </div>
       </header>
 
-      <RecipeBody ingredients={recipe.ingredients} steps={recipe.steps} baseServings={recipe.serves} />
+      <RecipeBody
+        slug={recipe.slug}
+        title={recipe.title}
+        meal={recipe.meal.includes("dinner") ? "dinner" : recipe.meal[0]}
+        ingredients={recipe.ingredients}
+        steps={recipe.steps}
+        baseServings={recipe.serves}
+      />
 
       {recipe.tips && recipe.tips.length > 0 && (
         <aside className={styles.tips} aria-labelledby="tips-heading">

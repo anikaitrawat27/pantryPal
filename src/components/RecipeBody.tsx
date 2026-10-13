@@ -2,25 +2,29 @@
 
 import { useMemo, useState } from "react";
 import { getIngredient } from "@/data/pantry";
-import type { RecipeIngredient, Substitution } from "@/data/schema";
+import type { Meal, RecipeIngredient, Substitution } from "@/data/schema";
 import { DIET_LABELS, dietsFor } from "@/lib/diet";
 import { related } from "@/lib/match";
 import { useMyPantry } from "@/lib/my-pantry";
 import { costPerServing, formatUsd, nutritionPerServing } from "@/lib/nutrition";
 import { formatIngredientLine, scaleAmount } from "@/lib/scale";
 import { applySub, resolveSubs } from "@/lib/substitute";
+import { AddToPlan } from "./AddToPlan";
 import styles from "./RecipeBody.module.css";
 import { ServingsStepper } from "./ServingsStepper";
 import ui from "./ui.module.css";
 
 interface Props {
+  slug: string;
+  title: string;
+  meal: Meal;
   ingredients: RecipeIngredient[];
   steps: string[];
   baseServings: number;
 }
 
 /** Ingredients and steps, with live serving-size scaling, swaps, and a checklist. */
-export function RecipeBody({ ingredients, steps, baseServings }: Props) {
+export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings }: Props) {
   const [servings, setServings] = useState(baseServings);
   const [swaps, setSwaps] = useState<Record<number, Substitution>>({});
   const [openSwap, setOpenSwap] = useState<number | null>(null);
@@ -166,6 +170,8 @@ export function RecipeBody({ ingredients, steps, baseServings }: Props) {
             </span>
           ))}
         </div>
+
+        <AddToPlan slug={slug} title={title} servings={servings} defaultMeal={meal} />
       </section>
 
       <section className={styles.steps} aria-labelledby="steps-heading">

@@ -1,0 +1,171 @@
+.wrap {
+  max-width: 760px;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 16px 20px;
+}
+
+.summary p {
+  margin: 0;
+}
+
+.total {
+  font-size: 1.2rem;
+}
+
+.total strong {
+  font-size: 2.2rem;
+}
+
+.sub {
+  color: var(--ink-soft);
+  font-weight: 700;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.linkBtn {
+  border: 0;
+  background: none;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  min-height: 44px;
+}
+
+.note {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  margin: 12px 0 24px;
+}
+
+.group {
+  margin-bottom: 22px;
+}
+
+.group h2 {
+  font-size: 1.6rem;
+  border-bottom: 3px solid var(--line);
+  padding-bottom: 2px;
+}
+
+.group ul,
+.have ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  padding: 8px 0;
+  border-bottom: 1.5px dashed color-mix(in srgb, var(--ink-soft) 40%, transparent);
+}
+
+.item label {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.item input {
+  appearance: none;
+  flex: none;
+  width: 24px;
+  height: 24px;
+  margin-top: 1px;
+  border: 2px solid var(--line);
+  border-radius: 5px 7px 4px 6px;
+  background: var(--card);
+  display: grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+.item input:checked::after {
+  content: "";
+  width: 13px;
+  height: 7px;
+  border-left: 3px solid var(--sage);
+  border-bottom: 3px solid var(--sage);
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.line {
+  font-weight: 800;
+}
+
+.item small {
+  display: block;
+  color: var(--ink-soft);
+}
+
+.item[data-done="true"] .line {
+  text-decoration: line-through;
+  text-decoration-thickness: 2px;
+  color: var(--ink-soft);
+}
+
+.low {
+  margin-left: 8px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 0 6px;
+  border-radius: 8px;
+  background: var(--tomato-soft);
+  color: var(--tomato);
+}
+
+.have {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border: 2px dashed var(--line);
+  border-radius: 12px 16px 10px 14px;
+}
+
+.have summary {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.have li {
+  padding: 4px 0;
+}
+
+.have small {
+  color: var(--ink-soft);
+}
+
+.empty {
+  text-align: center;
+  padding: 40px 0;
+  color: var(--ink-soft);
+}
+
+.empty :global(.hand) {
+  font-size: 2rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+@media print {
+  .summary {
+    box-shadow: none;
+  }
+  .item input {
+    border-width: 1.5px;
+  }
+}
