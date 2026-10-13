@@ -1,0 +1,155 @@
+import { getIngredient, INGREDIENTS_BY_ID } from "@/data/pantry";
+import { COURSES, CUISINES, EQUIPMENT, MEALS, type Course, type Cuisine, type Equipment, type Meal } from "@/data/schema";
+import type { RecipeSummary } from "./catalog";
+import { DIETS, type Diet } from "./diet";
+import { includesAll, matchPantry, normalize, type PantryMatch } from "./match";
+
+export type HaveMode = "includes" | "only";
+
+export interface FilterState {
+  q: string;
+  courses: Course[];
+  meals: Meal[];
+  cuisines: Cuisine[];
+  diets: Diet[];
+  /** Tools the cook has. A recipe matches when it needs nothing else. Empty means any. */
+  tools: Equipment[];
+  /** Maximum total minutes. */
+  maxTime?: number;
+  /** Maximum difficulty, 1 to 3. */
+  maxLevel?: 1 | 2 | 3;
+  noExtras: boolean;
+  have: string[];
+  haveMode: HaveMode;
+}
+
+export const EMPTY_FILTERS: FilterState = {
+  q: "",
+  courses: [],
+  meals: [],
+  cuisines: [],
+  diets: [],
+  tools: [],
+  noExtras: false,
+  have: [],
+  haveMode: "includes",
+};
+
+/** In "only" mode, recipes missing more than this many ingredients are hidden. */
+export const MAX_MISSING = 2;
+
+export interface FilterResult {
+  recipe: RecipeSummary;
+  /** Present in "only" mode. */
+  match?: PantryMatch;
+}
+
+function matchesText(r: RecipeSummary, q: string): boolean {
+  if (!q) return true;
+  const haystack = normalize(
+    [r.title, r.blurb, r.cuisine, ...r.ingredients.flatMap((i) => {
+      const ing = getIngredient(i.id);
+      return [ing.name, ...ing.aliases];
+    })].join(" "),
+  );
+  return q.split(" ").every((word) => haystack.includes(word));
+}
+
+function passesFacets(r: RecipeSummary, f: FilterState, q: string): boolean {
+  if (f.courses.length && !f.courses.includes(r.course)) return false;
+  if (f.meals.length && !r.meal.some((m) => f.meals.includes(m))) return false;
+  if (f.cuisines.length && !f.cuisines.includes(r.cuisine)) return false;
+  if (f.diets.length && !f.diets.every((d) => r.diets.includes(d))) return false;
+  if (f.tools.length && !r.equipment.every((e) => e === "no-cook" || f.tools.includes(e))) return false;
+  if (f.maxTime !== undefined && r.totalMin > f.maxTime) return false;
+  if (f.maxLevel !== undefined && r.difficulty > f.maxLevel) return false;
+  if (f.noExtras && r.usesExtras) return false;
+  return matchesText(r, q);
+}
+
+/**
+ * Applies every filter. In "includes" mode results are alphabetical. In "only"
+ * mode they are ranked by fewest missing ingredients, then fewest swaps, then
+ * most of the user's items used.
+ */
+export function filterRecipes(recipes: readonly RecipeSummary[], f: FilterState): FilterResult[] {
+  const q = normalize(f.q);
+  const faceted = recipes.filter((r) => passesFacets(r, f, q));
+
+  if (f.have.length === 0 || f.haveMode === "includes") {
+    return faceted
+      .filter((r) => includesAll(r.ingredients, f.have))
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .map((recipe) => ({ recipe }));
+  }
+
+  return faceted
+    .map((recipe) => ({ recipe, match: matchPantry(recipe.ingredients, f.have) }))
+    .filter(({ match }) => match.missing.length <= MAX_MISSING && match.used > 0)
+    .sort(
+      (a, b) =>
+        a.match.missing.length - b.match.missing.length ||
+        a.match.swaps.length - b.match.swaps.length ||
+        b.match.used - a.match.used ||
+        a.recipe.title.localeCompare(b.recipe.title),
+    );
+}
+
+// URL serialization. Keys are short so shared links stay readable.
+
+function pickList<T extends string>(params: URLSearchParams, key: string, allowed: readonly T[]): T[] {
+  const raw = params.get(key);
+  if (!raw) return [];
+  const set = new Set<string>(allowed);
+  return [...new Set(raw.split(","))].filter((v): v is T => set.has(v));
+}
+
+function pickInt(params: URLSearchParams, key: string, min: number, max: number): number | undefined {
+  const n = Number(params.get(key));
+  return Number.isInteger(n) && n >= min && n <= max ? n : undefined;
+}
+
+export function parseFilters(params: URLSearchParams): FilterState {
+  return {
+    q: (params.get("q") ?? "").slice(0, 100),
+    courses: pickList(params, "course", COURSES),
+    meals: pickList(params, "meal", MEALS),
+    cuisines: pickList(params, "cuisine", CUISINES),
+    diets: pickList(params, "diet", DIETS),
+    tools: pickList(params, "tools", EQUIPMENT),
+    maxTime: pickInt(params, "time", 1, 600),
+    maxLevel: pickInt(params, "level", 1, 3) as FilterState["maxLevel"],
+    noExtras: params.get("noextras") === "1",
+    have: pickList(params, "have", [...INGREDIENTS_BY_ID.keys()]),
+    haveMode: params.get("mode") === "only" ? "only" : "includes",
+  };
+}
+
+export function serializeFilters(f: FilterState): URLSearchParams {
+  const p = new URLSearchParams();
+  if (f.q) p.set("q", f.q);
+  if (f.courses.length) p.set("course", f.courses.join(","));
+  if (f.meals.length) p.set("meal", f.meals.join(","));
+  if (f.cuisines.length) p.set("cuisine", f.cuisines.join(","));
+  if (f.diets.length) p.set("diet", f.diets.join(","));
+  if (f.tools.length) p.set("tools", f.tools.join(","));
+  if (f.maxTime !== undefined) p.set("time", String(f.maxTime));
+  if (f.maxLevel !== undefined) p.set("level", String(f.maxLevel));
+  if (f.noExtras) p.set("noextras", "1");
+  if (f.have.length) p.set("have", f.have.join(","));
+  if (f.haveMode === "only") p.set("mode", "only");
+  return p;
+}
+
+export function activeFilterCount(f: FilterState): number {
+  return (
+    f.courses.length +
+    f.meals.length +
+    f.cuisines.length +
+    f.diets.length +
+    f.tools.length +
+    (f.maxTime !== undefined ? 1 : 0) +
+    (f.maxLevel !== undefined ? 1 : 0) +
+    (f.noExtras ? 1 : 0)
+  );
+}
