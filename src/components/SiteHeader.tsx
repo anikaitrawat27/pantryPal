@@ -5,6 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { useDict, useLang } from "@/i18n/client";
 import { localePath, switchLangPath } from "@/i18n/config";
+import { loadAccount, useAccount } from "@/lib/account";
 import { JarLogo, Squiggle } from "./Doodle";
 import styles from "./SiteHeader.module.css";
 import { ThemeToggle } from "./ThemeToggle";
@@ -25,6 +26,34 @@ function LangSwitch() {
       className={styles.lang}
     >
       {t.switchTo}
+    </Link>
+  );
+}
+
+/** "Sign in" for guests (returning here afterwards), or the username linking to the account page. */
+function AccountLink() {
+  const lang = useLang();
+  const t = useDict().auth;
+  const account = useAccount();
+  const pathname = usePathname() ?? "/";
+  useEffect(() => {
+    void loadAccount();
+  }, []);
+  if (account.status === "user") {
+    return (
+      <Link href={localePath(lang, "/account")} className={styles.account} data-testid="account-link">
+        {account.username}
+      </Link>
+    );
+  }
+  const authPage = /\/(login|signup|reset)$/.test(pathname);
+  return (
+    <Link
+      href={`${localePath(lang, "/login")}${authPage ? "" : `?next=${encodeURIComponent(pathname)}`}`}
+      className={styles.account}
+      aria-busy={account.status === "loading"}
+    >
+      {t.signIn}
     </Link>
   );
 }
@@ -54,6 +83,7 @@ export function SiteHeader() {
             <Link href={href("/plan")}>{t.plan}</Link>
             <Link href={href("/favorites")}>{t.favorites}</Link>
             <Link href={href("/about")}>{t.about}</Link>
+            <AccountLink />
             <Suspense fallback={null}>
               <LangSwitch />
             </Suspense>

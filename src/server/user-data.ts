@@ -49,6 +49,34 @@ export const userDataSchema = z
   .strict();
 
 export type UserData = z.infer<typeof userDataSchema>;
+
+/**
+ * Browser data for a merge: same shape as UserData, but invalid items are dropped
+ * instead of rejecting the request. Browser storage can hold entries for recipes
+ * that no longer exist, and one stale favorite should not block signing in.
+ */
+export const localDataSchema = z
+  .object({
+    pantry: z.object({ have: z.array(z.unknown()).max(500), low: z.array(z.unknown()).max(500) }).strict(),
+    plan: z.array(z.unknown()).max(500),
+    favorites: z.array(z.unknown()).max(500),
+    checked: z.array(z.unknown()).max(500),
+  })
+  .strict()
+  .transform((raw): UserData => {
+    const keep = <T>(items: unknown[], schema: z.ZodType<T>) =>
+      items.flatMap((i) => {
+        const r = schema.safeParse(i);
+        return r.success ? [r.data] : [];
+      });
+    const have = [...new Set(keep(raw.pantry.have, ingredientId))];
+    return {
+      pantry: { have, low: keep(raw.pantry.low, ingredientId).filter((id) => have.includes(id)) },
+      plan: keep(raw.plan, planEntrySchema).slice(0, 100),
+      favorites: [...new Set(keep(raw.favorites, slug))].slice(0, 300),
+      checked: [...new Set(keep(raw.checked, ingredientId))].slice(0, 200),
+    };
+  });
 type PlanEntry = z.infer<typeof planEntrySchema>;
 
 export async function getUserData(db: Db, userId: string): Promise<UserData> {

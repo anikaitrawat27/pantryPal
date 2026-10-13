@@ -10,11 +10,11 @@ What visitors can do:
 - Plan a week of meals by dragging recipes onto a calendar, then get one shopping list with amounts added together, grouped by aisle, priced, and minus what is already in the pantry.
 - Cook in a full-screen, one-step-at-a-time mode with timers read from the steps and a screen wake lock.
 
-It is a static Next.js site with no backend or database. Everything a visitor saves (pantry, plan, favorites, theme) stays in their browser.
+It is a Next.js site deployed on Vercel. Recipe pages are generated at build time. A small backend, made of API routes plus Postgres, adds a public JSON API and optional accounts, so a visitor's pantry, meal plan, and favorites follow them across devices. Without an account, everything stays in the browser.
 
 ## Getting started
 
-Requires Node 20 or later.
+Requires Node 20 or later. Local development needs no database setup: without `DATABASE_URL`, the app uses PGlite, a Postgres that runs inside Node, stored in `.data/pglite` and migrated automatically.
 
 ```bash
 npm install
@@ -37,6 +37,8 @@ The site runs at http://localhost:3000.
 | `npm run test:e2e` | Browser tests (Playwright, Chromium). Builds into `.next-e2e` and serves on port 3100, so it can run while `npm run dev` is running. Run `npx playwright install chromium` once first. |
 | `npm run validate` | Checks every recipe and every Spanish translation against the content rules |
 | `npm run lint` | ESLint |
+| `npm run db:generate` | Generate a migration in `drizzle/` after editing `src/server/db/schema.ts` |
+| `npm run db:migrate` | Apply migrations to `DATABASE_URL` (runs automatically before every build; skipped without it) |
 
 ## API
 
@@ -130,14 +132,33 @@ The build fails if any recipe:
 
 or if the per-course counts do not add up to 250. See [docs/recipe-guide.md](docs/recipe-guide.md) before adding or editing recipes.
 
-### Saved data
+### Saved data and accounts
 
-Favorites, the saved pantry, the meal plan, shopping-list checkmarks, and the theme are stored in the visitor's browser (`localStorage`). They do not sync across devices. If storage is blocked, the site still works and changes last for the visit.
+Favorites, the saved pantry, the meal plan, and shopping-list checkmarks live in the browser (`localStorage`), and pages always read from there. Signing in adds syncing:
+
+- **Signing in:** on login or signup, browser data is merged into the account (`POST /api/me/merge`). The merge is a union, and the account wins on conflicts.
+- **Page load:** a signed-in browser pulls the account's data (`GET /api/me/data`).
+- **Saving changes:** each change is pushed with a short debounce (`PUT /api/me/pantry|plan|favorites|checks`), and only when the data actually changed. Two tabs editing at once resolve as last write wins, per collection.
+- **Signing out:** clears this device's copy.
+
+Account security (`src/server/auth/`):
+
+- **Passwords:** hashed with Argon2id, using OWASP's minimum settings (19 MiB memory, 2 iterations).
+- **Sessions:** a 32-byte random token in an `HttpOnly; SameSite=Lax` cookie, which is also `Secure` over HTTPS. Only the token's SHA-256 is stored, so a database leak cannot be used to sign in. Sessions last 30 days and renew when fewer than 15 remain.
+- **Forgot password:** 8 one-time recovery codes are shown once at signup, and only their hashes are stored. Using one sets a new password and signs out every other session. There is no email.
+- **Cross-site requests:** every state-changing request must carry an `Origin` header from this site.
+- **Rate limits:** login, signup, and reset attempts are limited per IP and per username, with counters kept in Postgres.
+- **Login errors:** wrong passwords and unknown usernames get the same message and take the same time.
+- **Audit log:** security events (logins, failures, resets) are recorded in `auth_events`. Secrets are never logged.
+- **Account deletion:** deleting an account removes all of its rows, through cascading deletes.
+
+The theme choice stays in the browser only.
 
 ## Deploying to Vercel
 
 1. Push the repository to GitHub.
 2. In Vercel, choose Add New Project and import the repository. The Next.js preset needs no changes.
-3. Optional: set `NEXT_PUBLIC_SITE_URL` to the production URL (for example `https://pantrypal.example`) so the sitemap and social previews use it. Without it, they use `https://pantry-pal.vercel.app`.
+3. In the project's Storage tab, add a Neon Postgres database. This sets `DATABASE_URL` for every environment. The next build applies the migrations.
+4. Optional: set `NEXT_PUBLIC_SITE_URL` to the production URL (for example `https://pantrypal.example`) so the sitemap and social previews use it. Without it, they use `https://pantry-pal.vercel.app`.
 
-Every push builds a preview deployment, and the build fails if content validation or unit tests fail.
+Every push builds a preview deployment. The build fails if content validation or unit tests fail. Without a database, the site still works and only accounts are unavailable.

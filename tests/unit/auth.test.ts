@@ -292,6 +292,23 @@ describe("saved data", () => {
     expect((await call(dataRoute, "GET", undefined, { cookie: b.cookie })).body.plan).toEqual(plan);
   });
 
+  it("drops stale or invalid browser items during a merge instead of failing", async () => {
+    const { cookie } = await newUser();
+    const merged = await call(
+      mergeRoute,
+      "POST",
+      {
+        pantry: { have: ["rice", "unicorn"], low: ["unicorn"] },
+        plan: [{ id: "x", slug: "gone" }],
+        favorites: ["biryani", "deleted-recipe"],
+        checked: [5],
+      },
+      { cookie },
+    );
+    expect(merged.status).toBe(200);
+    expect(merged.body).toEqual({ pantry: { have: ["rice"], low: [] }, plan: [], favorites: ["biryani"], checked: [] });
+  });
+
   it("requires a session", async () => {
     expect((await call(pantryRoute, "PUT", { have: [], low: [] })).status).toBe(401);
   });

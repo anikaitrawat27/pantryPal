@@ -24,7 +24,7 @@ export function parseMyPantry(raw: unknown): MyPantry {
   return { have, low };
 }
 
-const store = createLocalStore<MyPantry>("pantrypal:my-pantry", parseMyPantry, EMPTY);
+export const pantryStore = createLocalStore<MyPantry>("pantrypal:my-pantry", parseMyPantry, EMPTY);
 
 export function toggleHave(p: MyPantry, id: string): MyPantry {
   return p.have.includes(id)
@@ -41,13 +41,13 @@ export function setLow(p: MyPantry, ids: readonly string[], low: boolean): MyPan
 }
 
 export function useMyPantry() {
-  const pantry = store.use();
+  const pantry = pantryStore.use();
   return {
     pantry,
-    toggle: (id: string) => store.update((p) => toggleHave(p, id)),
+    toggle: (id: string) => pantryStore.update((p) => toggleHave(p, id)),
     addMany: (ids: readonly string[]) =>
-      store.update((p) => ({ ...p, have: [...new Set([...p.have, ...ids.filter(isStockable)])] })),
-    markLow: (ids: readonly string[], low: boolean) => store.update((p) => setLow(p, ids, low)),
-    clear: () => store.set(EMPTY),
+      pantryStore.update((p) => ({ ...p, have: [...new Set([...p.have, ...ids.filter(isStockable)])] })),
+    markLow: (ids: readonly string[], low: boolean) => pantryStore.update((p) => setLow(p, ids, low)),
+    clear: () => pantryStore.set(EMPTY),
   };
 }

@@ -44,6 +44,7 @@ async function connect(): Promise<Db> {
 
 /** Opens and migrates a PGlite database. Exported for tests, which use `memory://`. */
 export async function openPglite(dataDir: string): Promise<Db> {
+  if (!dataDir.includes("://")) (await import("node:fs")).mkdirSync(dataDir, { recursive: true });
   const { PGlite } = await import("@electric-sql/pglite");
   const { drizzle } = await import("drizzle-orm/pglite");
   const { migrate } = await import("drizzle-orm/pglite/migrator");

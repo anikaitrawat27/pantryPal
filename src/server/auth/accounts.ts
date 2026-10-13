@@ -1,6 +1,7 @@
 import "server-only";
 import { and, count, eq, isNull } from "drizzle-orm";
 import { z } from "zod";
+import { PASSWORD_MAX, PASSWORD_MIN, USERNAME_PATTERN } from "@/lib/account-rules";
 import { ApiError, fieldsFromZod } from "@/lib/api/http";
 import type { Db } from "@/server/db";
 import { authEvents, recoveryCodes, users } from "@/server/db/schema";
@@ -23,10 +24,13 @@ const username = z
   .trim()
   .min(3, "Use at least 3 characters.")
   .max(24, "Use at most 24 characters.")
-  .regex(/^[A-Za-z0-9_-]+$/, "Use only letters, numbers, - and _.");
+  .regex(USERNAME_PATTERN, "Use only letters, numbers, - and _.");
 
 /** Long passphrases are encouraged; 200 characters keeps hashing time bounded. */
-const password = z.string().min(10, "Use at least 10 characters.").max(200, "Use at most 200 characters.");
+const password = z
+  .string()
+  .min(PASSWORD_MIN, `Use at least ${PASSWORD_MIN} characters.`)
+  .max(PASSWORD_MAX, `Use at most ${PASSWORD_MAX} characters.`);
 
 export const signupSchema = z
   .object({ username, password })

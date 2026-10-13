@@ -12,6 +12,8 @@ export interface LocalStore<T> {
   get(): T;
   set(next: T): void;
   update(fn: (cur: T) => T): void;
+  /** Calls `listener` after every change, from this tab or another. Returns an unsubscribe function. */
+  subscribe(listener: () => void): () => void;
 }
 
 export function createLocalStore<T>(key: string, parse: (raw: unknown) => T, empty: T): LocalStore<T> {
@@ -59,6 +61,7 @@ export function createLocalStore<T>(key: string, parse: (raw: unknown) => T, emp
     get,
     set,
     update: (fn) => set(fn(get())),
+    subscribe,
   };
 }
 

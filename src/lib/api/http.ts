@@ -95,6 +95,8 @@ export function handle<Args extends unknown[]>(name: string, fn: (...args: Args)
           level: "error",
           route: name,
           message: err instanceof Error ? err.message : String(err),
+          // Database drivers wrap the useful error (constraint, connection) as the cause.
+          cause: err instanceof Error && err.cause instanceof Error ? err.cause.message : undefined,
           stack: err instanceof Error ? err.stack : undefined,
         }),
       );

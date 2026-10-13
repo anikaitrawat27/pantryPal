@@ -1,10 +1,11 @@
 "use client";
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { RecipeSummary } from "@/lib/catalog";
 import {
   activeFilterCount,
+  EMPTY_FILTERS,
   filterRecipes,
   parseFilters,
   serializeFilters,
@@ -36,8 +37,17 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
   const d = useDict();
   const t = d.browse;
 
+  // router.replace updates the URL asynchronously, so quick successive clicks would each
+  // start from the same stale URL and drop earlier changes. Build from the latest intended state.
+  const latest = useRef(filters);
+  useEffect(() => {
+    latest.current = filters;
+  }, [filters]);
+
   const update = (patch: Partial<FilterState>) => {
-    const qs = serializeFilters({ ...filters, ...patch }).toString();
+    const next = { ...latest.current, ...patch };
+    latest.current = next;
+    const qs = serializeFilters(next).toString();
     router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
     setShown(PAGE_SIZE);
   };
@@ -49,7 +59,8 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
   useEffect(() => {
     if (q === filters.q) return;
     const t = setTimeout(() => {
-      const qs = serializeFilters({ ...filters, q }).toString();
+      latest.current = { ...latest.current, q };
+      const qs = serializeFilters(latest.current).toString();
       router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
       setShown(PAGE_SIZE);
     }, 250);
@@ -151,6 +162,7 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
                 className={styles.clear}
                 onClick={() => {
                   setQ("");
+                  latest.current = EMPTY_FILTERS;
                   router.replace(pathname, { scroll: false });
                 }}
               >
