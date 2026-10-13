@@ -11,12 +11,19 @@
     "test": "vitest run",
     "test:e2e": "playwright test",
     "format": "prettier --write .",
-    "prebuild": "npm run validate && npm test"
+    "prebuild": "npm run validate && npm test && npm run db:migrate",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "tsx scripts/migrate.ts"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.3.7",
+    "@neondatabase/serverless": "^1.0.1",
+    "@node-rs/argon2": "^2.0.2",
+    "drizzle-orm": "^0.44.5",
     "next": "15.5.4",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "server-only": "^0.0.1",
     "zod": "^3.25.76"
   },
   "devDependencies": {
@@ -25,6 +32,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
     "prettier": "^3.6.2",
