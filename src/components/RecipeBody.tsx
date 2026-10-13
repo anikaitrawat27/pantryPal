@@ -1,0 +1,150 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { getIngredient } from "@/data/pantry";
+import type { RecipeIngredient, Substitution } from "@/data/schema";
+import { DIET_LABELS, dietsFor } from "@/lib/diet";
+import { formatIngredientLine, scaleAmount } from "@/lib/scale";
+import { applySub, resolveSubs } from "@/lib/substitute";
+import styles from "./RecipeBody.module.css";
+import { ServingsStepper } from "./ServingsStepper";
+import ui from "./ui.module.css";
+
+interface Props {
+  ingredients: RecipeIngredient[];
+  steps: string[];
+  baseServings: number;
+}
+
+/** Ingredients and steps, with live serving-size scaling, swaps, and a checklist. */
+export function RecipeBody({ ingredients, steps, baseServings }: Props) {
+  const [servings, setServings] = useState(baseServings);
+  const [swaps, setSwaps] = useState<Record<number, Substitution>>({});
+  const [openSwap, setOpenSwap] = useState<number | null>(null);
+  const [checked, setChecked] = useState<ReadonlySet<number>>(new Set());
+
+  const current = useMemo(
+    () => ingredients.map((ing, i) => (swaps[i] ? applySub(ing, swaps[i]) : ing)),
+    [ingredients, swaps],
+  );
+  const diets = useMemo(() => dietsFor(current), [current]);
+  const factor = servings / baseServings;
+  const swapped = Object.entries(swaps).map(([i, s]) => ({ from: ingredients[Number(i)].id, to: s.id }));
+
+  const toggleChecked = (i: number) =>
+    setChecked((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+
+  return (
+    <div className={styles.layout}>
+      <section className={`${ui.card} ${styles.ingredients}`} aria-labelledby="ingredients-heading">
+        <div className={styles.ingHeader}>
+          <h2 id="ingredients-heading">Ingredients</h2>
+          <ServingsStepper value={servings} onChange={setServings} />
+        </div>
+
+        <ul className={styles.ingList}>
+          {current.map((ing, i) => {
+            const original = ingredients[i];
+            const options = resolveSubs(original);
+            const isSwapped = Boolean(swaps[i]);
+            const line = formatIngredientLine(ing.id, scaleAmount(ing, factor));
+            return (
+              <li key={original.id} className={styles.ingItem} data-checked={checked.has(i)}>
+                <label className={styles.check}>
+                  <input type="checkbox" checked={checked.has(i)} onChange={() => toggleChecked(i)} />
+                  <span>
+                    <span className={styles.line} data-testid={`ing-${original.id}`}>
+                      {line}
+                    </span>
+                    {ing.note && <span className={styles.note}> ({ing.note})</span>}
+                    {ing.optional && <span className={styles.optional}>optional</span>}
+                    {getIngredient(ing.id).tier === "extra" && <span className={styles.extra}>extra</span>}
+                  </span>
+                </label>
+
+                {(options.length > 0 || isSwapped) && (
+                  <div className={`${styles.swap} no-print`}>
+                    {isSwapped ? (
+                      <button
+                        type="button"
+                        className={styles.swapBtn}
+                        onClick={() =>
+                          setSwaps((s) => {
+                            const next = { ...s };
+                            delete next[i];
+                            return next;
+                          })
+                        }
+                      >
+                        undo swap
+                      </button>
+                    ) : (
+                      <button
+                        type="button"
+                        className={styles.swapBtn}
+                        aria-expanded={openSwap === i}
+                        aria-controls={`swap-${i}`}
+                        onClick={() => setOpenSwap(openSwap === i ? null : i)}
+                      >
+                        swap
+                      </button>
+                    )}
+                    {openSwap === i && !isSwapped && (
+                      <ul
+                        id={`swap-${i}`}
+                        className={styles.swapMenu}
+                        onKeyDown={(e) => e.key === "Escape" && setOpenSwap(null)} aria-label={`Swaps for ${getIngredient(original.id).name}`}>
+                        {options.map((o) => (
+                          <li key={o.id}>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                setSwaps((s) => ({ ...s, [i]: o }));
+                                setOpenSwap(null);
+                              }}
+                            >
+                              Use {getIngredient(o.id).name}
+                              {o.note && <span className={styles.subNote}>{o.note}</span>}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
+              </li>
+            );
+          })}
+        </ul>
+
+        {swapped.length > 0 && (
+          <p className={styles.swapReminder} role="status">
+            {swapped.map((s) => `Use ${getIngredient(s.to).name} wherever the steps say ${getIngredient(s.from).name}.`).join(" ")}
+          </p>
+        )}
+
+        <div className={styles.diets} aria-label="Diet">
+          {diets.map((d) => (
+            <span key={d} className={`${ui.badge} ${ui.badgeSage}`}>
+              {DIET_LABELS[d]}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.steps} aria-labelledby="steps-heading">
+        <h2 id="steps-heading">Steps</h2>
+        <ol className={styles.stepList}>
+          {steps.map((s, i) => (
+            <li key={i}>{s}</li>
+          ))}
+        </ol>
+      </section>
+    </div>
+  );
+}

@@ -1,0 +1,66 @@
+.intro {
+  max-width: 70ch;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+}
+
+.shelves {
+  columns: 3 280px;
+  column-gap: 28px;
+  margin-top: 24px;
+}
+
+.shelf {
+  break-inside: avoid;
+  margin-bottom: 28px;
+  padding-bottom: 6px;
+  border-bottom: 5px solid var(--line);
+  border-radius: 0 0 4px 6px;
+}
+
+.shelf h2 {
+  font-size: 1.7rem;
+}
+
+.shelf ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.shelf li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 4px 3px 12px;
+  background: var(--card);
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+}
+
+.shelf a {
+  text-decoration: none;
+}
+
+.shelf a:hover {
+  text-decoration: underline;
+}
+
+.count {
+  min-width: 26px;
+  padding: 0 6px;
+  border-radius: 10px;
+  background: var(--paper-2);
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.extras li {
+  background: var(--mustard-soft);
+  border-style: dashed;
+}

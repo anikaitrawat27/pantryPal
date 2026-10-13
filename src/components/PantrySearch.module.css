@@ -1,0 +1,12 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px 22px;
+  transform: rotate(-0.6deg);
+  max-width: 620px;
+}
+
+.form button[type="submit"] {
+  align-self: flex-start;
+}

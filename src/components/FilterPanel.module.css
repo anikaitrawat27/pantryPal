@@ -1,0 +1,73 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.group {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.group legend {
+  font-family: var(--font-hand);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  padding: 0;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.toggle {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.toggle small {
+  display: block;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.toggle input {
+  appearance: none;
+  flex: none;
+  width: 44px;
+  height: 26px;
+  border: 2px solid var(--line);
+  border-radius: 14px 16px 13px 15px;
+  background: var(--card);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.toggle input::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ink);
+  transition: transform 0.15s ease;
+}
+
+.toggle input:checked {
+  background: var(--sage-soft);
+}
+
+.toggle input:checked::after {
+  transform: translateX(18px);
+  background: var(--sage);
+}

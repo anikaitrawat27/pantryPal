@@ -1,0 +1,130 @@
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 24px;
+  align-items: center;
+  padding: 12px 0 24px;
+}
+
+.title {
+  max-width: 16ch;
+}
+
+.lede {
+  font-size: 1.2rem;
+  color: var(--ink-soft);
+  max-width: 52ch;
+}
+
+.heroActions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 22px;
+}
+
+.mascot {
+  animation: bob 4s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-8px);
+  }
+}
+
+@media (max-width: 760px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+  .mascot {
+    display: none;
+  }
+}
+
+.section {
+  margin-top: 56px;
+}
+
+.tiles {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 10px 14px;
+  text-decoration: none;
+  transform: rotate(var(--tilt, 0deg));
+  transition: transform 0.18s ease;
+}
+
+.tile:hover,
+.tile:focus-visible {
+  transform: rotate(0deg) scale(1.04);
+}
+
+.tileName {
+  font-family: var(--font-hand);
+  font-size: 1.45rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.1;
+}
+
+.tileCount {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+}
+
+.ruleList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  counter-reset: rule;
+}
+
+.ruleList li {
+  counter-increment: rule;
+  padding: 16px 18px;
+  border: 2px dashed var(--line);
+  border-radius: 14px 22px 12px 20px;
+}
+
+.ruleList h3::before {
+  content: counter(rule) ". ";
+  color: var(--tomato);
+}
+
+.ruleList p {
+  margin: 0;
+}
+
+.toolList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-top: 6px;
+}
+
+.toolList span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+}

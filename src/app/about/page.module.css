@@ -1,0 +1,11 @@
+.about {
+  max-width: 760px;
+}
+
+.about p {
+  font-size: 1.08rem;
+}
+
+.about h2 {
+  margin-top: 1.4em;
+}

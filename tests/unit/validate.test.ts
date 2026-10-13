@@ -69,6 +69,11 @@ describe("validateRecipes", () => {
     expect(check({ equipment: ["no-cook", "stovetop"] }).join()).toMatch(/no-cook/);
   });
 
+  it("does not read 'air fry' as a stovetop step", () => {
+    expect(check({ equipment: ["air-fryer"], steps: ["Air fry the bread for 4 minutes."] })).toEqual([]);
+    expect(check({ equipment: ["air-fryer"], steps: ["Fry the bread in the air fryer."] }).join()).toMatch(/mention stovetop/);
+  });
+
   it("flags duplicate slugs and titles", () => {
     const r = recipeSchema.parse(base);
     expect(validateRecipes([r, r], { requireCounts: false }).join()).toMatch(/duplicate slug/);

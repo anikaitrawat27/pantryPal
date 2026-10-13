@@ -20,7 +20,8 @@ const HARD_CODED_AMOUNT =
 /** Words in steps that imply a tool. A recipe that mentions one must list the tool. */
 const TOOL_HINTS: [Equipment, RegExp][] = [
   ["microwave", /\bmicrowav/i],
-  ["stovetop", /\b(skillet|pan|pot|saucepan|stovetop|stove|boil\w*|simmer\w*|saut[eé]\w*|fry|fries|fried|frying|griddle|wok)\b/i],
+  // "air fry" belongs to the air fryer, so "fry" only counts when "air" does not precede it.
+  ["stovetop", /\b(skillet|pan|pot|saucepan|stovetop|stove|boil\w*|simmer\w*|saut[eé]\w*|griddle|wok)\b|(?<!\bair[- ])\b(fry|fries|fried|frying)\b/i],
   ["blender", /\bblend(er)?\b/i],
   ["toaster", /\btoaster\b/i],
   ["air-fryer", /\bair[- ]fry/i],
