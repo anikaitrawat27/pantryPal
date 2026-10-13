@@ -4,13 +4,6 @@ import type { RecipeIngredient } from "@/data/schema";
 export const DIETS = ["vegan", "vegetarian", "dairy-free", "egg-free", "gluten-free"] as const;
 export type Diet = (typeof DIETS)[number];
 
-export const DIET_LABELS: Record<Diet, string> = {
-  vegan: "Vegan",
-  vegetarian: "Vegetarian",
-  "dairy-free": "Dairy-free",
-  "egg-free": "Egg-free",
-  "gluten-free": "Gluten-free",
-};
 
 /**
  * Derives diet labels from the required ingredients, so labels can never

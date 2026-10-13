@@ -1,9 +1,11 @@
 import { FACTS } from "@/data/facts";
-import { ASSUMED_ON_HAND, getIngredient, INGREDIENTS, pluralName, type IngredientGroup } from "@/data/pantry";
+import { ASSUMED_ON_HAND, getIngredient, INGREDIENTS, type IngredientGroup } from "@/data/pantry";
 import type { RecipeIngredient, Unit } from "@/data/schema";
 import { related } from "./match";
 import { gramsOf } from "./nutrition";
-import { bestVolume, bestWeight, formatNumber, formatUnit, VOLUME_IN_TSP, WEIGHT_IN_OZ, type ScaledAmount } from "./scale";
+import type { Lang } from "@/i18n/config";
+import { ingredientCanName, ingredientName, ingredientPlural, joinAmount, unitName } from "@/i18n/ingredients";
+import { bestVolume, bestWeight, formatNumber, VOLUME_IN_TSP, WEIGHT_IN_OZ, type ScaledAmount } from "./scale";
 
 export interface PlannedRecipe {
   slug: string;
@@ -68,18 +70,16 @@ function amountsOf(t: Tally): ScaledAmount[] {
   return out;
 }
 
-/** "2 cans + 1 cup corn", "3 onions", "garlic-ginger paste". */
-export function formatShoppingLine(id: string, amounts: readonly ScaledAmount[]): string {
-  const ing = getIngredient(id);
-  if (amounts.length === 0) return ing.name;
-  const counted = amounts.length === 1 && !amounts[0].unit;
-  if (counted) {
+/** "2 cans + 1 cup canned corn", "3 onions", or in Spanish "2 latas + 1 taza de maíz enlatado". */
+export function formatShoppingLine(id: string, amounts: readonly ScaledAmount[], lang: Lang = "en"): string {
+  if (amounts.length === 0) return ingredientName(id, lang);
+  if (amounts.length === 1 && !amounts[0].unit) {
     const qty = amounts[0].qty!;
-    return `${formatNumber(qty)} ${qty > 1 ? pluralName(ing) : ing.name}`;
+    return `${formatNumber(qty)} ${qty > 1 ? ingredientPlural(id, lang) : ingredientName(id, lang)}`;
   }
-  const parts = amounts.map((a) => (a.unit ? `${formatNumber(a.qty!)} ${formatUnit(a.unit, a.qty!)}` : formatNumber(a.qty!)));
-  const name = amounts.every((a) => a.unit === "can") ? ing.name.replace(/^canned /, "") : ing.name;
-  return `${parts.join(" + ")} ${name}`;
+  const parts = amounts.map((a) => (a.unit ? `${formatNumber(a.qty!)} ${unitName(a.unit, a.qty!, lang)}` : formatNumber(a.qty!)));
+  const name = amounts.every((a) => a.unit === "can") ? ingredientCanName(id, lang) : ingredientName(id, lang);
+  return joinAmount(parts.join(" + "), name, lang);
 }
 
 function addLine(t: Tally, ing: RecipeIngredient, factor: number) {
@@ -113,6 +113,7 @@ export function buildShoppingList(
   meals: readonly PlannedMeal[],
   recipes: ReadonlyMap<string, PlannedRecipe>,
   pantry: { have: readonly string[]; low: readonly string[] },
+  lang: Lang = "en",
 ): ShoppingList {
   const tallies = new Map<string, Tally>();
 
@@ -143,7 +144,7 @@ export function buildShoppingList(
     items.push({
       id,
       group: getIngredient(id).group,
-      line: formatShoppingLine(id, amountsOf(t)),
+      line: formatShoppingLine(id, amountsOf(t), lang),
       packages,
       packLabel: pack?.label,
       cost: pack ? Math.round(packages * pack.usd * 100) / 100 : 0,
@@ -159,7 +160,7 @@ export function buildShoppingList(
     items.push({
       id,
       group: getIngredient(id).group,
-      line: getIngredient(id).name,
+      line: ingredientName(id, lang),
       packages: pack ? 1 : 0,
       packLabel: pack?.label,
       cost: pack?.usd ?? 0,
@@ -174,9 +175,9 @@ export function buildShoppingList(
 }
 
 /** Plain-text version for copying into a notes app or a text message. */
-export function shoppingListText(list: ShoppingList, checked: readonly string[] = []): string {
+export function shoppingListText(list: ShoppingList, checked: readonly string[] = [], label: (l: string) => string = (l) => l): string {
   return list.items
     .filter((i) => i.status !== "have" && !checked.includes(i.id))
-    .map((i) => `- ${i.line}${i.packages > 0 && i.packLabel ? ` (${i.packages} × ${i.packLabel})` : ""}`)
+    .map((i) => `- ${i.line}${i.packages > 0 && i.packLabel ? ` (${i.packages} × ${label(i.packLabel)})` : ""}`)
     .join("\n");
 }

@@ -24,7 +24,7 @@
   --radius-wobble-2: 15px 225px 15px 255px / 255px 15px 225px 15px;
   --radius-pill: 40px 32px 44px 30px / 30px 44px 32px 40px;
 
-  --font-hand: var(--font-gaegu), "Comic Sans MS", cursive;
+  --font-hand: var(--font-hand-face), "Comic Sans MS", cursive;
   --font-body: var(--font-nunito), system-ui, sans-serif;
 
   --gutter: 16px;
@@ -207,4 +207,8 @@ svg {
   .no-print {
     display: none !important;
   }
+}
+
+.not-found-jar {
+  margin: 0 auto;
 }

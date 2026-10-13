@@ -1,5 +1,7 @@
-import { getIngredient, pluralName } from "@/data/pantry";
+import { getIngredient } from "@/data/pantry";
 import type { RecipeIngredient, Unit } from "@/data/schema";
+import type { Lang } from "@/i18n/config";
+import { ingredientCanName, ingredientName, ingredientPlural, joinAmount, toTaste, unitName } from "@/i18n/ingredients";
 
 /** Fractions a home cook can measure, as [value, label]. */
 const FRACTIONS: readonly [number, string][] = [
@@ -93,37 +95,16 @@ export function scaleAmount(ing: Pick<RecipeIngredient, "id" | "qty" | "unit" | 
   return { qty: Math.max(Math.round(raw * 2) / 2, 1 / 2), unit };
 }
 
-const UNIT_PLURALS: Partial<Record<Unit, string>> = {
-  cup: "cups",
-  can: "cans",
-  slice: "slices",
-  clove: "cloves",
-  link: "links",
-  stick: "sticks",
-  packet: "packets",
-  pinch: "pinches",
-  dash: "dashes",
-  splash: "splashes",
-  handful: "handfuls",
-  leaf: "leaves",
-};
-
-export function formatUnit(unit: Unit, qty: number): string {
-  return qty > 1 ? (UNIT_PLURALS[unit] ?? unit) : unit;
-}
-
 /**
- * Renders a full ingredient line, e.g. "1 1/2 cups milk", "2 eggs",
- * "salt, to taste".
+ * Renders a full ingredient line: "1 1/2 cups milk", "2 eggs", "salt, to taste",
+ * or in Spanish "1 1/2 tazas de leche", "2 huevos", "sal, al gusto".
  */
-export function formatIngredientLine(id: string, amount: ScaledAmount): string {
-  const ing = getIngredient(id);
-  if (amount.qty === undefined) return `${ing.name}, to taste`;
+export function formatIngredientLine(id: string, amount: ScaledAmount, lang: Lang = "en"): string {
+  if (amount.qty === undefined) return toTaste(ingredientName(id, lang), lang);
   const n = formatNumber(amount.qty);
   if (amount.unit) {
-    // "1 can corn" reads better than "1 can canned corn".
-    const name = amount.unit === "can" ? ing.name.replace(/^canned /, "") : ing.name;
-    return `${n} ${formatUnit(amount.unit, amount.qty)} ${name}`;
+    const name = amount.unit === "can" ? ingredientCanName(id, lang) : ingredientName(id, lang);
+    return joinAmount(`${n} ${unitName(amount.unit, amount.qty, lang)}`, name, lang);
   }
-  return `${n} ${amount.qty > 1 ? pluralName(ing) : ing.name}`;
+  return `${n} ${amount.qty > 1 ? ingredientPlural(id, lang) : ingredientName(id, lang)}`;
 }

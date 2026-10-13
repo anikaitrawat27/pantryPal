@@ -1,23 +1,10 @@
-import type { Metadata } from "next";
-import Link from "next/link";
-import { ShoppingListView } from "@/components/ShoppingListView";
-import { RECIPES, toSummary } from "@/lib/catalog";
+import { getDict } from "@/i18n/dict";
+import { pageMeta } from "@/views/meta";
+import { ShoppingView } from "@/views/ShoppingView";
 
-export const metadata: Metadata = {
-  title: "Shopping list",
-  description: "Everything your meal plan needs, added together and grouped by aisle.",
-};
+const t = getDict("en").meta;
+export const metadata = pageMeta("en", "/plan/shopping", t.shoppingTitle, t.shoppingDescription);
 
-export default function ShoppingPage() {
-  return (
-    <div className="container">
-      <nav aria-label="Breadcrumb" className="no-print" style={{ fontWeight: 700, marginBottom: 12 }}>
-        <Link href="/plan">Meal plan</Link> / Shopping list
-      </nav>
-      <h1>
-        <span className="highlight">Shopping list</span>
-      </h1>
-      <ShoppingListView recipes={RECIPES.map(toSummary)} />
-    </div>
-  );
+export default function Page() {
+  return <ShoppingView lang="en" />;
 }

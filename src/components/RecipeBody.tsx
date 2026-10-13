@@ -3,7 +3,9 @@
 import { useMemo, useState } from "react";
 import { getIngredient } from "@/data/pantry";
 import type { Meal, RecipeIngredient, Substitution } from "@/data/schema";
-import { DIET_LABELS, dietsFor } from "@/lib/diet";
+import { useDict, useLang } from "@/i18n/client";
+import { ingredientName, subNote } from "@/i18n/ingredients";
+import { dietsFor } from "@/lib/diet";
 import { related } from "@/lib/match";
 import { useMyPantry } from "@/lib/my-pantry";
 import { costPerServing, formatUsd, nutritionPerServing } from "@/lib/nutrition";
@@ -20,12 +22,18 @@ interface Props {
   title: string;
   meal: Meal;
   ingredients: RecipeIngredient[];
+  /** Ingredient notes in the page language, keyed by ingredient id. */
+  notes: Record<string, string>;
   steps: string[];
   baseServings: number;
 }
 
 /** Ingredients and steps, with live serving-size scaling, swaps, and a checklist. */
-export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings }: Props) {
+export function RecipeBody({ slug, title, meal, ingredients, notes, steps, baseServings }: Props) {
+  const lang = useLang();
+  const d = useDict();
+  const t = d.recipe;
+  const name = (id: string) => ingredientName(id, lang);
   const [servings, setServings] = useState(baseServings);
   const [swaps, setSwaps] = useState<Record<number, Substitution>>({});
   const [openSwap, setOpenSwap] = useState<number | null>(null);
@@ -56,7 +64,7 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
     <div className={styles.layout}>
       <section className={`${ui.card} ${styles.ingredients}`} aria-labelledby="ingredients-heading">
         <div className={styles.ingHeader}>
-          <h2 id="ingredients-heading">Ingredients</h2>
+          <h2 id="ingredients-heading">{t.ingredients}</h2>
           <ServingsStepper value={servings} onChange={setServings} />
         </div>
 
@@ -65,7 +73,9 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
             const original = ingredients[i];
             const options = resolveSubs(original);
             const isSwapped = Boolean(swaps[i]);
-            const line = formatIngredientLine(ing.id, scaleAmount(ing, factor));
+            const line = formatIngredientLine(ing.id, scaleAmount(ing, factor), lang);
+            const sub = swaps[i];
+            const note = sub ? (sub.note ? subNote(sub.note, lang) : notes[original.id]) : notes[original.id];
             return (
               <li key={original.id} className={styles.ingItem} data-checked={checked.has(i)}>
                 <label className={styles.check}>
@@ -74,10 +84,10 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
                     <span className={styles.line} data-testid={`ing-${original.id}`}>
                       {line}
                     </span>
-                    {ing.note && <span className={styles.note}> ({ing.note})</span>}
-                    {ing.optional && <span className={styles.optional}>optional</span>}
-                    {getIngredient(ing.id).tier === "extra" && <span className={styles.extra}>extra</span>}
-                    {inPantry(ing.id) && <span className={styles.have}>in your pantry</span>}
+                    {note && <span className={styles.note}> ({note})</span>}
+                    {ing.optional && <span className={styles.optional}>{t.optional}</span>}
+                    {getIngredient(ing.id).tier === "extra" && <span className={styles.extra}>{t.extra}</span>}
+                    {inPantry(ing.id) && <span className={styles.have}>{t.inPantry}</span>}
                   </span>
                 </label>
 
@@ -95,7 +105,7 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
                           })
                         }
                       >
-                        undo swap
+                        {t.undoSwap}
                       </button>
                     ) : (
                       <button
@@ -105,7 +115,7 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
                         aria-controls={`swap-${i}`}
                         onClick={() => setOpenSwap(openSwap === i ? null : i)}
                       >
-                        swap
+                        {t.swap}
                       </button>
                     )}
                     {openSwap === i && !isSwapped && (
@@ -113,7 +123,7 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
                         id={`swap-${i}`}
                         className={styles.swapMenu}
                         onKeyDown={(e) => e.key === "Escape" && setOpenSwap(null)}
-                        aria-label={`Swaps for ${getIngredient(original.id).name}`}
+                        aria-label={t.swapsFor(name(original.id))}
                       >
                         {options.map((o) => (
                           <li key={o.id}>
@@ -124,8 +134,8 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
                                 setOpenSwap(null);
                               }}
                             >
-                              Use {getIngredient(o.id).name}
-                              {o.note && <span className={styles.subNote}>{o.note}</span>}
+                              {t.use(name(o.id))}
+                              {o.note && <span className={styles.subNote}>{subNote(o.note, lang)}</span>}
                             </button>
                           </li>
                         ))}
@@ -140,39 +150,34 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
 
         {swapped.length > 0 && (
           <p className={styles.swapReminder} role="status" data-testid="swap-reminder">
-            {swapped
-              .map((s) => `Use ${getIngredient(s.to).name} wherever the steps say ${getIngredient(s.from).name}.`)
-              .join(" ")}
+            {swapped.map((s) => t.swapReminder(name(s.to), name(s.from))).join(" ")}
           </p>
         )}
 
-        <dl className={styles.nutrition} aria-label="Estimated per serving">
+        <dl className={styles.nutrition} aria-label={t.perServing}>
           <div>
-            <dt>Calories</dt>
+            <dt>{t.calories}</dt>
             <dd>{nutrition.kcal}</dd>
           </div>
           <div>
-            <dt>Protein</dt>
+            <dt>{t.protein}</dt>
             <dd>{nutrition.protein} g</dd>
           </div>
           <div>
-            <dt>Fiber</dt>
+            <dt>{t.fiber}</dt>
             <dd>{nutrition.fiber} g</dd>
           </div>
           <div>
-            <dt>Cost</dt>
+            <dt>{t.cost}</dt>
             <dd data-testid="cost-per-serving">{formatUsd(cost)}</dd>
           </div>
         </dl>
-        <p className={styles.estimate}>
-          Estimates per serving. {servings} {servings === 1 ? "serving costs" : "servings cost"} about{" "}
-          {formatUsd(cost * servings)} if you buy everything.
-        </p>
+        <p className={styles.estimate}>{t.estimate(servings, formatUsd(cost * servings))}</p>
 
-        <div className={styles.diets} aria-label="Diet">
-          {diets.map((d) => (
-            <span key={d} className={`${ui.badge} ${ui.badgeSage}`}>
-              {DIET_LABELS[d]}
+        <div className={styles.diets} aria-label={t.diet}>
+          {diets.map((diet) => (
+            <span key={diet} className={`${ui.badge} ${ui.badgeSage}`}>
+              {d.diets[diet]}
             </span>
           ))}
         </div>
@@ -182,9 +187,9 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
 
       <section className={styles.steps} aria-labelledby="steps-heading">
         <div className={styles.stepsHeader}>
-          <h2 id="steps-heading">Steps</h2>
+          <h2 id="steps-heading">{t.steps}</h2>
           <button type="button" className={`${ui.button} ${ui.primary} no-print`} onClick={() => setCooking(true)}>
-            Start cooking
+            {t.startCooking}
           </button>
         </div>
         <ol className={styles.stepList}>
@@ -200,7 +205,7 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
           steps={steps}
           ingredientLines={current.map((ing) => ({
             id: ing.id,
-            line: formatIngredientLine(ing.id, scaleAmount(ing, factor)) + (ing.optional ? " (optional)" : ""),
+            line: formatIngredientLine(ing.id, scaleAmount(ing, factor), lang) + (ing.optional ? d.cook.optional : ""),
           }))}
           onClose={() => setCooking(false)}
         />

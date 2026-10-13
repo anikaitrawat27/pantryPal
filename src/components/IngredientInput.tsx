@@ -1,7 +1,8 @@
 "use client";
 
 import { useId, useMemo, useState } from "react";
-import { getIngredient } from "@/data/pantry";
+import { useDict, useLang } from "@/i18n/client";
+import { ingredientName } from "@/i18n/ingredients";
 import { searchIngredients } from "@/lib/match";
 import styles from "./IngredientInput.module.css";
 
@@ -9,14 +10,16 @@ interface Props {
   value: readonly string[];
   onChange: (ids: string[]) => void;
   label: string;
-  placeholder?: string;
+  placeholder: string;
 }
 
 /**
  * Chip input with ingredient autocomplete (ARIA combobox). Typing a comma-separated
  * list such as "rice, eggs, peas" and pressing Enter adds the best match for each.
  */
-export function IngredientInput({ value, onChange, label, placeholder = "Type an ingredient…" }: Props) {
+export function IngredientInput({ value, onChange, label, placeholder }: Props) {
+  const t = useDict().search;
+  const lang = useLang();
   const id = useId();
   const listId = `${id}-list`;
   const [text, setText] = useState("");
@@ -75,11 +78,11 @@ export function IngredientInput({ value, onChange, label, placeholder = "Type an
         {label}
       </label>
       <div className={styles.box}>
-        <ul className={styles.chips} aria-label="Selected ingredients">
+        <ul className={styles.chips} aria-label={t.selected}>
           {value.map((v) => (
             <li key={v} className={styles.chip}>
-              {getIngredient(v).name}
-              <button type="button" onClick={() => onChange(value.filter((x) => x !== v))} aria-label={`Remove ${getIngredient(v).name}`}>
+              {ingredientName(v, lang)}
+              <button type="button" onClick={() => onChange(value.filter((x) => x !== v))} aria-label={t.remove(ingredientName(v, lang))}>
                 ×
               </button>
             </li>
@@ -95,7 +98,7 @@ export function IngredientInput({ value, onChange, label, placeholder = "Type an
           autoComplete="off"
           className={styles.input}
           value={text}
-          placeholder={value.length ? "Add another…" : placeholder}
+          placeholder={value.length ? t.addAnother : placeholder}
           onChange={(e) => {
             setText(e.target.value);
             setOpen(true);
@@ -106,7 +109,7 @@ export function IngredientInput({ value, onChange, label, placeholder = "Type an
           onKeyDown={onKeyDown}
         />
       </div>
-      <ul id={listId} role="listbox" className={styles.list} hidden={!showList} aria-label="Ingredient suggestions">
+      <ul id={listId} role="listbox" className={styles.list} hidden={!showList} aria-label={t.suggestions}>
         {showList &&
           options.map((o, i) => (
             <li
@@ -124,8 +127,8 @@ export function IngredientInput({ value, onChange, label, placeholder = "Type an
               }}
               onMouseEnter={() => setActive(i)}
             >
-              {o.name}
-              {o.tier === "extra" && <span className={styles.extra}>extra</span>}
+              {ingredientName(o.id, lang)}
+              {o.tier === "extra" && <span className={styles.extra}>{t.extra}</span>}
             </li>
           ))}
       </ul>

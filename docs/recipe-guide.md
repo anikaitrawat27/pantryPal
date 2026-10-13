@@ -45,7 +45,11 @@ npm run validate
 ["ice", 1, "handful", { fixed: true }]       // does not scale with servings
 ["butter", 2, "tbsp", { noSubs: true }]      // turns off swaps
 ["rice", 1, "cup", { subs: [{ id: "noodles", note: "Cook separately." }] }]
+["rice", 3, "cup", { note: "cooked", cooked: true }]   // measured cooked; shopping buys dry rice
+["oil", 0.5, "cup", { frying: true }]        // shallow-frying oil: never scales, mostly stays in the pan
 ```
+
+A new swap note (`subs[].note`) also needs a Spanish version in `SUB_NOTES_ES` in `src/i18n/ingredients.ts`; a test fails until it has one.
 
 Units: `tsp`, `tbsp`, `cup`, `oz`, `lb`, `can`, `slice`, `clove`, `link`, `stick`, `packet`, `pinch`, `dash`, `splash`, `handful`, `leaf`. Leave the unit off for counted items (eggs, tortillas, potatoes, bananas). Use `"slice"` for bread. Count sausage and hot dogs with no unit. A standard can (about 15 oz) is `1, "can"`.
 
@@ -95,4 +99,29 @@ export const DRINKS = defineRecipes([
     tips: ["Use a blender instead of a fork for a smoother drink."],
   },
 ]);
+```
+
+## Translating a recipe into Spanish
+
+Every recipe needs a Spanish entry in the matching file under `src/i18n/es/recipes/` (for example, a recipe in `src/data/recipes/soups.ts` goes in `src/i18n/es/recipes/soups.ts`), keyed by its slug:
+
+```ts
+"creamy-tomato-soup": {
+  title: "Sopa cremosa de tomate",
+  blurb: "Una sopa suave de tomate hecha con puré enlatado, caldo y un chorrito de leche.",
+  steps: ["Caliente el aceite en una olla a fuego medio por 1 minuto.", "..."],
+  tips: ["..."],                       // same count as the English tips, if any
+  notes: { "diced-tomatoes": "con su jugo" }, // one per English ingredient note
+},
+```
+
+- Use the terms in `src/i18n/es/ingredients.ts` for ingredient names.
+- Address the cook with "usted": "Caliente el aceite", "Agregue la leche".
+- Keep the same number of steps, in the same order, and the same rules as English: no amounts in steps and no oven words. "Polvo para hornear" (baking powder) and "sin horno" are fine.
+- Ingredient amounts are not translated by hand. The site writes "1 1/2 tazas de leche" from the English data.
+
+Check a file with:
+
+```bash
+npx tsx scripts/validate-es.ts --file src/i18n/es/recipes/soups.ts
 ```

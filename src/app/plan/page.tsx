@@ -1,19 +1,10 @@
-import type { Metadata } from "next";
-import { PlanBoard } from "@/components/PlanBoard";
-import { RECIPES, toSummary } from "@/lib/catalog";
+import { getDict } from "@/i18n/dict";
+import { pageMeta } from "@/views/meta";
+import { PlanView } from "@/views/PlanView";
 
-export const metadata: Metadata = {
-  title: "Meal plan",
-  description: "Plan a week of pantry meals and get one combined shopping list.",
-};
+const t = getDict("en").meta;
+export const metadata = pageMeta("en", "/plan", t.planTitle, t.planDescription);
 
-export default function PlanPage() {
-  return (
-    <div className="container">
-      <h1>
-        <span className="highlight">This week&apos;s plan</span>
-      </h1>
-      <PlanBoard recipes={RECIPES.map(toSummary)} />
-    </div>
-  );
+export default function Page() {
+  return <PlanView lang="en" />;
 }

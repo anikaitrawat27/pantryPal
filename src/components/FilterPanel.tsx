@@ -1,9 +1,9 @@
 "use client";
 
 import { COURSES, CUISINES, EQUIPMENT, MEALS } from "@/data/schema";
-import { DIET_LABELS, DIETS } from "@/lib/diet";
+import { useDict } from "@/i18n/client";
+import { DIETS } from "@/lib/diet";
 import type { FilterState } from "@/lib/filter";
-import { COURSE_LABELS, CUISINE_LABELS, EQUIPMENT_LABELS, MEAL_LABELS } from "@/lib/labels";
 import styles from "./FilterPanel.module.css";
 import ui from "./ui.module.css";
 
@@ -16,10 +16,7 @@ interface Props {
 
 const TIME_OPTIONS = [15, 30, 60] as const;
 const COST_OPTIONS = [1, 2] as const;
-const LEVEL_OPTIONS = [
-  [1, "Easy only"],
-  [2, "Easy or medium"],
-] as const;
+const LEVEL_OPTIONS = [1, 2] as const;
 const TOOLS = EQUIPMENT.filter((e) => e !== "no-cook");
 
 function ChipGroup<T extends string>({
@@ -50,6 +47,8 @@ function ChipGroup<T extends string>({
 }
 
 export function FilterPanel({ filters, onChange }: Props) {
+  const d = useDict();
+  const t = d.filters;
   const toggle = <K extends ListKey>(key: K, value: FilterState[K][number]) => {
     const list = filters[key] as string[];
     onChange({ [key]: list.includes(value) ? list.filter((v) => v !== value) : [...list, value] } as Partial<FilterState>);
@@ -57,36 +56,36 @@ export function FilterPanel({ filters, onChange }: Props) {
 
   return (
     <div className={styles.panel}>
-      <ChipGroup legend="Course" options={COURSES} labels={COURSE_LABELS} selected={filters.courses} onToggle={(v) => toggle("courses", v)} />
-      <ChipGroup legend="Meal" options={MEALS} labels={MEAL_LABELS} selected={filters.meals} onToggle={(v) => toggle("meals", v)} />
-      <ChipGroup legend="Diet" options={DIETS} labels={DIET_LABELS} selected={filters.diets} onToggle={(v) => toggle("diets", v)} />
+      <ChipGroup legend={t.course} options={COURSES} labels={d.courses} selected={filters.courses} onToggle={(v) => toggle("courses", v)} />
+      <ChipGroup legend={t.meal} options={MEALS} labels={d.meals} selected={filters.meals} onToggle={(v) => toggle("meals", v)} />
+      <ChipGroup legend={t.diet} options={DIETS} labels={d.diets} selected={filters.diets} onToggle={(v) => toggle("diets", v)} />
       <ChipGroup
-        legend="Tools I have"
+        legend={t.tools}
         options={TOOLS}
-        labels={EQUIPMENT_LABELS}
+        labels={d.equipment}
         selected={filters.tools}
         onToggle={(v) => toggle("tools", v)}
       />
 
       <fieldset className={styles.group}>
-        <legend>Total time</legend>
+        <legend>{t.time}</legend>
         <div className={styles.chips}>
-          {TIME_OPTIONS.map((t) => (
+          {TIME_OPTIONS.map((min) => (
             <button
-              key={t}
+              key={min}
               type="button"
               className={ui.chip}
-              aria-pressed={filters.maxTime === t}
-              onClick={() => onChange({ maxTime: filters.maxTime === t ? undefined : t })}
+              aria-pressed={filters.maxTime === min}
+              onClick={() => onChange({ maxTime: filters.maxTime === min ? undefined : min })}
             >
-              {t === 60 ? "Under 1 hr" : `Under ${t} min`}
+              {t.under(min)}
             </button>
           ))}
         </div>
       </fieldset>
 
       <fieldset className={styles.group}>
-        <legend>Cost per serving</legend>
+        <legend>{t.cost}</legend>
         <div className={styles.chips}>
           {COST_OPTIONS.map((c) => (
             <button
@@ -96,16 +95,16 @@ export function FilterPanel({ filters, onChange }: Props) {
               aria-pressed={filters.maxCost === c}
               onClick={() => onChange({ maxCost: filters.maxCost === c ? undefined : c })}
             >
-              Under ${c}
+              {t.costUnder(c)}
             </button>
           ))}
         </div>
       </fieldset>
 
       <fieldset className={styles.group}>
-        <legend>Difficulty</legend>
+        <legend>{t.difficulty}</legend>
         <div className={styles.chips}>
-          {LEVEL_OPTIONS.map(([level, label]) => (
+          {LEVEL_OPTIONS.map((level) => (
             <button
               key={level}
               type="button"
@@ -113,7 +112,7 @@ export function FilterPanel({ filters, onChange }: Props) {
               aria-pressed={filters.maxLevel === level}
               onClick={() => onChange({ maxLevel: filters.maxLevel === level ? undefined : level })}
             >
-              {label}
+              {level === 1 ? t.easyOnly : t.easyMedium}
             </button>
           ))}
         </div>
@@ -122,12 +121,12 @@ export function FilterPanel({ filters, onChange }: Props) {
       <label className={styles.toggle}>
         <input type="checkbox" checked={filters.noExtras} onChange={(e) => onChange({ noExtras: e.target.checked })} />
         <span>
-          Pantry basics only
-          <small>Hide recipes that need extras like cumin or soy sauce</small>
+          {t.basicsOnly}
+          <small>{t.basicsHint}</small>
         </span>
       </label>
 
-      <ChipGroup legend="Cuisine" options={CUISINES} labels={CUISINE_LABELS} selected={filters.cuisines} onToggle={(v) => toggle("cuisines", v)} />
+      <ChipGroup legend={t.cuisine} options={CUISINES} labels={d.cuisines} selected={filters.cuisines} onToggle={(v) => toggle("cuisines", v)} />
     </div>
   );
 }

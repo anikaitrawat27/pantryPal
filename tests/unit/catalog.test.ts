@@ -21,3 +21,26 @@ describe("recipe catalog", () => {
     }
   });
 });
+
+describe("Spanish catalog", () => {
+  it("translates every recipe completely and keeps the content rules", async () => {
+    const { RECIPES_ES } = await import("@/i18n/es/recipes");
+    const { validateTranslations } = await import("@/lib/validate-es");
+    expect(validateTranslations(RECIPES, RECIPES_ES, { requireAll: true })).toEqual([]);
+  });
+
+  it("finds a timer in most Spanish steps that have one in English", async () => {
+    const { RECIPES_ES } = await import("@/i18n/es/recipes");
+    const { parseTimers } = await import("@/lib/timers");
+    let english = 0;
+    let both = 0;
+    for (const r of RECIPES) {
+      r.steps.forEach((step, i) => {
+        if (parseTimers(step).length === 0) return;
+        english++;
+        if (parseTimers(RECIPES_ES[r.slug].steps[i]).length > 0) both++;
+      });
+    }
+    expect(both / english).toBeGreaterThan(0.95);
+  });
+});

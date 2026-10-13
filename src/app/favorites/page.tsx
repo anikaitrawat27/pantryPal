@@ -1,19 +1,10 @@
-import type { Metadata } from "next";
-import { FavoritesList } from "@/components/FavoritesList";
-import { RECIPES, toSummary } from "@/lib/catalog";
+import { getDict } from "@/i18n/dict";
+import { pageMeta } from "@/views/meta";
+import { FavoritesView } from "@/views/FavoritesView";
 
-export const metadata: Metadata = {
-  title: "Favorites",
-  description: "Recipes you have saved on this device.",
-};
+const t = getDict("en").meta;
+export const metadata = pageMeta("en", "/favorites", t.favoritesTitle, t.favoritesDescription);
 
-export default function FavoritesPage() {
-  return (
-    <div className="container">
-      <h1>
-        <span className="highlight">Your favorites</span>
-      </h1>
-      <FavoritesList recipes={RECIPES.map(toSummary)} />
-    </div>
-  );
+export default function Page() {
+  return <FavoritesView lang="en" />;
 }

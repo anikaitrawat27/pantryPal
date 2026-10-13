@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useDict } from "@/i18n/client";
 
 type Theme = "light" | "dark";
 const KEY = "pantrypal:theme";
@@ -14,6 +15,7 @@ function currentTheme(): Theme {
 /** Switches between light (paper) and dark (chalkboard) themes and remembers the choice. */
 export function ThemeToggle() {
   const [theme, setTheme] = useState<Theme | null>(null);
+  const t = useDict().nav;
 
   useEffect(() => setTheme(currentTheme()), []);
 
@@ -32,7 +34,7 @@ export function ThemeToggle() {
     <button
       type="button"
       onClick={toggle}
-      aria-label={theme === "dark" ? "Switch to light theme" : "Switch to dark theme"}
+      aria-label={theme === "dark" ? t.themeLight : t.themeDark}
       style={{ background: "none", border: 0, padding: 4, cursor: "pointer", minWidth: 36, minHeight: 36 }}
     >
       <svg viewBox="0 0 32 32" width={26} height={26} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round">

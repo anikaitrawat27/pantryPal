@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useId, useState } from "react";
 import { MEALS, type Meal } from "@/data/schema";
-import { MEAL_LABELS } from "@/lib/labels";
-import { DAYS } from "@/lib/plan";
+import { useDict, useLang } from "@/i18n/client";
+import { localePath } from "@/i18n/config";
 import { usePlan } from "@/lib/plan-store";
 import styles from "./AddToPlan.module.css";
 import ui from "./ui.module.css";
@@ -14,6 +14,9 @@ const today = () => (new Date().getDay() + 6) % 7;
 
 export function AddToPlan({ slug, title, servings, defaultMeal }: { slug: string; title: string; servings: number; defaultMeal: Meal }) {
   const { add } = usePlan();
+  const lang = useLang();
+  const d = useDict();
+  const t = d.addToPlan;
   const id = useId();
   const [open, setOpen] = useState(false);
   const [day, setDay] = useState(today);
@@ -23,7 +26,7 @@ export function AddToPlan({ slug, title, servings, defaultMeal }: { slug: string
   return (
     <div className={`${styles.wrap} no-print`}>
       <button type="button" className={ui.button} aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
-        Add to plan
+        {t.button}
       </button>
       {open && (
         <form
@@ -32,38 +35,38 @@ export function AddToPlan({ slug, title, servings, defaultMeal }: { slug: string
           onSubmit={(e) => {
             e.preventDefault();
             add(slug, day, meal, servings);
-            setAdded(`${DAYS[day]} ${MEAL_LABELS[meal].toLowerCase()}`);
+            setAdded(`${d.plan.days[day]} (${d.meals[meal].toLowerCase()})`);
             setOpen(false);
           }}
         >
           <label>
-            Day
+            {t.day}
             <select value={day} onChange={(e) => setDay(Number(e.target.value))}>
-              {DAYS.map((d, i) => (
-                <option key={d} value={i}>
-                  {d}
+              {d.plan.days.map((dayName, i) => (
+                <option key={dayName} value={i}>
+                  {dayName}
                 </option>
               ))}
             </select>
           </label>
           <label>
-            Meal
+            {t.meal}
             <select value={meal} onChange={(e) => setMeal(e.target.value as Meal)}>
               {MEALS.map((m) => (
                 <option key={m} value={m}>
-                  {MEAL_LABELS[m]}
+                  {d.meals[m]}
                 </option>
               ))}
             </select>
           </label>
           <button type="submit" className={`${ui.button} ${ui.primary}`}>
-            Add {servings} {servings === 1 ? "serving" : "servings"}
+            {t.submit(servings)}
           </button>
         </form>
       )}
       {added && (
         <p className={styles.added} role="status">
-          Added {title} to {added}. <Link href="/plan">See plan</Link>
+          {t.added(title, added)} <Link href={localePath(lang, "/plan")}>{t.see}</Link>
         </p>
       )}
     </div>

@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getIngredient } from "@/data/pantry";
+import { useDict, useLang } from "@/i18n/client";
+import { ingredientName } from "@/i18n/ingredients";
 import { playAlarm, unlockAudio } from "@/lib/alarm";
 import { related } from "@/lib/match";
 import { useMyPantry } from "@/lib/my-pantry";
@@ -30,6 +31,7 @@ interface RunningTimer {
  * the cook moves between steps, and the screen stays awake where supported.
  */
 export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
+  const t = useDict().cook;
   const [step, setStep] = useState(0);
   const [showIngredients, setShowIngredients] = useState(false);
   const [timers, setTimers] = useState<RunningTimer[]>([]);
@@ -96,14 +98,14 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
       className={styles.overlay}
       role="dialog"
       aria-modal="true"
-      aria-label={`Cooking ${title}`}
+      aria-label={t.dialog(title)}
       tabIndex={-1}
     >
       <header className={styles.top}>
         <div>
           <p className={styles.title}>{title}</p>
           <p className={styles.wake}>
-            {wake === "on" ? "Screen stays on while cooking" : "Your screen may turn off; tap it now and then"}
+            {wake === "on" ? t.wakeOn : t.wakeOff}
           </p>
         </div>
         <div className={styles.topActions}>
@@ -113,10 +115,10 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
             aria-expanded={showIngredients}
             onClick={() => setShowIngredients((s) => !s)}
           >
-            Ingredients
+            {t.ingredients}
           </button>
           <button type="button" className={styles.ghost} onClick={onClose}>
-            Exit
+            {t.exit}
           </button>
         </div>
       </header>
@@ -126,19 +128,19 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
       </div>
 
       {timers.length > 0 && (
-        <ul className={styles.timers} aria-label="Timers">
-          {timers.map((t) => (
-            <li key={t.key} className={styles.timer} data-done={t.done}>
-              <span className={styles.clock} role={t.done ? "alert" : undefined}>
-                {t.done ? "Time's up" : formatClock((t.endsAt - now) / 1000)}
+        <ul className={styles.timers} aria-label={t.timers}>
+          {timers.map((timer) => (
+            <li key={timer.key} className={styles.timer} data-done={timer.done}>
+              <span className={styles.clock} role={timer.done ? "alert" : undefined}>
+                {timer.done ? t.timesUp : formatClock((timer.endsAt - now) / 1000)}
               </span>
               <span className={styles.timerLabel}>
-                Step {t.step + 1} · {t.label}
+                {t.stepShort(timer.step + 1)} · {timer.label}
               </span>
               <button
                 type="button"
-                onClick={() => dismiss(t.key)}
-                aria-label={t.done ? "Dismiss timer" : `Cancel ${t.label} timer`}
+                onClick={() => dismiss(timer.key)}
+                aria-label={timer.done ? t.dismiss : t.cancel(timer.label)}
               >
                 ×
               </button>
@@ -161,26 +163,24 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
         ) : (
           <>
             <p className={styles.counter}>
-              Step {step + 1} of {steps.length}
+              {t.stepOf(step + 1, steps.length)}
             </p>
             <p className={styles.step} aria-live="polite">
               {steps[step]}
             </p>
             <div className={styles.timerButtons}>
-              {parseTimers(steps[step]).map((t) => {
-                const isRunning = timers.some((x) => x.step === step && x.label === t.label && !x.done);
+              {parseTimers(steps[step]).map((found) => {
+                const isRunning = timers.some((x) => x.step === step && x.label === found.label && !x.done);
                 return (
                   <button
-                    key={t.label}
+                    key={found.label}
                     type="button"
                     className={styles.startTimer}
                     disabled={isRunning}
-                    onClick={() => startTimer(t.label, t.seconds)}
+                    onClick={() => startTimer(found.label, found.seconds)}
                   >
-                    {isRunning ? "Timer running" : `Start timer: ${formatClock(t.seconds)}`}
-                    {!isRunning && /\d+\s*(to|-|–|or)\s*\d+/.test(t.label) && (
-                      <small> (checks at the low end of {t.label})</small>
-                    )}
+                    {isRunning ? t.running : t.start(formatClock(found.seconds))}
+                    {!isRunning && /\d+\s*(to|-|–|or|a|o)\s*\d+/.test(found.label) && <small>{t.lowEnd(found.label)}</small>}
                   </button>
                 );
               })}
@@ -189,12 +189,12 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
         )}
       </div>
 
-      <nav className={styles.nav} aria-label="Steps">
+      <nav className={styles.nav} aria-label={t.stepsNav}>
         <button type="button" onClick={() => go(-1)} disabled={step === 0}>
-          ← Back
+          {t.back}
         </button>
         <button type="button" className={styles.next} onClick={() => go(1)} disabled={finished}>
-          {step === steps.length - 1 ? "Finish" : "Next →"}
+          {step === steps.length - 1 ? t.finish : t.next}
         </button>
       </nav>
     </div>
@@ -203,6 +203,8 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
 
 /** End screen: lets the cook flag pantry items that are now running low. */
 function Finished({ ingredientIds, onClose }: { ingredientIds: readonly string[]; onClose: () => void }) {
+  const t = useDict().cook;
+  const lang = useLang();
   const { pantry, markLow } = useMyPantry();
   const owned = ingredientIds
     .filter((id) => pantry.have.some((h) => related(id, h)))
@@ -213,7 +215,7 @@ function Finished({ ingredientIds, onClose }: { ingredientIds: readonly string[]
 
   return (
     <div className={styles.finished}>
-      <p className={styles.step}>All done. Enjoy.</p>
+      <p className={styles.step}>{t.done}</p>
       {unique.length > 0 && !saved && (
         <form
           onSubmit={(e) => {
@@ -223,7 +225,7 @@ function Finished({ ingredientIds, onClose }: { ingredientIds: readonly string[]
           }}
         >
           <fieldset>
-            <legend>Running low on anything?</legend>
+            <legend>{t.lowQuestion}</legend>
             {unique.map((id) => (
               <label key={id}>
                 <input
@@ -238,18 +240,18 @@ function Finished({ ingredientIds, onClose }: { ingredientIds: readonly string[]
                     })
                   }
                 />
-                {getIngredient(id).name}
+                {ingredientName(id, lang)}
               </label>
             ))}
           </fieldset>
           <button type="submit" className={styles.startTimer} disabled={low.size === 0}>
-            Add to my shopping list
+            {t.lowSubmit}
           </button>
         </form>
       )}
-      {saved && <p role="status">Marked as running low. They will show on your shopping list.</p>}
+      {saved && <p role="status">{t.lowSaved}</p>}
       <button type="button" className={styles.next} onClick={onClose}>
-        Back to recipe
+        {t.backToRecipe}
       </button>
     </div>
   );

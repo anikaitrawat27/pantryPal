@@ -11,6 +11,7 @@ export default defineConfig({
   projects: [{ name: "chromium", use: { ...devices["Desktop Chrome"] } }],
   webServer: {
     command: `npx next build && npx next start -p ${PORT}`,
+    env: { NEXT_DIST_DIR: ".next-e2e" },
     url: `http://localhost:${PORT}`,
     timeout: 300_000,
     reuseExistingServer: !process.env.CI,

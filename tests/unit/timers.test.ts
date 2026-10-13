@@ -12,6 +12,11 @@ describe("parseTimers", () => {
     ["Rest for a minute.", [{ label: "a minute", seconds: 60 }]],
     ["Cook for 1 hour.", [{ label: "1 hour", seconds: 3600 }]],
     ["Cook 4-5 min per side.", [{ label: "4-5 min", seconds: 240 }]],
+    ["Cocine a fuego lento por 10 minutos.", [{ label: "10 minutos", seconds: 600 }]],
+    ["Cocine de 8 a 10 minutos, hasta que dore.", [{ label: "8 a 10 minutos", seconds: 480 }]],
+    ["Caliente en el microondas por un minuto y medio.", [{ label: "un minuto y medio", seconds: 90 }]],
+    ["Deje reposar dos minutos.", [{ label: "dos minutos", seconds: 120 }]],
+    ["Cocine por 1 hora.", [{ label: "1 hora", seconds: 3600 }]],
   ])("%s", (step, expected) => {
     expect(parseTimers(step)).toEqual(expected);
   });

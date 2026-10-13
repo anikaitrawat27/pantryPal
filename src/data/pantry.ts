@@ -176,17 +176,6 @@ export const ASSUMED_ON_HAND: ReadonlySet<string> = new Set([
   "oil",
 ]);
 
-export const GROUP_LABELS: Record<IngredientGroup, string> = {
-  produce: "Fruits and vegetables",
-  "dairy-eggs": "Dairy and eggs",
-  protein: "Proteins and beans",
-  grains: "Grains, bread, and pasta",
-  canned: "Canned goods",
-  baking: "Baking",
-  condiments: "Condiments and staples",
-  extras: "Extras (basic seasonings)",
-  free: "Always on hand",
-};
 
 export function getIngredient(id: string): Ingredient {
   const ing = INGREDIENTS_BY_ID.get(id);

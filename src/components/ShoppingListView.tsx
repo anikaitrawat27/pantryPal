@@ -2,7 +2,10 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { GROUP_LABELS, type IngredientGroup } from "@/data/pantry";
+import type { IngredientGroup } from "@/data/pantry";
+import { useDict, useLang } from "@/i18n/client";
+import { localePath } from "@/i18n/config";
+import { packLabel } from "@/i18n/ingredients";
 import type { RecipeSummary } from "@/lib/catalog";
 import { useMyPantry } from "@/lib/my-pantry";
 import { formatUsd } from "@/lib/nutrition";
@@ -13,11 +16,14 @@ import ui from "./ui.module.css";
 
 export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
   const { plan, toggleChecked, clearChecked } = usePlan();
+  const lang = useLang();
+  const d = useDict();
+  const t = d.shopping;
   const { pantry } = useMyPantry();
   const [copied, setCopied] = useState(false);
 
   const bySlug = useMemo(() => new Map(recipes.map((r) => [r.slug, r])), [recipes]);
-  const list = useMemo(() => buildShoppingList(plan.entries, bySlug, pantry), [plan.entries, bySlug, pantry]);
+  const list = useMemo(() => buildShoppingList(plan.entries, bySlug, pantry, lang), [plan.entries, bySlug, pantry, lang]);
 
   const toBuy = list.items.filter((i) => i.status !== "have");
   const have = list.items.filter((i) => i.status === "have");
@@ -26,20 +32,20 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
 
   const copy = async () => {
     try {
-      await navigator.clipboard.writeText(shoppingListText(list, plan.checked));
+      await navigator.clipboard.writeText(shoppingListText(list, plan.checked, (l) => packLabel(l, lang)));
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      window.alert("Copying is blocked in this browser. Use Print instead.");
+      window.alert(t.copyBlocked);
     }
   };
 
   if (list.items.length === 0) {
     return (
       <div className={styles.empty}>
-        <p className="hand">Your list is empty.</p>
+        <p className="hand">{t.emptyTitle}</p>
         <p>
-          Add recipes to your <Link href="/plan">meal plan</Link> and the ingredients show up here, added together.
+          {t.emptyBodyStart} <Link href={localePath(lang, "/plan")}>{t.emptyLink}</Link> {t.emptyBodyEnd}
         </p>
       </div>
     );
@@ -53,10 +59,10 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
           <input type="checkbox" checked={done} onChange={() => toggleChecked(item.id)} />
           <span>
             <span className={styles.line}>{item.line}</span>
-            {item.status === "low" && <span className={styles.low}>running low</span>}
+            {item.status === "low" && <span className={styles.low}>{t.low}</span>}
             <small>
-              {item.packages > 0 && item.packLabel && `Buy ${item.packages} × ${item.packLabel} · ${formatUsd(item.cost)} · `}
-              {item.recipes.length > 0 ? `for ${item.recipes.join(", ")}` : "restock"}
+              {item.packages > 0 && item.packLabel && t.buy(item.packages, packLabel(item.packLabel, lang), formatUsd(item.cost))}
+              {item.recipes.length > 0 ? t.for(item.recipes.join(", ")) : t.restock}
             </small>
           </span>
         </label>
@@ -69,45 +75,44 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
       <div className={`${ui.card} ${styles.summary}`}>
         <div>
           <p className={styles.total}>
-            About <strong className="hand">{formatUsd(list.total)}</strong>
+            {t.about} <strong className="hand">{formatUsd(list.total)}</strong>
           </p>
           <p className={styles.sub}>
-            {remaining.length} of {toBuy.length} items left · {plan.entries.length} planned meals
+            {t.left(remaining.length, toBuy.length, plan.entries.length)}
           </p>
         </div>
         <div className={`${styles.actions} no-print`}>
           <button type="button" className={ui.button} onClick={copy}>
-            {copied ? "Copied" : "Copy list"}
+            {copied ? t.copied : t.copy}
           </button>
           <button type="button" className={ui.button} onClick={() => window.print()}>
-            Print
+            {t.print}
           </button>
           {plan.checked.length > 0 && (
             <button type="button" className={styles.linkBtn} onClick={clearChecked}>
-              Uncheck all
+              {t.uncheck}
             </button>
           )}
         </div>
       </div>
       <p className={styles.note}>
-        Prices are rough U.S. estimates for whole packages. Salt, pepper, and oil are assumed. Items in{" "}
-        <Link href="/pantry">your pantry</Link> are left off unless marked low.
+        {t.noteStart} <Link href={localePath(lang, "/pantry")}>{t.noteLink}</Link> {t.noteEnd}
       </p>
 
       {groups.map((g) => (
         <section key={g} className={styles.group} aria-labelledby={`aisle-${g}`}>
-          <h2 id={`aisle-${g}`}>{GROUP_LABELS[g]}</h2>
+          <h2 id={`aisle-${g}`}>{d.groups[g]}</h2>
           <ul>{toBuy.filter((i) => i.group === g).map(renderItem)}</ul>
         </section>
       ))}
 
       {have.length > 0 && (
         <details className={styles.have}>
-          <summary>Already have ({have.length})</summary>
+          <summary>{t.have(have.length)}</summary>
           <ul>
             {have.map((i) => (
               <li key={i.id}>
-                {i.line} <small>for {i.recipes.join(", ")}</small>
+                {i.line} <small>{t.for(i.recipes.join(", "))}</small>
               </li>
             ))}
           </ul>

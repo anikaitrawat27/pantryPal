@@ -1,7 +1,5 @@
 import { MEALS, type Meal } from "@/data/schema";
 
-export const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] as const;
-
 export interface PlanEntry {
   id: string;
   /** 0 is Monday. */

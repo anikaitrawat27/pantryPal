@@ -1,6 +1,8 @@
 import { RAW_RECIPES } from "@/data/recipes";
 import { getIngredient } from "@/data/pantry";
 import { recipeSchema, type Recipe, type RecipeIngredient } from "@/data/schema";
+import type { Lang } from "@/i18n/config";
+import { localizeRecipe } from "@/i18n/recipes";
 import { dietsFor, type Diet } from "./diet";
 import { costPerServing, nutritionPerServing, type Nutrition } from "./nutrition";
 
@@ -56,11 +58,13 @@ export function getRecipe(slug: string): CatalogRecipe | undefined {
   return BY_SLUG.get(slug);
 }
 
-export function toSummary(r: CatalogRecipe): RecipeSummary {
+/** Card and filter data with the title and blurb in the given language. */
+export function toSummary(r: CatalogRecipe, lang: Lang = "en"): RecipeSummary {
+  const text = localizeRecipe(r, lang);
   return {
     slug: r.slug,
-    title: r.title,
-    blurb: r.blurb,
+    title: text.title,
+    blurb: text.blurb,
     course: r.course,
     meal: r.meal,
     cuisine: r.cuisine,

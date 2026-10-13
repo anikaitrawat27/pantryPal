@@ -22,13 +22,30 @@ const WORDS: Record<string, number> = {
   fifteen: 15,
   twenty: 20,
   thirty: 30,
+  un: 1,
+  una: 1,
+  uno: 1,
+  dos: 2,
+  tres: 3,
+  cuatro: 4,
+  cinco: 5,
+  seis: 6,
+  siete: 7,
+  ocho: 8,
+  nueve: 9,
+  diez: 10,
+  quince: 15,
+  veinte: 20,
+  treinta: 30,
 };
 
+/** Keyed by the unit's first letter: seconds/segundos, minutes/minutos, hours/horas. */
 const UNIT_SECONDS: Record<string, number> = { s: 1, m: 60, h: 3600 };
 
 const NUM = String.raw`(\d+(?:\.\d+)?(?:\s+1\/2)?|\d+\/\d+|${Object.keys(WORDS).join("|")})`;
 const PATTERN = new RegExp(
-  String.raw`\b${NUM}(?:\s*(?:to|-|–|or)\s*${NUM})?(\s+and a half)?\s*(seconds?|secs?|minutes?|mins?|hours?|hrs?)\b`,
+  // English puts "and a half" before the unit; Spanish puts "y medio" after it.
+  String.raw`\b${NUM}(?:\s*(?:to|-|–|or|a|o)\s*${NUM})?(\s+and a half)?\s*(seconds?|secs?|minutes?|mins?|hours?|hrs?|segundos?|minutos?|horas?)(?![a-záéíóúñ])(\s+y\s+medi[oa](?![a-záéíóúñ]))?`,
   "gi",
 );
 
@@ -44,8 +61,8 @@ function toNumber(raw: string): number {
 export function parseTimers(step: string): StepTimer[] {
   const out: StepTimer[] = [];
   for (const m of step.matchAll(PATTERN)) {
-    const [label, low, , half, unit] = m;
-    const seconds = Math.round((toNumber(low) + (half ? 0.5 : 0)) * UNIT_SECONDS[unit[0].toLowerCase()]);
+    const [label, low, , half, unit, halfEs] = m;
+    const seconds = Math.round((toNumber(low) + (half || halfEs ? 0.5 : 0)) * UNIT_SECONDS[unit[0].toLowerCase()]);
     if (seconds > 0 && seconds <= 4 * 3600) out.push({ label: label.trim(), seconds });
   }
   return out;

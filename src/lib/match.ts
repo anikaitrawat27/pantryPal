@@ -1,5 +1,6 @@
 import { ASSUMED_ON_HAND, INGREDIENTS, lineage, type Ingredient } from "@/data/pantry";
 import type { RecipeIngredient } from "@/data/schema";
+import { ingredientSearchNames } from "@/i18n/ingredients";
 import { resolveSubs } from "./substitute";
 
 export function normalize(s: string): string {
@@ -11,14 +12,14 @@ export function normalize(s: string): string {
     .trim();
 }
 
-/** Autocomplete over ingredient names and aliases. Prefix matches rank first. */
+/** Autocomplete over ingredient names and aliases in English and Spanish. Prefix matches rank first. */
 export function searchIngredients(query: string, limit = 8): Ingredient[] {
   const q = normalize(query);
   if (!q) return [];
   const scored: [number, Ingredient][] = [];
   for (const ing of INGREDIENTS) {
     if (ing.tier === "free") continue;
-    const names = [ing.name, ...ing.aliases].map(normalize);
+    const names = ingredientSearchNames(ing.id).map(normalize);
     let score = Infinity;
     for (const n of names) {
       if (n === q) score = Math.min(score, 0);
@@ -29,7 +30,7 @@ export function searchIngredients(query: string, limit = 8): Ingredient[] {
     if (score < Infinity) scored.push([score, ing]);
   }
   return scored
-    .sort((a, b) => a[0] - b[0] || a[1].name.localeCompare(b[1].name))
+    .sort((a, b) => a[0] - b[0] || a[1].name.localeCompare(b[1].name) || a[1].id.localeCompare(b[1].id))
     .slice(0, limit)
     .map(([, ing]) => ing);
 }

@@ -1,8 +1,8 @@
 import Link from "next/link";
-import { getIngredient } from "@/data/pantry";
+import { localePath, type Lang } from "@/i18n/config";
+import { getDict } from "@/i18n/dict";
+import { ingredientName } from "@/i18n/ingredients";
 import type { RecipeSummary } from "@/lib/catalog";
-import { DIET_LABELS } from "@/lib/diet";
-import { COURSE_LABELS, DIFFICULTY_LABELS, EQUIPMENT_LABELS, formatMinutes } from "@/lib/labels";
 import type { PantryMatch } from "@/lib/match";
 import { formatUsd } from "@/lib/nutrition";
 import { CourseDoodle, ToolIcon } from "./Doodle";
@@ -13,15 +13,23 @@ import ui from "./ui.module.css";
 /** Only the most useful diet labels go on cards; the full list is on the recipe page. */
 const CARD_DIETS = ["vegan", "vegetarian"] as const;
 
-export function RecipeCard({ recipe, match, index = 0 }: { recipe: RecipeSummary; match?: PantryMatch; index?: number }) {
+interface Props {
+  recipe: RecipeSummary;
+  lang: Lang;
+  match?: PantryMatch;
+  index?: number;
+}
+
+export function RecipeCard({ recipe, lang, match, index = 0 }: Props) {
+  const t = getDict(lang);
   const diet = CARD_DIETS.find((d) => recipe.diets.includes(d));
   const tools = recipe.equipment.filter((e) => e !== "no-cook");
   return (
     <article className={`${ui.card} ${styles.card}`} style={{ "--tilt": `${[-1, 0.8, -0.5, 1.1][index % 4]}deg` } as React.CSSProperties}>
-      <Link href={`/recipes/${recipe.slug}`} className={styles.link}>
+      <Link href={localePath(lang, `/recipes/${recipe.slug}`)} className={styles.link}>
         <div className={styles.top}>
           <CourseDoodle course={recipe.course} size={56} className={styles.doodle} />
-          <span className={styles.course}>{COURSE_LABELS[recipe.course]}</span>
+          <span className={styles.course}>{t.courses[recipe.course]}</span>
         </div>
         <h3 className={styles.title}>{recipe.title}</h3>
         <p className={styles.blurb}>{recipe.blurb}</p>
@@ -31,45 +39,38 @@ export function RecipeCard({ recipe, match, index = 0 }: { recipe: RecipeSummary
         <div className={styles.match}>
           {match.missing.length > 0 && (
             <p>
-              <strong>Missing:</strong> {match.missing.map((id) => getIngredient(id).name).join(", ")}
+              <strong>{t.card.missing}:</strong> {match.missing.map((id) => ingredientName(id, lang)).join(", ")}
             </p>
           )}
           {match.swaps.map((s) => (
             <p key={s.from}>
-              <strong>Swap:</strong> {getIngredient(s.to).name} for {getIngredient(s.from).name}
+              <strong>{t.card.swap}:</strong> {t.card.swapFor(ingredientName(s.to, lang), ingredientName(s.from, lang))}
             </p>
           ))}
         </div>
       )}
-      {match && match.missing.length === 0 && match.swaps.length === 0 && <p className={styles.ready}>You have everything</p>}
+      {match && match.missing.length === 0 && match.swaps.length === 0 && <p className={styles.ready}>{t.card.ready}</p>}
       {!match && <PantryStatus ingredients={recipe.ingredients} />}
 
       <div className={styles.meta}>
-        <span>{formatMinutes(recipe.totalMin)}</span>
+        <span>{t.units.minutes(recipe.totalMin)}</span>
         <span aria-hidden="true">·</span>
-        <span>{DIFFICULTY_LABELS[recipe.difficulty]}</span>
+        <span>{t.difficulty[recipe.difficulty]}</span>
         <span aria-hidden="true">·</span>
-        <span title="Estimated cost per serving">{formatUsd(recipe.cost)}</span>
+        <span title={t.card.costTitle}>{formatUsd(recipe.cost)}</span>
         <span className={styles.tools}>
-          {tools.length === 0 ? (
-            <span title={EQUIPMENT_LABELS["no-cook"]}>
-              <ToolIcon tool="no-cook" />
-              <span className="sr-only">{EQUIPMENT_LABELS["no-cook"]}</span>
+          {(tools.length === 0 ? (["no-cook"] as const) : tools).map((tool) => (
+            <span key={tool} title={t.equipment[tool]}>
+              <ToolIcon tool={tool} />
+              <span className="sr-only">{t.equipment[tool]}</span>
             </span>
-          ) : (
-            tools.map((t) => (
-              <span key={t} title={EQUIPMENT_LABELS[t]}>
-                <ToolIcon tool={t} />
-                <span className="sr-only">{EQUIPMENT_LABELS[t]}</span>
-              </span>
-            ))
-          )}
+          ))}
         </span>
       </div>
       {(diet || recipe.usesExtras) && (
         <div className={styles.badges}>
-          {diet && <span className={`${ui.badge} ${ui.badgeSage}`}>{DIET_LABELS[diet]}</span>}
-          {recipe.usesExtras && <span className={`${ui.badge} ${ui.badgeMustard}`}>Uses extras</span>}
+          {diet && <span className={`${ui.badge} ${ui.badgeSage}`}>{t.diets[diet]}</span>}
+          {recipe.usesExtras && <span className={`${ui.badge} ${ui.badgeMustard}`}>{t.card.usesExtras}</span>}
         </div>
       )}
     </article>

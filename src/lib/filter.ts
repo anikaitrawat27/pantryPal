@@ -1,4 +1,5 @@
-import { getIngredient, INGREDIENTS_BY_ID } from "@/data/pantry";
+import { INGREDIENTS_BY_ID } from "@/data/pantry";
+import { ingredientSearchNames } from "@/i18n/ingredients";
 import { COURSES, CUISINES, EQUIPMENT, MEALS, type Course, type Cuisine, type Equipment, type Meal } from "@/data/schema";
 import type { RecipeSummary } from "./catalog";
 import { DIETS, type Diet } from "./diet";
@@ -8,13 +9,6 @@ export type HaveMode = "includes" | "only";
 
 export const SORTS = ["az", "cost", "time", "protein"] as const;
 export type Sort = (typeof SORTS)[number];
-
-export const SORT_LABELS: Record<Sort, string> = {
-  az: "A to Z",
-  cost: "Cheapest",
-  time: "Quickest",
-  protein: "Most protein",
-};
 
 export interface FilterState {
   q: string;
@@ -61,10 +55,7 @@ export interface FilterResult {
 function matchesText(r: RecipeSummary, q: string): boolean {
   if (!q) return true;
   const haystack = normalize(
-    [r.title, r.blurb, r.cuisine, ...r.ingredients.flatMap((i) => {
-      const ing = getIngredient(i.id);
-      return [ing.name, ...ing.aliases];
-    })].join(" "),
+    [r.title, r.blurb, r.cuisine, ...r.ingredients.flatMap((i) => ingredientSearchNames(i.id))].join(" "),
   );
   return q.split(" ").every((word) => haystack.includes(word));
 }

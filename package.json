@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "validate": "tsx scripts/validate-content.ts",
+    "validate": "tsx scripts/validate-content.ts && tsx scripts/validate-es.ts",
     "test": "vitest run",
     "test:e2e": "playwright test",
     "format": "prettier --write .",

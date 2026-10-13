@@ -4,12 +4,13 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { MEALS, type Course, type Meal } from "@/data/schema";
 import type { RecipeSummary } from "@/lib/catalog";
+import { useDict, useLang } from "@/i18n/client";
+import { localePath } from "@/i18n/config";
 import { useFavorites } from "@/lib/favorites";
-import { MEAL_LABELS } from "@/lib/labels";
 import { normalize } from "@/lib/match";
 import { useMyPantry } from "@/lib/my-pantry";
 import { formatUsd } from "@/lib/nutrition";
-import { DAYS, entriesFor } from "@/lib/plan";
+import { entriesFor } from "@/lib/plan";
 import { usePlan } from "@/lib/plan-store";
 import { buildShoppingList } from "@/lib/shopping";
 import { CourseDoodle } from "./Doodle";
@@ -35,6 +36,10 @@ const COURSE_MEAL: Record<Course, Meal> = {
 
 export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
   const { plan, add, move, setServings, remove, clear } = usePlan();
+  const lang = useLang();
+  const d = useDict();
+  const t = d.plan;
+  const slotName = (day: number, meal: Meal) => `${t.days[day]} (${d.meals[meal].toLowerCase()})`;
   const { favorites } = useFavorites();
   const { pantry } = useMyPantry();
   const [picked, setPicked] = useState<Picked | null>(null);
@@ -50,7 +55,7 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
     return pool.filter((r) => !q || normalize(r.title).includes(q)).slice(0, SHELF_LIMIT);
   }, [query, tab, favorites, bySlug, recipes]);
 
-  const week = useMemo(() => buildShoppingList(entries, bySlug, pantry), [entries, bySlug, pantry]);
+  const week = useMemo(() => buildShoppingList(entries, bySlug, pantry, lang), [entries, bySlug, pantry, lang]);
 
   const place = (p: Picked, day: number, meal: Meal) => {
     if (p.kind === "recipe") add(p.slug, day, meal, bySlug.get(p.slug)!.serves);
@@ -78,22 +83,22 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
 
   return (
     <div className={styles.board}>
-      <aside className={`${ui.card} ${styles.shelf}`} aria-label="Recipe shelf">
-        <h2>Recipe shelf</h2>
-        <p className={styles.hint}>Drag a recipe onto a day, or tap it and then tap a slot.</p>
-        <div className={styles.tabs} role="group" aria-label="Which recipes">
-          {(["all", "favorites"] as const).map((t) => (
-            <button key={t} type="button" className={ui.chip} aria-pressed={tab === t} onClick={() => setTab(t)}>
-              {t === "all" ? "All recipes" : `Favorites (${favorites.length})`}
+      <aside className={`${ui.card} ${styles.shelf}`} aria-label={t.shelf}>
+        <h2>{t.shelf}</h2>
+        <p className={styles.hint}>{t.shelfHint}</p>
+        <div className={styles.tabs} role="group" aria-label={t.which}>
+          {(["all", "favorites"] as const).map((which) => (
+            <button key={which} type="button" className={ui.chip} aria-pressed={tab === which} onClick={() => setTab(which)}>
+              {which === "all" ? t.all : t.favorites(favorites.length)}
             </button>
           ))}
         </div>
         <label className={styles.search}>
-          <span className="sr-only">Search recipes</span>
-          <input type="search" placeholder="Search…" value={query} onChange={(e) => setQuery(e.target.value)} />
+          <span className="sr-only">{t.search}</span>
+          <input type="search" placeholder={t.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
         </label>
         <ul className={styles.shelfList}>
-          {shelf.length === 0 && <li className={styles.hint}>{tab === "favorites" ? "No favorites yet." : "No matches."}</li>}
+          {shelf.length === 0 && <li className={styles.hint}>{tab === "favorites" ? t.noFavorites : t.noMatches}</li>}
           {shelf.map((r) => {
             const isPicked = picked?.kind === "recipe" && picked.slug === r.slug;
             return (
@@ -103,7 +108,7 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
                   <span>
                     {r.title}
                     <small>
-                      {MEAL_LABELS[COURSE_MEAL[r.course]]} · {formatUsd(r.cost)}
+                      {d.meals[COURSE_MEAL[r.course]]} · {formatUsd(r.cost)}
                     </small>
                   </span>
                 </button>
@@ -116,16 +121,16 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
       <div className={styles.week}>
         <div className={`${styles.summary} no-print`}>
           <p>
-            <strong className="hand">{entries.length}</strong> {entries.length === 1 ? "meal" : "meals"} planned
-            {entries.length > 0 && <> · about {formatUsd(week.total)} to buy</>}
+            <strong className="hand">{entries.length}</strong> {t.planned(entries.length)}
+            {entries.length > 0 && t.toBuy(formatUsd(week.total))}
           </p>
           <div className={styles.summaryActions}>
-            <Link href="/plan/shopping" className={`${ui.button} ${ui.primary}`}>
-              Shopping list
+            <Link href={localePath(lang, "/plan/shopping")} className={`${ui.button} ${ui.primary}`}>
+              {t.shopping}
             </Link>
             {entries.length > 0 && (
-              <button type="button" className={styles.linkBtn} onClick={() => window.confirm("Clear the whole week?") && clear()}>
-                Clear week
+              <button type="button" className={styles.linkBtn} onClick={() => window.confirm(t.confirmClear) && clear()}>
+                {t.clear}
               </button>
             )}
           </div>
@@ -133,25 +138,25 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
 
         {picked && (
           <p className={styles.picking} role="status">
-            Tap &quot;Place here&quot; on a slot.{" "}
+            {t.picking}{" "}
             <button type="button" className={styles.linkBtn} onClick={() => setPicked(null)}>
-              Cancel
+              {t.cancel}
             </button>
           </p>
         )}
 
         <ol className={styles.days}>
-          {DAYS.map((day, d) => (
+          {t.days.map((day, dayIndex) => (
             <li key={day} className={styles.day}>
               <h3>{day}</h3>
               <div className={styles.slots}>
                 {MEALS.map((meal) => {
-                  const here = entriesFor({ ...plan, entries }, d, meal);
+                  const here = entriesFor({ ...plan, entries }, dayIndex, meal);
                   return (
                     <section
                       key={meal}
                       className={styles.slot}
-                      aria-label={`${day} ${MEAL_LABELS[meal]}`}
+                      aria-label={slotName(dayIndex, meal)}
                       onDragOver={(e) => {
                         e.preventDefault();
                         e.currentTarget.dataset.over = "true";
@@ -159,17 +164,17 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
                       onDragLeave={(e) => delete e.currentTarget.dataset.over}
                       onDrop={(e) => {
                         delete e.currentTarget.dataset.over;
-                        onDrop(e, d, meal);
+                        onDrop(e, dayIndex, meal);
                       }}
                     >
-                      <h4>{MEAL_LABELS[meal]}</h4>
+                      <h4>{d.meals[meal]}</h4>
                       <ul>
                         {here.map((entry) => {
                           const r = bySlug.get(entry.slug)!;
                           const isPicked = picked?.kind === "entry" && picked.id === entry.id;
                           return (
                             <li key={entry.id} className={styles.entry} data-picked={isPicked} {...dragProps({ kind: "entry", id: entry.id })}>
-                              <Link href={`/recipes/${r.slug}`} className={styles.entryTitle}>
+                              <Link href={localePath(lang, `/recipes/${r.slug}`)} className={styles.entryTitle}>
                                 {r.title}
                               </Link>
                               <div className={styles.entryControls}>
@@ -177,16 +182,16 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
                                   type="button"
                                   onClick={() => setServings(entry.id, entry.servings - 1)}
                                   disabled={entry.servings <= 1}
-                                  aria-label={`Fewer servings of ${r.title}`}
+                                  aria-label={t.fewer(r.title)}
                                 >
                                   −
                                 </button>
-                                <span aria-label={`${entry.servings} servings`}>{entry.servings}</span>
+                                <span aria-label={t.servingsN(entry.servings)}>{entry.servings}</span>
                                 <button
                                   type="button"
                                   onClick={() => setServings(entry.id, entry.servings + 1)}
                                   disabled={entry.servings >= 6}
-                                  aria-label={`More servings of ${r.title}`}
+                                  aria-label={t.more(r.title)}
                                 >
                                   +
                                 </button>
@@ -195,11 +200,11 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
                                   className={styles.move}
                                   aria-pressed={isPicked}
                                   onClick={() => setPicked(isPicked ? null : { kind: "entry", id: entry.id })}
-                                  aria-label={`Move ${r.title}`}
+                                  aria-label={t.moveLabel(r.title)}
                                 >
-                                  move
+                                  {t.move}
                                 </button>
-                                <button type="button" onClick={() => remove(entry.id)} aria-label={`Remove ${r.title} from ${day} ${MEAL_LABELS[meal]}`}>
+                                <button type="button" onClick={() => remove(entry.id)} aria-label={t.remove(r.title, slotName(dayIndex, meal))}>
                                   ×
                                 </button>
                               </div>
@@ -211,10 +216,10 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
                         <button
                           type="button"
                           className={styles.place}
-                          onClick={() => place(picked, d, meal)}
-                          aria-label={`Place in ${day} ${MEAL_LABELS[meal].toLowerCase()}`}
+                          onClick={() => place(picked, dayIndex, meal)}
+                          aria-label={t.placeIn(slotName(dayIndex, meal))}
                         >
-                          Place here
+                          {t.place}
                         </button>
                       )}
                     </section>

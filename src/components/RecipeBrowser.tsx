@@ -8,7 +8,6 @@ import {
   filterRecipes,
   parseFilters,
   serializeFilters,
-  SORT_LABELS,
   SORTS,
   type FilterState,
   type Sort,
@@ -17,6 +16,7 @@ import styles from "./RecipeBrowser.module.css";
 import { FilterPanel } from "./FilterPanel";
 import { IngredientInput } from "./IngredientInput";
 import { useMyPantry } from "@/lib/my-pantry";
+import { useDict, useLang } from "@/i18n/client";
 import { RecipeCard } from "./RecipeCard";
 import ui from "./ui.module.css";
 
@@ -32,6 +32,9 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
   const [shown, setShown] = useState(PAGE_SIZE);
   const [panelOpen, setPanelOpen] = useState(false);
   const { pantry } = useMyPantry();
+  const lang = useLang();
+  const d = useDict();
+  const t = d.browse;
 
   const update = (patch: Partial<FilterState>) => {
     const qs = serializeFilters({ ...filters, ...patch }).toString();
@@ -62,11 +65,11 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
       {panelOpen && <div className={styles.backdrop} onClick={() => setPanelOpen(false)} aria-hidden="true" />}
       <aside
         onKeyDown={(e) => e.key === "Escape" && setPanelOpen(false)}
-        className={`${styles.sidebar} ${panelOpen ? styles.open : ""}`} aria-label="Filters" id="filters">
+        className={`${styles.sidebar} ${panelOpen ? styles.open : ""}`} aria-label={t.filters} id="filters">
         <div className={styles.sidebarHead}>
-          <h2>Filters</h2>
+          <h2>{t.filters}</h2>
           <button type="button" className={styles.close} onClick={() => setPanelOpen(false)}>
-            Done
+            {t.done}
           </button>
         </div>
         <FilterPanel filters={filters} onChange={update} />
@@ -75,10 +78,10 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
       <div className={styles.results}>
         <div className={`${ui.card} ${styles.search}`}>
           <IngredientInput
-            label="What's in your pantry?"
+            label={d.search.label}
             value={filters.have}
             onChange={(have) => update({ have })}
-            placeholder="rice, eggs, peas…"
+            placeholder={d.search.placeholderBrowse}
           />
           {pantry.have.length > 0 && (
             <button
@@ -86,14 +89,14 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
               className={styles.usePantry}
               onClick={() => update({ have: [...pantry.have], haveMode: "only" })}
             >
-              Use my saved pantry ({pantry.have.length} items)
+              {t.usePantry(pantry.have.length)}
             </button>
           )}
-          <div className={styles.mode} role="radiogroup" aria-label="How to match ingredients">
+          <div className={styles.mode} role="radiogroup" aria-label={t.modeLabel}>
             {(
               [
-                ["includes", "Recipes using all of these"],
-                ["only", "What can I make with only these?"],
+                ["includes", t.modeIncludes],
+                ["only", t.modeOnly],
               ] as const
             ).map(([mode, label]) => (
               <label key={mode} className={styles.modeOption}>
@@ -103,31 +106,32 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
             ))}
           </div>
           {filters.haveMode === "only" && (
-            <p className={styles.hint}>Salt, pepper, oil, and water are assumed. Recipes missing up to two items are shown, fewest first.</p>
+            <p className={styles.hint}>{t.onlyHint}</p>
           )}
           <label className={styles.textSearch}>
-            <span className="sr-only">Search recipes by name</span>
-            <input type="search" placeholder="Search by name…" value={q} onChange={(e) => setQ(e.target.value)} />
+            <span className="sr-only">{t.searchName}</span>
+            <input type="search" placeholder={t.searchPlaceholder} value={q} onChange={(e) => setQ(e.target.value)} />
           </label>
         </div>
 
         <div className={styles.bar}>
           <p className={styles.count} aria-live="polite" data-testid="result-count">
-            {results.length} {results.length === 1 ? "recipe" : "recipes"}
+            {t.count(results.length)}
           </p>
           <div className={styles.barActions}>
             <label className={styles.sort}>
-              <span>Sort</span>
+              <span>{t.sort}</span>
               <select value={filters.sort} onChange={(e) => update({ sort: e.target.value as Sort })}>
                 {SORTS.map((s) => (
                   <option key={s} value={s}>
-                    {SORT_LABELS[s]}
+                    {d.sorts[s]}
                   </option>
                 ))}
               </select>
             </label>
             <button type="button" className={`${ui.button} ${styles.filterBtn}`} onClick={() => setPanelOpen(true)} aria-controls="filters" aria-expanded={panelOpen}>
-              Filters{activeCount ? ` (${activeCount})` : ""}
+              {t.filters}
+              {activeCount ? ` (${activeCount})` : ""}
             </button>
             {anything && (
               <button
@@ -138,7 +142,7 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
                   router.replace(pathname, { scroll: false });
                 }}
               >
-                Clear all
+                {t.clear}
               </button>
             )}
           </div>
@@ -146,20 +150,20 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
 
         {results.length === 0 ? (
           <div className={styles.empty}>
-            <p className="hand">Nothing on this shelf yet.</p>
-            <p>Try removing a filter or an ingredient.</p>
+            <p className="hand">{t.emptyTitle}</p>
+            <p>{t.emptyBody}</p>
           </div>
         ) : (
           <>
             <div className={styles.grid}>
               {results.slice(0, shown).map((r, i) => (
-                <RecipeCard key={r.recipe.slug} recipe={r.recipe} match={r.match} index={i} />
+                <RecipeCard key={r.recipe.slug} recipe={r.recipe} lang={lang} match={r.match} index={i} />
               ))}
             </div>
             {shown < results.length && (
               <div className={styles.more}>
                 <button type="button" className={ui.button} onClick={() => setShown((s) => s + PAGE_SIZE)}>
-                  Show more ({results.length - shown} left)
+                  {t.more(results.length - shown)}
                 </button>
               </div>
             )}
