@@ -40,10 +40,11 @@ test("swapping an ingredient rewrites the line and can be undone", async ({ page
   await page.getByRole("listitem").filter({ has: oil }).getByRole("button", { name: "swap" }).click();
   await page.getByRole("button", { name: /Use butter/ }).click();
   await expect(oil).toContainText("butter");
-  await expect(page.getByRole("status")).toContainText("Use butter wherever the steps say oil.");
+  await expect(page.getByTestId("swap-reminder")).toHaveText("Use butter wherever the steps say oil.");
 
   await page.getByRole("button", { name: "undo swap" }).click();
   await expect(oil).toContainText("oil");
+  await expect(page.getByTestId("swap-reminder")).toHaveCount(0);
 });
 
 test("filters match the expected recipe count and live in the URL", async ({ page }) => {
@@ -57,7 +58,10 @@ test("filters match the expected recipe count and live in the URL", async ({ pag
   await page.goto("/recipes");
   await page.getByRole("button", { name: "Vegan", exact: true }).click();
   await page.getByRole("button", { name: "Microwave", exact: true }).click();
-  await page.getByLabel(/Pantry basics only/).check();
+  // The checkbox reflects the URL, so it flips once the router has updated.
+  const basics = page.getByLabel(/Pantry basics only/);
+  await basics.click();
+  await expect(basics).toBeChecked();
 
   await expect(page).toHaveURL(/diet=vegan/);
   await expect(page).toHaveURL(/tools=microwave/);

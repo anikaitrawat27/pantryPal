@@ -56,6 +56,8 @@ describe("validateRecipes", () => {
     expect(check({ steps: ["Preheat the skillet."] }).join()).toMatch(/Preheat/);
     expect(check({ steps: ["Bake in a skillet."] }).join()).toMatch(/Bake/);
     expect(check({ steps: ["Whisk in the baking powder, then cook in a skillet."] })).toEqual([]);
+    expect(check({ title: "No-Bake Toast", blurb: "Toast with no oven needed at all." })).toEqual([]);
+    expect(check({ blurb: "Better than oven toast, honestly." }).join()).toMatch(/oven/);
   });
 
   it("rejects hard-coded amounts in steps but allows times", () => {

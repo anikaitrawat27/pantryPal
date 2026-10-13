@@ -13,7 +13,8 @@ export const COURSE_TARGETS: Record<Course, number> = {
   dessert: 35,
 };
 
-const BANNED = /\b(oven|bake[ds]?|baking (sheet|tray|dish|pan)|broil\w*|preheat\w*)\b/i;
+/** Oven words. "No-bake" and "no oven" are allowed because they say the opposite. */
+const BANNED = /(?<!\bno[- ])\b(oven|bake[ds]?|baking (sheet|tray|dish|pan)|broil\w*|preheat\w*)\b/i;
 const HARD_CODED_AMOUNT =
   /\b\d+(\s*\/\s*\d+)?\s*(cups?|tbsp|tablespoons?|tsp|teaspoons?|oz|ounces?|lbs?|pounds?|cans?)\b/i;
 

@@ -123,7 +123,7 @@ export function RecipeBody({ ingredients, steps, baseServings }: Props) {
         </ul>
 
         {swapped.length > 0 && (
-          <p className={styles.swapReminder} role="status">
+          <p className={styles.swapReminder} role="status" data-testid="swap-reminder">
             {swapped.map((s) => `Use ${getIngredient(s.to).name} wherever the steps say ${getIngredient(s.from).name}.`).join(" ")}
           </p>
         )}
