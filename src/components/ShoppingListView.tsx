@@ -34,7 +34,7 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
     }
   };
 
-  if (plan.entries.length === 0) {
+  if (list.items.length === 0) {
     return (
       <div className={styles.empty}>
         <p className="hand">Your list is empty.</p>
@@ -56,7 +56,7 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
             {item.status === "low" && <span className={styles.low}>running low</span>}
             <small>
               {item.packages > 0 && item.packLabel && `Buy ${item.packages} × ${item.packLabel} · ${formatUsd(item.cost)} · `}
-              for {item.recipes.join(", ")}
+              {item.recipes.length > 0 ? `for ${item.recipes.join(", ")}` : "restock"}
             </small>
           </span>
         </label>

@@ -131,6 +131,14 @@ describe("buildShoppingList", () => {
     expect(byId.oil.line).toBe("1/2 cup oil");
   });
 
+  it("adds low pantry items that no planned meal uses", () => {
+    const list = buildShoppingList([], recipes, { have: ["honey", "rice"], low: ["honey"] });
+    expect(list.items).toEqual([
+      expect.objectContaining({ id: "honey", line: "honey", packages: 1, recipes: [], status: "low" }),
+    ]);
+    expect(list.total).toBe(4);
+  });
+
   it("ignores meals whose recipe no longer exists", () => {
     expect(buildShoppingList([{ slug: "gone", servings: 2 }], recipes, noPantry).items).toEqual([]);
   });

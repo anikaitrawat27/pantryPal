@@ -10,6 +10,7 @@ import { costPerServing, formatUsd, nutritionPerServing } from "@/lib/nutrition"
 import { formatIngredientLine, scaleAmount } from "@/lib/scale";
 import { applySub, resolveSubs } from "@/lib/substitute";
 import { AddToPlan } from "./AddToPlan";
+import { CookMode } from "./CookMode";
 import styles from "./RecipeBody.module.css";
 import { ServingsStepper } from "./ServingsStepper";
 import ui from "./ui.module.css";
@@ -29,6 +30,7 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
   const [swaps, setSwaps] = useState<Record<number, Substitution>>({});
   const [openSwap, setOpenSwap] = useState<number | null>(null);
   const [checked, setChecked] = useState<ReadonlySet<number>>(new Set());
+  const [cooking, setCooking] = useState(false);
   const { pantry } = useMyPantry();
   const inPantry = (id: string) => pantry.have.some((h) => related(id, h));
 
@@ -110,7 +112,9 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
                       <ul
                         id={`swap-${i}`}
                         className={styles.swapMenu}
-                        onKeyDown={(e) => e.key === "Escape" && setOpenSwap(null)} aria-label={`Swaps for ${getIngredient(original.id).name}`}>
+                        onKeyDown={(e) => e.key === "Escape" && setOpenSwap(null)}
+                        aria-label={`Swaps for ${getIngredient(original.id).name}`}
+                      >
                         {options.map((o) => (
                           <li key={o.id}>
                             <button
@@ -136,7 +140,9 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
 
         {swapped.length > 0 && (
           <p className={styles.swapReminder} role="status" data-testid="swap-reminder">
-            {swapped.map((s) => `Use ${getIngredient(s.to).name} wherever the steps say ${getIngredient(s.from).name}.`).join(" ")}
+            {swapped
+              .map((s) => `Use ${getIngredient(s.to).name} wherever the steps say ${getIngredient(s.from).name}.`)
+              .join(" ")}
           </p>
         )}
 
@@ -159,8 +165,8 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
           </div>
         </dl>
         <p className={styles.estimate}>
-          Estimates per serving. {servings} {servings === 1 ? "serving costs" : "servings cost"} about {formatUsd(cost * servings)} if you buy
-          everything.
+          Estimates per serving. {servings} {servings === 1 ? "serving costs" : "servings cost"} about{" "}
+          {formatUsd(cost * servings)} if you buy everything.
         </p>
 
         <div className={styles.diets} aria-label="Diet">
@@ -175,13 +181,30 @@ export function RecipeBody({ slug, title, meal, ingredients, steps, baseServings
       </section>
 
       <section className={styles.steps} aria-labelledby="steps-heading">
-        <h2 id="steps-heading">Steps</h2>
+        <div className={styles.stepsHeader}>
+          <h2 id="steps-heading">Steps</h2>
+          <button type="button" className={`${ui.button} ${ui.primary} no-print`} onClick={() => setCooking(true)}>
+            Start cooking
+          </button>
+        </div>
         <ol className={styles.stepList}>
           {steps.map((s, i) => (
             <li key={i}>{s}</li>
           ))}
         </ol>
       </section>
+
+      {cooking && (
+        <CookMode
+          title={title}
+          steps={steps}
+          ingredientLines={current.map((ing) => ({
+            id: ing.id,
+            line: formatIngredientLine(ing.id, scaleAmount(ing, factor)) + (ing.optional ? " (optional)" : ""),
+          }))}
+          onClose={() => setCooking(false)}
+        />
+      )}
     </div>
   );
 }

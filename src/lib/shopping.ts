@@ -106,7 +106,8 @@ function addLine(t: Tally, ing: RecipeIngredient, factor: number) {
  * Combines every planned meal into one list. Amounts scale to each meal's
  * servings and add up per ingredient. Optional ingredients and water are left
  * out. Items in the pantry are marked "have" unless they are running low; salt,
- * pepper, and oil are assumed on hand.
+ * pepper, and oil are assumed on hand. Pantry items marked low are always
+ * included so they get restocked.
  */
 export function buildShoppingList(
   meals: readonly PlannedMeal[],
@@ -148,6 +149,22 @@ export function buildShoppingList(
       cost: pack ? Math.round(packages * pack.usd * 100) / 100 : 0,
       recipes: [...t.recipes],
       status,
+    });
+  }
+
+  // Restock anything marked low, even if no planned meal uses it.
+  for (const id of pantry.low) {
+    if (tallies.has(id)) continue;
+    const pack = FACTS[id]?.pack;
+    items.push({
+      id,
+      group: getIngredient(id).group,
+      line: getIngredient(id).name,
+      packages: pack ? 1 : 0,
+      packLabel: pack?.label,
+      cost: pack?.usd ?? 0,
+      recipes: [],
+      status: "low",
     });
   }
 
