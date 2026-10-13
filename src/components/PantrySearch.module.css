@@ -7,6 +7,20 @@
   max-width: 620px;
 }
 
-.form button[type="submit"] {
-  align-self: flex-start;
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 16px;
+}
+
+.saved {
+  border: 0;
+  background: none;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  min-height: 44px;
 }

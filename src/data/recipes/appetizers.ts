@@ -434,7 +434,7 @@ export const APPETIZERS = defineRecipes([
       ["flour", 2, "tbsp"],
       ["salt", 0.5, "tsp"],
       ["pepper", "to taste"],
-      ["oil", 0.33, "cup", { fixed: true }],
+      ["oil", 0.33, "cup", { frying: true }],
       ["yogurt", 0.5, "cup", { note: "for serving", optional: true }],
     ],
     steps: [
@@ -472,7 +472,7 @@ export const APPETIZERS = defineRecipes([
       ["garlic-ginger-paste", 1, "tsp", { optional: true }],
       ["onion", 2, { note: "thinly sliced" }],
       ["water", 0.5, "cup"],
-      ["oil", 0.5, "cup", { fixed: true }],
+      ["oil", 0.5, "cup", { frying: true }],
     ],
     steps: [
       "Mix the flour, baking powder, salt, chili powder, and cumin in a bowl.",

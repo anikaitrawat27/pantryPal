@@ -327,7 +327,7 @@ export const DESSERTS = defineRecipes([
     cook: 20,
     serves: 4,
     ingredients: [
-      ["rice", 1.5, "cup", { note: "cooked", noSubs: true }],
+      ["rice", 1.5, "cup", { note: "cooked", cooked: true, noSubs: true }],
       ["milk", 2, "cup"],
       ["sugar", 0.25, "cup"],
       ["salt", 1, "pinch"],
@@ -594,7 +594,7 @@ export const DESSERTS = defineRecipes([
       ["flour", 0.5, "cup"],
       ["eggs", 1],
       ["vanilla", 0.25, "tsp", { optional: true }],
-      ["oil", 0.5, "cup", { note: "for shallow frying", fixed: true }],
+      ["oil", 0.5, "cup", { note: "for shallow frying", frying: true }],
     ],
     steps: [
       "Set aside a spoonful of the sugar, and mix the rest with the cinnamon in a shallow bowl.",
@@ -627,7 +627,7 @@ export const DESSERTS = defineRecipes([
       ["salt", 0.25, "tsp"],
       ["butter", 1, "tbsp", { note: "cold" }],
       ["water", 0.33, "cup", { note: "warm" }],
-      ["oil", 0.5, "cup", { note: "for shallow frying", fixed: true }],
+      ["oil", 0.5, "cup", { note: "for shallow frying", frying: true }],
       ["honey", 0.25, "cup"],
       ["cinnamon", 0.25, "tsp", { optional: true }],
     ],
@@ -803,7 +803,7 @@ export const DESSERTS = defineRecipes([
       ["cinnamon", 1, "tsp", { note: "divided" }],
       ["bread", 4, "slice", { note: "thick, day-old" }],
       ["eggs", 2],
-      ["oil", 0.25, "cup", { fixed: true }],
+      ["oil", 0.25, "cup", { frying: true }],
       ["honey", 2, "tbsp", { optional: true }],
     ],
     steps: [
@@ -840,7 +840,7 @@ export const DESSERTS = defineRecipes([
       ["baking-powder", 0.5, "tsp"],
       ["cinnamon", 0.25, "tsp", { optional: true }],
       ["salt", 1, "pinch"],
-      ["oil", 0.25, "cup", { fixed: true }],
+      ["oil", 0.25, "cup", { frying: true }],
     ],
     steps: [
       "Mash the bananas in a bowl until mostly smooth.",
@@ -1080,7 +1080,7 @@ export const DESSERTS = defineRecipes([
       ["biscuit-dough", 1, "can", { note: "8 biscuits" }],
       ["sugar", 0.33, "cup"],
       ["cinnamon", 1, "tsp", { optional: true }],
-      ["oil", 1, "cup", { note: "for shallow frying", fixed: true }],
+      ["oil", 1, "cup", { note: "for shallow frying", frying: true }],
     ],
     steps: [
       "Separate the biscuits and cut a hole in the center of each with a bottle cap or small lid.",

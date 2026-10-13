@@ -87,6 +87,10 @@ const ingredientOptsSchema = z
     optional: z.boolean().optional(),
     /** Quantity stays the same at every serving size. */
     fixed: z.boolean().optional(),
+    /** Oil for shallow frying. It does not scale with servings, and most of it stays in the pan. */
+    frying: z.boolean().optional(),
+    /** The amount is measured after cooking (cooked rice). Nutrition and shopping convert it to dry weight. */
+    cooked: z.boolean().optional(),
     /** Replaces the global substitution list for this ingredient in this recipe. */
     subs: z.array(substitutionSchema).optional(),
     /** Disables substitutions where a swap would ruin the dish. */

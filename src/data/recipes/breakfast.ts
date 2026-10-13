@@ -602,7 +602,7 @@ export const BREAKFAST = defineRecipes([
     cook: 30,
     serves: 2,
     ingredients: [
-      ["rice", 1, "cup", { note: "cooked" }],
+      ["rice", 1, "cup", { note: "cooked", cooked: true }],
       ["chicken-broth", 3, "cup"],
       ["water", 1, "cup"],
       ["garlic-ginger-paste", 1, "tsp"],
@@ -829,7 +829,7 @@ export const BREAKFAST = defineRecipes([
       ["sugar", 1, "tsp"],
       ["salt", 0.5, "tsp"],
       ["water", 0.5, "cup", { note: "cold, plus a little more as needed" }],
-      ["oil", 0.5, "cup", { note: "for shallow frying" }],
+      ["oil", 0.5, "cup", { note: "for shallow frying", frying: true }],
     ],
     steps: [
       "Mix the flour, baking powder, sugar, and salt in a bowl.",
@@ -855,7 +855,7 @@ export const BREAKFAST = defineRecipes([
     cook: 4,
     serves: 1,
     ingredients: [
-      ["rice", 1, "cup", { note: "cooked and hot" }],
+      ["rice", 1, "cup", { note: "cooked and hot", cooked: true }],
       ["eggs", 1],
       ["oil", 1, "tsp"],
       ["butter", 1, "tsp"],
@@ -1010,8 +1010,8 @@ export const BREAKFAST = defineRecipes([
     ingredients: [
       ["eggs", 2],
       ["soy-sauce", 1, "tsp"],
-      ["oil", 3, "tbsp"],
-      ["rice", 1, "cup", { note: "cooked and hot" }],
+      ["oil", 3, "tbsp", { frying: true }],
+      ["rice", 1, "cup", { note: "cooked and hot", cooked: true }],
       ["hot-sauce", "to taste", { optional: true }],
     ],
     steps: [

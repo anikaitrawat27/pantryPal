@@ -2,6 +2,7 @@ import { RAW_RECIPES } from "@/data/recipes";
 import { getIngredient } from "@/data/pantry";
 import { recipeSchema, type Recipe, type RecipeIngredient } from "@/data/schema";
 import { dietsFor, type Diet } from "./diet";
+import { costPerServing, nutritionPerServing, type Nutrition } from "./nutrition";
 
 /** The fields browse, search, and cards need. Excludes steps and tips to keep client bundles small. */
 export interface RecipeSummary {
@@ -18,6 +19,10 @@ export interface RecipeSummary {
   diets: Diet[];
   /** True when a required ingredient is from the "extra" tier. */
   usesExtras: boolean;
+  /** Estimated nutrition per serving. */
+  nutrition: Nutrition;
+  /** Estimated U.S. dollars per serving. */
+  cost: number;
   ingredients: RecipeIngredient[];
 }
 
@@ -29,6 +34,8 @@ function enrich(recipe: Recipe): CatalogRecipe {
     totalMin: recipe.prep + recipe.cook,
     diets: dietsFor(recipe.ingredients),
     usesExtras: recipe.ingredients.some((i) => !i.optional && getIngredient(i.id).tier === "extra"),
+    nutrition: nutritionPerServing(recipe.ingredients, recipe.serves),
+    cost: costPerServing(recipe.ingredients, recipe.serves),
   };
 }
 
@@ -63,6 +70,8 @@ export function toSummary(r: CatalogRecipe): RecipeSummary {
     totalMin: r.totalMin,
     diets: r.diets,
     usesExtras: r.usesExtras,
+    nutrition: r.nutrition,
+    cost: r.cost,
     ingredients: r.ingredients,
   };
 }

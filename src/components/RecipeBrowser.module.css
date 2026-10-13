@@ -202,3 +202,42 @@
     cursor: pointer;
   }
 }
+
+.usePantry {
+  align-self: flex-start;
+  border: 1.5px dashed var(--line);
+  background: var(--sage-soft);
+  border-radius: var(--radius-pill);
+  padding: 4px 14px;
+  min-height: 36px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+}
+
+.sort select {
+  min-height: 40px;
+  padding: 4px 8px;
+  border: 2px solid var(--line);
+  border-radius: 10px 14px 9px 12px;
+  background: var(--card);
+}
+
+@media (max-width: 520px) {
+  .bar {
+    flex-wrap: wrap;
+  }
+  .sort span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+}

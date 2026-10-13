@@ -3,10 +3,20 @@
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
 import type { RecipeSummary } from "@/lib/catalog";
-import { activeFilterCount, filterRecipes, parseFilters, serializeFilters, type FilterState } from "@/lib/filter";
+import {
+  activeFilterCount,
+  filterRecipes,
+  parseFilters,
+  serializeFilters,
+  SORT_LABELS,
+  SORTS,
+  type FilterState,
+  type Sort,
+} from "@/lib/filter";
 import styles from "./RecipeBrowser.module.css";
 import { FilterPanel } from "./FilterPanel";
 import { IngredientInput } from "./IngredientInput";
+import { useMyPantry } from "@/lib/my-pantry";
 import { RecipeCard } from "./RecipeCard";
 import ui from "./ui.module.css";
 
@@ -21,6 +31,7 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
   const [q, setQ] = useState(filters.q);
   const [shown, setShown] = useState(PAGE_SIZE);
   const [panelOpen, setPanelOpen] = useState(false);
+  const { pantry } = useMyPantry();
 
   const update = (patch: Partial<FilterState>) => {
     const qs = serializeFilters({ ...filters, ...patch }).toString();
@@ -69,6 +80,15 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
             onChange={(have) => update({ have })}
             placeholder="rice, eggs, peas…"
           />
+          {pantry.have.length > 0 && (
+            <button
+              type="button"
+              className={styles.usePantry}
+              onClick={() => update({ have: [...pantry.have], haveMode: "only" })}
+            >
+              Use my saved pantry ({pantry.have.length} items)
+            </button>
+          )}
           <div className={styles.mode} role="radiogroup" aria-label="How to match ingredients">
             {(
               [
@@ -96,6 +116,16 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
             {results.length} {results.length === 1 ? "recipe" : "recipes"}
           </p>
           <div className={styles.barActions}>
+            <label className={styles.sort}>
+              <span>Sort</span>
+              <select value={filters.sort} onChange={(e) => update({ sort: e.target.value as Sort })}>
+                {SORTS.map((s) => (
+                  <option key={s} value={s}>
+                    {SORT_LABELS[s]}
+                  </option>
+                ))}
+              </select>
+            </label>
             <button type="button" className={`${ui.button} ${styles.filterBtn}`} onClick={() => setPanelOpen(true)} aria-controls="filters" aria-expanded={panelOpen}>
               Filters{activeCount ? ` (${activeCount})` : ""}
             </button>

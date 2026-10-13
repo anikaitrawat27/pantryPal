@@ -15,6 +15,7 @@ interface Props {
 }
 
 const TIME_OPTIONS = [15, 30, 60] as const;
+const COST_OPTIONS = [1, 2] as const;
 const LEVEL_OPTIONS = [
   [1, "Easy only"],
   [2, "Easy or medium"],
@@ -79,6 +80,23 @@ export function FilterPanel({ filters, onChange }: Props) {
               onClick={() => onChange({ maxTime: filters.maxTime === t ? undefined : t })}
             >
               {t === 60 ? "Under 1 hr" : `Under ${t} min`}
+            </button>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset className={styles.group}>
+        <legend>Cost per serving</legend>
+        <div className={styles.chips}>
+          {COST_OPTIONS.map((c) => (
+            <button
+              key={c}
+              type="button"
+              className={ui.chip}
+              aria-pressed={filters.maxCost === c}
+              onClick={() => onChange({ maxCost: filters.maxCost === c ? undefined : c })}
+            >
+              Under ${c}
             </button>
           ))}
         </div>

@@ -199,7 +199,7 @@ export const MAINS_B = defineRecipes([
       ["potato", 4, { note: "medium, peeled and sliced thin" }],
       ["onion", 1, { note: "thinly sliced" }],
       ["eggs", 6],
-      ["oil", 0.5, "cup"],
+      ["oil", 0.5, "cup", { frying: true }],
       ["salt", 1, "tsp"],
       ["pepper", 0.25, "tsp"],
       ["canned-turkey", 0.5, "can", { optional: true, note: "drained and flaked" }],
@@ -405,7 +405,7 @@ export const MAINS_B = defineRecipes([
     cook: 15,
     serves: 4,
     ingredients: [
-      ["rice", 4, "cup", { note: "cooked, warm" }],
+      ["rice", 4, "cup", { note: "cooked, warm", cooked: true }],
       ["ground-beef", 1, "lb"],
       ["onion", 1, { note: "diced" }],
       ["garlic", 2, "clove", { note: "minced" }],
@@ -450,7 +450,7 @@ export const MAINS_B = defineRecipes([
       ["carrot", 1, { optional: true, note: "shredded" }],
       ["oil", 1, "tsp"],
       ["pepper", 0.25, "tsp"],
-      ["rice", 4, "cup", { note: "cooked, warm" }],
+      ["rice", 4, "cup", { note: "cooked, warm", cooked: true }],
       ["hot-sauce", "to taste", { optional: true }],
     ],
     steps: [
@@ -482,7 +482,7 @@ export const MAINS_B = defineRecipes([
       ["chicken-broth", 0.75, "cup"],
       ["soy-sauce", 2, "tbsp"],
       ["sugar", 1, "tbsp"],
-      ["rice", 2, "cup", { note: "cooked, warm" }],
+      ["rice", 2, "cup", { note: "cooked, warm", cooked: true }],
     ],
     steps: [
       "Bring the broth, soy sauce, and sugar to a simmer in a small skillet over medium heat.",
@@ -517,7 +517,7 @@ export const MAINS_B = defineRecipes([
       ["vinegar", 1, "tsp", { optional: true }],
       ["oil", 2, "tbsp"],
       ["pepper", 0.25, "tsp"],
-      ["rice", 4, "cup", { optional: true, note: "cooked, for serving" }],
+      ["rice", 4, "cup", { optional: true, note: "cooked, for serving", cooked: true }],
     ],
     steps: [
       "Toss the chicken with the flour, pepper, and a splash of the soy sauce.",
@@ -553,7 +553,7 @@ export const MAINS_B = defineRecipes([
       ["lemon-juice", 1, "tbsp", { optional: true }],
       ["hot-sauce", 1, "tsp", { optional: true }],
       ["oil", 1, "tbsp"],
-      ["rice", 4, "cup", { note: "cooked, warm" }],
+      ["rice", 4, "cup", { note: "cooked, warm", cooked: true }],
     ],
     steps: [
       "Whisk the peanut butter, soy sauce, honey, garlic-ginger paste, water, lemon juice, and hot sauce until smooth.",
@@ -588,7 +588,7 @@ export const MAINS_B = defineRecipes([
       ["cinnamon", 0.25, "tsp", { optional: true }],
       ["salt", 1, "tsp"],
       ["yogurt", 0.25, "cup", { optional: true }],
-      ["rice", 4, "cup", { note: "cooked, for serving" }],
+      ["rice", 4, "cup", { note: "cooked, for serving", cooked: true }],
     ],
     steps: [
       "Heat the oil in a large skillet over medium heat and cook the onion for 6 to 7 minutes until golden.",
@@ -627,7 +627,7 @@ export const MAINS_B = defineRecipes([
       ["tomato-puree", 1, "cup"],
       ["sugar", 1, "tsp"],
       ["milk", 0.5, "cup"],
-      ["rice", 4, "cup", { note: "cooked, for serving" }],
+      ["rice", 4, "cup", { note: "cooked, for serving", cooked: true }],
     ],
     steps: [
       "Stir the chicken with the yogurt, garlic-ginger paste, cumin, chili powder, paprika, lemon juice, and half the salt.",
@@ -772,7 +772,7 @@ export const MAINS_B = defineRecipes([
       ["paprika", 1, "tsp", { optional: true }],
       ["salt", 1, "tsp"],
       ["pepper", 0.5, "tsp"],
-      ["rice", 4, "cup", { note: "cooked, warm" }],
+      ["rice", 4, "cup", { note: "cooked, warm", cooked: true }],
       ["yogurt", 0.5, "cup", { optional: true, note: "plain" }],
       ["lemon-juice", 1, "tsp", { optional: true }],
       ["tomato", 1, { optional: true, note: "diced" }],
@@ -932,7 +932,7 @@ export const MAINS_B = defineRecipes([
     cook: 12,
     serves: 3,
     ingredients: [
-      ["rice", 3, "cup", { note: "cooked and cold" }],
+      ["rice", 3, "cup", { note: "cooked and cold", cooked: true }],
       ["hot-dogs", 4, { note: "sliced into rounds" }],
       ["eggs", 2],
       ["onion", 1, { note: "diced, or 3 green onions" }],
@@ -1030,7 +1030,7 @@ export const MAINS_B = defineRecipes([
     cook: 2,
     serves: 2,
     ingredients: [
-      ["rice", 2, "cup", { note: "cooked" }],
+      ["rice", 2, "cup", { note: "cooked", cooked: true }],
       ["canned-tuna", 1, "can", { note: "5 oz, drained" }],
       ["mayo", 2, "tbsp"],
       ["soy-sauce", 2, "tsp"],
@@ -1209,7 +1209,7 @@ export const MAINS_B = defineRecipes([
       ["chili-powder", 0.5, "tsp", { optional: true }],
       ["salt", 1, "tsp"],
       ["pepper", 0.25, "tsp"],
-      ["rice", 4, "cup", { optional: true, note: "cooked, for serving" }],
+      ["rice", 4, "cup", { optional: true, note: "cooked, for serving", cooked: true }],
     ],
     steps: [
       "Cook the beef and onion in a large skillet with a lid over medium-high heat for 7 to 8 minutes, breaking up the meat, until no pink remains.",

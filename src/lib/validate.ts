@@ -54,6 +54,8 @@ function validateRecipe(r: Recipe): string[] {
     if (!INGREDIENTS_BY_ID.has(ing.id)) at(`unknown ingredient "${ing.id}"`);
     if (seen.has(ing.id)) at(`ingredient "${ing.id}" is listed twice`);
     seen.add(ing.id);
+    if (ing.frying && ing.id !== "oil") at(`"frying" only applies to oil, not "${ing.id}"`);
+    if (ing.cooked && ing.id !== "rice") at(`"cooked" is only supported for rice, not "${ing.id}"`);
     if (ing.subs) checkSubs(`${r.slug}.${ing.id}`, ing.subs, ing.id, errors);
   }
 

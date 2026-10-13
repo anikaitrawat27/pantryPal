@@ -139,7 +139,7 @@ export const MAINS_A = defineRecipes([
     cook: 12,
     serves: 3,
     ingredients: [
-      ["rice", 3, "cup", { note: "cooked and cooled, ideally a day old" }],
+      ["rice", 3, "cup", { note: "cooked and cooled, ideally a day old", cooked: true }],
       ["canned-peas", 0.5, "can", { note: "drained" }],
       ["canned-carrots", 0.5, "can", { note: "drained" }],
       ["canned-corn", 0.5, "can", { note: "drained" }],
@@ -914,7 +914,7 @@ export const MAINS_A = defineRecipes([
     cook: 15,
     serves: 2,
     ingredients: [
-      ["rice", 2, "cup", { note: "cooked" }],
+      ["rice", 2, "cup", { note: "cooked", cooked: true }],
       ["oil", 2, "tbsp"],
       ["carrot", 1, { note: "cut into thin sticks" }],
       ["salt", "to taste"],
@@ -957,7 +957,7 @@ export const MAINS_A = defineRecipes([
       ["yogurt", 0.5, "cup"],
       ["garlic", 1, "clove", { note: "grated" }],
       ["lemon-juice", 1, "tbsp", { optional: true }],
-      ["rice", 2, "cup", { note: "cooked" }],
+      ["rice", 2, "cup", { note: "cooked", cooked: true }],
       ["tomato", 1, { note: "diced" }],
       ["lettuce", 1, "cup", { note: "shredded" }],
       ["onion", 0.25, { optional: true, note: "thinly sliced" }],

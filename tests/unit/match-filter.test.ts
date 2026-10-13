@@ -16,6 +16,8 @@ function summary(over: Partial<RecipeSummary> & Pick<RecipeSummary, "slug" | "in
     totalMin: 20,
     diets: [],
     usesExtras: false,
+    nutrition: { kcal: 300, protein: 10, fiber: 3 },
+    cost: 1,
     ...over,
   };
 }
@@ -116,6 +118,19 @@ describe("filterRecipes", () => {
     expect(slugs({ q: "beans cheese" })).toEqual(["cheesy-beans"]);
   });
 
+  it("filters by cost and sorts by cost, time, and protein", () => {
+    const priced = [
+      { ...friedRice, cost: 0.8, nutrition: { kcal: 400, protein: 12, fiber: 2 } },
+      { ...smoothie, cost: 1.5, nutrition: { kcal: 200, protein: 6, fiber: 3 } },
+      { ...cheesyBeans, cost: 2.5, nutrition: { kcal: 350, protein: 18, fiber: 9 } },
+    ];
+    const run = (f: Partial<FilterState>) => filterRecipes(priced, { ...EMPTY_FILTERS, ...f }).map((r) => r.recipe.slug);
+    expect(run({ maxCost: 2 })).toEqual(["smoothie", "fried-rice"]);
+    expect(run({ sort: "cost" })).toEqual(["fried-rice", "smoothie", "cheesy-beans"]);
+    expect(run({ sort: "time" })).toEqual(["smoothie", "fried-rice", "cheesy-beans"]);
+    expect(run({ sort: "protein" })).toEqual(["cheesy-beans", "fried-rice", "smoothie"]);
+  });
+
   it("combines facets", () => {
     expect(slugs({ maxTime: 30, courses: ["main"] })).toEqual(["fried-rice"]);
   });
@@ -148,13 +163,15 @@ describe("URL round trip", () => {
       noExtras: true,
       have: ["rice", "eggs"],
       haveMode: "only",
+      maxCost: 2,
+      sort: "cost",
     };
     expect(parseFilters(serializeFilters(state))).toEqual(state);
   });
 
   it("drops unknown or malformed values", () => {
-    const f = parseFilters(new URLSearchParams("course=main,nope&time=abc&level=9&have=rice,unicorn&mode=weird"));
-    expect(f).toMatchObject({ courses: ["main"], maxTime: undefined, maxLevel: undefined, have: ["rice"], haveMode: "includes" });
+    const f = parseFilters(new URLSearchParams("course=main,nope&time=abc&level=9&have=rice,unicorn&mode=weird&sort=best&cost=-1"));
+    expect(f).toMatchObject({ courses: ["main"], maxTime: undefined, maxLevel: undefined, maxCost: undefined, have: ["rice"], haveMode: "includes", sort: "az" });
   });
 
   it("serializes the empty state to an empty query", () => {

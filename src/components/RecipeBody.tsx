@@ -4,6 +4,9 @@ import { useMemo, useState } from "react";
 import { getIngredient } from "@/data/pantry";
 import type { RecipeIngredient, Substitution } from "@/data/schema";
 import { DIET_LABELS, dietsFor } from "@/lib/diet";
+import { related } from "@/lib/match";
+import { useMyPantry } from "@/lib/my-pantry";
+import { costPerServing, formatUsd, nutritionPerServing } from "@/lib/nutrition";
 import { formatIngredientLine, scaleAmount } from "@/lib/scale";
 import { applySub, resolveSubs } from "@/lib/substitute";
 import styles from "./RecipeBody.module.css";
@@ -22,12 +25,16 @@ export function RecipeBody({ ingredients, steps, baseServings }: Props) {
   const [swaps, setSwaps] = useState<Record<number, Substitution>>({});
   const [openSwap, setOpenSwap] = useState<number | null>(null);
   const [checked, setChecked] = useState<ReadonlySet<number>>(new Set());
+  const { pantry } = useMyPantry();
+  const inPantry = (id: string) => pantry.have.some((h) => related(id, h));
 
   const current = useMemo(
     () => ingredients.map((ing, i) => (swaps[i] ? applySub(ing, swaps[i]) : ing)),
     [ingredients, swaps],
   );
   const diets = useMemo(() => dietsFor(current), [current]);
+  const nutrition = useMemo(() => nutritionPerServing(current, baseServings), [current, baseServings]);
+  const cost = useMemo(() => costPerServing(current, baseServings), [current, baseServings]);
   const factor = servings / baseServings;
   const swapped = Object.entries(swaps).map(([i, s]) => ({ from: ingredients[Number(i)].id, to: s.id }));
 
@@ -64,6 +71,7 @@ export function RecipeBody({ ingredients, steps, baseServings }: Props) {
                     {ing.note && <span className={styles.note}> ({ing.note})</span>}
                     {ing.optional && <span className={styles.optional}>optional</span>}
                     {getIngredient(ing.id).tier === "extra" && <span className={styles.extra}>extra</span>}
+                    {inPantry(ing.id) && <span className={styles.have}>in your pantry</span>}
                   </span>
                 </label>
 
@@ -127,6 +135,29 @@ export function RecipeBody({ ingredients, steps, baseServings }: Props) {
             {swapped.map((s) => `Use ${getIngredient(s.to).name} wherever the steps say ${getIngredient(s.from).name}.`).join(" ")}
           </p>
         )}
+
+        <dl className={styles.nutrition} aria-label="Estimated per serving">
+          <div>
+            <dt>Calories</dt>
+            <dd>{nutrition.kcal}</dd>
+          </div>
+          <div>
+            <dt>Protein</dt>
+            <dd>{nutrition.protein} g</dd>
+          </div>
+          <div>
+            <dt>Fiber</dt>
+            <dd>{nutrition.fiber} g</dd>
+          </div>
+          <div>
+            <dt>Cost</dt>
+            <dd data-testid="cost-per-serving">{formatUsd(cost)}</dd>
+          </div>
+        </dl>
+        <p className={styles.estimate}>
+          Estimates per serving. {servings} {servings === 1 ? "serving costs" : "servings cost"} about {formatUsd(cost * servings)} if you buy
+          everything.
+        </p>
 
         <div className={styles.diets} aria-label="Diet">
           {diets.map((d) => (

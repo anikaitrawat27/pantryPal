@@ -4,10 +4,43 @@
   color: var(--ink-soft);
 }
 
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 14px 20px;
+  margin: 8px 0 28px;
+  max-width: 760px;
+}
+
+.summary p {
+  margin: 0;
+}
+
+.summary strong {
+  font-size: 1.6rem;
+}
+
+.summaryActions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.clearBtn {
+  border: 0;
+  background: none;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  min-height: 44px;
+}
+
 .shelves {
   columns: 3 280px;
   column-gap: 28px;
-  margin-top: 24px;
 }
 
 .shelf {
@@ -31,23 +64,76 @@
   gap: 8px;
 }
 
-.shelf li {
+.item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 3px 4px 3px 12px;
+  gap: 4px;
+  padding: 2px 4px 2px 4px;
   background: var(--card);
   border: 1.5px solid var(--line);
   border-radius: var(--radius-pill);
   font-weight: 700;
 }
 
-.shelf a {
-  text-decoration: none;
+.item[data-have="true"] {
+  background: var(--sage-soft);
 }
 
-.shelf a:hover {
-  text-decoration: underline;
+.item[data-low="true"] {
+  background: var(--tomato-soft);
+  border-style: dashed;
+}
+
+.extras .item[data-have="false"] {
+  background: var(--mustard-soft);
+  border-style: dashed;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0 6px;
+  border: 0;
+  background: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.box {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--line);
+  border-radius: 4px 6px 3px 5px;
+  display: grid;
+  place-content: center;
+}
+
+.toggle[aria-pressed="true"] .box::after {
+  content: "";
+  width: 9px;
+  height: 5px;
+  border-left: 2.5px solid var(--sage);
+  border-bottom: 2.5px solid var(--sage);
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.lowBtn {
+  border: 1px dashed var(--line);
+  background: none;
+  border-radius: 8px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 1px 6px;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+
+.lowBtn[aria-pressed="true"] {
+  background: var(--tomato);
+  color: var(--card);
+  border-style: solid;
 }
 
 .count {
@@ -58,9 +144,9 @@
   font-size: 0.8rem;
   text-align: center;
   color: var(--ink-soft);
+  text-decoration: none;
 }
 
-.extras li {
-  background: var(--mustard-soft);
-  border-style: dashed;
+.count:hover {
+  text-decoration: underline;
 }

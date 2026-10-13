@@ -29,6 +29,10 @@ describe("scaleAmount", () => {
     expect(scaleAmount({ id: "ice", qty: 1, unit: "handful", fixed: true }, 6)).toEqual({ qty: 1, unit: "handful" });
   });
 
+  it("never scales frying oil", () => {
+    expect(scaleAmount({ id: "oil", qty: 0.5, unit: "cup", frying: true }, 3)).toEqual({ qty: 0.5, unit: "cup" });
+  });
+
   it("steps volume up into larger units", () => {
     expect(scaleAmount({ id: "sugar", qty: 1, unit: "tsp" }, 3)).toEqual({ qty: 1, unit: "tbsp" });
     expect(scaleAmount({ id: "oil", qty: 2, unit: "tbsp" }, 2)).toEqual({ qty: 1 / 4, unit: "cup" });

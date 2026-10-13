@@ -4,7 +4,9 @@ import type { RecipeSummary } from "@/lib/catalog";
 import { DIET_LABELS } from "@/lib/diet";
 import { COURSE_LABELS, DIFFICULTY_LABELS, EQUIPMENT_LABELS, formatMinutes } from "@/lib/labels";
 import type { PantryMatch } from "@/lib/match";
+import { formatUsd } from "@/lib/nutrition";
 import { CourseDoodle, ToolIcon } from "./Doodle";
+import { PantryStatus } from "./PantryStatus";
 import styles from "./RecipeCard.module.css";
 import ui from "./ui.module.css";
 
@@ -40,11 +42,14 @@ export function RecipeCard({ recipe, match, index = 0 }: { recipe: RecipeSummary
         </div>
       )}
       {match && match.missing.length === 0 && match.swaps.length === 0 && <p className={styles.ready}>You have everything</p>}
+      {!match && <PantryStatus ingredients={recipe.ingredients} />}
 
       <div className={styles.meta}>
         <span>{formatMinutes(recipe.totalMin)}</span>
         <span aria-hidden="true">·</span>
         <span>{DIFFICULTY_LABELS[recipe.difficulty]}</span>
+        <span aria-hidden="true">·</span>
+        <span title="Estimated cost per serving">{formatUsd(recipe.cost)}</span>
         <span className={styles.tools}>
           {tools.length === 0 ? (
             <span title={EQUIPMENT_LABELS["no-cook"]}>
