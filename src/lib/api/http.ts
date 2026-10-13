@@ -11,6 +11,7 @@ export interface ApiErrorBody {
       | "not_found"
       | "conflict"
       | "rate_limited"
+      | "unavailable"
       | "internal_error";
     message: string;
     /** For invalid_request: what is wrong with each field, keyed by its path ("meals.2.slug"). */
@@ -21,7 +22,7 @@ export interface ApiErrorBody {
 /** Thrown inside handlers to return a 4xx without building the response by hand. */
 export class ApiError extends Error {
   constructor(
-    readonly status: 400 | 401 | 403 | 404 | 409 | 429,
+    readonly status: 400 | 401 | 403 | 404 | 409 | 429 | 503,
     readonly body: ApiErrorBody,
     /** For 429: seconds until the client may retry, sent as Retry-After. */
     readonly retryAfter?: number,
@@ -47,6 +48,10 @@ export class ApiError extends Error {
 
   static conflict(message: string, fields?: Record<string, string>) {
     return new ApiError(409, { error: { code: "conflict", message, ...(fields ? { fields } : {}) } });
+  }
+
+  static unavailable(message: string) {
+    return new ApiError(503, { error: { code: "unavailable", message } });
   }
 
   static rateLimited(retryAfter: number) {

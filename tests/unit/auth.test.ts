@@ -30,7 +30,7 @@ beforeEach(async () => {
   await db.delete(rateLimits);
 });
 
-type Handler = (req: Request) => Promise<Response>;
+type Handler = (req: Request, route: { params: Promise<Record<string, never>> }) => Promise<Response>;
 
 async function call(
   handler: Handler,
@@ -47,6 +47,7 @@ async function call(
   if (body !== undefined) headers["content-type"] = "application/json";
   const res = await handler(
     new Request(`${ORIGIN}/api/x`, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) }),
+    { params: Promise.resolve({}) },
   );
   const text = await res.text();
   const setCookie = res.headers.get("set-cookie");

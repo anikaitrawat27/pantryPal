@@ -1,8 +1,10 @@
 import { sql } from "drizzle-orm";
 import {
   boolean,
+  date,
   index,
   integer,
+  jsonb,
   pgTable,
   primaryKey,
   smallint,
@@ -129,4 +131,68 @@ export const authEvents = pgTable(
       .default(sql`now()`),
   },
   (t) => [index("auth_events_user_idx").on(t.userId)],
+);
+
+/** A chat thread. The full API transcript is stored server-side so it is replayed exactly and cannot be forged by the client. */
+export const chatConversations = pgTable(
+  "chat_conversations",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    title: text("title").notNull(),
+    lang: text("lang").notNull().default("en"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("chat_conversations_user_idx").on(t.userId, t.updatedAt)],
+);
+
+export const chatMessages = pgTable(
+  "chat_messages",
+  {
+    conversationId: text("conversation_id")
+      .notNull()
+      .references(() => chatConversations.id, { onDelete: "cascade" }),
+    seq: integer("seq").notNull(),
+    role: text("role").notNull(),
+    /** Content blocks exactly as sent to or received from the API, including thinking and tool blocks. */
+    content: jsonb("content").notNull(),
+    /** For assistant turns: what the page showed (text, recipe cards, generated recipes), for reloading the thread. */
+    ui: jsonb("ui"),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [primaryKey({ columns: [t.conversationId, t.seq] })],
+);
+
+/** Recipes the chatbot wrote. Each passed the same validation as the catalog before it was shown. */
+export const generatedRecipes = pgTable(
+  "generated_recipes",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    recipe: jsonb("recipe").notNull(),
+    saved: boolean("saved").notNull().default(false),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [index("generated_recipes_user_idx").on(t.userId, t.saved)],
+);
+
+/** Daily chat usage per user, for the message limit and cost tracking. */
+export const chatUsage = pgTable(
+  "chat_usage",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    day: date("day").notNull(),
+    messages: integer("messages").notNull().default(0),
+    inputTokens: integer("input_tokens").notNull().default(0),
+    outputTokens: integer("output_tokens").notNull().default(0),
+    cacheReadTokens: integer("cache_read_tokens").notNull().default(0),
+  },
+  (t) => [primaryKey({ columns: [t.userId, t.day] })],
 );
