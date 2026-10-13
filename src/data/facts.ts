@@ -20,7 +20,13 @@ export interface IngredientFacts {
   pack?: { usd: number; grams: number; label: string };
 }
 
-type Row = [kcal: number, protein: number, fiber: number, grams: IngredientFacts["grams"], pack?: [number, number, string]];
+type Row = [
+  kcal: number,
+  protein: number,
+  fiber: number,
+  grams: IngredientFacts["grams"],
+  pack?: [number, number, string],
+];
 
 const ROWS: Record<string, Row> = {
   // Produce

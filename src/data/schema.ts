@@ -1,15 +1,6 @@
 import { z } from "zod";
 
-export const COURSES = [
-  "breakfast",
-  "main",
-  "soup",
-  "salad",
-  "appetizer",
-  "side",
-  "drink",
-  "dessert",
-] as const;
+export const COURSES = ["breakfast", "main", "soup", "salad", "appetizer", "side", "drink", "dessert"] as const;
 export type Course = (typeof COURSES)[number];
 
 export const MEALS = ["breakfast", "lunch", "dinner", "snack"] as const;
@@ -33,14 +24,7 @@ export const CUISINES = [
 export type Cuisine = (typeof CUISINES)[number];
 
 /** Allowed equipment. There is deliberately no oven or broiler. */
-export const EQUIPMENT = [
-  "no-cook",
-  "microwave",
-  "stovetop",
-  "blender",
-  "toaster",
-  "air-fryer",
-] as const;
+export const EQUIPMENT = ["no-cook", "microwave", "stovetop", "blender", "toaster", "air-fryer"] as const;
 export type Equipment = (typeof EQUIPMENT)[number];
 
 export const UNITS = [

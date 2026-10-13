@@ -1,5 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { addEntry, EMPTY_PLAN, entriesFor, moveEntry, parsePlan, removeEntry, setEntryServings, toggleChecked } from "@/lib/plan";
+import {
+  addEntry,
+  EMPTY_PLAN,
+  entriesFor,
+  moveEntry,
+  parsePlan,
+  removeEntry,
+  setEntryServings,
+  toggleChecked,
+} from "@/lib/plan";
 import { buildShoppingList, formatShoppingLine, shoppingListText, type PlannedRecipe } from "@/lib/shopping";
 
 describe("plan", () => {
@@ -34,7 +43,10 @@ describe("plan", () => {
       ],
       checked: ["rice", 4],
     });
-    expect(parsed).toEqual({ entries: [{ id: "a", slug: "tacos", day: 2, meal: "lunch", servings: 3 }], checked: ["rice"] });
+    expect(parsed).toEqual({
+      entries: [{ id: "a", slug: "tacos", day: 2, meal: "lunch", servings: 3 }],
+      checked: ["rice"],
+    });
     expect(parsePlan(undefined)).toEqual(EMPTY_PLAN);
   });
 });
@@ -116,7 +128,10 @@ describe("buildShoppingList", () => {
   });
 
   it("marks pantry items as have, low items as buy-again, and totals only what to buy", () => {
-    const list = buildShoppingList([{ slug: "bean-tacos", servings: 2 }], recipes, { have: ["canned-beans", "tortillas"], low: ["tortillas"] });
+    const list = buildShoppingList([{ slug: "bean-tacos", servings: 2 }], recipes, {
+      have: ["canned-beans", "tortillas"],
+      low: ["tortillas"],
+    });
     const byId = Object.fromEntries(list.items.map((i) => [i.id, i]));
     expect(byId["black-beans"]).toMatchObject({ status: "have", packages: 0, cost: 0 });
     expect(byId.tortillas.status).toBe("low");
@@ -154,7 +169,12 @@ describe("buildShoppingList", () => {
 
 describe("formatShoppingLine", () => {
   it("joins mixed units", () => {
-    expect(formatShoppingLine("canned-corn", [{ qty: 1, unit: "can" }, { qty: 0.5, unit: "cup" }])).toBe("1 can + 1/2 cup canned corn");
+    expect(
+      formatShoppingLine("canned-corn", [
+        { qty: 1, unit: "can" },
+        { qty: 0.5, unit: "cup" },
+      ]),
+    ).toBe("1 can + 1/2 cup canned corn");
     expect(formatShoppingLine("eggs", [{ qty: 3 }])).toBe("3 eggs");
   });
 });

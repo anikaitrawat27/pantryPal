@@ -16,7 +16,12 @@ export function ServingsStepper({ value, onChange }: { value: number; onChange: 
       <output aria-live="polite" className={styles.value} data-testid="servings">
         {value} <span>{t.servingsN(value)}</span>
       </output>
-      <button type="button" onClick={() => onChange(value + 1)} disabled={value >= MAX_SERVINGS} aria-label={t.moreServings}>
+      <button
+        type="button"
+        onClick={() => onChange(value + 1)}
+        disabled={value >= MAX_SERVINGS}
+        aria-label={t.moreServings}
+      >
         +
       </button>
     </div>

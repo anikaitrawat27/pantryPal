@@ -12,7 +12,17 @@ import ui from "./ui.module.css";
 /** Today's index with Monday as 0, matching the plan's day numbering. */
 const today = () => (new Date().getDay() + 6) % 7;
 
-export function AddToPlan({ slug, title, servings, defaultMeal }: { slug: string; title: string; servings: number; defaultMeal: Meal }) {
+export function AddToPlan({
+  slug,
+  title,
+  servings,
+  defaultMeal,
+}: {
+  slug: string;
+  title: string;
+  servings: number;
+  defaultMeal: Meal;
+}) {
   const { add } = usePlan();
   const lang = useLang();
   const d = useDict();
@@ -25,7 +35,13 @@ export function AddToPlan({ slug, title, servings, defaultMeal }: { slug: string
 
   return (
     <div className={`${styles.wrap} no-print`}>
-      <button type="button" className={ui.button} aria-expanded={open} aria-controls={id} onClick={() => setOpen(!open)}>
+      <button
+        type="button"
+        className={ui.button}
+        aria-expanded={open}
+        aria-controls={id}
+        onClick={() => setOpen(!open)}
+      >
         {t.button}
       </button>
       {open && (

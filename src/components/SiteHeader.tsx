@@ -17,7 +17,13 @@ function LangSwitch() {
   const query = useSearchParams()?.toString();
   const target = switchLangPath(pathname, lang === "en" ? "es" : "en");
   return (
-    <Link href={query ? `${target}?${query}` : target} hrefLang={lang === "en" ? "es" : "en"} lang={lang === "en" ? "es" : "en"} aria-label={t.switchLabel} className={styles.lang}>
+    <Link
+      href={query ? `${target}?${query}` : target}
+      hrefLang={lang === "en" ? "es" : "en"}
+      lang={lang === "en" ? "es" : "en"}
+      aria-label={t.switchLabel}
+      className={styles.lang}
+    >
       {t.switchTo}
     </Link>
   );

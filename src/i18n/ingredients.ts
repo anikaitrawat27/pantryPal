@@ -132,7 +132,8 @@ const SUB_NOTES_ES: Record<string, string> = {
   "Adds fruit flavor.": "Le da sabor a fruta.",
   "Add a pinch of salt and sugar.": "Agregue una pizca de sal y de azúcar.",
   "Mash or blend for a smoother sauce.": "Macháquelo o licúelo para una salsa más suave.",
-  "Add an extra pinch of salt and a little garlic-ginger paste.": "Agregue otra pizca de sal y un poco de pasta de ajo y jengibre.",
+  "Add an extra pinch of salt and a little garlic-ginger paste.":
+    "Agregue otra pizca de sal y un poco de pasta de ajo y jengibre.",
   "Sharper, so start with less.": "Es más fuerte; empiece con menos.",
   "Finely shredded.": "Finamente rallado.",
   "Cut each slice into rounds with a small glass.": "Corte cada rebanada en círculos con un vaso pequeño.",

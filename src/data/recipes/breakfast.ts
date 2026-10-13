@@ -4,7 +4,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "eggs-n-links",
     title: "Eggs n Links",
-    blurb: "Scrambled eggs from the microwave with sausage links browned in a skillet. A filling plate when you want a hot breakfast in about 15 minutes.",
+    blurb:
+      "Scrambled eggs from the microwave with sausage links browned in a skillet. A filling plate when you want a hot breakfast in about 15 minutes.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -34,7 +35,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "twist-on-toast",
     title: "Twist on Toast",
-    blurb: "Warm toast spread with peanut butter and topped with sliced banana. It takes five minutes and keeps you full until lunch.",
+    blurb:
+      "Warm toast spread with peanut butter and topped with sliced banana. It takes five minutes and keeps you full until lunch.",
     course: "breakfast",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -62,7 +64,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "fruitful-yogurt",
     title: "Fruitful Yogurt",
-    blurb: "A layered yogurt parfait with fruit and a crunchy cereal topping. Make it for a quick breakfast, an afternoon snack, or a light dessert.",
+    blurb:
+      "A layered yogurt parfait with fruit and a crunchy cereal topping. Make it for a quick breakfast, an afternoon snack, or a light dessert.",
     course: "breakfast",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -92,7 +95,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "pancakes-in-a-mug",
     title: "Pancakes in a Mug",
-    blurb: "A soft banana pancake cooked in a mug in about two minutes. Good for a weekday morning when you want something warm without a skillet.",
+    blurb:
+      "A soft banana pancake cooked in a mug in about two minutes. Good for a weekday morning when you want something warm without a skillet.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -127,7 +131,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "breakfast-rolls",
     title: "Breakfast Rolls",
-    blurb: "Soft rolls made from a simple yogurt dough and cooked in a covered skillet. Spread them with jelly, butter, or mashed banana.",
+    blurb:
+      "Soft rolls made from a simple yogurt dough and cooked in a covered skillet. Spread them with jelly, butter, or mashed banana.",
     course: "breakfast",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -160,7 +165,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "cheesy-mug-scramble",
     title: "Cheesy Mug Scramble",
-    blurb: "Soft scrambled eggs with melted cheddar, made right in the mug. Breakfast in under five minutes with one thing to wash.",
+    blurb:
+      "Soft scrambled eggs with melted cheddar, made right in the mug. Breakfast in under five minutes with one thing to wash.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -190,7 +196,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "veggie-omelet-in-a-mug",
     title: "Veggie Omelet in a Mug",
-    blurb: "Eggs, bell pepper, onion, and greens cooked together in a mug. A fast way to use up a few vegetables before work or school.",
+    blurb:
+      "Eggs, bell pepper, onion, and greens cooked together in a mug. A fast way to use up a few vegetables before work or school.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -221,7 +228,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "peanut-butter-banana-oatmeal",
     title: "Peanut Butter Banana Oatmeal",
-    blurb: "Creamy microwave oatmeal with mashed banana stirred in and peanut butter on top. A warm, filling bowl in about five minutes.",
+    blurb:
+      "Creamy microwave oatmeal with mashed banana stirred in and peanut butter on top. A warm, filling bowl in about five minutes.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -251,7 +259,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "apple-cinnamon-oatmeal",
     title: "Apple Cinnamon Oatmeal",
-    blurb: "Stovetop oatmeal cooked with diced apple until the fruit turns soft and sweet. A cozy breakfast for a cold morning.",
+    blurb:
+      "Stovetop oatmeal cooked with diced apple until the fruit turns soft and sweet. A cozy breakfast for a cold morning.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -282,7 +291,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "berry-overnight-oats",
     title: "Berry Overnight Oats",
-    blurb: "Oats soaked overnight in milk and yogurt with berries folded in. Stir it together at night and breakfast is ready when you wake up.",
+    blurb:
+      "Oats soaked overnight in milk and yogurt with berries folded in. Stir it together at night and breakfast is ready when you wake up.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -310,7 +320,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "pain-perdu-french-toast",
     title: "Pain Perdu (French Toast)",
-    blurb: "Bread soaked in a sweet egg custard and cooked in butter until golden. The French way to use up bread that has gone a little stale.",
+    blurb:
+      "Bread soaked in a sweet egg custard and cooked in butter until golden. The French way to use up bread that has gone a little stale.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "french",
@@ -342,7 +353,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "egg-in-a-hole",
     title: "Egg in a Hole",
-    blurb: "A fried egg cooked inside a slice of buttered toast. One skillet, three ingredients, and breakfast in under ten minutes.",
+    blurb:
+      "A fried egg cooked inside a slice of buttered toast. One skillet, three ingredients, and breakfast in under ten minutes.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -371,7 +383,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "breakfast-burritos",
     title: "Breakfast Burritos",
-    blurb: "Scrambled eggs, black beans, and cheese rolled up in warm tortillas. Make a few extra and freeze them for busy mornings.",
+    blurb:
+      "Scrambled eggs, black beans, and cheese rolled up in warm tortillas. Make a few extra and freeze them for busy mornings.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "mexican",
@@ -401,12 +414,15 @@ export const BREAKFAST = defineRecipes([
       "Divide the filling between the tortillas and top with the cheese and hot sauce.",
       "Fold in the sides and roll each tortilla up tightly.",
     ],
-    tips: ["To freeze, wrap each burrito tightly and freeze for up to a month. Reheat in the microwave for 2 to 3 minutes, turning once."],
+    tips: [
+      "To freeze, wrap each burrito tightly and freeze for up to a month. Reheat in the microwave for 2 to 3 minutes, turning once.",
+    ],
   },
   {
     slug: "egg-and-cheese-quesadilla",
     title: "Egg and Cheese Quesadilla",
-    blurb: "Soft scrambled eggs and melted cheese between two crisp tortillas. Cut it into wedges for an easy breakfast you can eat with your hands.",
+    blurb:
+      "Soft scrambled eggs and melted cheese between two crisp tortillas. Cut it into wedges for an easy breakfast you can eat with your hands.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "mexican",
@@ -438,7 +454,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "breakfast-potato-hash",
     title: "Breakfast Potato Hash",
-    blurb: "Crisp potatoes, peppers, and onion with eggs cooked right on top. A one-skillet breakfast that also works for a weekend lunch.",
+    blurb:
+      "Crisp potatoes, peppers, and onion with eggs cooked right on top. A one-skillet breakfast that also works for a weekend lunch.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "american",
@@ -473,7 +490,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "skillet-biscuits",
     title: "Skillet Biscuits",
-    blurb: "Canned biscuit dough cooked low and slow in a covered skillet until golden. Serve them warm with jelly or honey, or split them for sandwiches.",
+    blurb:
+      "Canned biscuit dough cooked low and slow in a covered skillet until golden. Serve them warm with jelly or honey, or split them for sandwiches.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -495,12 +513,15 @@ export const BREAKFAST = defineRecipes([
       "Or air fry at 330°F for 8 to 10 minutes, turning once halfway.",
       "Serve warm with jelly or honey.",
     ],
-    tips: ["Split one open to check. If the middle is still raw, turn the heat lower and cook a few minutes more so the outside does not burn."],
+    tips: [
+      "Split one open to check. If the middle is still raw, turn the heat lower and cook a few minutes more so the outside does not burn.",
+    ],
   },
   {
     slug: "peanut-butter-cereal-bars",
     title: "Peanut Butter Cereal Bars",
-    blurb: "Chewy bars of cereal bound with warm peanut butter and honey. Make a batch on Sunday for grab-and-go breakfasts all week.",
+    blurb:
+      "Chewy bars of cereal bound with warm peanut butter and honey. Make a batch on Sunday for grab-and-go breakfasts all week.",
     course: "breakfast",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -530,7 +551,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "greek-style-yogurt-with-honey-and-orange",
     title: "Greek-Style Yogurt with Honey and Orange",
-    blurb: "Thick yogurt topped with fresh orange pieces and a drizzle of honey. A light, no-cook breakfast in the style of a Greek morning bowl.",
+    blurb:
+      "Thick yogurt topped with fresh orange pieces and a drizzle of honey. A light, no-cook breakfast in the style of a Greek morning bowl.",
     course: "breakfast",
     meal: ["breakfast", "snack"],
     cuisine: "mediterranean",
@@ -551,12 +573,15 @@ export const BREAKFAST = defineRecipes([
       "Top with the orange and any juice from the cutting board.",
       "Drizzle with the honey and sprinkle with cinnamon, if using.",
     ],
-    tips: ["To thicken thin yogurt, spoon it into a coffee filter set in a strainer and let it drain in the fridge for an hour."],
+    tips: [
+      "To thicken thin yogurt, spoon it into a coffee filter set in a strainer and let it drain in the fridge for an hour.",
+    ],
   },
   {
     slug: "banana-pancakes",
     title: "Banana Pancakes",
-    blurb: "Fluffy stovetop pancakes with ripe banana mashed into the batter. A weekend breakfast that uses up the spotty bananas on the counter.",
+    blurb:
+      "Fluffy stovetop pancakes with ripe banana mashed into the batter. A weekend breakfast that uses up the spotty bananas on the counter.",
     course: "breakfast",
     meal: ["breakfast"],
     cuisine: "american",
@@ -592,7 +617,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "rice-porridge-congee",
     title: "Rice Porridge (Congee)",
-    blurb: "Leftover rice simmered in broth until thick and silky, with an optional ribbon of egg. A gentle, warming breakfast eaten across China.",
+    blurb:
+      "Leftover rice simmered in broth until thick and silky, with an optional ribbon of egg. A gentle, warming breakfast eaten across China.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "chinese",
@@ -624,7 +650,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "anda-bhurji-masala-scrambled-eggs",
     title: "Anda Bhurji (Masala Scrambled Eggs)",
-    blurb: "Indian-style scrambled eggs cooked with onion, tomato, garlic, ginger, and warm spices. Scoop them up with toast or a warm tortilla.",
+    blurb:
+      "Indian-style scrambled eggs cooked with onion, tomato, garlic, ginger, and warm spices. Scoop them up with toast or a warm tortilla.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "indian",
@@ -657,7 +684,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "chilaquiles",
     title: "Chilaquiles",
-    blurb: "Tortilla chips tossed in a warm red sauce and topped with fried eggs and cheese. A Mexican breakfast that turns the end of a chip bag into a meal.",
+    blurb:
+      "Tortilla chips tossed in a warm red sauce and topped with fried eggs and cheese. A Mexican breakfast that turns the end of a chip bag into a meal.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "mexican",
@@ -693,7 +721,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "japanese-rolled-omelet-tamagoyaki",
     title: "Japanese Rolled Omelet (Tamagoyaki)",
-    blurb: "A lightly sweet omelet built from thin layers of egg rolled up in the skillet. Slice it for breakfast with rice or pack it in a lunch box.",
+    blurb:
+      "A lightly sweet omelet built from thin layers of egg rolled up in the skillet. Slice it for breakfast with rice or pack it in a lunch box.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "japanese",
@@ -723,7 +752,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "korean-egg-toast",
     title: "Korean Egg Toast",
-    blurb: "A Seoul street-stall sandwich of buttery toast, a cabbage and carrot omelet, and a sprinkle of sugar. Sweet, savory, and quick to make.",
+    blurb:
+      "A Seoul street-stall sandwich of buttery toast, a cabbage and carrot omelet, and a sprinkle of sugar. Sweet, savory, and quick to make.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "korean",
@@ -756,7 +786,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "huevos-rotos",
     title: "Huevos Rotos",
-    blurb: "Spanish broken eggs: crisp fried potatoes topped with fried eggs, with the yolks broken over everything. A hearty breakfast or late lunch.",
+    blurb:
+      "Spanish broken eggs: crisp fried potatoes topped with fried eggs, with the yolks broken over everything. A hearty breakfast or late lunch.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "spanish",
@@ -785,7 +816,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "french-omelet",
     title: "French Omelet",
-    blurb: "A smooth, pale omelet with soft curds, rolled in butter. It takes about three minutes once you get the hang of it.",
+    blurb:
+      "A smooth, pale omelet with soft curds, rolled in butter. It takes about three minutes once you get the hang of it.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "french",
@@ -814,7 +846,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "jamaican-fried-dumplings",
     title: "Jamaican Fried Dumplings",
-    blurb: "Golden fried dough rounds, crisp outside and soft inside. In Jamaica they come with eggs or saltfish at breakfast, and they work with butter and jelly too.",
+    blurb:
+      "Golden fried dough rounds, crisp outside and soft inside. In Jamaica they come with eggs or saltfish at breakfast, and they work with butter and jelly too.",
     course: "breakfast",
     meal: ["breakfast", "snack"],
     cuisine: "caribbean",
@@ -845,7 +878,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "gyeran-bap-egg-rice",
     title: "Gyeran Bap (Egg Rice)",
-    blurb: "Hot rice topped with a crisp fried egg, butter, and soy sauce, then mixed together. A Korean comfort breakfast that takes five minutes.",
+    blurb:
+      "Hot rice topped with a crisp fried egg, butter, and soy sauce, then mixed together. A Korean comfort breakfast that takes five minutes.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "korean",
@@ -873,7 +907,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "stovetop-greens-frittata",
     title: "Stovetop Greens Frittata",
-    blurb: "An Italian-style egg cake with wilted greens, onion, and parmesan, cooked gently in a covered skillet. Serve it warm or at room temperature.",
+    blurb:
+      "An Italian-style egg cake with wilted greens, onion, and parmesan, cooked gently in a covered skillet. Serve it warm or at room temperature.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "italian",
@@ -907,7 +942,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "tomato-mozzarella-toast",
     title: "Tomato Mozzarella Toast",
-    blurb: "Crisp toast layered with sliced tomato and melted mozzarella, finished with oil and Italian herbs. A quick breakfast with the flavors of a caprese salad.",
+    blurb:
+      "Crisp toast layered with sliced tomato and melted mozzarella, finished with oil and Italian herbs. A quick breakfast with the flavors of a caprese salad.",
     course: "breakfast",
     meal: ["breakfast", "lunch", "snack"],
     cuisine: "italian",
@@ -935,7 +971,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "balila-warm-spiced-chickpeas",
     title: "Balila (Warm Spiced Chickpeas)",
-    blurb: "Warm chickpeas with garlic, cumin, lemon, and a pool of oil, eaten with bread at Lebanese breakfast tables. Ready in about ten minutes.",
+    blurb:
+      "Warm chickpeas with garlic, cumin, lemon, and a pool of oil, eaten with bread at Lebanese breakfast tables. Ready in about ten minutes.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "middle-eastern",
@@ -965,7 +1002,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "menemen",
     title: "Menemen",
-    blurb: "Turkish scrambled eggs cooked slowly into a soft, saucy mix of tomatoes and peppers. Bring the skillet to the table and dip bread straight into it.",
+    blurb:
+      "Turkish scrambled eggs cooked slowly into a soft, saucy mix of tomatoes and peppers. Bring the skillet to the table and dip bread straight into it.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "mediterranean",
@@ -998,7 +1036,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "khai-jiao-thai-omelet",
     title: "Khai Jiao (Thai Omelet)",
-    blurb: "A puffy Thai omelet fried in hot oil until the edges turn lacy and crisp. Serve it over rice with a dash of hot sauce.",
+    blurb:
+      "A puffy Thai omelet fried in hot oil until the edges turn lacy and crisp. Serve it over rice with a dash of hot sauce.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "thai",
@@ -1027,7 +1066,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "masala-oats",
     title: "Masala Oats",
-    blurb: "Savory oats cooked with onion, tomato, carrot, and spices, like a quick Indian upma. A warm breakfast for people who skip sweet oatmeal.",
+    blurb:
+      "Savory oats cooked with onion, tomato, carrot, and spices, like a quick Indian upma. A warm breakfast for people who skip sweet oatmeal.",
     course: "breakfast",
     meal: ["breakfast", "lunch"],
     cuisine: "indian",
@@ -1063,7 +1103,8 @@ export const BREAKFAST = defineRecipes([
   {
     slug: "simple-crepes",
     title: "Simple Crepes",
-    blurb: "Thin French pancakes made from a pourable batter of flour, eggs, and milk. Fill them with jelly, banana, or a sprinkle of sugar and lemon.",
+    blurb:
+      "Thin French pancakes made from a pourable batter of flour, eggs, and milk. Fill them with jelly, banana, or a sprinkle of sugar and lemon.",
     course: "breakfast",
     meal: ["breakfast", "snack"],
     cuisine: "french",

@@ -4,7 +4,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "stovetop-peanut-butter-cookies",
     title: "Stovetop Peanut Butter Cookies",
-    blurb: "Chewy peanut butter and oat cookies made in one saucepan and left to set on the counter. A sweet treat that needs only a burner.",
+    blurb:
+      "Chewy peanut butter and oat cookies made in one saucepan and left to set on the counter. A sweet treat that needs only a burner.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -20,7 +21,15 @@ export const DESSERTS = defineRecipes([
       ["salt", 1, "pinch"],
       ["peanut-butter", 0.5, "cup"],
       ["vanilla", 0.5, "tsp", { optional: true }],
-      ["oats", 1.5, "cup", { note: "quick oats work best", subs: [{ id: "cereal", note: "Lightly crushed. The cookies come out crunchier." }] }],
+      [
+        "oats",
+        1.5,
+        "cup",
+        {
+          note: "quick oats work best",
+          subs: [{ id: "cereal", note: "Lightly crushed. The cookies come out crunchier." }],
+        },
+      ],
     ],
     steps: [
       "Line a tray or large plate with parchment paper.",
@@ -39,7 +48,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "fruit-bark",
     title: "Fruit Bark",
-    blurb: "Sweetened yogurt spread thin, topped with fruit and cereal, and frozen until firm. Break it into pieces for a cold snack on a hot day.",
+    blurb:
+      "Sweetened yogurt spread thin, topped with fruit and cereal, and frozen until firm. Break it into pieces for a cold snack on a hot day.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -67,7 +77,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "mug-pie",
     title: "Mug Pie",
-    blurb: "A buttery crust wrapped around a spoonful of jelly and cooked in a mug in the microwave. A single-serving pie in a few minutes.",
+    blurb:
+      "A buttery crust wrapped around a spoonful of jelly and cooked in a mug in the microwave. A single-serving pie in a few minutes.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -101,7 +112,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "cookie-truffles",
     title: "Cookie Truffles",
-    blurb: "Crushed cereal mixed with cream cheese and peanut butter, rolled into balls and coated in more crumbs. A no-cook sweet for parties or gifts.",
+    blurb:
+      "Crushed cereal mixed with cream cheese and peanut butter, rolled into balls and coated in more crumbs. A no-cook sweet for parties or gifts.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -133,7 +145,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "monkey-mug-muffin",
     title: "Monkey Mug Muffin",
-    blurb: "A soft banana muffin with a sugary top, cooked in a mug in the microwave. A good use for half a ripe banana.",
+    blurb:
+      "A soft banana muffin with a sugary top, cooked in a mug in the microwave. A good use for half a ripe banana.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -164,7 +177,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "vanilla-mug-cake",
     title: "Vanilla Mug Cake",
-    blurb: "A light vanilla cake stirred together in a mug and cooked in the microwave in about a minute. For when you want one slice of cake, not a whole one.",
+    blurb:
+      "A light vanilla cake stirred together in a mug and cooked in the microwave in about a minute. For when you want one slice of cake, not a whole one.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -193,7 +207,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "peanut-butter-mug-cake",
     title: "Peanut Butter Mug Cake",
-    blurb: "A dense, nutty single-serving cake made with peanut butter and cooked in the microwave. A quick late-night sweet.",
+    blurb:
+      "A dense, nutty single-serving cake made with peanut butter and cooked in the microwave. A quick late-night sweet.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -222,7 +237,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "berry-mug-cake",
     title: "Berry Mug Cake",
-    blurb: "A buttery mug cake dotted with blueberries that turn jammy as they cook. Fresh or frozen berries both work.",
+    blurb:
+      "A buttery mug cake dotted with blueberries that turn jammy as they cook. Fresh or frozen berries both work.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -253,7 +269,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "cinnamon-roll-mug-cake",
     title: "Cinnamon Roll Mug Cake",
-    blurb: "A mug cake with a buttery cinnamon sugar swirl and a honey cream cheese glaze. All the flavor of a cinnamon roll in a few minutes.",
+    blurb:
+      "A mug cake with a buttery cinnamon sugar swirl and a honey cream cheese glaze. All the flavor of a cinnamon roll in a few minutes.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -286,7 +303,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "peanut-butter-and-jelly-mug-cake",
     title: "Peanut Butter and Jelly Mug Cake",
-    blurb: "A peanut butter mug cake with a pocket of warm jelly in the middle. The lunchbox sandwich turned into a quick dessert.",
+    blurb:
+      "A peanut butter mug cake with a pocket of warm jelly in the middle. The lunchbox sandwich turned into a quick dessert.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -317,7 +335,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "stovetop-rice-pudding",
     title: "Stovetop Rice Pudding",
-    blurb: "Leftover rice simmered in sweetened milk with vanilla and cinnamon until thick and creamy. Serve it warm or cold.",
+    blurb:
+      "Leftover rice simmered in sweetened milk with vanilla and cinnamon until thick and creamy. Serve it warm or cold.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -346,7 +365,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "kheer",
     title: "Kheer",
-    blurb: "Indian rice pudding made by slowly simmering a small amount of rice in milk until thick. Serve it warm or chilled after a meal.",
+    blurb:
+      "Indian rice pudding made by slowly simmering a small amount of rice in milk until thick. Serve it warm or chilled after a meal.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "indian",
@@ -373,7 +393,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "banana-nice-cream",
     title: "Banana Nice Cream",
-    blurb: "Frozen bananas blended into a soft-serve style frozen dessert with a splash of milk. A cool treat with no ice cream maker.",
+    blurb:
+      "Frozen bananas blended into a soft-serve style frozen dessert with a splash of milk. A cool treat with no ice cream maker.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -400,7 +421,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "frozen-yogurt-pops",
     title: "Frozen Yogurt Pops",
-    blurb: "Honey-sweetened yogurt swirled with mashed berries and frozen on sticks. Make them in the morning for an after-school treat.",
+    blurb:
+      "Honey-sweetened yogurt swirled with mashed berries and frozen on sticks. Make them in the morning for an after-school treat.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -428,7 +450,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "berry-crumble-in-a-mug",
     title: "Berry Crumble in a Mug",
-    blurb: "Warm, saucy berries under a buttery crushed-cereal topping, made in the microwave. A single serving of fruit crumble in five minutes.",
+    blurb:
+      "Warm, saucy berries under a buttery crushed-cereal topping, made in the microwave. A single serving of fruit crumble in five minutes.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -456,7 +479,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "apple-crisp-in-a-mug",
     title: "Apple Crisp in a Mug",
-    blurb: "Tender cinnamon apples under a sweet oat topping, cooked in a mug in the microwave. A small fall dessert for one.",
+    blurb:
+      "Tender cinnamon apples under a sweet oat topping, cooked in a mug in the microwave. A small fall dessert for one.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -487,7 +511,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "cinnamon-fried-apples",
     title: "Cinnamon Fried Apples",
-    blurb: "Apple slices cooked in butter, sugar, and cinnamon until soft and syrupy. Eat them warm on their own or spooned over yogurt or toast.",
+    blurb:
+      "Apple slices cooked in butter, sugar, and cinnamon until soft and syrupy. Eat them warm on their own or spooned over yogurt or toast.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -515,7 +540,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "honey-poached-pears",
     title: "Honey Poached Pears",
-    blurb: "Pear halves simmered in honey syrup until tender, then served with the reduced syrup. A light French-style dessert that can be made ahead.",
+    blurb:
+      "Pear halves simmered in honey syrup until tender, then served with the reduced syrup. A light French-style dessert that can be made ahead.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "french",
@@ -547,7 +573,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "skillet-bananas-foster",
     title: "Skillet Bananas Foster",
-    blurb: "Bananas cooked in a buttery cinnamon caramel sauce, without the rum. Spoon them over nice cream or yogurt for a quick warm dessert.",
+    blurb:
+      "Bananas cooked in a buttery cinnamon caramel sauce, without the rum. Spoon them over nice cream or yogurt for a quick warm dessert.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -576,7 +603,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "churro-bites",
     title: "Churro Bites",
-    blurb: "Small pieces of fried dough rolled in cinnamon sugar while warm. A Mexican-style treat to share with friends.",
+    blurb:
+      "Small pieces of fried dough rolled in cinnamon sugar while warm. A Mexican-style treat to share with friends.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "mexican",
@@ -612,7 +640,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "sopapillas-with-honey",
     title: "Sopapillas with Honey",
-    blurb: "Thin squares of dough fried until they puff, then drizzled with honey. A light, crisp dessert from the American Southwest and Mexico.",
+    blurb:
+      "Thin squares of dough fried until they puff, then drizzled with honey. A light, crisp dessert from the American Southwest and Mexico.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "mexican",
@@ -647,7 +676,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "steamed-milk-egg-custard",
     title: "Steamed Milk Egg Custard",
-    blurb: "A silky, lightly sweet custard steamed in a covered pot, in the style of Chinese dim sum desserts. Serve it warm or chilled.",
+    blurb:
+      "A silky, lightly sweet custard steamed in a covered pot, in the style of Chinese dim sum desserts. Serve it warm or chilled.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "chinese",
@@ -677,7 +707,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "fluffy-japanese-pancakes",
     title: "Fluffy Japanese Pancakes",
-    blurb: "Tall, soft pancakes made with whipped egg whites and steamed in a covered skillet. A weekend project served with honey and berries.",
+    blurb:
+      "Tall, soft pancakes made with whipped egg whites and steamed in a covered skillet. A weekend project served with honey and berries.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "japanese",
@@ -716,7 +747,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "sweet-filled-hotteok",
     title: "Sweet Filled Hotteok",
-    blurb: "Korean street pancakes stuffed with cinnamon sugar and crushed cereal, pressed flat and pan-fried until the filling melts into syrup.",
+    blurb:
+      "Korean street pancakes stuffed with cinnamon sugar and crushed cereal, pressed flat and pan-fried until the filling melts into syrup.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "korean",
@@ -753,7 +785,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "crepes-with-jelly",
     title: "Crepes with Jelly",
-    blurb: "Thin French pancakes spread with jelly and folded into quarters. Make a stack for dessert or an afternoon treat.",
+    blurb:
+      "Thin French pancakes spread with jelly and folded into quarters. Make a stack for dessert or an afternoon treat.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "french",
@@ -788,7 +821,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "torrijas",
     title: "Torrijas",
-    blurb: "Spanish fried bread soaked in sweet cinnamon milk, dipped in egg, and coated in cinnamon sugar. A good way to use up day-old bread.",
+    blurb:
+      "Spanish fried bread soaked in sweet cinnamon milk, dipped in egg, and coated in cinnamon sugar. A good way to use up day-old bread.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "spanish",
@@ -822,7 +856,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "caribbean-banana-fritters",
     title: "Caribbean Banana Fritters",
-    blurb: "Soft, sweet fritters made from mashed ripe bananas and fried in spoonfuls. A good use for bananas with brown spots.",
+    blurb:
+      "Soft, sweet fritters made from mashed ripe bananas and fried in spoonfuls. A good use for bananas with brown spots.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "caribbean",
@@ -855,7 +890,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "honey-yogurt-with-pears",
     title: "Honey Yogurt with Pears",
-    blurb: "Thick yogurt drizzled with honey and topped with sliced pear and a pinch of cinnamon, in the Mediterranean style. A light dessert in five minutes.",
+    blurb:
+      "Thick yogurt drizzled with honey and topped with sliced pear and a pinch of cinnamon, in the Mediterranean style. A light dessert in five minutes.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "mediterranean",
@@ -882,7 +918,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "skillet-apple-hand-pies",
     title: "Skillet Apple Hand Pies",
-    blurb: "Biscuit dough wrapped around warm cinnamon apples and cooked in a covered skillet until golden. Like a turnover, made on the stove.",
+    blurb:
+      "Biscuit dough wrapped around warm cinnamon apples and cooked in a covered skillet until golden. Like a turnover, made on the stove.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -915,7 +952,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "toasted-oat-jelly-bars",
     title: "Toasted Oat Jelly Bars",
-    blurb: "Butter-toasted oats pressed around a layer of jelly and chilled until firm. Fruit bars made on the stovetop for snacks or dessert.",
+    blurb:
+      "Butter-toasted oats pressed around a layer of jelly and chilled until firm. Fruit bars made on the stovetop for snacks or dessert.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -948,7 +986,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "cookie-dough-bites",
     title: "Cookie Dough Bites",
-    blurb: "Egg-free cookie dough made with heat-treated flour, rolled into bites that are safe to eat without cooking. A sweet snack to keep in the fridge.",
+    blurb:
+      "Egg-free cookie dough made with heat-treated flour, rolled into bites that are safe to eat without cooking. A sweet snack to keep in the fridge.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -984,7 +1023,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "strawberry-shortcake",
     title: "Strawberry Shortcake",
-    blurb: "Skillet-cooked biscuits split and filled with juicy sugared strawberries and honey yogurt. A summer dessert made on the stovetop.",
+    blurb:
+      "Skillet-cooked biscuits split and filled with juicy sugared strawberries and honey yogurt. A summer dessert made on the stovetop.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -1016,7 +1056,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "frozen-fruit-sorbet",
     title: "Frozen Fruit Sorbet",
-    blurb: "Frozen fruit blended with honey into a smooth, scoopable sorbet. A cold dessert made in five minutes with a blender.",
+    blurb:
+      "Frozen fruit blended with honey into a smooth, scoopable sorbet. A cold dessert made in five minutes with a blender.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -1040,7 +1081,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "cinnamon-sugar-toast",
     title: "Cinnamon Sugar Toast",
-    blurb: "Buttered bread topped with cinnamon sugar and toasted until the sugar melts. A simple sweet snack made in minutes.",
+    blurb:
+      "Buttered bread topped with cinnamon sugar and toasted until the sugar melts. A simple sweet snack made in minutes.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",
@@ -1067,7 +1109,8 @@ export const DESSERTS = defineRecipes([
   {
     slug: "biscuit-donuts",
     title: "Biscuit Donuts",
-    blurb: "Canned biscuits with the centers cut out, fried in a skillet, and tossed in cinnamon sugar. Donuts and donut holes from one can.",
+    blurb:
+      "Canned biscuits with the centers cut out, fried in a skillet, and tossed in cinnamon sugar. Donuts and donut holes from one can.",
     course: "dessert",
     meal: ["snack"],
     cuisine: "american",

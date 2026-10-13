@@ -23,7 +23,10 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
   const [copied, setCopied] = useState(false);
 
   const bySlug = useMemo(() => new Map(recipes.map((r) => [r.slug, r])), [recipes]);
-  const list = useMemo(() => buildShoppingList(plan.entries, bySlug, pantry, lang), [plan.entries, bySlug, pantry, lang]);
+  const list = useMemo(
+    () => buildShoppingList(plan.entries, bySlug, pantry, lang),
+    [plan.entries, bySlug, pantry, lang],
+  );
 
   const toBuy = list.items.filter((i) => i.status !== "have");
   const have = list.items.filter((i) => i.status === "have");
@@ -61,7 +64,9 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
             <span className={styles.line}>{item.line}</span>
             {item.status === "low" && <span className={styles.low}>{t.low}</span>}
             <small>
-              {item.packages > 0 && item.packLabel && t.buy(item.packages, packLabel(item.packLabel, lang), formatUsd(item.cost))}
+              {item.packages > 0 &&
+                item.packLabel &&
+                t.buy(item.packages, packLabel(item.packLabel, lang), formatUsd(item.cost))}
               {item.recipes.length > 0 ? t.for(item.recipes.join(", ")) : t.restock}
             </small>
           </span>
@@ -77,9 +82,7 @@ export function ShoppingListView({ recipes }: { recipes: RecipeSummary[] }) {
           <p className={styles.total}>
             {t.about} <strong className="hand">{formatUsd(list.total)}</strong>
           </p>
-          <p className={styles.sub}>
-            {t.left(remaining.length, toBuy.length, plan.entries.length)}
-          </p>
+          <p className={styles.sub}>{t.left(remaining.length, toBuy.length, plan.entries.length)}</p>
         </div>
         <div className={`${styles.actions} no-print`}>
           <button type="button" className={ui.button} onClick={copy}>

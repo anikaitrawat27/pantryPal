@@ -3,7 +3,8 @@ import { defineRecipesEs } from "../../recipe-es";
 export const SALADS_ES = defineRecipesEs({
   "caesar-salad": {
     title: "Ensalada César",
-    blurb: "Lechuga romana crujiente con un aderezo de mayonesa, ajo y queso parmesano, y crutones tostados en sartén. No lleva huevo crudo.",
+    blurb:
+      "Lechuga romana crujiente con un aderezo de mayonesa, ajo y queso parmesano, y crutones tostados en sartén. No lleva huevo crudo.",
     steps: [
       "Mezcle los cubitos de pan con la mitad del aceite y una pizca de sal.",
       "Tuéstelos en un sartén a fuego medio de 6 a 8 minutos, revolviendo seguido, hasta que estén dorados y crujientes.",
@@ -23,7 +24,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "chicken-salad": {
     title: "Ensalada de pollo",
-    blurb: "Pollo enlatado mezclado con mayonesa, manzana en cubitos y cebolla para darle textura crujiente. Cómala en pan, en una hoja de lechuga o con totopos.",
+    blurb:
+      "Pollo enlatado mezclado con mayonesa, manzana en cubitos y cebolla para darle textura crujiente. Cómala en pan, en una hoja de lechuga o con totopos.",
     steps: [
       "Desmenuce el pollo en pedazos pequeños en un tazón.",
       "Agregue la manzana y la cebolla.",
@@ -39,7 +41,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "fruit-salad": {
     title: "Ensalada de frutas",
-    blurb: "Fresas, arándanos, naranjas, plátanos y manzana mezclados con un aderezo ligero de miel. Buena para un almuerzo de fin de semana o una tarde calurosa.",
+    blurb:
+      "Fresas, arándanos, naranjas, plátanos y manzana mezclados con un aderezo ligero de miel. Buena para un almuerzo de fin de semana o una tarde calurosa.",
     steps: [
       "Ponga las fresas, los arándanos, la naranja y la manzana en un tazón grande.",
       "Bata la miel y el jugo de limón en un tazón pequeño.",
@@ -57,7 +60,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "greek-salad": {
     title: "Ensalada griega",
-    blurb: "Lechuga, tomate, pimiento y cebolla con queso y un aderezo sencillo de aceite y vinagre. Agregue garbanzos para hacerla una comida.",
+    blurb:
+      "Lechuga, tomate, pimiento y cebolla con queso y un aderezo sencillo de aceite y vinagre. Agregue garbanzos para hacerla una comida.",
     steps: [
       "Acomode la lechuga, el tomate, el pimiento, la cebolla y los garbanzos en un platón grande.",
       "Bata el aceite, el vinagre, las hierbas italianas y una pizca de sal en un tazón pequeño.",
@@ -76,7 +80,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "pasta-salad": {
     title: "Ensalada de pasta",
-    blurb: "Pasta fría con pimiento, tomate, maíz y queso parmesano en un aderezo de aceite. Prepárela con anticipación para los almuerzos o una carne asada.",
+    blurb:
+      "Pasta fría con pimiento, tomate, maíz y queso parmesano en un aderezo de aceite. Prepárela con anticipación para los almuerzos o una carne asada.",
     steps: [
       "Hierva la pasta en agua con sal según las instrucciones del paquete.",
       "Escúrrala y enjuáguela con agua fría hasta que se enfríe.",
@@ -96,7 +101,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   coleslaw: {
     title: "Ensalada de repollo (coleslaw)",
-    blurb: "Repollo y zanahoria rallados en un aderezo cremoso de mayonesa. Un acompañamiento clásico para sándwiches, chili o cualquier cosa asada a la parrilla.",
+    blurb:
+      "Repollo y zanahoria rallados en un aderezo cremoso de mayonesa. Un acompañamiento clásico para sándwiches, chili o cualquier cosa asada a la parrilla.",
     steps: [
       "Corte el repollo a la mitad, quítele el centro duro y córtelo en tiras muy finas.",
       "Ponga el repollo y la zanahoria en un tazón grande.",
@@ -111,7 +117,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "three-bean-salad": {
     title: "Ensalada de tres frijoles",
-    blurb: "Ejotes, frijoles rojos y garbanzos en un aderezo agridulce. Se conserva bien, así que prepárela un día antes para los almuerzos o una comida compartida.",
+    blurb:
+      "Ejotes, frijoles rojos y garbanzos en un aderezo agridulce. Se conserva bien, así que prepárela un día antes para los almuerzos o una comida compartida.",
     steps: [
       "Ponga los ejotes, los frijoles rojos, los garbanzos y la cebolla en un tazón grande.",
       "Bata el vinagre, el aceite, el azúcar, la sal y la pimienta en un tazón pequeño hasta que el azúcar se disuelva.",
@@ -129,7 +136,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "tuna-salad": {
     title: "Ensalada de atún",
-    blurb: "Atún enlatado mezclado con mayonesa, cebolla y un poco de limón. Úntelo en pan o sírvalo en lechuga para un almuerzo de cinco minutos.",
+    blurb:
+      "Atún enlatado mezclado con mayonesa, cebolla y un poco de limón. Úntelo en pan o sírvalo en lechuga para un almuerzo de cinco minutos.",
     steps: [
       "Desmenuce el atún con un tenedor en un tazón.",
       "Agregue la mayonesa, la cebolla, el jugo de limón, la sal y la pimienta, y revuelva.",
@@ -143,7 +151,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "egg-salad-lettuce-wraps": {
     title: "Ensalada de huevo en hojas de lechuga",
-    blurb: "Ensalada cremosa de huevo servida en hojas de lechuga crujientes. Un almuerzo ligero que se conserva bien, así que puede cocer los huevos con anticipación.",
+    blurb:
+      "Ensalada cremosa de huevo servida en hojas de lechuga crujientes. Un almuerzo ligero que se conserva bien, así que puede cocer los huevos con anticipación.",
     steps: [
       "Ponga los huevos en una olla y cúbralos con agua fría.",
       "Deje que hierva a fuego alto, luego apague el fuego, tape la olla y deje reposar durante 12 minutos.",
@@ -152,11 +161,14 @@ export const SALADS_ES = defineRecipesEs({
       "Agregue la mayonesa, la sal y la pimienta, y revuelva.",
       "Ponga la ensalada de huevo en las hojas de lechuga con una cuchara y espolvoree el pimentón encima.",
     ],
-    tips: ["La ensalada de huevo se conserva tapada en el refrigerador por 3 días. Rellene la lechuga justo antes de comer."],
+    tips: [
+      "La ensalada de huevo se conserva tapada en el refrigerador por 3 días. Rellene la lechuga justo antes de comer.",
+    ],
   },
   "taco-salad": {
     title: "Ensalada de taco",
-    blurb: "Carne molida sazonada sobre lechuga y tomate con frijoles, queso cheddar y totopos crujientes. Una cena rápida para cualquier día.",
+    blurb:
+      "Carne molida sazonada sobre lechuga y tomate con frijoles, queso cheddar y totopos crujientes. Una cena rápida para cualquier día.",
     steps: [
       "Cocine la carne en un sartén a fuego medio-alto de 7 a 8 minutos, desmenuzándola, hasta que ya no se vea rosada.",
       "Escurra el exceso de grasa.",
@@ -175,7 +187,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "mediterranean-chickpea-salad": {
     title: "Ensalada mediterránea de garbanzos",
-    blurb: "Garbanzos con tomate, pimiento y cebolla en un aderezo de aceite de oliva y limón. Aguanta bien en la lonchera.",
+    blurb:
+      "Garbanzos con tomate, pimiento y cebolla en un aderezo de aceite de oliva y limón. Aguanta bien en la lonchera.",
     steps: [
       "Ponga los garbanzos, el tomate, el pimiento y la cebolla en un tazón grande.",
       "Bata el aceite, el jugo de limón, el comino, la sal y la pimienta en un tazón pequeño.",
@@ -193,7 +206,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "potato-salad": {
     title: "Ensalada de papa",
-    blurb: "Papas cocidas y suaves en un aderezo cremoso de mayonesa con cebolla y huevo picado. Un acompañamiento que se prepara con anticipación para días de campo y carnes asadas.",
+    blurb:
+      "Papas cocidas y suaves en un aderezo cremoso de mayonesa con cebolla y huevo picado. Un acompañamiento que se prepara con anticipación para días de campo y carnes asadas.",
     steps: [
       "Ponga las papas y los huevos en una olla grande, cúbralos con agua fría y agregue una buena pizca de sal.",
       "Deje que hierva a fuego alto y luego baje el fuego para que hierva suavemente.",
@@ -212,7 +226,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "corn-and-black-bean-salad": {
     title: "Ensalada de maíz y frijoles negros",
-    blurb: "Frijoles negros y maíz con tomate, pimiento y un aderezo de comino y limón. Cómala con totopos o como acompañamiento de tacos.",
+    blurb:
+      "Frijoles negros y maíz con tomate, pimiento y un aderezo de comino y limón. Cómala con totopos o como acompañamiento de tacos.",
     steps: [
       "Ponga los frijoles, el maíz, el tomate, el pimiento y la cebolla en un tazón grande.",
       "Bata el aceite, el jugo de limón, el comino, el chile en polvo y la sal en un tazón pequeño.",
@@ -229,7 +244,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "thai-peanut-noodle-salad": {
     title: "Ensalada tailandesa de fideos con cacahuate",
-    blurb: "Fideos fríos con repollo y zanahoria rallados en un aderezo de crema de cacahuate, salsa de soya y miel. Fácil de llevar para el almuerzo.",
+    blurb:
+      "Fideos fríos con repollo y zanahoria rallados en un aderezo de crema de cacahuate, salsa de soya y miel. Fácil de llevar para el almuerzo.",
     steps: [
       "Cocine los fideos en una olla con agua hirviendo según las instrucciones del paquete.",
       "Escúrralos y enjuáguelos con agua fría hasta que se enfríen.",
@@ -248,7 +264,8 @@ export const SALADS_ES = defineRecipesEs({
   },
   "japanese-style-cabbage-salad": {
     title: "Ensalada de repollo al estilo japonés",
-    blurb: "Repollo y zanahoria en tiras finas con un aderezo ligero de salsa de soya y vinagre. Un acompañamiento crujiente para platos de arroz y de fideos.",
+    blurb:
+      "Repollo y zanahoria en tiras finas con un aderezo ligero de salsa de soya y vinagre. Un acompañamiento crujiente para platos de arroz y de fideos.",
     steps: [
       "Ponga el repollo y la zanahoria en un tazón grande.",
       "Bata la salsa de soya, el vinagre, el azúcar, el aceite y la pasta de ajo y jengibre en un tazón pequeño hasta que el azúcar se disuelva.",

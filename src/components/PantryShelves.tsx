@@ -10,7 +10,16 @@ import { useMyPantry } from "@/lib/my-pantry";
 import styles from "@/views/PantryView.module.css";
 import ui from "./ui.module.css";
 
-const GROUP_ORDER: IngredientGroup[] = ["produce", "dairy-eggs", "protein", "grains", "canned", "baking", "condiments", "extras"];
+const GROUP_ORDER: IngredientGroup[] = [
+  "produce",
+  "dairy-eggs",
+  "protein",
+  "grains",
+  "canned",
+  "baking",
+  "condiments",
+  "extras",
+];
 
 /** The full ingredient list. Tapping an item adds it to or removes it from the cook's saved pantry. */
 export function PantryShelves({ usage }: { usage: Record<string, number> }) {
@@ -35,7 +44,11 @@ export function PantryShelves({ usage }: { usage: Record<string, number> }) {
               <Link href={cookHref} className={`${ui.button} ${ui.primary}`}>
                 {t.cook}
               </Link>
-              <button type="button" className={styles.clearBtn} onClick={() => window.confirm(t.confirmClear) && clear()}>
+              <button
+                type="button"
+                className={styles.clearBtn}
+                onClick={() => window.confirm(t.confirmClear) && clear()}
+              >
                 {t.clear}
               </button>
             </div>
@@ -45,7 +58,11 @@ export function PantryShelves({ usage }: { usage: Record<string, number> }) {
 
       <div className={styles.shelves}>
         {GROUP_ORDER.map((g) => (
-          <section key={g} className={`${styles.shelf} ${g === "extras" ? styles.extras : ""}`} aria-labelledby={`shelf-${g}`}>
+          <section
+            key={g}
+            className={`${styles.shelf} ${g === "extras" ? styles.extras : ""}`}
+            aria-labelledby={`shelf-${g}`}
+          >
             <h2 id={`shelf-${g}`}>{d.groups[g]}</h2>
             <ul>
               {INGREDIENTS.filter((i) => i.group === g).map((i) => {
@@ -70,7 +87,11 @@ export function PantryShelves({ usage }: { usage: Record<string, number> }) {
                         {t.low}
                       </button>
                     )}
-                    <Link href={`${localePath(lang, "/recipes")}?have=${i.id}`} className={styles.count} aria-label={t.usage(usage[i.id], name)}>
+                    <Link
+                      href={`${localePath(lang, "/recipes")}?have=${i.id}`}
+                      className={styles.count}
+                      aria-label={t.usage(usage[i.id], name)}
+                    >
                       {usage[i.id]}
                     </Link>
                   </li>

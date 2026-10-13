@@ -32,7 +32,10 @@ const COURSE_ART: Record<Course, (accent: string) => React.ReactNode> = {
     <>
       <path d="M8 34c0-11 9-19 20-19s20 8 20 19-9 18-20 18S8 45 8 34z" {...stroke} />
       <path d="M47 38c5 1 9 2 12 4" {...stroke} strokeWidth={4.5} />
-      <path d="M17 33c-1-6 5-10 10-8 3-5 12-3 12 3 5 1 6 8 1 10-1 5-9 6-12 3-5 3-12 0-11-8z" {...filled("var(--card)")} />
+      <path
+        d="M17 33c-1-6 5-10 10-8 3-5 12-3 12 3 5 1 6 8 1 10-1 5-9 6-12 3-5 3-12 0-11-8z"
+        {...filled("var(--card)")}
+      />
       <circle cx="28.5" cy="33" r="4.6" fill={a} stroke="currentColor" strokeWidth={2.2} />
     </>
   ),
@@ -114,7 +117,12 @@ export function JarLogo({ size = 48, className }: { size?: number; className?: s
       <circle cx="26" cy="32" r="2.2" fill="currentColor" />
       <circle cx="38" cy="32" r="2.2" fill="currentColor" />
       <path d="M27 39c3 3 7 3 10 0" {...stroke} strokeWidth={2.2} />
-      <path d="M20 37c1.5 0.5 3 0.5 4 0M40 37c1.5 0.5 3 0.5 4 0" stroke="var(--tomato)" strokeWidth={2.4} strokeLinecap="round" />
+      <path
+        d="M20 37c1.5 0.5 3 0.5 4 0M40 37c1.5 0.5 3 0.5 4 0"
+        stroke="var(--tomato)"
+        strokeWidth={2.4}
+        strokeLinecap="round"
+      />
       <path d="M45 24c2 3 2 7 1 10" {...stroke} strokeWidth={2} opacity={0.5} />
     </svg>
   );

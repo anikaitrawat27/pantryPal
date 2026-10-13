@@ -28,8 +28,7 @@ export const DRINKS_ES = defineRecipesEs({
   },
   "orange-berry-lemonade": {
     title: "Limonada de naranja y fresa",
-    blurb:
-      "Naranja fresca y fresas machacadas en una limonada ácida. Un vaso rosado y afrutado para un día de calor.",
+    blurb: "Naranja fresca y fresas machacadas en una limonada ácida. Un vaso rosado y afrutado para un día de calor.",
     steps: [
       "Separe la naranja en gajos y póngalos en un vaso grande o un frasco con las fresas.",
       "Machaque con un tenedor hasta que suelten el jugo.",
@@ -54,8 +53,7 @@ export const DRINKS_ES = defineRecipesEs({
   },
   "pink-lemonade": {
     title: "Limonada rosa",
-    blurb:
-      "Limonada dulce y ácida pintada de rosa con frambuesas machacadas. Sirven frambuesas frescas o congeladas.",
+    blurb: "Limonada dulce y ácida pintada de rosa con frambuesas machacadas. Sirven frambuesas frescas o congeladas.",
     steps: [
       "Ponga las frambuesas y el jugo de limón en un vaso grande o un frasco.",
       "Machaque las frambuesas con un tenedor hasta que no quede ninguna entera.",
@@ -170,8 +168,7 @@ export const DRINKS_ES = defineRecipesEs({
   },
   "avena-warm-oat-drink": {
     title: "Avena (bebida caliente de avena)",
-    blurb:
-      "Una bebida mexicana espesa y dulce de avena cocida con leche y canela. Tómela caliente en una mañana fría.",
+    blurb: "Una bebida mexicana espesa y dulce de avena cocida con leche y canela. Tómela caliente en una mañana fría.",
     steps: [
       "Junte la avena, el agua, la canela y la sal en una olla.",
       "Deje que suelte el hervor a fuego medio y cocine por 5 minutos, revolviendo seguido.",

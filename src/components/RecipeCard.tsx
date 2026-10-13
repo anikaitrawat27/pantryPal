@@ -25,7 +25,10 @@ export function RecipeCard({ recipe, lang, match, index = 0 }: Props) {
   const diet = CARD_DIETS.find((d) => recipe.diets.includes(d));
   const tools = recipe.equipment.filter((e) => e !== "no-cook");
   return (
-    <article className={`${ui.card} ${styles.card}`} style={{ "--tilt": `${[-1, 0.8, -0.5, 1.1][index % 4]}deg` } as React.CSSProperties}>
+    <article
+      className={`${ui.card} ${styles.card}`}
+      style={{ "--tilt": `${[-1, 0.8, -0.5, 1.1][index % 4]}deg` } as React.CSSProperties}
+    >
       <Link href={localePath(lang, `/recipes/${recipe.slug}`)} className={styles.link}>
         <div className={styles.top}>
           <CourseDoodle course={recipe.course} size={56} className={styles.doodle} />
@@ -49,7 +52,9 @@ export function RecipeCard({ recipe, lang, match, index = 0 }: Props) {
           ))}
         </div>
       )}
-      {match && match.missing.length === 0 && match.swaps.length === 0 && <p className={styles.ready}>{t.card.ready}</p>}
+      {match && match.missing.length === 0 && match.swaps.length === 0 && (
+        <p className={styles.ready}>{t.card.ready}</p>
+      )}
       {!match && <PantryStatus ingredients={recipe.ingredients} />}
 
       <div className={styles.meta}>

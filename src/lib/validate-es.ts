@@ -31,9 +31,11 @@ export function validateTranslations(
       continue;
     }
     if (!t.title.trim()) at("empty title");
-    if (t.blurb.length < 10 || t.blurb.length > 240) at(`blurb is ${t.blurb.length} characters; keep it between 10 and 240`);
+    if (t.blurb.length < 10 || t.blurb.length > 240)
+      at(`blurb is ${t.blurb.length} characters; keep it between 10 and 240`);
     if (t.steps.length !== r.steps.length) at(`has ${t.steps.length} steps; English has ${r.steps.length}`);
-    if ((t.tips?.length ?? 0) !== (r.tips?.length ?? 0)) at(`has ${t.tips?.length ?? 0} tips; English has ${r.tips?.length ?? 0}`);
+    if ((t.tips?.length ?? 0) !== (r.tips?.length ?? 0))
+      at(`has ${t.tips?.length ?? 0} tips; English has ${r.tips?.length ?? 0}`);
 
     const ids = new Set(r.ingredients.map((i) => i.id));
     for (const ing of r.ingredients) if (ing.note && !t.notes?.[ing.id]?.trim()) at(`missing note for "${ing.id}"`);

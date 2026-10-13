@@ -3,7 +3,8 @@ import { defineRecipesEs } from "../../recipe-es";
 export const MAINS_B_ES = defineRecipesEs({
   "skillet-grilled-chicken": {
     title: "Pollo asado a la sartén",
-    blurb: "Pechuga de pollo bien dorada en una sartén caliente con un poco de pimentón. Una cena sencilla y alta en proteína que va bien con arroz, pan o cualquier verdura enlatada.",
+    blurb:
+      "Pechuga de pollo bien dorada en una sartén caliente con un poco de pimentón. Una cena sencilla y alta en proteína que va bien con arroz, pan o cualquier verdura enlatada.",
     steps: [
       "Aplane cada pechuga de pollo con la base de la mano o con el fondo de una olla pesada para que quede del mismo grosor.",
       "Unte el pollo con el aceite y sazone ambos lados con la sal, la pimienta y el pimentón.",
@@ -20,7 +21,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "meaty-burritos": {
     title: "Burritos con carne",
-    blurb: "Tortillas de harina rellenas de carne enlatada dorada en la sartén, frijoles negros, verduras y queso. Una cena que llena hecha con unas cuantas latas.",
+    blurb:
+      "Tortillas de harina rellenas de carne enlatada dorada en la sartén, frijoles negros, verduras y queso. Una cena que llena hecha con unas cuantas latas.",
     steps: [
       "Caliente el aceite en una sartén grande a fuego medio y cocine la cebolla 4 minutos, hasta que esté suave.",
       "Agregue la carne enlatada y cocine de 4 a 5 minutos, revolviendo de vez en cuando, hasta que se dore en las orillas.",
@@ -46,7 +48,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "skillet-chicken-pot-pie": {
     title: "Pastel de pollo a la sartén (pot pie)",
-    blurb: "Relleno cremoso de pollo y verduras cocinado en la estufa, con bisquets encima que se cuecen al vapor bajo la tapa. Una versión rápida del pastel clásico.",
+    blurb:
+      "Relleno cremoso de pollo y verduras cocinado en la estufa, con bisquets encima que se cuecen al vapor bajo la tapa. Una versión rápida del pastel clásico.",
     steps: [
       "Derrita la mantequilla a fuego medio en una sartén grande que tenga tapa.",
       "Cocine la cebolla 5 minutos, hasta que esté suave.",
@@ -67,7 +70,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "turkey-sliders": {
     title: "Minisándwiches de pavo (sliders)",
-    blurb: "Sándwiches pequeños de pavo y queso dorados en mantequilla en una sartén tapada hasta que el queso se derrite. Buenos para una cena rápida o para un grupo.",
+    blurb:
+      "Sándwiches pequeños de pavo y queso dorados en mantequilla en una sartén tapada hasta que el queso se derrite. Buenos para una cena rápida o para un grupo.",
     steps: [
       "Desmenuce el pavo con un tenedor y sazone con sal y pimienta.",
       "Unte la mayonesa en el pan, si la usa.",
@@ -86,7 +90,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   biryani: {
     title: "Biryani (arroz con pollo de la India)",
-    blurb: "Pollo marinado en yogur, cubierto con arroz y cocido al vapor en una olla tapada hasta que el arroz queda esponjoso. Una cena de fin de semana que vale la espera.",
+    blurb:
+      "Pollo marinado en yogur, cubierto con arroz y cocido al vapor en una olla tapada hasta que el arroz queda esponjoso. Una cena de fin de semana que vale la espera.",
     steps: [
       "Mezcle el pollo con el yogur, la pasta de ajo y jengibre, la mayor parte de la sal, la pimienta, el comino, el chile en polvo y la mitad del jugo de limón.",
       "Tape y refrigere por lo menos 30 minutos, o hasta el día siguiente.",
@@ -112,7 +117,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "tortilla-espanola": {
     title: "Tortilla española",
-    blurb: "Un omelet español grueso de papas suaves y cebolla, cocinado despacio en la estufa y volteado con un plato. Cómala caliente o a temperatura ambiente.",
+    blurb:
+      "Un omelet español grueso de papas suaves y cebolla, cocinado despacio en la estufa y volteado con un plato. Cómala caliente o a temperatura ambiente.",
     steps: [
       "Caliente el aceite en una sartén antiadherente a fuego medio-bajo.",
       "Agregue las papas y la cebolla con la mitad de la sal y cocine de 18 a 20 minutos, volteando de vez en cuando, hasta que estén tiernas pero sin dorarse.",
@@ -134,7 +140,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   shakshuka: {
     title: "Shakshuka (huevos en salsa de tomate)",
-    blurb: "Huevos cocidos en una salsa especiada de tomate y pimiento en una sartén tapada. Cómala en el desayuno o la cena, con pan para mojar.",
+    blurb:
+      "Huevos cocidos en una salsa especiada de tomate y pimiento en una sartén tapada. Cómala en el desayuno o la cena, con pan para mojar.",
     steps: [
       "Caliente el aceite a fuego medio en una sartén grande que tenga tapa.",
       "Cocine la cebolla y el pimiento de 6 a 7 minutos, hasta que estén suaves.",
@@ -154,7 +161,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "sloppy-joes": {
     title: "Sloppy Joes (sándwiches de carne molida)",
-    blurb: "Carne molida de res cocida en una salsa de tomate dulce y un poco ácida, servida sobre pan. Una cena rápida entre semana que a los niños suele gustarles.",
+    blurb:
+      "Carne molida de res cocida en una salsa de tomate dulce y un poco ácida, servida sobre pan. Una cena rápida entre semana que a los niños suele gustarles.",
     steps: [
       "Cocine la carne, la cebolla y el pimiento en una sartén grande a fuego medio-alto 8 minutos, desbaratando la carne, hasta que no quede nada rosado.",
       "Escurra el exceso de grasa.",
@@ -171,7 +179,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "cabbage-and-sausage-skillet": {
     title: "Repollo con salchicha a la sartén",
-    blurb: "Salchicha dorada y repollo suave con mantequilla, cocinados juntos en una sola sartén. Una cena barata y rápida para usar una cabeza de repollo.",
+    blurb:
+      "Salchicha dorada y repollo suave con mantequilla, cocinados juntos en una sola sartén. Una cena barata y rápida para usar una cabeza de repollo.",
     steps: [
       "Cocine la salchicha en una sartén grande a fuego medio de 6 a 8 minutos, volteándola, hasta que esté dorada y no quede nada rosado por dentro.",
       "Pase la salchicha a un plato.",
@@ -191,7 +200,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "cheeseburger-macaroni-skillet": {
     title: "Macarrones con carne y queso a la sartén",
-    blurb: "Carne molida, coditos y queso cheddar cocinados juntos en una sola olla para que la pasta absorba la salsa. Como la cena de caja, pero hecha en casa.",
+    blurb:
+      "Carne molida, coditos y queso cheddar cocinados juntos en una sola olla para que la pasta absorba la salsa. Como la cena de caja, pero hecha en casa.",
     steps: [
       "Cocine la carne y la cebolla en una sartén grande y honda a fuego medio-alto de 7 a 8 minutos, desbaratando la carne, hasta que no quede nada rosado.",
       "Escurra el exceso de grasa.",
@@ -208,7 +218,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "ground-beef-tacos": {
     title: "Tacos de carne molida",
-    blurb: "Carne molida sazonada en tortillas calientes con lechuga, tomate y queso. Una noche de tacos rápida sin necesidad de sobre de sazonador.",
+    blurb:
+      "Carne molida sazonada en tortillas calientes con lechuga, tomate y queso. Una noche de tacos rápida sin necesidad de sobre de sazonador.",
     steps: [
       "Cocine la carne y la cebolla en una sartén a fuego medio-alto de 7 a 8 minutos, desbaratando la carne, hasta que no quede nada rosado.",
       "Escurra el exceso de grasa.",
@@ -228,7 +239,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "taco-rice": {
     title: "Taco rice (arroz con carne estilo Okinawa)",
-    blurb: "Taco rice de Okinawa: carne molida sazonada sobre arroz caliente, con lechuga, tomate y queso encima. Una comida en un solo tazón de la cocina casera japonesa.",
+    blurb:
+      "Taco rice de Okinawa: carne molida sazonada sobre arroz caliente, con lechuga, tomate y queso encima. Una comida en un solo tazón de la cocina casera japonesa.",
     steps: [
       "Cocine la carne y la cebolla en una sartén a fuego medio-alto de 7 a 8 minutos, desbaratando la carne, hasta que no quede nada rosado.",
       "Escurra el exceso de grasa.",
@@ -248,7 +260,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "korean-beef-rice-bowl": {
     title: "Tazón de arroz con carne estilo coreano",
-    blurb: "Carne molida cocida en una salsa dulce de soya, ajo y jengibre, al estilo bulgogi, y servida sobre arroz. Lista en unos 20 minutos.",
+    blurb:
+      "Carne molida cocida en una salsa dulce de soya, ajo y jengibre, al estilo bulgogi, y servida sobre arroz. Lista en unos 20 minutos.",
     steps: [
       "Mezcle la salsa de soya, el azúcar, la pasta de ajo y jengibre, el agua y la pimienta en un tazón pequeño.",
       "Caliente el aceite en una sartén a fuego medio-alto y cocine la carne y la cebolla 7 minutos, desbaratando la carne, hasta que no quede nada rosado.",
@@ -266,7 +279,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   oyakodon: {
     title: "Oyakodon (pollo con huevo sobre arroz)",
-    blurb: "Pollo y huevo al estilo japonés, cocidos en un caldo dulce de soya y servidos sobre un tazón de arroz. Una cena rápida y que llena para dos.",
+    blurb:
+      "Pollo y huevo al estilo japonés, cocidos en un caldo dulce de soya y servidos sobre un tazón de arroz. Una cena rápida y que llena para dos.",
     steps: [
       "Caliente el caldo, la salsa de soya y el azúcar en una sartén pequeña a fuego medio hasta que hierva suavemente.",
       "Agregue la cebolla y deje hervir a fuego suave 3 minutos, hasta que esté suave.",
@@ -283,7 +297,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "garlic-chicken-and-cabbage-stir-fry": {
     title: "Pollo salteado con repollo y ajo",
-    blurb: "Pollo tierno y repollo crujiente mezclados en una salsa de soya con mucho ajo. Un salteado al estilo chino que está en la mesa en 25 minutos.",
+    blurb:
+      "Pollo tierno y repollo crujiente mezclados en una salsa de soya con mucho ajo. Un salteado al estilo chino que está en la mesa en 25 minutos.",
     steps: [
       "Mezcle el pollo con la harina, la pimienta y un chorrito de la salsa de soya.",
       "Mezcle el resto de la salsa de soya con el azúcar, el agua y el vinagre en un tazón pequeño.",
@@ -303,7 +318,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "peanut-chicken-with-peppers": {
     title: "Pollo con pimientos en salsa de cacahuate",
-    blurb: "Pollo y pimientos en una salsa de cacahuate al estilo tailandés, hecha con crema de cacahuate y salsa de soya. Sírvalo sobre arroz para una cena fácil.",
+    blurb:
+      "Pollo y pimientos en una salsa de cacahuate al estilo tailandés, hecha con crema de cacahuate y salsa de soya. Sírvalo sobre arroz para una cena fácil.",
     steps: [
       "Bata la crema de cacahuate, la salsa de soya, la miel, la pasta de ajo y jengibre, el agua, el jugo de limón y la salsa picante hasta que quede sin grumos.",
       "Caliente el aceite en una sartén grande a fuego medio-alto y cocine el pollo de 5 a 6 minutos, hasta que esté dorado y no quede nada rosado.",
@@ -321,7 +337,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "beef-keema-with-peas": {
     title: "Keema de res con chícharos",
-    blurb: "Keema de la India con carne molida, cebolla, tomate y chícharos, cocinada con ajo, jengibre y especias aromáticas. Sírvala con arroz o tortillas calientes.",
+    blurb:
+      "Keema de la India con carne molida, cebolla, tomate y chícharos, cocinada con ajo, jengibre y especias aromáticas. Sírvala con arroz o tortillas calientes.",
     steps: [
       "Caliente el aceite en una sartén grande a fuego medio y cocine la cebolla de 6 a 7 minutos, hasta que esté dorada.",
       "Incorpore la pasta de ajo y jengibre y cocine 1 minuto.",
@@ -340,7 +357,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "chicken-tikka-skillet": {
     title: "Pollo tikka a la sartén",
-    blurb: "Pollo marinado en yogur, dorado y cocido en una salsa de tomate cremosa y especiada. Una versión en la estufa del pollo tikka masala para servir sobre arroz.",
+    blurb:
+      "Pollo marinado en yogur, dorado y cocido en una salsa de tomate cremosa y especiada. Una versión en la estufa del pollo tikka masala para servir sobre arroz.",
     steps: [
       "Mezcle el pollo con el yogur, la pasta de ajo y jengibre, el comino, el chile en polvo, el pimentón, el jugo de limón y la mitad de la sal.",
       "Tape y refrigere por lo menos 20 minutos.",
@@ -360,7 +378,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "jerk-style-chicken": {
     title: "Pollo estilo jerk (caribeño)",
-    blurb: "Pollo en una marinada caribeña dulce y con pimienta, hecha con cebolla, ajo, canela y salsa picante, y luego dorado en la sartén. Acompáñelo con arroz y frijoles.",
+    blurb:
+      "Pollo en una marinada caribeña dulce y con pimienta, hecha con cebolla, ajo, canela y salsa picante, y luego dorado en la sartén. Acompáñelo con arroz y frijoles.",
     steps: [
       "Machaque la cebolla, el ajo, el azúcar, la pimienta, la sal, la salsa de soya, el vinagre, la salsa picante, la canela, el chile en polvo y la mitad del aceite en un tazón.",
       "Cubra el pollo con la marinada, tape y refrigere por lo menos 30 minutos.",
@@ -378,7 +397,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "rice-and-peas-with-chicken": {
     title: "Arroz con frijoles y pollo (rice and peas)",
-    blurb: "Rice and peas del Caribe, hecho con frijoles rojos y cocido en una sola olla con pollo sazonado. Una cena completa con solo una olla para lavar.",
+    blurb:
+      "Rice and peas del Caribe, hecho con frijoles rojos y cocido en una sola olla con pollo sazonado. Una cena completa con solo una olla para lavar.",
     steps: [
       "Sazone el pollo con la sal y la pimienta.",
       "Caliente el aceite en una olla con tapa a fuego medio-alto y dore el pollo 5 minutos.",
@@ -398,7 +418,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "spanish-chicken-and-rice": {
     title: "Arroz con pollo",
-    blurb: "Arroz con pollo: pollo, pimiento y arroz cocidos con tomate, ajo y pimentón en una sola olla. Una comida completa para cuatro.",
+    blurb:
+      "Arroz con pollo: pollo, pimiento y arroz cocidos con tomate, ajo y pimentón en una sola olla. Una comida completa para cuatro.",
     steps: [
       "Sazone el pollo con la mitad de la sal y la pimienta.",
       "Caliente el aceite en una olla ancha o sartén honda con tapa a fuego medio-alto y dore el pollo 5 minutos, volteándolo. Páselo a un plato.",
@@ -420,7 +441,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "spiced-beef-over-rice": {
     title: "Carne especiada sobre arroz",
-    blurb: "Carne molida cocinada con canela, comino y pimentón al estilo del Medio Oriente, servida sobre arroz con una salsa de yogur y ajo.",
+    blurb:
+      "Carne molida cocinada con canela, comino y pimentón al estilo del Medio Oriente, servida sobre arroz con una salsa de yogur y ajo.",
     steps: [
       "Si usa el yogur, mézclelo con un poco del ajo, el jugo de limón y una pizca de la sal. Apártelo.",
       "Caliente el aceite en una sartén a fuego medio y cocine la cebolla 5 minutos, hasta que esté suave.",
@@ -438,7 +460,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "mediterranean-chicken-with-tomatoes": {
     title: "Pollo mediterráneo con tomate",
-    blurb: "Pechugas de pollo cocidas en tomate con ajo, garbanzos y hojas verdes. Una cena en una sola sartén para comer con pan o arroz.",
+    blurb:
+      "Pechugas de pollo cocidas en tomate con ajo, garbanzos y hojas verdes. Una cena en una sola sartén para comer con pan o arroz.",
     steps: [
       "Sazone el pollo con la mitad de la sal y la pimienta.",
       "Caliente el aceite en una sartén grande con tapa a fuego medio-alto y dore el pollo 4 minutos por lado, hasta que esté dorado. Páselo a un plato.",
@@ -458,7 +481,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "chicken-in-creamy-mushroom-sauce": {
     title: "Pollo en salsa cremosa de champiñones",
-    blurb: "Filetes de pollo al estilo francés, dorados en mantequilla y cocidos en una salsa cremosa de champiñones. Sirva la salsa sobre arroz, fideos o pan.",
+    blurb:
+      "Filetes de pollo al estilo francés, dorados en mantequilla y cocidos en una salsa cremosa de champiñones. Sirva la salsa sobre arroz, fideos o pan.",
     steps: [
       "Sazone el pollo con la sal y la pimienta y espolvoréelo con la harina.",
       "Derrita la mantequilla en una sartén grande con tapa a fuego medio y dore el pollo 4 minutos por lado. Páselo a un plato.",
@@ -475,7 +499,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "sausage-and-peppers": {
     title: "Salchicha con pimientos",
-    blurb: "Salchicha al estilo italiano cocinada con pimientos y cebolla suaves y dulces. Cómala directo de la sartén o sírvala sobre pan.",
+    blurb:
+      "Salchicha al estilo italiano cocinada con pimientos y cebolla suaves y dulces. Cómala directo de la sartén o sírvala sobre pan.",
     steps: [
       "Caliente el aceite en una sartén grande con tapa a fuego medio y dore las salchichas 5 minutos, volteándolas.",
       "Agregue el agua, tape y cocine de 8 a 10 minutos, hasta que no quede nada rosado por dentro. Pase las salchichas a una tabla y rebánelas.",
@@ -494,7 +519,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "sausage-and-potato-skillet": {
     title: "Salchicha con papas a la sartén",
-    blurb: "Papas en cubos doradas y crujientes, salchicha y pimiento cocinados en una sola sartén. Una cena abundante que también sirve como un desayuno grande.",
+    blurb:
+      "Papas en cubos doradas y crujientes, salchicha y pimiento cocinados en una sola sartén. Una cena abundante que también sirve como un desayuno grande.",
     steps: [
       "Caliente el aceite en una sartén grande con tapa a fuego medio.",
       "Agregue las papas y la sal, tape y cocine 10 minutos, revolviendo dos veces.",
@@ -512,7 +538,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "hot-dog-fried-rice": {
     title: "Arroz frito con salchicha de hot dog",
-    blurb: "Arroz frito al estilo coreano con rodajas de salchicha doradas, huevo y verduras. Una forma rápida de convertir el arroz que sobró en cena.",
+    blurb:
+      "Arroz frito al estilo coreano con rodajas de salchicha doradas, huevo y verduras. Una forma rápida de convertir el arroz que sobró en cena.",
     steps: [
       "Caliente el aceite en una sartén grande a fuego medio-alto y fría las rodajas de salchicha de 3 a 4 minutos, hasta que se doren en las orillas.",
       "Agregue la cebolla y las verduras, y cocine 2 minutos.",
@@ -531,7 +558,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "franks-and-beans": {
     title: "Salchichas con frijoles",
-    blurb: "Salchichas de hot dog en rodajas con frijoles en salsa de tomate dulce y un poco ácida. Una cena barata que llena y está lista en 15 minutos.",
+    blurb:
+      "Salchichas de hot dog en rodajas con frijoles en salsa de tomate dulce y un poco ácida. Una cena barata que llena y está lista en 15 minutos.",
     steps: [
       "Caliente el aceite en una olla pequeña a fuego medio y cocine las salchichas y la cebolla 4 minutos, hasta que se doren un poco.",
       "Incorpore los frijoles, el puré de tomate, el azúcar, el agua, el vinagre y la pimienta.",
@@ -547,7 +575,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "tuna-noodle-skillet": {
     title: "Fideos con atún a la sartén",
-    blurb: "Fideos de huevo, atún y chícharos en una salsa cremosa de champiñones, con totopos triturados encima. El sabor del guiso de atún, hecho en la estufa.",
+    blurb:
+      "Fideos de huevo, atún y chícharos en una salsa cremosa de champiñones, con totopos triturados encima. El sabor del guiso de atún, hecho en la estufa.",
     steps: [
       "Hierva los fideos en una olla con agua con sal hasta que estén suaves, de 6 a 7 minutos. Escúrralos.",
       "Derrita la mantequilla en una sartén grande a fuego medio y cocine la cebolla 3 minutos.",
@@ -567,7 +596,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "tuna-mayo-rice-bowl": {
     title: "Tazón de arroz con atún y mayonesa",
-    blurb: "Atún con mayonesa y salsa de soya al estilo japonés sobre arroz caliente. Un almuerzo de cinco minutos en el microondas con una lata de atún y arroz que sobró.",
+    blurb:
+      "Atún con mayonesa y salsa de soya al estilo japonés sobre arroz caliente. Un almuerzo de cinco minutos en el microondas con una lata de atún y arroz que sobró.",
     steps: [
       "Rocíe el arroz con unas gotas de agua, tápelo y caliéntelo en el microondas de 1 a 2 minutos, hasta que esté caliente.",
       "Mezcle el atún con la mayonesa y la mitad de la salsa de soya.",
@@ -583,7 +613,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "stovetop-chicken-and-dumplings": {
     title: "Pollo con bolitas de masa en la estufa",
-    blurb: "Pollo y verduras en un caldo espeso, con bolitas de masa suaves que se cuecen al vapor en la olla. Una cena caliente en una sola olla para las noches frías.",
+    blurb:
+      "Pollo y verduras en un caldo espeso, con bolitas de masa suaves que se cuecen al vapor en la olla. Una cena caliente en una sola olla para las noches frías.",
     steps: [
       "Derrita la mantequilla en una olla grande con tapa a fuego medio y cocine la cebolla y las zanahorias 5 minutos.",
       "Espolvoree una pequeña porción de la harina y revuelva 1 minuto.",
@@ -605,7 +636,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "sausage-gravy-and-skillet-biscuits": {
     title: "Bisquets a la sartén con salsa de salchicha",
-    blurb: "Salsa blanca de salchicha con bastante pimienta sobre bisquets cocidos en una sartén tapada. Un desayuno del sur de EE. UU. que también sirve como cena fácil.",
+    blurb:
+      "Salsa blanca de salchicha con bastante pimienta sobre bisquets cocidos en una sartén tapada. Un desayuno del sur de EE. UU. que también sirve como cena fácil.",
     steps: [
       "Derrita la mantequilla en una sartén antiadherente con tapa a fuego bajo y acomode los bisquets en una sola capa.",
       "Tape y cocine de 7 a 8 minutos, hasta que la parte de abajo esté dorada; luego voltéelos, tape y cocine de 7 a 8 minutos más, hasta que ya no estén crudos en el centro.",
@@ -624,7 +656,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "turkey-salisbury-steaks": {
     title: "Tortitas de pavo en salsa de champiñones (Salisbury steak)",
-    blurb: "Tortitas de pavo molido sazonadas y cocidas en una salsa de cebolla y champiñones. Una cena al estilo de las cafeterías de EE. UU. para servir sobre arroz o papas.",
+    blurb:
+      "Tortitas de pavo molido sazonadas y cocidas en una salsa de cebolla y champiñones. Una cena al estilo de las cafeterías de EE. UU. para servir sobre arroz o papas.",
     steps: [
       "Mezcle con las manos el pavo, las migajas de pan, el huevo, la cebolla picada, la salsa de soya, la sal y la pimienta, solo hasta que se integren.",
       "Forme 4 tortitas ovaladas del grosor de su dedo pulgar.",
@@ -642,7 +675,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "unstuffed-pepper-skillet": {
     title: "Pimientos rellenos desarmados a la sartén",
-    blurb: "Todo lo que lleva un pimiento relleno, cocinado junto en una sola sartén: carne, pimientos, arroz, tomate y queso derretido encima.",
+    blurb:
+      "Todo lo que lleva un pimiento relleno, cocinado junto en una sola sartén: carne, pimientos, arroz, tomate y queso derretido encima.",
     steps: [
       "Cocine la carne y la cebolla en una sartén grande con tapa a fuego medio-alto de 7 a 8 minutos, desbaratando la carne, hasta que no quede nada rosado.",
       "Escurra el exceso de grasa.",
@@ -661,7 +695,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "picadillo-with-potatoes": {
     title: "Picadillo con papas",
-    blurb: "Picadillo mexicano de carne molida y papas en cubitos cocidos en una salsa ligera de tomate. Sírvalo con arroz o enróllelo en tortillas.",
+    blurb:
+      "Picadillo mexicano de carne molida y papas en cubitos cocidos en una salsa ligera de tomate. Sírvalo con arroz o enróllelo en tortillas.",
     steps: [
       "Cocine la carne y la cebolla en una sartén grande con tapa a fuego medio-alto de 7 a 8 minutos, desbaratando la carne, hasta que no quede nada rosado.",
       "Escurra el exceso de grasa.",
@@ -680,7 +715,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "chicken-fajitas": {
     title: "Fajitas de pollo",
-    blurb: "Tiras de pollo sazonadas con pimientos y cebolla tostados, servidas en tortillas calientes. Una cena rápida para cuatro en la que cada quien arma la suya.",
+    blurb:
+      "Tiras de pollo sazonadas con pimientos y cebolla tostados, servidas en tortillas calientes. Una cena rápida para cuatro en la que cada quien arma la suya.",
     steps: [
       "Mezcle el pollo con el chile en polvo, el comino, el pimentón, el jugo de limón, la sal y la mitad del aceite.",
       "Caliente una sartén grande a fuego medio-alto y cocine el pollo de 5 a 7 minutos, hasta que esté dorado y no quede nada rosado. Páselo a un plato.",
@@ -699,7 +735,8 @@ export const MAINS_B_ES = defineRecipesEs({
   },
   "chicken-noodle-stir-fry": {
     title: "Fideos salteados con pollo",
-    blurb: "Fideos mezclados con pollo, zanahoria y hojas verdes en una salsa de soya con ajo y jengibre. Los fideos de ramen instantáneo funcionan bien aquí.",
+    blurb:
+      "Fideos mezclados con pollo, zanahoria y hojas verdes en una salsa de soya con ajo y jengibre. Los fideos de ramen instantáneo funcionan bien aquí.",
     steps: [
       "Hierva los fideos 3 minutos, o hasta que apenas estén suaves. Escúrralos y enjuáguelos con agua fría.",
       "Caliente la mitad del aceite en una sartén grande a fuego medio-alto y cocine el pollo de 5 a 6 minutos, hasta que no quede nada rosado. Páselo a un plato.",

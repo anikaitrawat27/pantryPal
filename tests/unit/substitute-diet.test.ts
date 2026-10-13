@@ -8,7 +8,9 @@ describe("resolveSubs", () => {
   });
 
   it("honors recipe overrides and blocks", () => {
-    expect(resolveSubs({ id: "butter", qty: 1, unit: "tbsp", subs: [{ id: "peanut-butter" }] }).map((s) => s.id)).toEqual(["peanut-butter"]);
+    expect(
+      resolveSubs({ id: "butter", qty: 1, unit: "tbsp", subs: [{ id: "peanut-butter" }] }).map((s) => s.id),
+    ).toEqual(["peanut-butter"]);
     expect(resolveSubs({ id: "butter", qty: 1, unit: "tbsp", noSubs: true })).toEqual([]);
   });
 
@@ -24,7 +26,10 @@ describe("resolveSubs", () => {
 
 describe("applySub", () => {
   it("applies ratio, unit, and note", () => {
-    const out = applySub({ id: "garlic", qty: 2, unit: "clove" }, { id: "garlic-ginger-paste", from: "clove", unit: "tsp", ratio: 0.5 });
+    const out = applySub(
+      { id: "garlic", qty: 2, unit: "clove" },
+      { id: "garlic-ginger-paste", from: "clove", unit: "tsp", ratio: 0.5 },
+    );
     expect(out).toMatchObject({ id: "garlic-ginger-paste", qty: 1, unit: "tsp", noSubs: true });
   });
 
@@ -35,7 +40,13 @@ describe("applySub", () => {
 
 describe("dietsFor", () => {
   it("labels a plant-only dish with every diet", () => {
-    expect(dietsFor([{ id: "rice" }, { id: "black-beans" }, { id: "oil" }])).toEqual(["vegan", "vegetarian", "dairy-free", "egg-free", "gluten-free"]);
+    expect(dietsFor([{ id: "rice" }, { id: "black-beans" }, { id: "oil" }])).toEqual([
+      "vegan",
+      "vegetarian",
+      "dairy-free",
+      "egg-free",
+      "gluten-free",
+    ]);
   });
 
   it("treats honey as not vegan but vegetarian", () => {

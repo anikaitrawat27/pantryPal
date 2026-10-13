@@ -27,7 +27,10 @@ async function main() {
   let es: Readonly<Record<string, RecipeEs>> = RECIPES_ES;
   let recipes: readonly Recipe[] = RECIPES;
   if (file) {
-    es = await loadOnlyExport<Record<string, RecipeEs>>(file, (v) => Boolean(v) && typeof v === "object" && !Array.isArray(v));
+    es = await loadOnlyExport<Record<string, RecipeEs>>(
+      file,
+      (v) => Boolean(v) && typeof v === "object" && !Array.isArray(v),
+    );
     const english = path.join("src/data/recipes", path.basename(file));
     const raw = await loadOnlyExport<RecipeInput[]>(english, Array.isArray);
     recipes = raw.map((r) => recipeSchema.parse(r));

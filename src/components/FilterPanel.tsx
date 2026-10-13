@@ -37,7 +37,13 @@ function ChipGroup<T extends string>({
       <legend>{legend}</legend>
       <div className={styles.chips}>
         {options.map((o) => (
-          <button key={o} type="button" className={ui.chip} aria-pressed={selected.includes(o)} onClick={() => onToggle(o)}>
+          <button
+            key={o}
+            type="button"
+            className={ui.chip}
+            aria-pressed={selected.includes(o)}
+            onClick={() => onToggle(o)}
+          >
             {labels[o]}
           </button>
         ))}
@@ -51,14 +57,34 @@ export function FilterPanel({ filters, onChange }: Props) {
   const t = d.filters;
   const toggle = <K extends ListKey>(key: K, value: FilterState[K][number]) => {
     const list = filters[key] as string[];
-    onChange({ [key]: list.includes(value) ? list.filter((v) => v !== value) : [...list, value] } as Partial<FilterState>);
+    onChange({
+      [key]: list.includes(value) ? list.filter((v) => v !== value) : [...list, value],
+    } as Partial<FilterState>);
   };
 
   return (
     <div className={styles.panel}>
-      <ChipGroup legend={t.course} options={COURSES} labels={d.courses} selected={filters.courses} onToggle={(v) => toggle("courses", v)} />
-      <ChipGroup legend={t.meal} options={MEALS} labels={d.meals} selected={filters.meals} onToggle={(v) => toggle("meals", v)} />
-      <ChipGroup legend={t.diet} options={DIETS} labels={d.diets} selected={filters.diets} onToggle={(v) => toggle("diets", v)} />
+      <ChipGroup
+        legend={t.course}
+        options={COURSES}
+        labels={d.courses}
+        selected={filters.courses}
+        onToggle={(v) => toggle("courses", v)}
+      />
+      <ChipGroup
+        legend={t.meal}
+        options={MEALS}
+        labels={d.meals}
+        selected={filters.meals}
+        onToggle={(v) => toggle("meals", v)}
+      />
+      <ChipGroup
+        legend={t.diet}
+        options={DIETS}
+        labels={d.diets}
+        selected={filters.diets}
+        onToggle={(v) => toggle("diets", v)}
+      />
       <ChipGroup
         legend={t.tools}
         options={TOOLS}
@@ -126,7 +152,13 @@ export function FilterPanel({ filters, onChange }: Props) {
         </span>
       </label>
 
-      <ChipGroup legend={t.cuisine} options={CUISINES} labels={d.cuisines} selected={filters.cuisines} onToggle={(v) => toggle("cuisines", v)} />
+      <ChipGroup
+        legend={t.cuisine}
+        options={CUISINES}
+        labels={d.cuisines}
+        selected={filters.cuisines}
+        onToggle={(v) => toggle("cuisines", v)}
+      />
     </div>
   );
 }

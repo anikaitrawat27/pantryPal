@@ -4,7 +4,6 @@ import type { RecipeIngredient } from "@/data/schema";
 export const DIETS = ["vegan", "vegetarian", "dairy-free", "egg-free", "gluten-free"] as const;
 export type Diet = (typeof DIETS)[number];
 
-
 /**
  * Derives diet labels from the required ingredients, so labels can never
  * contradict the ingredient list. Optional ingredients are ignored.

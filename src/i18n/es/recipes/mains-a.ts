@@ -242,7 +242,9 @@ export const MAINS_A_ES = defineRecipesEs({
       "O unte las tortitas con aceite y cocínelas en la freidora de aire a 375°F de 10 a 12 minutos, volteándolas a la mitad.",
       "Sirva cada tortita entre rebanadas de pan con lechuga y tomate.",
     ],
-    tips: ["Si las tortitas están muy suaves para formarlas, enfríelas en el refrigerador 15 minutos antes de cocinarlas."],
+    tips: [
+      "Si las tortitas están muy suaves para formarlas, enfríelas en el refrigerador 15 minutos antes de cocinarlas.",
+    ],
     notes: {
       potato: "mediana",
       "black-beans": "escurridos y enjuagados",
@@ -352,7 +354,9 @@ export const MAINS_A_ES = defineRecipesEs({
       "Reparta el arroz y las lentejas en los tazones y acomode encima las verduras doradas, el repollo, la zanahoria y el tomate.",
       "Rocíe con el resto del aceite y el jugo de limón, y sazone con sal y pimienta.",
     ],
-    tips: ["Haga el doble de arroz y lentejas y guárdelos en el refrigerador para armar tazones rápidos durante la semana."],
+    tips: [
+      "Haga el doble de arroz y lentejas y guárdelos en el refrigerador para armar tazones rápidos durante la semana.",
+    ],
     notes: {
       lentils: "secas, enjuagadas",
       rice: "crudo",

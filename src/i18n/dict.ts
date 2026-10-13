@@ -22,7 +22,8 @@ const en = {
     siteDescription:
       "250 easy recipes made only from food pantry ingredients. No oven needed. Search by what you have, scale servings, swap ingredients, and plan your week.",
     recipesTitle: "All recipes",
-    recipesDescription: "Browse and filter 250 pantry recipes by course, meal, cuisine, diet, tools, cost, and the ingredients you have.",
+    recipesDescription:
+      "Browse and filter 250 pantry recipes by course, meal, cuisine, diet, tools, cost, and the ingredients you have.",
     pantryTitle: "My pantry",
     pantryDescription: "Every ingredient Pantry Pal recipes use. Mark what you have to see what you can make.",
     planTitle: "Meal plan",
@@ -37,7 +38,8 @@ const en = {
   home: {
     titleStart: "Cook something good with",
     titleHighlight: "what you already have",
-    lede: (n: number) => `${n} easy recipes made only from food pantry staples. No oven, no fancy gadgets, no special trips to the store.`,
+    lede: (n: number) =>
+      `${n} easy recipes made only from food pantry staples. No oven, no fancy gadgets, no special trips to the store.`,
     browse: "Browse all recipes",
     surprise: "Surprise me",
     planWeek: "Plan my week",
@@ -51,7 +53,8 @@ const en = {
     rule2Title: "No oven",
     rule2Body: "Everything is made with a few simple tools.",
     rule3Title: "Make it fit",
-    rule3Body: "Scale any recipe from 1 to 6 servings, swap ingredients for ones you have, and plan your week with a shopping list.",
+    rule3Body:
+      "Scale any recipe from 1 to 6 servings, swap ingredients for ones you have, and plan your week with a shopping list.",
   },
   search: {
     label: "What's in your pantry?",
@@ -240,7 +243,8 @@ const en = {
     heading: "My pantry",
     intro:
       "These are the only ingredients Pantry Pal recipes use, plus water and ice. Extras are basic seasonings that not every pantry stocks. The number next to each item is how many recipes use it.",
-    empty: "Tap the ingredients you have at home. Pantry Pal remembers them on this device and shows what you can make.",
+    empty:
+      "Tap the ingredients you have at home. Pantry Pal remembers them on this device and shows what you can make.",
     saved: (n: number) => `${n} items saved`,
     lowCount: (n: number) => `, ${n} running low`,
     cook: "What can I make?",
@@ -348,9 +352,11 @@ const es: Dict = {
     siteDescription:
       "250 recetas fáciles hechas solo con ingredientes de bancos de comida. Sin horno. Busque por lo que tiene, ajuste las porciones, cambie ingredientes y planee su semana.",
     recipesTitle: "Todas las recetas",
-    recipesDescription: "Explore y filtre 250 recetas de despensa por tipo de plato, comida, cocina, dieta, utensilios, costo y los ingredientes que tiene.",
+    recipesDescription:
+      "Explore y filtre 250 recetas de despensa por tipo de plato, comida, cocina, dieta, utensilios, costo y los ingredientes que tiene.",
     pantryTitle: "Mi despensa",
-    pantryDescription: "Todos los ingredientes que usan las recetas de Pantry Pal. Marque lo que tiene para ver qué puede preparar.",
+    pantryDescription:
+      "Todos los ingredientes que usan las recetas de Pantry Pal. Marque lo que tiene para ver qué puede preparar.",
     planTitle: "Plan de comidas",
     planDescription: "Planee una semana de comidas de despensa y obtenga una sola lista de compras.",
     shoppingTitle: "Lista de compras",
@@ -363,7 +369,8 @@ const es: Dict = {
   home: {
     titleStart: "Cocine algo rico con",
     titleHighlight: "lo que ya tiene",
-    lede: (n) => `${n} recetas fáciles hechas solo con productos básicos de bancos de comida. Sin horno, sin aparatos especiales, sin vueltas extra a la tienda.`,
+    lede: (n) =>
+      `${n} recetas fáciles hechas solo con productos básicos de bancos de comida. Sin horno, sin aparatos especiales, sin vueltas extra a la tienda.`,
     browse: "Ver todas las recetas",
     surprise: "Sorpréndame",
     planWeek: "Planear mi semana",
@@ -371,13 +378,15 @@ const es: Dict = {
     recipesCount: (n) => `${n} recetas`,
     rulesHeading: "Las reglas de la casa",
     rule1Title: "Solo ingredientes de despensa",
-    rule1Body: "Cada receta usa productos que los bancos de comida suelen repartir. Algunas usan condimentos básicos, marcados como",
+    rule1Body:
+      "Cada receta usa productos que los bancos de comida suelen repartir. Algunas usan condimentos básicos, marcados como",
     rule1Link: "extras",
     rule1End: ", y puede ocultarlas.",
     rule2Title: "Sin horno",
     rule2Body: "Todo se prepara con unos pocos utensilios sencillos.",
     rule3Title: "A su medida",
-    rule3Body: "Ajuste cualquier receta de 1 a 6 porciones, cambie ingredientes por los que tenga y planee su semana con una lista de compras.",
+    rule3Body:
+      "Ajuste cualquier receta de 1 a 6 porciones, cambie ingredientes por los que tenga y planee su semana con una lista de compras.",
   },
   search: {
     label: "¿Qué hay en su despensa?",
@@ -400,7 +409,8 @@ const es: Dict = {
     modeLabel: "Cómo buscar los ingredientes",
     modeIncludes: "Recetas que usan todos estos",
     modeOnly: "¿Qué puedo preparar solo con estos?",
-    onlyHint: "Se da por hecho que tiene sal, pimienta, aceite y agua. Se muestran recetas a las que les faltan hasta dos productos, primero las que menos.",
+    onlyHint:
+      "Se da por hecho que tiene sal, pimienta, aceite y agua. Se muestran recetas a las que les faltan hasta dos productos, primero las que menos.",
     searchName: "Buscar recetas por nombre",
     searchPlaceholder: "Buscar por nombre…",
     count: (n) => `${n} ${n === 1 ? "receta" : "recetas"}`,
@@ -470,7 +480,8 @@ const es: Dict = {
     protein: "Proteína",
     fiber: "Fibra",
     cost: "Costo",
-    estimate: (n, total) => `Estimados por porción. ${n} ${n === 1 ? "porción cuesta" : "porciones cuestan"} unos ${total} si compra todo.`,
+    estimate: (n, total) =>
+      `Estimados por porción. ${n} ${n === 1 ? "porción cuesta" : "porciones cuestan"} unos ${total} si compra todo.`,
     servings: "Porciones",
     servingsN: (n) => (n === 1 ? "porción" : "porciones"),
     fewer: "Menos porciones",
@@ -552,7 +563,8 @@ const es: Dict = {
     copyBlocked: "Este navegador no permite copiar. Use Imprimir.",
     print: "Imprimir",
     uncheck: "Desmarcar todo",
-    noteStart: "Los precios son estimados aproximados en EE. UU. por paquete completo. Se da por hecho que tiene sal, pimienta y aceite. Los productos de",
+    noteStart:
+      "Los precios son estimados aproximados en EE. UU. por paquete completo. Se da por hecho que tiene sal, pimienta y aceite. Los productos de",
     noteLink: "su despensa",
     noteEnd: "no aparecen, salvo los que se están acabando.",
     buy: (n, label, cost) => `Comprar ${n} × ${label} · ${cost} · `,
@@ -565,7 +577,8 @@ const es: Dict = {
     heading: "Mi despensa",
     intro:
       "Estos son los únicos ingredientes que usan las recetas de Pantry Pal, además de agua y hielo. Los extras son condimentos básicos que no todas las despensas tienen. El número junto a cada producto indica cuántas recetas lo usan.",
-    empty: "Toque los ingredientes que tiene en casa. Pantry Pal los recuerda en este dispositivo y le muestra qué puede preparar.",
+    empty:
+      "Toque los ingredientes que tiene en casa. Pantry Pal los recuerda en este dispositivo y le muestra qué puede preparar.",
     saved: (n) => `${n} productos guardados`,
     lowCount: (n) => `, ${n} por acabarse`,
     cook: "¿Qué puedo preparar?",

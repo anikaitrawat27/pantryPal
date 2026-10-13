@@ -80,7 +80,9 @@ export const BREAKFAST_ES = defineRecipesEs({
       "O cocínelos en la freidora de aire a 350 °F de 10 a 12 minutos, volteándolos una vez.",
       "Sírvalos calientes con mermelada, mantequilla o plátano machacado.",
     ],
-    tips: ["Los panecitos están listos cuando suenan huecos al darles unos golpecitos. Si no está seguro, abra uno para revisar."],
+    tips: [
+      "Los panecitos están listos cuando suenan huecos al darles unos golpecitos. Si no está seguro, abra uno para revisar.",
+    ],
     notes: {
       flour: "y un poco más para amasar",
       oil: "para el sartén",

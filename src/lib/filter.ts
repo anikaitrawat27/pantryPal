@@ -1,6 +1,15 @@
 import { INGREDIENTS_BY_ID } from "@/data/pantry";
 import { ingredientSearchNames } from "@/i18n/ingredients";
-import { COURSES, CUISINES, EQUIPMENT, MEALS, type Course, type Cuisine, type Equipment, type Meal } from "@/data/schema";
+import {
+  COURSES,
+  CUISINES,
+  EQUIPMENT,
+  MEALS,
+  type Course,
+  type Cuisine,
+  type Equipment,
+  type Meal,
+} from "@/data/schema";
 import type { RecipeSummary } from "./catalog";
 import { DIETS, type Diet } from "./diet";
 import { includesAll, matchPantry, normalize, type PantryMatch } from "./match";

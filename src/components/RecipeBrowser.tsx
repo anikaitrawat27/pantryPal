@@ -65,7 +65,10 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
       {panelOpen && <div className={styles.backdrop} onClick={() => setPanelOpen(false)} aria-hidden="true" />}
       <aside
         onKeyDown={(e) => e.key === "Escape" && setPanelOpen(false)}
-        className={`${styles.sidebar} ${panelOpen ? styles.open : ""}`} aria-label={t.filters} id="filters">
+        className={`${styles.sidebar} ${panelOpen ? styles.open : ""}`}
+        aria-label={t.filters}
+        id="filters"
+      >
         <div className={styles.sidebarHead}>
           <h2>{t.filters}</h2>
           <button type="button" className={styles.close} onClick={() => setPanelOpen(false)}>
@@ -100,14 +103,17 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
               ] as const
             ).map(([mode, label]) => (
               <label key={mode} className={styles.modeOption}>
-                <input type="radio" name="have-mode" checked={filters.haveMode === mode} onChange={() => update({ haveMode: mode })} />
+                <input
+                  type="radio"
+                  name="have-mode"
+                  checked={filters.haveMode === mode}
+                  onChange={() => update({ haveMode: mode })}
+                />
                 <span>{label}</span>
               </label>
             ))}
           </div>
-          {filters.haveMode === "only" && (
-            <p className={styles.hint}>{t.onlyHint}</p>
-          )}
+          {filters.haveMode === "only" && <p className={styles.hint}>{t.onlyHint}</p>}
           <label className={styles.textSearch}>
             <span className="sr-only">{t.searchName}</span>
             <input type="search" placeholder={t.searchPlaceholder} value={q} onChange={(e) => setQ(e.target.value)} />
@@ -129,7 +135,13 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
                 ))}
               </select>
             </label>
-            <button type="button" className={`${ui.button} ${styles.filterBtn}`} onClick={() => setPanelOpen(true)} aria-controls="filters" aria-expanded={panelOpen}>
+            <button
+              type="button"
+              className={`${ui.button} ${styles.filterBtn}`}
+              onClick={() => setPanelOpen(true)}
+              aria-controls="filters"
+              aria-expanded={panelOpen}
+            >
               {t.filters}
               {activeCount ? ` (${activeCount})` : ""}
             </button>
@@ -173,4 +185,3 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
     </div>
   );
 }
-

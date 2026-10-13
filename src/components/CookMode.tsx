@@ -104,9 +104,7 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
       <header className={styles.top}>
         <div>
           <p className={styles.title}>{title}</p>
-          <p className={styles.wake}>
-            {wake === "on" ? t.wakeOn : t.wakeOff}
-          </p>
+          <p className={styles.wake}>{wake === "on" ? t.wakeOn : t.wakeOff}</p>
         </div>
         <div className={styles.topActions}>
           <button
@@ -162,9 +160,7 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
           <Finished ingredientIds={ingredientLines.map((i) => i.id)} onClose={onClose} />
         ) : (
           <>
-            <p className={styles.counter}>
-              {t.stepOf(step + 1, steps.length)}
-            </p>
+            <p className={styles.counter}>{t.stepOf(step + 1, steps.length)}</p>
             <p className={styles.step} aria-live="polite">
               {steps[step]}
             </p>
@@ -180,7 +176,9 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
                     onClick={() => startTimer(found.label, found.seconds)}
                   >
                     {isRunning ? t.running : t.start(formatClock(found.seconds))}
-                    {!isRunning && /\d+\s*(to|-|–|or|a|o)\s*\d+/.test(found.label) && <small>{t.lowEnd(found.label)}</small>}
+                    {!isRunning && /\d+\s*(to|-|–|or|a|o)\s*\d+/.test(found.label) && (
+                      <small>{t.lowEnd(found.label)}</small>
+                    )}
                   </button>
                 );
               })}

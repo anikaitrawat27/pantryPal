@@ -3,7 +3,8 @@ import { defineRecipesEs } from "../../recipe-es";
 export const DESSERTS_ES = defineRecipesEs({
   "stovetop-peanut-butter-cookies": {
     title: "Galletas de crema de cacahuate en la estufa",
-    blurb: "Galletas masticables de crema de cacahuate y avena, hechas en una sola cacerola y que se dejan cuajar en la mesa. Un dulce que solo necesita una hornilla.",
+    blurb:
+      "Galletas masticables de crema de cacahuate y avena, hechas en una sola cacerola y que se dejan cuajar en la mesa. Un dulce que solo necesita una hornilla.",
     steps: [
       "Cubra una charola o un plato grande con papel pergamino.",
       "Derrita la mantequilla en una cacerola a fuego medio.",
@@ -21,7 +22,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "fruit-bark": {
     title: "Barra congelada de yogur y fruta",
-    blurb: "Yogur endulzado extendido en una capa delgada, cubierto de fruta y cereal y congelado hasta que esté firme. Pártalo en pedazos para un bocadillo frío en un día caluroso.",
+    blurb:
+      "Yogur endulzado extendido en una capa delgada, cubierto de fruta y cereal y congelado hasta que esté firme. Pártalo en pedazos para un bocadillo frío en un día caluroso.",
     steps: [
       "Cubra con papel pergamino una charola o un plato grande que quepa en su congelador.",
       "Bata el yogur y el azúcar en un tazón.",
@@ -38,7 +40,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "mug-pie": {
     title: "Pay en taza",
-    blurb: "Una costra de mantequilla alrededor de una cucharada de mermelada, cocida en una taza en el microondas. Un pay individual en pocos minutos.",
+    blurb:
+      "Una costra de mantequilla alrededor de una cucharada de mermelada, cocida en una taza en el microondas. Un pay individual en pocos minutos.",
     steps: [
       "Derrita la mantequilla en una taza grande apta para microondas, unos 20 segundos.",
       "Incorpore la harina, el azúcar, el polvo para hornear y la sal con un tenedor.",
@@ -55,7 +58,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "cookie-truffles": {
     title: "Trufas de galleta",
-    blurb: "Cereal triturado mezclado con queso crema y crema de cacahuate, formado en bolitas y cubierto con más migajas. Un dulce sin cocinar para fiestas o regalos.",
+    blurb:
+      "Cereal triturado mezclado con queso crema y crema de cacahuate, formado en bolitas y cubierto con más migajas. Un dulce sin cocinar para fiestas o regalos.",
     steps: [
       "Licúe el cereal hasta hacerlo migajas finas.",
       "Aparte unas cucharadas de las migajas en un tazón pequeño para cubrir.",
@@ -75,7 +79,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "monkey-mug-muffin": {
     title: "Panquecito de plátano en taza",
-    blurb: "Un panquecito suave de plátano con azúcar encima, cocido en una taza en el microondas. Una buena forma de usar medio plátano maduro.",
+    blurb:
+      "Un panquecito suave de plátano con azúcar encima, cocido en una taza en el microondas. Una buena forma de usar medio plátano maduro.",
     steps: [
       "Derrita la mantequilla en una taza grande apta para microondas, unos 20 segundos.",
       "Incorpore casi todo el azúcar, el plátano y la leche.",
@@ -91,7 +96,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "vanilla-mug-cake": {
     title: "Pastel de vainilla en taza",
-    blurb: "Un pastel ligero de vainilla que se mezcla en una taza y se cocina en el microondas en más o menos un minuto. Para cuando quiere una rebanada de pastel y no uno entero.",
+    blurb:
+      "Un pastel ligero de vainilla que se mezcla en una taza y se cocina en el microondas en más o menos un minuto. Para cuando quiere una rebanada de pastel y no uno entero.",
     steps: [
       "Bata la harina, el azúcar, el polvo para hornear y la sal con un tenedor en una taza grande apta para microondas.",
       "Incorpore la leche, el aceite y la vainilla hasta que no quede harina seca.",
@@ -102,7 +108,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "peanut-butter-mug-cake": {
     title: "Pastel de crema de cacahuate en taza",
-    blurb: "Un pastel individual denso, con sabor a cacahuate, hecho con crema de cacahuate y cocido en el microondas. Un dulce rápido para la noche.",
+    blurb:
+      "Un pastel individual denso, con sabor a cacahuate, hecho con crema de cacahuate y cocido en el microondas. Un dulce rápido para la noche.",
     steps: [
       "Mezcle la crema de cacahuate y la leche en una taza grande apta para microondas hasta que quede suave.",
       "Incorpore el azúcar y la vainilla.",
@@ -113,7 +120,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "berry-mug-cake": {
     title: "Pastel de arándanos en taza",
-    blurb: "Un pastel de mantequilla en taza con arándanos que se ponen como mermelada al cocinarse. Sirven arándanos frescos o congelados.",
+    blurb:
+      "Un pastel de mantequilla en taza con arándanos que se ponen como mermelada al cocinarse. Sirven arándanos frescos o congelados.",
     steps: [
       "Derrita la mantequilla en una taza grande apta para microondas, unos 20 segundos.",
       "Incorpore la leche, el azúcar y la vainilla.",
@@ -126,7 +134,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "cinnamon-roll-mug-cake": {
     title: "Pastel de rol de canela en taza",
-    blurb: "Un pastel en taza con un remolino de mantequilla, azúcar y canela, y un glaseado de queso crema con miel. Todo el sabor de un rol de canela en pocos minutos.",
+    blurb:
+      "Un pastel en taza con un remolino de mantequilla, azúcar y canela, y un glaseado de queso crema con miel. Todo el sabor de un rol de canela en pocos minutos.",
     steps: [
       "Derrita la mitad de la mantequilla en una taza grande apta para microondas, unos 20 segundos.",
       "Incorpore la leche y la mitad del azúcar.",
@@ -144,7 +153,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "peanut-butter-and-jelly-mug-cake": {
     title: "Pastel de crema de cacahuate y mermelada en taza",
-    blurb: "Un pastel de crema de cacahuate en taza con un centro de mermelada tibia. El sándwich de la lonchera convertido en un postre rápido.",
+    blurb:
+      "Un pastel de crema de cacahuate en taza con un centro de mermelada tibia. El sándwich de la lonchera convertido en un postre rápido.",
     steps: [
       "Mezcle la crema de cacahuate, la leche, el aceite y el azúcar en un tazón pequeño hasta que quede suave.",
       "Agregue la harina, el polvo para hornear y la sal, y revuelva hasta que no quede harina seca.",
@@ -156,7 +166,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "stovetop-rice-pudding": {
     title: "Arroz con leche en la estufa",
-    blurb: "Arroz sobrante cocido a fuego lento en leche endulzada con vainilla y canela hasta que esté espeso y cremoso. Sírvalo caliente o frío.",
+    blurb:
+      "Arroz sobrante cocido a fuego lento en leche endulzada con vainilla y canela hasta que esté espeso y cremoso. Sírvalo caliente o frío.",
     steps: [
       "Mezcle el arroz, la leche, el azúcar y la sal en una cacerola.",
       "Deje que suelte el hervor a fuego medio.",
@@ -169,7 +180,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   kheer: {
     title: "Kheer (arroz con leche de la India)",
-    blurb: "Arroz con leche de la India, hecho cocinando a fuego lento un poco de arroz en leche hasta que espese. Sírvalo caliente o frío después de comer.",
+    blurb:
+      "Arroz con leche de la India, hecho cocinando a fuego lento un poco de arroz en leche hasta que espese. Sírvalo caliente o frío después de comer.",
     steps: [
       "Enjuague el arroz, cúbralo con agua y déjelo remojar por 20 minutos. Escúrralo.",
       "Deje que la leche hierva en una olla de fondo grueso a fuego medio, revolviendo para que no se pegue.",
@@ -182,7 +194,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "banana-nice-cream": {
     title: "Helado cremoso de plátano",
-    blurb: "Plátanos congelados licuados con un chorrito de leche hasta quedar como helado suave. Un postre frío sin máquina para hacer helado.",
+    blurb:
+      "Plátanos congelados licuados con un chorrito de leche hasta quedar como helado suave. Un postre frío sin máquina para hacer helado.",
     steps: [
       "Ponga las rebanadas de plátano congelado y la leche en la licuadora.",
       "Licúe, deteniéndose para bajar lo que se pegue a los lados, hasta que quede suave como helado de máquina.",
@@ -194,7 +207,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "frozen-yogurt-pops": {
     title: "Paletas de yogur congelado",
-    blurb: "Yogur endulzado con miel, mezclado con frutos rojos machacados y congelado en palitos. Prepárelas en la mañana para después de la escuela.",
+    blurb:
+      "Yogur endulzado con miel, mezclado con frutos rojos machacados y congelado en palitos. Prepárelas en la mañana para después de la escuela.",
     steps: [
       "Machaque los frutos rojos en un tazón con un tenedor hasta que suelten jugo.",
       "Incorpore la miel y la vainilla al yogur.",
@@ -207,7 +221,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "berry-crumble-in-a-mug": {
     title: "Crujiente de frutos rojos en taza",
-    blurb: "Frutos rojos calientes y jugosos bajo una cubierta de cereal triturado con mantequilla, hecha en el microondas. Una porción de postre de fruta en cinco minutos.",
+    blurb:
+      "Frutos rojos calientes y jugosos bajo una cubierta de cereal triturado con mantequilla, hecha en el microondas. Una porción de postre de fruta en cinco minutos.",
     steps: [
       "Mezcle los frutos rojos y la mitad del azúcar en una taza apta para microondas.",
       "Caliente en el microondas de 90 segundos a 2 minutos, hasta que burbujeen y estén suaves.",
@@ -224,7 +239,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "apple-crisp-in-a-mug": {
     title: "Crujiente de manzana en taza",
-    blurb: "Manzanas suaves con canela bajo una cubierta dulce de avena, cocidas en una taza en el microondas. Un postre otoñal pequeño para una persona.",
+    blurb:
+      "Manzanas suaves con canela bajo una cubierta dulce de avena, cocidas en una taza en el microondas. Un postre otoñal pequeño para una persona.",
     steps: [
       "Revuelva la manzana con la mitad del azúcar, la mitad de la canela y el agua en una taza apta para microondas.",
       "Tape con un plato pequeño y caliente en el microondas por 2 minutos, hasta que la manzana esté suave.",
@@ -243,7 +259,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "cinnamon-fried-apples": {
     title: "Manzanas fritas con canela",
-    blurb: "Rebanadas de manzana cocidas en mantequilla, azúcar y canela hasta que estén suaves y almibaradas. Cómalas calientes solas o sobre yogur o pan tostado.",
+    blurb:
+      "Rebanadas de manzana cocidas en mantequilla, azúcar y canela hasta que estén suaves y almibaradas. Cómalas calientes solas o sobre yogur o pan tostado.",
     steps: [
       "Derrita la mantequilla en un sartén a fuego medio.",
       "Agregue las manzanas y cocine por 5 minutos, revolviendo, hasta que empiecen a ablandarse.",
@@ -255,7 +272,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "honey-poached-pears": {
     title: "Peras en almíbar de miel",
-    blurb: "Mitades de pera cocidas a fuego lento en almíbar de miel hasta que estén suaves, servidas con el almíbar reducido. Un postre ligero al estilo francés que puede preparar con anticipación.",
+    blurb:
+      "Mitades de pera cocidas a fuego lento en almíbar de miel hasta que estén suaves, servidas con el almíbar reducido. Un postre ligero al estilo francés que puede preparar con anticipación.",
     steps: [
       "Mezcle el agua, la miel, la canela, la vainilla y el jugo de limón en una cacerola.",
       "Deje que suelte el hervor a fuego medio.",
@@ -273,7 +291,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "skillet-bananas-foster": {
     title: "Bananas Foster en sartén",
-    blurb: "Plátanos cocidos en una salsa de caramelo con mantequilla y canela, sin ron. Sírvalos sobre helado de plátano o yogur para un postre caliente y rápido.",
+    blurb:
+      "Plátanos cocidos en una salsa de caramelo con mantequilla y canela, sin ron. Sírvalos sobre helado de plátano o yogur para un postre caliente y rápido.",
     steps: [
       "Derrita la mantequilla en un sartén a fuego medio.",
       "Incorpore el azúcar y la canela y cocine de 1 a 2 minutos, hasta que burbujee y el azúcar se disuelva.",
@@ -288,7 +307,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "churro-bites": {
     title: "Churros en bocaditos",
-    blurb: "Pedacitos de masa frita revueltos en azúcar con canela mientras están calientes. Un dulce al estilo mexicano para compartir con amigos.",
+    blurb:
+      "Pedacitos de masa frita revueltos en azúcar con canela mientras están calientes. Un dulce al estilo mexicano para compartir con amigos.",
     steps: [
       "Aparte una cucharada del azúcar y mezcle el resto con la canela en un tazón bajo.",
       "Ponga el agua, la mantequilla, la sal y la cucharada de azúcar que apartó en una cacerola, y deje que hierva a fuego medio.",
@@ -308,7 +328,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "sopapillas-with-honey": {
     title: "Sopapillas con miel",
-    blurb: "Cuadros delgados de masa fritos hasta que se inflan, bañados con miel. Un postre ligero y crujiente del suroeste de Estados Unidos y de México.",
+    blurb:
+      "Cuadros delgados de masa fritos hasta que se inflan, bañados con miel. Un postre ligero y crujiente del suroeste de Estados Unidos y de México.",
     steps: [
       "Mezcle la harina, el polvo para hornear y la sal en un tazón.",
       "Integre la mantequilla frotándola con los dedos hasta que la mezcla parezca arenosa.",
@@ -320,7 +341,9 @@ export const DESSERTS_ES = defineRecipesEs({
       "Escúrralos sobre toallas de papel.",
       "Rocíe con miel y espolvoree con canela.",
     ],
-    tips: ["Baje cada cuadro al aceite alejándolo de usted para evitar salpicaduras, y mantenga el aceite chisporroteando parejo, sin que eche humo."],
+    tips: [
+      "Baje cada cuadro al aceite alejándolo de usted para evitar salpicaduras, y mantenga el aceite chisporroteando parejo, sin que eche humo.",
+    ],
     notes: {
       flour: "y un poco más para extender la masa",
       butter: "fría",
@@ -330,7 +353,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "steamed-milk-egg-custard": {
     title: "Flan de leche al vapor",
-    blurb: "Un flan sedoso y poco dulce cocido al vapor en una olla tapada, al estilo de los postres chinos de dim sum. Sírvalo caliente o frío.",
+    blurb:
+      "Un flan sedoso y poco dulce cocido al vapor en una olla tapada, al estilo de los postres chinos de dim sum. Sírvalo caliente o frío.",
     steps: [
       "Revuelva el azúcar en la leche hasta que se disuelva.",
       "Bata los huevos suavemente en otro tazón y luego incorpore la leche y la vainilla.",
@@ -345,7 +369,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "fluffy-japanese-pancakes": {
     title: "Hot cakes japoneses esponjosos",
-    blurb: "Hot cakes altos y suaves hechos con claras batidas y cocidos al vapor en un sartén tapado. Un proyecto de fin de semana para servir con miel y frutos rojos.",
+    blurb:
+      "Hot cakes altos y suaves hechos con claras batidas y cocidos al vapor en un sartén tapado. Un proyecto de fin de semana para servir con miel y frutos rojos.",
     steps: [
       "Bata las yemas, la leche y la vainilla en un tazón.",
       "Incorpore la harina y el polvo para hornear batiendo hasta que quede suave.",
@@ -368,7 +393,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "sweet-filled-hotteok": {
     title: "Hotteok dulce relleno",
-    blurb: "Tortitas callejeras coreanas rellenas de azúcar con canela y cereal triturado, aplanadas y doradas en sartén hasta que el relleno se derrite en almíbar.",
+    blurb:
+      "Tortitas callejeras coreanas rellenas de azúcar con canela y cereal triturado, aplanadas y doradas en sartén hasta que el relleno se derrite en almíbar.",
     steps: [
       "Mezcle la harina, el polvo para hornear, la sal y una cucharada del azúcar en un tazón.",
       "Incorpore la leche y un poco del aceite.",
@@ -392,7 +418,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "crepes-with-jelly": {
     title: "Crepas con mermelada",
-    blurb: "Crepas francesas delgadas untadas con mermelada y dobladas en cuartos. Haga una pila para el postre o para la tarde.",
+    blurb:
+      "Crepas francesas delgadas untadas con mermelada y dobladas en cuartos. Haga una pila para el postre o para la tarde.",
     steps: [
       "Derrita la mantequilla en un sartén a fuego medio y viértala en un tazón pequeño.",
       "Bata la harina, el azúcar y la sal en un tazón.",
@@ -409,7 +436,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   torrijas: {
     title: "Torrijas",
-    blurb: "Pan frito español remojado en leche dulce con canela, pasado por huevo y cubierto de azúcar con canela. Una buena forma de aprovechar el pan del día anterior.",
+    blurb:
+      "Pan frito español remojado en leche dulce con canela, pasado por huevo y cubierto de azúcar con canela. Una buena forma de aprovechar el pan del día anterior.",
     steps: [
       "Caliente la leche con la mitad del azúcar y una pizca de la canela en una cacerola a fuego medio-bajo hasta que eche vapor. No deje que hierva.",
       "Vierta la leche en un plato hondo y déjela enfriar por 5 minutos.",
@@ -430,7 +458,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "caribbean-banana-fritters": {
     title: "Buñuelos de plátano caribeños",
-    blurb: "Buñuelos suaves y dulces hechos con plátanos maduros machacados y fritos por cucharadas. Una buena forma de usar plátanos con manchas cafés.",
+    blurb:
+      "Buñuelos suaves y dulces hechos con plátanos maduros machacados y fritos por cucharadas. Una buena forma de usar plátanos con manchas cafés.",
     steps: [
       "Machaque los plátanos en un tazón hasta que estén casi suaves.",
       "Incorpore el azúcar, la vainilla y la leche.",
@@ -447,7 +476,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "honey-yogurt-with-pears": {
     title: "Yogur con miel y pera",
-    blurb: "Yogur espeso con miel, pera en rebanadas y una pizca de canela, al estilo mediterráneo. Un postre ligero en cinco minutos.",
+    blurb:
+      "Yogur espeso con miel, pera en rebanadas y una pizca de canela, al estilo mediterráneo. Un postre ligero en cinco minutos.",
     steps: [
       "Ponga el yogur en un tazón.",
       "Acomode las rebanadas de pera encima.",
@@ -463,7 +493,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "skillet-apple-hand-pies": {
     title: "Empanadas de manzana en sartén",
-    blurb: "Masa de bisquets envolviendo manzanas calientes con canela, cocida en un sartén tapado hasta dorarse. Como una empanada, hecha en la estufa.",
+    blurb:
+      "Masa de bisquets envolviendo manzanas calientes con canela, cocida en un sartén tapado hasta dorarse. Como una empanada, hecha en la estufa.",
     steps: [
       "Derrita la mitad de la mantequilla en un sartén a fuego medio.",
       "Agregue las manzanas, el azúcar, la canela y la sal, y cocine revolviendo de 6 a 8 minutos, hasta que las manzanas estén suaves y almibaradas.",
@@ -483,7 +514,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "toasted-oat-jelly-bars": {
     title: "Barras de avena tostada con mermelada",
-    blurb: "Avena tostada en mantequilla, presionada alrededor de una capa de mermelada y enfriada hasta que esté firme. Barras de fruta hechas en la estufa para botana o postre.",
+    blurb:
+      "Avena tostada en mantequilla, presionada alrededor de una capa de mermelada y enfriada hasta que esté firme. Barras de fruta hechas en la estufa para botana o postre.",
     steps: [
       "Cubra un molde rectangular o un molde cuadrado pequeño con papel pergamino.",
       "Derrita la mantequilla en un sartén a fuego medio.",
@@ -498,7 +530,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "cookie-dough-bites": {
     title: "Bocaditos de masa de galleta",
-    blurb: "Masa de galleta sin huevo, hecha con harina tratada con calor y formada en bocaditos que se pueden comer sin cocinar. Un dulce para tener en el refrigerador.",
+    blurb:
+      "Masa de galleta sin huevo, hecha con harina tratada con calor y formada en bocaditos que se pueden comer sin cocinar. Un dulce para tener en el refrigerador.",
     steps: [
       "Extienda la harina en un tazón apto para microondas.",
       "Caliente en el microondas en intervalos de 30 segundos, revolviendo entre cada uno, de 90 segundos a 2 minutos, hasta que la harina esté muy caliente y eche vapor por completo (165°F).",
@@ -520,7 +553,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "strawberry-shortcake": {
     title: "Pastelito de fresas",
-    blurb: "Bisquets cocidos en sartén, partidos y rellenos de fresas jugosas con azúcar y yogur con miel. Un postre de verano hecho en la estufa.",
+    blurb:
+      "Bisquets cocidos en sartén, partidos y rellenos de fresas jugosas con azúcar y yogur con miel. Un postre de verano hecho en la estufa.",
     steps: [
       "Revuelva las fresas con el azúcar y déjelas reposar 15 minutos, hasta que suelten jugo.",
       "Mezcle el yogur, la miel y la vainilla.",
@@ -539,7 +573,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "frozen-fruit-sorbet": {
     title: "Nieve de fruta congelada",
-    blurb: "Fruta congelada licuada con miel hasta formar una nieve suave que se puede servir con cuchara. Un postre frío hecho en cinco minutos con la licuadora.",
+    blurb:
+      "Fruta congelada licuada con miel hasta formar una nieve suave que se puede servir con cuchara. Un postre frío hecho en cinco minutos con la licuadora.",
     steps: [
       "Ponga la fruta congelada, la miel y el jugo de limón en la licuadora.",
       "Licúe, agregando el agua poco a poco y bajando lo que se pegue a los lados, hasta que esté espesa y suave.",
@@ -548,7 +583,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "cinnamon-sugar-toast": {
     title: "Pan tostado con azúcar y canela",
-    blurb: "Pan con mantequilla, cubierto de azúcar con canela y tostado hasta que el azúcar se derrite. Un bocadillo dulce y sencillo en minutos.",
+    blurb:
+      "Pan con mantequilla, cubierto de azúcar con canela y tostado hasta que el azúcar se derrite. Un bocadillo dulce y sencillo en minutos.",
     steps: [
       "Mezcle el azúcar y la canela.",
       "Unte la mantequilla en un lado de cada rebanada de pan.",
@@ -561,7 +597,8 @@ export const DESSERTS_ES = defineRecipesEs({
   },
   "biscuit-donuts": {
     title: "Donas de bisquets",
-    blurb: "Bisquets de lata con el centro recortado, fritos en sartén y revueltos en azúcar con canela. Donas y bolitas de dona de una sola lata.",
+    blurb:
+      "Bisquets de lata con el centro recortado, fritos en sartén y revueltos en azúcar con canela. Donas y bolitas de dona de una sola lata.",
     steps: [
       "Separe los bisquets y recorte un hoyo en el centro de cada uno con una corcholata o una tapa pequeña.",
       "Mezcle el azúcar y la canela en un tazón.",

@@ -55,7 +55,10 @@ export const INGREDIENTS_ES: Readonly<Record<string, IngredientEs>> = {
   "kidney-beans": { name: "frijoles rojos", aliases: ["frijol rojo"] },
   "pinto-beans": { name: "frijoles pintos", aliases: ["frijol pinto", "frijoles refritos"] },
   chickpeas: { name: "garbanzos", aliases: ["garbanzo"] },
-  "peanut-butter": { name: "crema de cacahuate", aliases: ["mantequilla de maní", "mantequilla de cacahuate", "crema de maní"] },
+  "peanut-butter": {
+    name: "crema de cacahuate",
+    aliases: ["mantequilla de maní", "mantequilla de cacahuate", "crema de maní"],
+  },
 
   pasta: { name: "pasta seca", aliases: ["pasta", "espagueti", "fideos", "coditos", "macarrones"] },
   noodles: { name: "fideos", aliases: ["ramen", "sopa instantánea", "tallarines"] },
@@ -70,7 +73,11 @@ export const INGREDIENTS_ES: Readonly<Record<string, IngredientEs>> = {
   "canned-vegetables": { name: "verduras enlatadas", short: "verduras" },
   "canned-corn": { name: "maíz enlatado", short: "maíz", aliases: ["elote", "maíz"] },
   "canned-peas": { name: "chícharos enlatados", short: "chícharos", aliases: ["chícharos", "guisantes", "arvejas"] },
-  "canned-green-beans": { name: "ejotes enlatados", short: "ejotes", aliases: ["ejotes", "judías verdes", "habichuelas tiernas"] },
+  "canned-green-beans": {
+    name: "ejotes enlatados",
+    short: "ejotes",
+    aliases: ["ejotes", "judías verdes", "habichuelas tiernas"],
+  },
   "canned-carrots": { name: "zanahorias enlatadas", short: "zanahorias" },
   "canned-mixed-veg": { name: "verduras mixtas enlatadas", short: "verduras mixtas", aliases: ["verduras mixtas"] },
   "canned-spinach": { name: "espinacas enlatadas", short: "espinacas" },

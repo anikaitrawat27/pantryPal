@@ -6,9 +6,7 @@ import type { Substitution } from "./schema";
  * Every target must be a pantry, free, or extra ingredient.
  */
 const interchangeable = (ids: string[], note?: string): Record<string, Substitution[]> =>
-  Object.fromEntries(
-    ids.map((id) => [id, ids.filter((other) => other !== id).map((other) => ({ id: other, note }))]),
-  );
+  Object.fromEntries(ids.map((id) => [id, ids.filter((other) => other !== id).map((other) => ({ id: other, note }))]));
 
 export const GLOBAL_SUBSTITUTIONS: Readonly<Record<string, readonly Substitution[]>> = {
   ...interchangeable(["canned-corn", "canned-peas", "canned-green-beans", "canned-carrots", "canned-mixed-veg"]),

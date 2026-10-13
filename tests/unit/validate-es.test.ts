@@ -15,7 +15,11 @@ const recipe = recipeSchema.parse({
   prep: 1,
   cook: 4,
   serves: 1,
-  ingredients: [["bread", 2, "slice", { note: "any kind" }], ["butter", 1, "tbsp"], ["baking-powder", 1, "pinch"]],
+  ingredients: [
+    ["bread", 2, "slice", { note: "any kind" }],
+    ["butter", 1, "tbsp"],
+    ["baking-powder", 1, "pinch"],
+  ],
   steps: ["Melt the butter in a skillet.", "Toast the bread until golden."],
   tips: ["Add jelly."],
 });
@@ -28,7 +32,8 @@ const good: RecipeEs = {
   notes: { bread: "de cualquier tipo" },
 };
 
-const check = (t: Partial<RecipeEs>, requireAll = true) => validateTranslations([recipe], { "test-toast": { ...good, ...t } }, { requireAll });
+const check = (t: Partial<RecipeEs>, requireAll = true) =>
+  validateTranslations([recipe], { "test-toast": { ...good, ...t } }, { requireAll });
 
 describe("validateTranslations", () => {
   it("accepts a complete translation, including 'polvo para hornear' and 'sin horno'", () => {
@@ -43,7 +48,9 @@ describe("validateTranslations", () => {
   });
 
   it("flags unknown slugs", () => {
-    expect(validateTranslations([recipe], { "test-toast": good, ghost: good }, { requireAll: true }).join()).toMatch(/es.ghost/);
+    expect(validateTranslations([recipe], { "test-toast": good, ghost: good }, { requireAll: true }).join()).toMatch(
+      /es.ghost/,
+    );
   });
 
   it("requires matching step and tip counts", () => {

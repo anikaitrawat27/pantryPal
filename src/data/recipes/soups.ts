@@ -4,7 +4,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "creamy-tomato-soup",
     title: "Creamy Tomato Soup",
-    blurb: "A smooth tomato soup made with canned puree, broth, and a splash of milk. Ready in about 20 minutes and good with a grilled cheese.",
+    blurb:
+      "A smooth tomato soup made with canned puree, broth, and a splash of milk. Ready in about 20 minutes and good with a grilled cheese.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -34,7 +35,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "veggie-delight-soup",
     title: "Veggie Delight Soup",
-    blurb: "A light broth packed with carrots and canned mixed vegetables. Use whatever vegetables you have and have dinner in 20 minutes.",
+    blurb:
+      "A light broth packed with carrots and canned mixed vegetables. Use whatever vegetables you have and have dinner in 20 minutes.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -65,7 +67,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "noodle-soup",
     title: "Noodle Soup",
-    blurb: "Noodles in a quick chicken broth with carrot, greens, and canned chicken if you have it. A fast, warming lunch from pantry staples.",
+    blurb:
+      "Noodles in a quick chicken broth with carrot, greens, and canned chicken if you have it. A fast, warming lunch from pantry staples.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -96,7 +99,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "lentil-soup",
     title: "Lentil Soup",
-    blurb: "A thick lentil and tomato soup with greens stirred in at the end. Filling, inexpensive, and good for a week of lunches.",
+    blurb:
+      "A thick lentil and tomato soup with greens stirred in at the end. Filling, inexpensive, and good for a week of lunches.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -168,7 +172,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "vegan-tomato-soup",
     title: "Vegan Tomato Soup",
-    blurb: "A simple tomato soup made with water, onion, and garlic-ginger paste instead of broth. Plant-based and ready in about 25 minutes.",
+    blurb:
+      "A simple tomato soup made with water, onion, and garlic-ginger paste instead of broth. Plant-based and ready in about 25 minutes.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -200,7 +205,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "tom-yum-chicken-soup",
     title: "Tom Yum Chicken Soup",
-    blurb: "A hot and sour Thai-style broth with thin slices of chicken, lemon juice, and garlic-ginger paste. Light and quick for a cold evening.",
+    blurb:
+      "A hot and sour Thai-style broth with thin slices of chicken, lemon juice, and garlic-ginger paste. Light and quick for a cold evening.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "thai",
@@ -233,7 +239,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "black-bean-soup",
     title: "Black Bean Soup",
-    blurb: "A thick black bean soup seasoned with cumin and garlic. Partly mashed for body, it makes a plant-based dinner in 30 minutes.",
+    blurb:
+      "A thick black bean soup seasoned with cumin and garlic. Partly mashed for body, it makes a plant-based dinner in 30 minutes.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -267,7 +274,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "pantry-minestrone",
     title: "Pantry Minestrone",
-    blurb: "An Italian vegetable soup with small pasta, beans, canned vegetables, and tomatoes. A full meal in one pot.",
+    blurb:
+      "An Italian vegetable soup with small pasta, beans, canned vegetables, and tomatoes. A full meal in one pot.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "italian",
@@ -307,7 +315,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "egg-drop-soup",
     title: "Egg Drop Soup",
-    blurb: "A Chinese-style broth thickened lightly and swirled with ribbons of egg. Takes 15 minutes and makes a good starter or light lunch.",
+    blurb:
+      "A Chinese-style broth thickened lightly and swirled with ribbons of egg. Takes 15 minutes and makes a good starter or light lunch.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "chinese",
@@ -340,7 +349,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "simple-dal",
     title: "Simple Dal",
-    blurb: "Indian lentils simmered soft with onion, tomato, and garlic-ginger paste, then finished with cumin toasted in butter. Serve over rice.",
+    blurb:
+      "Indian lentils simmered soft with onion, tomato, and garlic-ginger paste, then finished with cumin toasted in butter. Serve over rice.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "indian",
@@ -377,7 +387,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "corn-chowder",
     title: "Corn Chowder",
-    blurb: "A creamy chowder of canned corn and diced potato in a milky broth. Hearty enough for dinner with a slice of toast.",
+    blurb:
+      "A creamy chowder of canned corn and diced potato in a milky broth. Hearty enough for dinner with a slice of toast.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -413,7 +424,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "turkey-chili",
     title: "Turkey Chili",
-    blurb: "A tomato and kidney bean chili made with ground turkey and bell pepper. Makes enough for dinner and a couple of lunches.",
+    blurb:
+      "A tomato and kidney bean chili made with ground turkey and bell pepper. Makes enough for dinner and a couple of lunches.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -451,7 +463,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "white-chicken-chili",
     title: "White Chicken Chili",
-    blurb: "A creamy chili of white beans, canned chicken, corn, and cumin. Uses mostly cans and comes together in 25 minutes.",
+    blurb:
+      "A creamy chili of white beans, canned chicken, corn, and cumin. Uses mostly cans and comes together in 25 minutes.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -489,7 +502,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "chicken-tortilla-soup",
     title: "Chicken Tortilla Soup",
-    blurb: "A Mexican tomato broth with shredded chicken, black beans, and corn, topped with crushed tortilla chips and cheese.",
+    blurb:
+      "A Mexican tomato broth with shredded chicken, black beans, and corn, topped with crushed tortilla chips and cheese.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -530,7 +544,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "korean-style-cabbage-and-egg-soup",
     title: "Korean-Style Cabbage and Egg Soup",
-    blurb: "A light Korean-style broth with soft cabbage, garlic, soy sauce, and ribbons of egg. Quick and mild, good with a bowl of rice.",
+    blurb:
+      "A light Korean-style broth with soft cabbage, garlic, soy sauce, and ribbons of egg. Quick and mild, good with a bowl of rice.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "korean",
@@ -562,7 +577,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "stovetop-french-onion-soup",
     title: "Stovetop French Onion Soup",
-    blurb: "Slow-cooked onions in broth, topped with skillet toast and cheese melted in the microwave. A weekend soup that needs patience more than skill.",
+    blurb:
+      "Slow-cooked onions in broth, topped with skillet toast and cheese melted in the microwave. A weekend soup that needs patience more than skill.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "french",
@@ -599,7 +615,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "italian-wedding-soup",
     title: "Italian Wedding Soup",
-    blurb: "Tiny turkey and parmesan meatballs simmered in broth with small pasta and greens. A good project for a slow afternoon.",
+    blurb:
+      "Tiny turkey and parmesan meatballs simmered in broth with small pasta and greens. A good project for a slow afternoon.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "italian",
@@ -641,7 +658,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "caribbean-red-bean-soup",
     title: "Caribbean Red Bean Soup",
-    blurb: "A thick Caribbean-style soup of kidney beans, potato, and carrot with garlic and hot sauce. Plant-based and filling.",
+    blurb:
+      "A thick Caribbean-style soup of kidney beans, potato, and carrot with garlic and hot sauce. Plant-based and filling.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "caribbean",
@@ -678,7 +696,8 @@ export const SOUPS = defineRecipes([
   {
     slug: "lentil-and-rice-soup",
     title: "Lentil and Rice Soup",
-    blurb: "A Middle Eastern lentil and rice soup with cumin, topped with browned onions and a squeeze of lemon. Cheap and filling.",
+    blurb:
+      "A Middle Eastern lentil and rice soup with cumin, topped with browned onions and a squeeze of lemon. Cheap and filling.",
     course: "soup",
     meal: ["lunch", "dinner"],
     cuisine: "middle-eastern",

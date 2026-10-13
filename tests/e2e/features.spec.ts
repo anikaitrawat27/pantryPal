@@ -35,7 +35,9 @@ test("tap to place moves a recipe between slots", async ({ page }) => {
   await monday.getByRole("button", { name: "Move Chinese Fried Rice", exact: true }).click();
   await page.getByRole("button", { name: "Place in Friday (dinner)" }).click();
   await expect(monday.getByRole("link", { name: "Chinese Fried Rice" })).toHaveCount(0);
-  await expect(page.getByRole("region", { name: "Friday (dinner)" }).getByRole("link", { name: "Chinese Fried Rice" })).toBeVisible();
+  await expect(
+    page.getByRole("region", { name: "Friday (dinner)" }).getByRole("link", { name: "Chinese Fried Rice" }),
+  ).toBeVisible();
 });
 
 test("the saved pantry marks what each recipe is missing", async ({ page }) => {

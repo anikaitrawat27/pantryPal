@@ -5,7 +5,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "skillet-grilled-chicken",
     title: "Skillet Grilled Chicken",
-    blurb: "Chicken breast seared hard in a hot skillet with a little paprika. A plain, high-protein dinner that goes with rice, bread, or any canned vegetable.",
+    blurb:
+      "Chicken breast seared hard in a hot skillet with a little paprika. A plain, high-protein dinner that goes with rice, bread, or any canned vegetable.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -37,7 +38,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "meaty-burritos",
     title: "Meaty Burritos",
-    blurb: "Flour tortillas packed with skillet-browned canned meat, black beans, vegetables, and cheese. A filling dinner from a few cans.",
+    blurb:
+      "Flour tortillas packed with skillet-browned canned meat, black beans, vegetables, and cheese. A filling dinner from a few cans.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -75,7 +77,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "skillet-chicken-pot-pie",
     title: "Skillet Chicken Pot Pie",
-    blurb: "Creamy chicken and vegetable filling simmered on the stove and topped with biscuits that steam under a lid. A weeknight version of the classic pie.",
+    blurb:
+      "Creamy chicken and vegetable filling simmered on the stove and topped with biscuits that steam under a lid. A weeknight version of the classic pie.",
     course: "main",
     meal: ["dinner"],
     cuisine: "american",
@@ -110,7 +113,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "turkey-sliders",
     title: "Turkey Sliders",
-    blurb: "Small turkey and cheese sandwiches toasted in butter in a covered skillet until the cheese melts. Good for a quick dinner or feeding a group.",
+    blurb:
+      "Small turkey and cheese sandwiches toasted in butter in a covered skillet until the cheese melts. Good for a quick dinner or feeding a group.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -143,7 +147,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "biryani",
     title: "Biryani",
-    blurb: "Yogurt-marinated chicken layered under rice and steamed in one covered pot until the rice is fluffy. A weekend dinner worth the wait.",
+    blurb:
+      "Yogurt-marinated chicken layered under rice and steamed in one covered pot until the rice is fluffy. A weekend dinner worth the wait.",
     course: "main",
     meal: ["dinner"],
     cuisine: "indian",
@@ -186,7 +191,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "tortilla-espanola",
     title: "Tortilla Espanola",
-    blurb: "A thick Spanish omelet of soft potatoes and onion, cooked slowly on the stove and flipped with a plate. Eat it warm or at room temperature.",
+    blurb:
+      "A thick Spanish omelet of soft potatoes and onion, cooked slowly on the stove and flipped with a plate. Eat it warm or at room temperature.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "spanish",
@@ -221,7 +227,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "shakshuka",
     title: "Shakshuka",
-    blurb: "Eggs cooked in a spiced tomato and pepper sauce in a covered skillet. Have it for breakfast or dinner with bread for scooping.",
+    blurb:
+      "Eggs cooked in a spiced tomato and pepper sauce in a covered skillet. Have it for breakfast or dinner with bread for scooping.",
     course: "main",
     meal: ["breakfast", "dinner"],
     cuisine: "middle-eastern",
@@ -257,7 +264,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "sloppy-joes",
     title: "Sloppy Joes",
-    blurb: "Ground beef simmered in a sweet and tangy tomato sauce and piled onto bread. A fast weeknight dinner that kids usually like.",
+    blurb:
+      "Ground beef simmered in a sweet and tangy tomato sauce and piled onto bread. A fast weeknight dinner that kids usually like.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -291,7 +299,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "cabbage-and-sausage-skillet",
     title: "Cabbage and Sausage Skillet",
-    blurb: "Browned sausage and soft buttered cabbage cooked together in one skillet. A cheap, quick dinner that uses up a head of cabbage.",
+    blurb:
+      "Browned sausage and soft buttered cabbage cooked together in one skillet. A cheap, quick dinner that uses up a head of cabbage.",
     course: "main",
     meal: ["dinner"],
     cuisine: "american",
@@ -324,7 +333,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "cheeseburger-macaroni-skillet",
     title: "Cheeseburger Macaroni Skillet",
-    blurb: "Ground beef, macaroni, and cheddar cooked together in one pot so the pasta soaks up the sauce. A homemade boxed-dinner style meal.",
+    blurb:
+      "Ground beef, macaroni, and cheddar cooked together in one pot so the pasta soaks up the sauce. A homemade boxed-dinner style meal.",
     course: "main",
     meal: ["dinner"],
     cuisine: "american",
@@ -357,7 +367,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "ground-beef-tacos",
     title: "Ground Beef Tacos",
-    blurb: "Seasoned ground beef in warm tortillas with lettuce, tomato, and cheese. A quick taco night with no seasoning packet needed.",
+    blurb:
+      "Seasoned ground beef in warm tortillas with lettuce, tomato, and cheese. A quick taco night with no seasoning packet needed.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -395,7 +406,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "taco-rice",
     title: "Taco Rice",
-    blurb: "Okinawan taco rice: seasoned ground beef over warm rice, topped with lettuce, tomato, and cheese. A one-bowl meal from Japanese home cooking.",
+    blurb:
+      "Okinawan taco rice: seasoned ground beef over warm rice, topped with lettuce, tomato, and cheese. A one-bowl meal from Japanese home cooking.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "japanese",
@@ -431,7 +443,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "korean-beef-rice-bowl",
     title: "Korean Beef Rice Bowl",
-    blurb: "Ground beef cooked in a sweet soy, garlic, and ginger sauce, bulgogi style, and served over rice. Ready in about 20 minutes.",
+    blurb:
+      "Ground beef cooked in a sweet soy, garlic, and ginger sauce, bulgogi style, and served over rice. Ready in about 20 minutes.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "korean",
@@ -466,7 +479,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "oyakodon",
     title: "Oyakodon",
-    blurb: "Japanese chicken and egg simmered in a sweet soy broth and slid over a bowl of rice. A fast, filling dinner for two.",
+    blurb:
+      "Japanese chicken and egg simmered in a sweet soy broth and slid over a bowl of rice. A fast, filling dinner for two.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "japanese",
@@ -496,7 +510,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "garlic-chicken-and-cabbage-stir-fry",
     title: "Garlic Chicken and Cabbage Stir-Fry",
-    blurb: "Tender chicken and crisp cabbage tossed in a garlicky soy sauce. A Chinese-style stir-fry that is on the table in 25 minutes.",
+    blurb:
+      "Tender chicken and crisp cabbage tossed in a garlicky soy sauce. A Chinese-style stir-fry that is on the table in 25 minutes.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "chinese",
@@ -532,7 +547,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "peanut-chicken-with-peppers",
     title: "Peanut Chicken with Peppers",
-    blurb: "Chicken and bell peppers in a Thai-style peanut sauce made from peanut butter and soy sauce. Serve over rice for an easy dinner.",
+    blurb:
+      "Chicken and bell peppers in a Thai-style peanut sauce made from peanut butter and soy sauce. Serve over rice for an easy dinner.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "thai",
@@ -567,7 +583,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "beef-keema-with-peas",
     title: "Beef Keema with Peas",
-    blurb: "Indian keema of ground beef, onion, tomato, and peas cooked with garlic, ginger, and warm spices. Serve with rice or warm tortillas.",
+    blurb:
+      "Indian keema of ground beef, onion, tomato, and peas cooked with garlic, ginger, and warm spices. Serve with rice or warm tortillas.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "indian",
@@ -604,7 +621,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "chicken-tikka-skillet",
     title: "Chicken Tikka Skillet",
-    blurb: "Yogurt-marinated chicken seared and simmered in a creamy, spiced tomato sauce. A stovetop take on chicken tikka masala to serve over rice.",
+    blurb:
+      "Yogurt-marinated chicken seared and simmered in a creamy, spiced tomato sauce. A stovetop take on chicken tikka masala to serve over rice.",
     course: "main",
     meal: ["dinner"],
     cuisine: "indian",
@@ -643,7 +661,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "jerk-style-chicken",
     title: "Jerk-Style Chicken",
-    blurb: "Chicken in a sweet, peppery Caribbean-style marinade of onion, garlic, cinnamon, and hot sauce, then seared in a skillet. Pair it with rice and beans.",
+    blurb:
+      "Chicken in a sweet, peppery Caribbean-style marinade of onion, garlic, cinnamon, and hot sauce, then seared in a skillet. Pair it with rice and beans.",
     course: "main",
     meal: ["dinner"],
     cuisine: "caribbean",
@@ -679,7 +698,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "rice-and-peas-with-chicken",
     title: "Rice and Peas with Chicken",
-    blurb: "Caribbean rice and peas, made with kidney beans, cooked in one pot with seasoned chicken. A complete dinner with one pot to wash.",
+    blurb:
+      "Caribbean rice and peas, made with kidney beans, cooked in one pot with seasoned chicken. A complete dinner with one pot to wash.",
     course: "main",
     meal: ["dinner"],
     cuisine: "caribbean",
@@ -715,7 +735,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "spanish-chicken-and-rice",
     title: "Spanish Chicken and Rice",
-    blurb: "Arroz con pollo: chicken, peppers, and rice simmered with tomato, garlic, and paprika in one pot. A full meal for four.",
+    blurb:
+      "Arroz con pollo: chicken, peppers, and rice simmered with tomato, garlic, and paprika in one pot. A full meal for four.",
     course: "main",
     meal: ["dinner"],
     cuisine: "spanish",
@@ -753,7 +774,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "spiced-beef-over-rice",
     title: "Spiced Beef over Rice",
-    blurb: "Ground beef cooked with cinnamon, cumin, and paprika in the Middle-Eastern style, served on rice with a garlic yogurt sauce.",
+    blurb:
+      "Ground beef cooked with cinnamon, cumin, and paprika in the Middle-Eastern style, served on rice with a garlic yogurt sauce.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "middle-eastern",
@@ -788,7 +810,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "mediterranean-chicken-with-tomatoes",
     title: "Mediterranean Chicken with Tomatoes",
-    blurb: "Chicken breasts simmered in garlicky tomatoes with chickpeas and greens. A one-skillet dinner to eat with bread or rice.",
+    blurb:
+      "Chicken breasts simmered in garlicky tomatoes with chickpeas and greens. A one-skillet dinner to eat with bread or rice.",
     course: "main",
     meal: ["dinner"],
     cuisine: "mediterranean",
@@ -823,7 +846,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "chicken-in-creamy-mushroom-sauce",
     title: "Chicken in Creamy Mushroom Sauce",
-    blurb: "French-style chicken cutlets browned in butter and simmered in a creamy mushroom sauce. Spoon the sauce over rice, noodles, or bread.",
+    blurb:
+      "French-style chicken cutlets browned in butter and simmered in a creamy mushroom sauce. Spoon the sauce over rice, noodles, or bread.",
     course: "main",
     meal: ["dinner"],
     cuisine: "french",
@@ -857,7 +881,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "sausage-and-peppers",
     title: "Sausage and Peppers",
-    blurb: "Italian-style sausage cooked with soft, sweet peppers and onions. Eat it from the skillet or pile it onto bread.",
+    blurb:
+      "Italian-style sausage cooked with soft, sweet peppers and onions. Eat it from the skillet or pile it onto bread.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "italian",
@@ -891,7 +916,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "sausage-and-potato-skillet",
     title: "Sausage and Potato Skillet",
-    blurb: "Crisp diced potatoes, browned sausage, and peppers cooked in one skillet. A hearty dinner that also works as a big breakfast.",
+    blurb:
+      "Crisp diced potatoes, browned sausage, and peppers cooked in one skillet. A hearty dinner that also works as a big breakfast.",
     course: "main",
     meal: ["breakfast", "dinner"],
     cuisine: "american",
@@ -922,7 +948,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "hot-dog-fried-rice",
     title: "Hot Dog Fried Rice",
-    blurb: "Korean-style fried rice with browned hot dog slices, egg, and vegetables. A quick way to turn leftover rice into dinner.",
+    blurb:
+      "Korean-style fried rice with browned hot dog slices, egg, and vegetables. A quick way to turn leftover rice into dinner.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "korean",
@@ -987,7 +1014,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "tuna-noodle-skillet",
     title: "Tuna Noodle Skillet",
-    blurb: "Egg noodles, tuna, and peas in a creamy mushroom sauce, finished with crushed chips. The tuna casserole flavor, made on the stove.",
+    blurb:
+      "Egg noodles, tuna, and peas in a creamy mushroom sauce, finished with crushed chips. The tuna casserole flavor, made on the stove.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -1020,7 +1048,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "tuna-mayo-rice-bowl",
     title: "Tuna Mayo Rice Bowl",
-    blurb: "Japanese-style tuna mayo with soy sauce over warm rice. A five-minute microwave lunch from a can of tuna and leftover rice.",
+    blurb:
+      "Japanese-style tuna mayo with soy sauce over warm rice. A five-minute microwave lunch from a can of tuna and leftover rice.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "japanese",
@@ -1048,7 +1077,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "stovetop-chicken-and-dumplings",
     title: "Stovetop Chicken and Dumplings",
-    blurb: "Chicken and vegetables in a thick broth, topped with soft dumplings that steam in the pot. A warming one-pot dinner for cold nights.",
+    blurb:
+      "Chicken and vegetables in a thick broth, topped with soft dumplings that steam in the pot. A warming one-pot dinner for cold nights.",
     course: "main",
     meal: ["dinner"],
     cuisine: "american",
@@ -1086,7 +1116,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "sausage-gravy-and-skillet-biscuits",
     title: "Sausage Gravy and Skillet Biscuits",
-    blurb: "Peppery sausage gravy over biscuits cooked in a covered skillet. A Southern breakfast that also makes an easy dinner.",
+    blurb:
+      "Peppery sausage gravy over biscuits cooked in a covered skillet. A Southern breakfast that also makes an easy dinner.",
     course: "main",
     meal: ["breakfast", "dinner"],
     cuisine: "american",
@@ -1119,7 +1150,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "turkey-salisbury-steaks",
     title: "Turkey Salisbury Steaks",
-    blurb: "Seasoned ground turkey patties simmered in onion and mushroom gravy. A diner-style dinner to serve over rice or potatoes.",
+    blurb:
+      "Seasoned ground turkey patties simmered in onion and mushroom gravy. A diner-style dinner to serve over rice or potatoes.",
     course: "main",
     meal: ["dinner"],
     cuisine: "american",
@@ -1154,7 +1186,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "unstuffed-pepper-skillet",
     title: "Unstuffed Pepper Skillet",
-    blurb: "Everything in a stuffed pepper, cooked together in one skillet: beef, peppers, rice, tomatoes, and melted cheese on top.",
+    blurb:
+      "Everything in a stuffed pepper, cooked together in one skillet: beef, peppers, rice, tomatoes, and melted cheese on top.",
     course: "main",
     meal: ["dinner"],
     cuisine: "american",
@@ -1188,7 +1221,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "picadillo-with-potatoes",
     title: "Picadillo with Potatoes",
-    blurb: "Mexican picadillo of ground beef and small potato cubes simmered in a light tomato sauce. Serve with rice or roll it into tortillas.",
+    blurb:
+      "Mexican picadillo of ground beef and small potato cubes simmered in a light tomato sauce. Serve with rice or roll it into tortillas.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -1223,7 +1257,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "chicken-fajitas",
     title: "Chicken Fajitas",
-    blurb: "Spiced chicken strips and charred peppers and onions folded into warm tortillas. A fast, hands-on dinner for four.",
+    blurb:
+      "Spiced chicken strips and charred peppers and onions folded into warm tortillas. A fast, hands-on dinner for four.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -1258,7 +1293,8 @@ export const MAINS_B = defineRecipes([
   {
     slug: "chicken-noodle-stir-fry",
     title: "Chicken Noodle Stir-Fry",
-    blurb: "Noodles tossed with chicken, carrots, and greens in a garlic-ginger soy sauce. Instant ramen noodles work well here.",
+    blurb:
+      "Noodles tossed with chicken, carrots, and greens in a garlic-ginger soy sauce. Instant ramen noodles work well here.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "chinese",

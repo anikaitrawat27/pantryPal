@@ -37,7 +37,11 @@ export function PantrySearch() {
           {t.submit}
         </button>
         {pantry.have.length > 0 && (
-          <button type="button" className={styles.saved} onClick={() => setHave([...new Set([...have, ...pantry.have])])}>
+          <button
+            type="button"
+            className={styles.saved}
+            onClick={() => setHave([...new Set([...have, ...pantry.have])])}
+          >
             {t.addSaved(pantry.have.length)}
           </button>
         )}

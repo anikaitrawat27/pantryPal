@@ -3,7 +3,10 @@ import { parseMyPantry, setLow, toggleHave } from "@/lib/my-pantry";
 
 describe("my pantry", () => {
   it("parses stored data and drops unknown, free, duplicate, and orphaned low items", () => {
-    expect(parseMyPantry({ have: ["rice", "rice", "unicorn", "water", 5], low: ["rice", "eggs"] })).toEqual({ have: ["rice"], low: ["rice"] });
+    expect(parseMyPantry({ have: ["rice", "rice", "unicorn", "water", 5], low: ["rice", "eggs"] })).toEqual({
+      have: ["rice"],
+      low: ["rice"],
+    });
   });
 
   it("treats malformed data as empty", () => {

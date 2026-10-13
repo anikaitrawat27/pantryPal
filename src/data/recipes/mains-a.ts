@@ -5,7 +5,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "pb-n-j-sandwich",
     title: "PB n J Sandwich",
-    blurb: "The classic peanut butter and jelly sandwich. Two minutes, no cooking, and it packs well for school or work.",
+    blurb:
+      "The classic peanut butter and jelly sandwich. Two minutes, no cooking, and it packs well for school or work.",
     course: "main",
     meal: ["lunch"],
     cuisine: "american",
@@ -32,7 +33,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "veggie-wraps",
     title: "Veggie Wraps",
-    blurb: "A cold tortilla wrap filled with cheese and crunchy raw vegetables. Quick to roll up for lunch on a warm day.",
+    blurb:
+      "A cold tortilla wrap filled with cheese and crunchy raw vegetables. Quick to roll up for lunch on a warm day.",
     course: "main",
     meal: ["lunch"],
     cuisine: "american",
@@ -65,7 +67,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "clt-sandwich",
     title: "CLT Sandwich",
-    blurb: "Chicken, lettuce, and tomato on bread, made with canned chicken. A no-cook lunch that takes about five minutes.",
+    blurb:
+      "Chicken, lettuce, and tomato on bread, made with canned chicken. A no-cook lunch that takes about five minutes.",
     course: "main",
     meal: ["lunch"],
     cuisine: "american",
@@ -94,7 +97,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "mexican-quesadillas",
     title: "Mexican Quesadillas",
-    blurb: "Crisp flour tortillas filled with pan-cooked chicken breast and melted cheese. A filling lunch or easy dinner for two.",
+    blurb:
+      "Crisp flour tortillas filled with pan-cooked chicken breast and melted cheese. A filling lunch or easy dinner for two.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -159,12 +163,15 @@ export const MAINS_A = defineRecipes([
       "Return the eggs, add the soy sauce, and toss to combine.",
       "Taste and season with salt.",
     ],
-    tips: ["Freshly cooked rice turns mushy. Spread it on a plate and chill it for at least an hour if you have no leftovers."],
+    tips: [
+      "Freshly cooked rice turns mushy. Spread it on a plate and chill it for at least an hour if you have no leftovers.",
+    ],
   },
   {
     slug: "spaghetti",
     title: "Spaghetti",
-    blurb: "Spaghetti tossed in butter, black pepper, and parmesan, with pasta water turning it into a glossy sauce. A fast weeknight dinner.",
+    blurb:
+      "Spaghetti tossed in butter, black pepper, and parmesan, with pasta water turning it into a glossy sauce. A fast weeknight dinner.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "italian",
@@ -195,7 +202,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "ramen",
     title: "Ramen",
-    blurb: "Instant ramen cooked, drained, and tossed with its seasoning and a slice of melted cheese. A quick bowl that takes about five minutes.",
+    blurb:
+      "Instant ramen cooked, drained, and tossed with its seasoning and a slice of melted cheese. A quick bowl that takes about five minutes.",
     course: "main",
     meal: ["lunch"],
     cuisine: "american",
@@ -224,7 +232,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "chicken-pasta",
     title: "Chicken Pasta",
-    blurb: "Pasta and chicken breast in a creamy garlic parmesan sauce made from butter and milk. A filling one-skillet dinner.",
+    blurb:
+      "Pasta and chicken breast in a creamy garlic parmesan sauce made from butter and milk. A filling one-skillet dinner.",
     course: "main",
     meal: ["dinner"],
     cuisine: "american",
@@ -260,7 +269,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "greens-pasta",
     title: "Greens Pasta",
-    blurb: "A light pasta tossed with garlicky green beans and peas from the can, finished with cheese. Dinner in about 20 minutes.",
+    blurb:
+      "A light pasta tossed with garlicky green beans and peas from the can, finished with cheese. Dinner in about 20 minutes.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "italian",
@@ -292,7 +302,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "alfredo",
     title: "Alfredo",
-    blurb: "Pasta in a rich sauce of butter, milk, and parmesan, thinned with a little pasta water. Comfort food for a quiet night in.",
+    blurb:
+      "Pasta in a rich sauce of butter, milk, and parmesan, thinned with a little pasta water. Comfort food for a quiet night in.",
     course: "main",
     meal: ["dinner"],
     cuisine: "italian",
@@ -326,7 +337,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "skillet-veggie-quiche",
     title: "Skillet Veggie Quiche",
-    blurb: "A crustless quiche of eggs, greens, bell pepper, and tomato, cooked covered on the stovetop until set. Good warm or cold for lunch.",
+    blurb:
+      "A crustless quiche of eggs, greens, bell pepper, and tomato, cooked covered on the stovetop until set. Good warm or cold for lunch.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "french",
@@ -363,7 +375,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "black-bean-burger",
     title: "Black Bean Burger",
-    blurb: "Pan-fried black bean and potato patties with sauteed vegetables, served on bread with lettuce and tomato. A meatless burger night.",
+    blurb:
+      "Pan-fried black bean and potato patties with sauteed vegetables, served on bread with lettuce and tomato. A meatless burger night.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -439,7 +452,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "vegetable-lo-mein",
     title: "Vegetable Lo Mein",
-    blurb: "Soft noodles stir-fried with peppers, carrots, peas, greens, and garlic-ginger paste. A takeout-style dinner from the pantry.",
+    blurb:
+      "Soft noodles stir-fried with peppers, carrots, peas, greens, and garlic-ginger paste. A takeout-style dinner from the pantry.",
     course: "main",
     meal: ["dinner"],
     cuisine: "chinese",
@@ -474,7 +488,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "veggie-tacos",
     title: "Veggie Tacos",
-    blurb: "Flour tortillas filled with black beans and skillet-roasted vegetables, topped with lettuce, tomato, and cheese. A fun meatless dinner.",
+    blurb:
+      "Flour tortillas filled with black beans and skillet-roasted vegetables, topped with lettuce, tomato, and cheese. A fun meatless dinner.",
     course: "main",
     meal: ["dinner"],
     cuisine: "mexican",
@@ -509,7 +524,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "tortilla-pizza",
     title: "Tortilla Pizza",
-    blurb: "A thin, crisp pizza on a flour tortilla with sauce, mozzarella, and peppers, cooked in a covered skillet. Ready in about 15 minutes.",
+    blurb:
+      "A thin, crisp pizza on a flour tortilla with sauce, mozzarella, and peppers, cooked in a covered skillet. Ready in about 15 minutes.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "italian",
@@ -539,7 +555,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "buddha-bowl",
     title: "Buddha Bowl",
-    blurb: "A bowl of rice and lentils topped with skillet-roasted peppers and onions, crunchy cabbage, carrot, and tomato. A filling meatless meal.",
+    blurb:
+      "A bowl of rice and lentils topped with skillet-roasted peppers and onions, crunchy cabbage, carrot, and tomato. A filling meatless meal.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -578,7 +595,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "tuna-melt",
     title: "Tuna Melt",
-    blurb: "Tuna salad and cheddar griddled between buttered bread until crisp and melted. A hot sandwich for a cold day.",
+    blurb:
+      "Tuna salad and cheddar griddled between buttered bread until crisp and melted. A hot sandwich for a cold day.",
     course: "main",
     meal: ["lunch"],
     cuisine: "american",
@@ -608,7 +626,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "egg-salad-sandwich",
     title: "Egg Salad Sandwich",
-    blurb: "Chopped hard-cooked eggs mixed with mayo and a little paprika, piled on bread with lettuce. A make-ahead lunch.",
+    blurb:
+      "Chopped hard-cooked eggs mixed with mayo and a little paprika, piled on bread with lettuce. A make-ahead lunch.",
     course: "main",
     meal: ["lunch"],
     cuisine: "american",
@@ -639,7 +658,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "grilled-cheese-with-tomato",
     title: "Grilled Cheese with Tomato",
-    blurb: "A buttery grilled cheese sandwich with thin slices of tomato melted into the cheddar. A quick lunch any day of the week.",
+    blurb:
+      "A buttery grilled cheese sandwich with thin slices of tomato melted into the cheddar. A quick lunch any day of the week.",
     course: "main",
     meal: ["lunch"],
     cuisine: "american",
@@ -668,7 +688,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "bean-and-cheese-burritos",
     title: "Bean and Cheese Burritos",
-    blurb: "Flour tortillas rolled around seasoned refried pinto beans and cheddar, then crisped in a skillet. Freezes well for quick lunches.",
+    blurb:
+      "Flour tortillas rolled around seasoned refried pinto beans and cheddar, then crisped in a skillet. Freezes well for quick lunches.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -705,7 +726,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "chana-masala",
     title: "Chana Masala",
-    blurb: "Chickpeas simmered in a spiced onion and tomato sauce with garlic and ginger. A hearty vegetarian dinner with rice or bread.",
+    blurb:
+      "Chickpeas simmered in a spiced onion and tomato sauce with garlic and ginger. A hearty vegetarian dinner with rice or bread.",
     course: "main",
     meal: ["dinner"],
     cuisine: "indian",
@@ -741,7 +763,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "caribbean-rice-and-beans",
     title: "Caribbean Rice and Beans",
-    blurb: "Rice and red kidney beans cooked together in one pot with onion, pepper, and garlic. A simple dinner with a splash of hot sauce.",
+    blurb:
+      "Rice and red kidney beans cooked together in one pot with onion, pepper, and garlic. A simple dinner with a splash of hot sauce.",
     course: "main",
     meal: ["dinner"],
     cuisine: "caribbean",
@@ -808,7 +831,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "skillet-ziti",
     title: "Skillet Ziti",
-    blurb: "Ziti in tomato sauce with dollops of cream cheese, topped with mozzarella and melted under a lid on the stovetop.",
+    blurb:
+      "Ziti in tomato sauce with dollops of cream cheese, topped with mozzarella and melted under a lid on the stovetop.",
     course: "main",
     meal: ["dinner"],
     cuisine: "italian",
@@ -842,7 +866,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "peanut-noodles",
     title: "Peanut Noodles",
-    blurb: "Noodles tossed in a peanut butter, soy, and garlic-ginger sauce with crunchy cabbage and carrot. Good warm or cold for lunch.",
+    blurb:
+      "Noodles tossed in a peanut butter, soy, and garlic-ginger sauce with crunchy cabbage and carrot. Good warm or cold for lunch.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "thai",
@@ -873,7 +898,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "vegetable-yakisoba",
     title: "Vegetable Yakisoba",
-    blurb: "Japanese-style stir-fried noodles with cabbage, carrot, and onion in a sweet soy sauce. A one-skillet dinner in 20 minutes.",
+    blurb:
+      "Japanese-style stir-fried noodles with cabbage, carrot, and onion in a sweet soy sauce. A one-skillet dinner in 20 minutes.",
     course: "main",
     meal: ["dinner"],
     cuisine: "japanese",
@@ -904,7 +930,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "bibimbap-rice-bowl",
     title: "Bibimbap Rice Bowl",
-    blurb: "Warm rice topped with garlicky greens, sauteed carrot, a fried egg, and a sweet-spicy soy sauce. Mix it all together before eating.",
+    blurb:
+      "Warm rice topped with garlicky greens, sauteed carrot, a fried egg, and a sweet-spicy soy sauce. Mix it all together before eating.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "korean",
@@ -939,7 +966,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "mediterranean-chickpea-rice-bowl",
     title: "Mediterranean Chickpea Rice Bowl",
-    blurb: "Crisp spiced chickpeas over rice with tomato, lettuce, and a garlic yogurt sauce. A filling vegetarian lunch.",
+    blurb:
+      "Crisp spiced chickpeas over rice with tomato, lettuce, and a garlic yogurt sauce. A filling vegetarian lunch.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "mediterranean",
@@ -976,7 +1004,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "arroz-con-verduras",
     title: "Arroz con Verduras",
-    blurb: "Spanish-style skillet rice cooked with peppers, onion, tomato, garlic, and smoked paprika, finished with green beans. A one-pan vegetarian dinner.",
+    blurb:
+      "Spanish-style skillet rice cooked with peppers, onion, tomato, garlic, and smoked paprika, finished with green beans. A one-pan vegetarian dinner.",
     course: "main",
     meal: ["dinner"],
     cuisine: "spanish",
@@ -1012,7 +1041,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "egg-fried-noodles",
     title: "Egg Fried Noodles",
-    blurb: "Noodles stir-fried with scrambled egg, cabbage, onion, and soy sauce. A fast dinner from a few pantry staples.",
+    blurb:
+      "Noodles stir-fried with scrambled egg, cabbage, onion, and soy sauce. A fast dinner from a few pantry staples.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "chinese",
@@ -1046,7 +1076,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "turkey-croque-monsieur",
     title: "Turkey Croque Monsieur",
-    blurb: "A French-style hot sandwich of turkey and cheese with a creamy white sauce, griddled in a covered skillet. A cozy weekend lunch.",
+    blurb:
+      "A French-style hot sandwich of turkey and cheese with a creamy white sauce, griddled in a covered skillet. A cozy weekend lunch.",
     course: "main",
     meal: ["lunch"],
     cuisine: "french",
@@ -1079,7 +1110,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "aloo-matar",
     title: "Aloo Matar",
-    blurb: "Potatoes and peas simmered in a spiced tomato and onion sauce. A North Indian vegetarian curry to serve with rice or bread.",
+    blurb:
+      "Potatoes and peas simmered in a spiced tomato and onion sauce. A North Indian vegetarian curry to serve with rice or bread.",
     course: "main",
     meal: ["dinner"],
     cuisine: "indian",
@@ -1113,7 +1145,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "haluski",
     title: "Haluski",
-    blurb: "Egg noodles tossed with cabbage and onion slowly fried in butter. A Pennsylvania comfort dish that turns a head of cabbage into dinner.",
+    blurb:
+      "Egg noodles tossed with cabbage and onion slowly fried in butter. A Pennsylvania comfort dish that turns a head of cabbage into dinner.",
     course: "main",
     meal: ["dinner"],
     cuisine: "american",
@@ -1142,7 +1175,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "black-bean-and-cheese-quesadilla",
     title: "Black Bean and Cheese Quesadilla",
-    blurb: "A folded tortilla filled with mashed black beans, corn, and melted cheddar, crisped in a skillet. A ten-minute lunch.",
+    blurb:
+      "A folded tortilla filled with mashed black beans, corn, and melted cheddar, crisped in a skillet. A ten-minute lunch.",
     course: "main",
     meal: ["lunch"],
     cuisine: "mexican",
@@ -1172,7 +1206,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "mujaddara",
     title: "Mujaddara",
-    blurb: "Lentils and rice cooked together and topped with deeply browned onions. A Middle Eastern dinner from three cheap staples.",
+    blurb:
+      "Lentils and rice cooked together and topped with deeply browned onions. A Middle Eastern dinner from three cheap staples.",
     course: "main",
     meal: ["dinner"],
     cuisine: "middle-eastern",
@@ -1204,7 +1239,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "lentil-sloppy-joes",
     title: "Lentil Sloppy Joes",
-    blurb: "Tender lentils in a sweet and tangy tomato sauce with peppers and onion, spooned onto toasted bread. A meatless take on a diner classic.",
+    blurb:
+      "Tender lentils in a sweet and tangy tomato sauce with peppers and onion, spooned onto toasted bread. A meatless take on a diner classic.",
     course: "main",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -1240,7 +1276,8 @@ export const MAINS_A = defineRecipes([
   {
     slug: "buffalo-chicken-wrap",
     title: "Buffalo Chicken Wrap",
-    blurb: "Canned chicken tossed in buttery hot sauce and rolled in a tortilla with lettuce, carrot, and a cool yogurt dressing. A spicy, quick lunch.",
+    blurb:
+      "Canned chicken tossed in buttery hot sauce and rolled in a tortilla with lettuce, carrot, and a cool yogurt dressing. A spicy, quick lunch.",
     course: "main",
     meal: ["lunch"],
     cuisine: "american",

@@ -3,7 +3,8 @@ import { defineRecipesEs } from "../../recipe-es";
 export const APPETIZERS_ES = defineRecipesEs({
   "chicken-rollups": {
     title: "Rollitos de pollo",
-    blurb: "Tortillas untadas con un relleno cremoso de pollo y queso, enrolladas y cortadas en rueditas. Buenos para una charola de fiesta o el almuerzo.",
+    blurb:
+      "Tortillas untadas con un relleno cremoso de pollo y queso, enrolladas y cortadas en rueditas. Buenos para una charola de fiesta o el almuerzo.",
     steps: [
       "Revuelva el queso crema en un tazón hasta que quede suave.",
       "Mezcle el queso rallado, el pollo, las hojas verdes, la sal y la pimienta.",
@@ -25,7 +26,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "mini-pizza-bites": {
     title: "Mini bocados de pizza",
-    blurb: "Triángulos de tortilla crujientes con salsa para pizza y queso mozzarella derretido. Un bocadillo rápido para cuando se le antoja pizza sin esperar.",
+    blurb:
+      "Triángulos de tortilla crujientes con salsa para pizza y queso mozzarella derretido. Un bocadillo rápido para cuando se le antoja pizza sin esperar.",
     steps: [
       "Corte cada tortilla en 6 triángulos.",
       "Tueste los triángulos en un sartén seco a fuego medio de 1 a 2 minutos por lado, hasta que estén crujientes.",
@@ -43,7 +45,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "loaded-nachos": {
     title: "Nachos cargados",
-    blurb: "Un platón vegetariano de totopos cubiertos con queso derretido, maíz y frijoles negros, con yogur fresco encima. Para compartir en noche de partido.",
+    blurb:
+      "Un platón vegetariano de totopos cubiertos con queso derretido, maíz y frijoles negros, con yogur fresco encima. Para compartir en noche de partido.",
     steps: [
       "Extienda los totopos en un plato grande apto para microondas.",
       "Mezcle el maíz y los frijoles en un tazón y caliéntelos en el microondas de 1 a 2 minutos, hasta que estén tibios.",
@@ -64,7 +67,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "meaty-nachos": {
     title: "Nachos con pollo",
-    blurb: "Totopos con queso derretido y pollo enlatado deshebrado, calentados en dos tandas rápidas en el microondas. Un bocadillo que llena, para dos personas.",
+    blurb:
+      "Totopos con queso derretido y pollo enlatado deshebrado, calentados en dos tandas rápidas en el microondas. Un bocadillo que llena, para dos personas.",
     steps: [
       "Extienda los totopos en un plato apto para microondas.",
       "Espolvoree el queso sobre los totopos.",
@@ -81,7 +85,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "veggie-chips": {
     title: "Papitas caseras",
-    blurb: "Rebanadas delgadas de papa que se doran en el microondas en tandas pequeñas, con sal y un poco de aceite. Papitas hechas en casa para la tarde.",
+    blurb:
+      "Rebanadas delgadas de papa que se doran en el microondas en tandas pequeñas, con sal y un poco de aceite. Papitas hechas en casa para la tarde.",
     steps: [
       "Rebane las papas lo más delgado que pueda con un cuchillo o un pelador de verduras.",
       "Enjuague las rebanadas en agua fría y séquelas muy bien con una toalla.",
@@ -100,7 +105,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "potato-puffs": {
     title: "Panecitos rellenos de papa",
-    blurb: "Masa suave de yogur rellena de puré de papa sazonado y dorada en sartén, como un pan plano relleno pequeño. Un bocadillo que llena, para servir caliente.",
+    blurb:
+      "Masa suave de yogur rellena de puré de papa sazonado y dorada en sartén, como un pan plano relleno pequeño. Un bocadillo que llena, para servir caliente.",
     steps: [
       "Hierva las papas en una olla con agua con sal de 12 a 15 minutos, hasta que estén suaves.",
       "Escurra las papas y macháquelas con la mitad de la sal, el comino y el chile en polvo. Deje que el relleno se enfríe.",
@@ -123,7 +129,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "classic-deviled-eggs": {
     title: "Huevos rellenos clásicos",
-    blurb: "Mitades de huevo duro rellenas de una mezcla cremosa y sazonada de yema. Una botana que puede preparar con anticipación para reuniones y días festivos.",
+    blurb:
+      "Mitades de huevo duro rellenas de una mezcla cremosa y sazonada de yema. Una botana que puede preparar con anticipación para reuniones y días festivos.",
     steps: [
       "Ponga los huevos en una olla y cúbralos con agua fría.",
       "Deje que hierva a fuego alto, luego tape la olla y retírela del fuego.",
@@ -138,7 +145,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "warm-bean-dip": {
     title: "Dip caliente de frijoles",
-    blurb: "Frijoles pintos machacados con comino y chile en polvo bajo una capa de queso derretido. Sírvalo caliente con totopos en una fiesta o noche de películas.",
+    blurb:
+      "Frijoles pintos machacados con comino y chile en polvo bajo una capa de queso derretido. Sírvalo caliente con totopos en una fiesta o noche de películas.",
     steps: [
       "Machaque los frijoles con un tenedor en un tazón apto para microondas, agregando un chorrito del líquido que guardó hasta que queden suaves y fáciles de servir.",
       "Incorpore el chile en polvo, el comino, la sal y la mitad del queso.",
@@ -154,7 +162,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "chickpea-hummus": {
     title: "Hummus de garbanzo",
-    blurb: "Una pasta suave de garbanzo hecha con crema de cacahuate en lugar de tahini. Sírvala con triángulos de tortilla, totopos o palitos de zanahoria.",
+    blurb:
+      "Una pasta suave de garbanzo hecha con crema de cacahuate en lugar de tahini. Sírvala con triángulos de tortilla, totopos o palitos de zanahoria.",
     steps: [
       "Ponga los garbanzos, la crema de cacahuate, el aceite, el ajo, el jugo de limón, el comino y la sal en la licuadora.",
       "Licúe hasta que quede suave, deteniéndose para bajar lo que se pegue a los lados.",
@@ -162,15 +171,13 @@ export const APPETIZERS_ES = defineRecipesEs({
       "Pruebe y agregue más sal si hace falta.",
       "Sirva en un tazón y, si quiere, rocíe con un poco más de aceite.",
     ],
-    tips: [
-      "Se conserva tapado en el refrigerador hasta por 4 días.",
-      "Espolvoree con pimentón antes de servir.",
-    ],
+    tips: ["Se conserva tapado en el refrigerador hasta por 4 días.", "Espolvoree con pimentón antes de servir."],
     notes: { chickpeas: "escurridos, guarde el líquido" },
   },
   "fresh-tomato-salsa": {
     title: "Salsa fresca de tomate",
-    blurb: "Tomate, cebolla y ajo picados con un chorrito de limón. Una salsa fresca para totopos o para poner encima de quesadillas y huevos.",
+    blurb:
+      "Tomate, cebolla y ajo picados con un chorrito de limón. Una salsa fresca para totopos o para poner encima de quesadillas y huevos.",
     steps: [
       "Mezcle los tomates, la cebolla y el ajo en un tazón.",
       "Agregue el jugo de limón, la salsa picante y la sal, y vuelva a mezclar.",
@@ -187,7 +194,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "stovetop-queso-dip": {
     title: "Dip de queso en la estufa",
-    blurb: "Una salsa de queso suave y caliente con tomate picado y un poco de chile en polvo. Sírvala con totopos cuando tenga muchos invitados.",
+    blurb:
+      "Una salsa de queso suave y caliente con tomate picado y un poco de chile en polvo. Sírvala con totopos cuando tenga muchos invitados.",
     steps: [
       "Derrita la mantequilla en una cacerola pequeña a fuego medio-bajo.",
       "Agregue la harina batiendo y cocine por 1 minuto.",
@@ -205,7 +213,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "pigs-in-a-blanket": {
     title: "Salchichas envueltas",
-    blurb: "Pedazos de salchicha de hot dog envueltos en tiras de masa de bisquets y cocidos en un sartén tapado hasta dorarse. Un bocadillo de fiesta que gusta a niños y adultos.",
+    blurb:
+      "Pedazos de salchicha de hot dog envueltos en tiras de masa de bisquets y cocidos en un sartén tapado hasta dorarse. Un bocadillo de fiesta que gusta a niños y adultos.",
     steps: [
       "Desenrolle la masa y separe los triángulos.",
       "Corte cada triángulo por la mitad a lo largo para hacer tiras delgadas.",
@@ -220,7 +229,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "cheese-quesadilla-triangles": {
     title: "Triángulos de quesadilla",
-    blurb: "Tortillas crujientes dobladas sobre queso derretido y cortadas en triángulos pequeños para mojar. Rápidas de hacer como bocadillo después de la escuela.",
+    blurb:
+      "Tortillas crujientes dobladas sobre queso derretido y cortadas en triángulos pequeños para mojar. Rápidas de hacer como bocadillo después de la escuela.",
     steps: [
       "Espolvoree el queso y el chile en polvo sobre la mitad de cada tortilla.",
       "Doble las tortillas por la mitad.",
@@ -238,7 +248,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "potato-latkes": {
     title: "Latkes de papa",
-    blurb: "Tortitas de papa y cebolla ralladas, fritas en sartén hasta que las orillas quedan crujientes. Sírvalas calientes con yogur o puré de manzana como botana o entrada.",
+    blurb:
+      "Tortitas de papa y cebolla ralladas, fritas en sartén hasta que las orillas quedan crujientes. Sírvalas calientes con yogur o puré de manzana como botana o entrada.",
     steps: [
       "Ralle las papas y la cebolla por el lado grueso del rallador.",
       "Envuélvalas en una toalla limpia y exprima todo el líquido que pueda.",
@@ -259,7 +270,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "onion-pakoras": {
     title: "Pakoras de cebolla",
-    blurb: "Cebolla rebanada en una masa de harina con especias, frita en montoncitos hasta quedar crujiente. Un antojito callejero para una tarde de lluvia con té.",
+    blurb:
+      "Cebolla rebanada en una masa de harina con especias, frita en montoncitos hasta quedar crujiente. Un antojito callejero para una tarde de lluvia con té.",
     steps: [
       "Mezcle la harina, el polvo para hornear, la sal, el chile en polvo y el comino en un tazón.",
       "Agregue la pasta de ajo y jengibre y la cebolla, y revuelva para cubrir.",
@@ -277,7 +289,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "onion-scallion-style-pancakes": {
     title: "Panqueques de cebolla estilo chino",
-    blurb: "Panes planos hojaldrados, fritos en sartén y con capas de cebolla picada fina, cortados en triángulos y para mojar en salsa de soya. Un bocadillo estilo chino hecho con harina de la despensa.",
+    blurb:
+      "Panes planos hojaldrados, fritos en sartén y con capas de cebolla picada fina, cortados en triángulos y para mojar en salsa de soya. Un bocadillo estilo chino hecho con harina de la despensa.",
     steps: [
       "Mezcle la harina y la mitad de la sal en un tazón.",
       "Incorpore el agua caliente hasta que se forme una masa grumosa.",
@@ -300,7 +313,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "cabbage-okonomiyaki": {
     title: "Okonomiyaki de repollo",
-    blurb: "Una tortita salada japonesa llena de repollo rallado, con mayonesa y un glaseado dulce de soya encima. Córtela en triángulos para compartir.",
+    blurb:
+      "Una tortita salada japonesa llena de repollo rallado, con mayonesa y un glaseado dulce de soya encima. Córtela en triángulos para compartir.",
     steps: [
       "Bata la harina, los huevos, el agua y la sal en un tazón hasta que quede suave.",
       "Incorpore el repollo y la cebolla con movimientos envolventes hasta cubrirlos.",
@@ -319,7 +333,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "vegetable-pajeon": {
     title: "Pajeon de verduras",
-    blurb: "Una tortita coreana delgada y crujiente llena de cebolla y zanahoria, con salsa de soya y vinagre para mojar. Buena para compartir al empezar la comida.",
+    blurb:
+      "Una tortita coreana delgada y crujiente llena de cebolla y zanahoria, con salsa de soya y vinagre para mojar. Buena para compartir al empezar la comida.",
     steps: [
       "Bata la harina, el agua, el huevo y la sal hasta formar una mezcla suave y aguada.",
       "Incorpore la cebolla, la zanahoria y las hojas verdes.",
@@ -341,7 +356,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "patatas-bravas": {
     title: "Patatas Bravas",
-    blurb: "Cubos de papa fritos en sartén hasta quedar crujientes, con una salsa de tomate con pimentón ahumado. Una tapa española para compartir con palillos.",
+    blurb:
+      "Cubos de papa fritos en sartén hasta quedar crujientes, con una salsa de tomate con pimentón ahumado. Una tapa española para compartir con palillos.",
     steps: [
       "Hierva las papas en una olla con agua con sal de 6 a 8 minutos, hasta que apenas estén tiernas.",
       "Escúrralas bien y séquelas con una toalla.",
@@ -360,7 +376,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "street-corn-cups": {
     title: "Vasitos de esquites",
-    blurb: "Maíz tostado en sartén y mezclado con mayonesa, queso parmesano y chile en polvo, servido en vasitos. Una versión de los esquites mexicanos con maíz enlatado.",
+    blurb:
+      "Maíz tostado en sartén y mezclado con mayonesa, queso parmesano y chile en polvo, servido en vasitos. Una versión de los esquites mexicanos con maíz enlatado.",
     steps: [
       "Derrita la mantequilla en un sartén a fuego medio-alto.",
       "Agregue el maíz en una capa pareja y cocine de 5 a 7 minutos, revolviendo solo de vez en cuando, hasta que algunos granos se doren.",
@@ -375,7 +392,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "tuna-stuffed-tomatoes": {
     title: "Tomates rellenos de atún",
-    blurb: "Tomates vaciados y rellenos de atún, cebolla, aceite y limón. Una entrada ligera sin cocinar, o un almuerzo para un día caluroso.",
+    blurb:
+      "Tomates vaciados y rellenos de atún, cebolla, aceite y limón. Una entrada ligera sin cocinar, o un almuerzo para un día caluroso.",
     steps: [
       "Corte la parte de arriba de los tomates.",
       "Saque las semillas y el centro suave con una cuchara, y pique la pulpa que sacó.",
@@ -392,7 +410,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "parmesan-cheese-crisps": {
     title: "Galletitas crujientes de parmesano",
-    blurb: "Círculos crujientes y calados de queso parmesano derretido, hechos en el microondas en unos dos minutos. Un bocadillo salado solo o encima de una sopa.",
+    blurb:
+      "Círculos crujientes y calados de queso parmesano derretido, hechos en el microondas en unos dos minutos. Un bocadillo salado solo o encima de una sopa.",
     steps: [
       "Cubra un plato apto para microondas con papel pergamino.",
       "Ponga montoncitos de queso sobre el papel, bien separados entre sí.",
@@ -405,7 +424,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "cinnamon-sugar-tortilla-chips": {
     title: "Totopos con canela y azúcar",
-    blurb: "Triángulos de tortilla de harina tostados hasta quedar crujientes y revueltos con azúcar y canela. Un bocadillo dulce para mojar en yogur o comer a puños.",
+    blurb:
+      "Triángulos de tortilla de harina tostados hasta quedar crujientes y revueltos con azúcar y canela. Un bocadillo dulce para mojar en yogur o comer a puños.",
     steps: [
       "Mezcle el azúcar y la canela en un tazón grande.",
       "Barnice ligeramente ambos lados de cada tortilla con aceite.",
@@ -419,7 +439,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "apple-ants-on-a-log": {
     title: "Hormiguitas en manzana",
-    blurb: "Gajos de manzana untados con crema de cacahuate y salpicados de cereal, una versión del clásico bocadillo de apio. Los niños pueden ayudar a hacerlos rápido.",
+    blurb:
+      "Gajos de manzana untados con crema de cacahuate y salpicados de cereal, una versión del clásico bocadillo de apio. Los niños pueden ayudar a hacerlos rápido.",
     steps: [
       "Quite el corazón a las manzanas y corte cada una en 8 gajos.",
       "Revuelva los gajos con el jugo de limón para que no se pongan oscuros.",
@@ -430,7 +451,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "apple-nachos": {
     title: "Nachos de manzana",
-    blurb: "Rebanadas delgadas de manzana extendidas en un plato y bañadas con crema de cacahuate tibia y miel. Un platón dulce fácil de compartir.",
+    blurb:
+      "Rebanadas delgadas de manzana extendidas en un plato y bañadas con crema de cacahuate tibia y miel. Un platón dulce fácil de compartir.",
     steps: [
       "Quite el corazón a las manzanas y córtelas en rebanadas delgadas.",
       "Acomode las rebanadas encimadas en un plato.",
@@ -441,7 +463,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "peanut-butter-energy-bites": {
     title: "Bolitas energéticas de crema de cacahuate",
-    blurb: "Bolitas masticables sin cocinar de avena, crema de cacahuate y miel. Prepare una tanda con anticipación para la escuela o para comer algo rápido al salir.",
+    blurb:
+      "Bolitas masticables sin cocinar de avena, crema de cacahuate y miel. Prepare una tanda con anticipación para la escuela o para comer algo rápido al salir.",
     steps: [
       "Mezcle todos los ingredientes en un tazón hasta que queden bien integrados.",
       "Enfríe la mezcla en el refrigerador por 20 minutos para que sea más fácil darle forma.",
@@ -453,7 +476,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "glazed-sausage-bites": {
     title: "Bocados de salchicha glaseada",
-    blurb: "Rodajas de salchicha doradas y revueltas en un glaseado pegajoso de miel y soya. Sírvalas con palillos en una fiesta o noche de partido.",
+    blurb:
+      "Rodajas de salchicha doradas y revueltas en un glaseado pegajoso de miel y soya. Sírvalas con palillos en una fiesta o noche de partido.",
     steps: [
       "Caliente el aceite en un sartén a fuego medio.",
       "Agregue la salchicha y cocine de 5 a 6 minutos, volteándola, hasta que esté dorada y bien cocida, sin partes rosadas en el centro.",
@@ -465,7 +489,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "mini-corn-fritters": {
     title: "Mini tortitas de elote",
-    blurb: "Tortitas pequeñas y doradas, fritas en sartén y llenas de maíz dulce. Sírvalas calientes con yogur o salsa como botana o entrada.",
+    blurb:
+      "Tortitas pequeñas y doradas, fritas en sartén y llenas de maíz dulce. Sírvalas calientes con yogur o salsa como botana o entrada.",
     steps: [
       "Bata la harina, el polvo para hornear y la sal en un tazón.",
       "Agregue el huevo y la leche y revuelva hasta formar una masa espesa.",
@@ -484,7 +509,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "crispy-spiced-chickpeas": {
     title: "Garbanzos crujientes con especias",
-    blurb: "Garbanzos enlatados tostados en sartén con pimentón y comino hasta quedar crujientes. Un bocadillo salado para tener en un tazón y picar.",
+    blurb:
+      "Garbanzos enlatados tostados en sartén con pimentón y comino hasta quedar crujientes. Un bocadillo salado para tener en un tazón y picar.",
     steps: [
       "Caliente el aceite en un sartén grande a fuego medio.",
       "Agregue los garbanzos en una sola capa y cocine de 12 a 15 minutos, sacudiendo el sartén seguido, hasta que estén dorados y crujientes.",
@@ -497,7 +523,8 @@ export const APPETIZERS_ES = defineRecipesEs({
   },
   "chickpea-falafel-patties": {
     title: "Falafel de garbanzo",
-    blurb: "Tortitas pequeñas de garbanzo con ajo, cebolla y comino, fritas en sartén hasta quedar crujientes y servidas con una salsa de yogur con limón.",
+    blurb:
+      "Tortitas pequeñas de garbanzo con ajo, cebolla y comino, fritas en sartén hasta quedar crujientes y servidas con una salsa de yogur con limón.",
     steps: [
       "Pulse los garbanzos, la cebolla, el ajo, las hojas verdes, el comino y casi toda la sal en la licuadora hasta que la mezcla esté martajada y se mantenga unida al apretarla. Baje lo que se pegue a los lados cuando haga falta.",
       "Pase la mezcla a un tazón e incorpore la harina y el polvo para hornear.",
@@ -507,7 +534,9 @@ export const APPETIZERS_ES = defineRecipesEs({
       "Escúrralas sobre toallas de papel.",
       "Mezcle el yogur, el jugo de limón y el resto de la sal, y sirva con las tortitas.",
     ],
-    tips: ["Si la mezcla está muy blanda para darle forma, enfríela 15 minutos en el refrigerador o agregue un poco más de harina."],
+    tips: [
+      "Si la mezcla está muy blanda para darle forma, enfríela 15 minutos en el refrigerador o agregue un poco más de harina.",
+    ],
     notes: {
       chickpeas: "escurridos y secados con una toalla",
       onion: "picada",

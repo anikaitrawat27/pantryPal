@@ -27,10 +27,7 @@ export function IngredientInput({ value, onChange, label, placeholder }: Props) 
   const [active, setActive] = useState(0);
 
   const lastToken = text.split(",").pop() ?? "";
-  const options = useMemo(
-    () => searchIngredients(lastToken).filter((i) => !value.includes(i.id)),
-    [lastToken, value],
-  );
+  const options = useMemo(() => searchIngredients(lastToken).filter((i) => !value.includes(i.id)), [lastToken, value]);
   const showList = open && options.length > 0 && lastToken.trim().length > 0;
 
   const add = (ids: string[]) => {
@@ -42,7 +39,10 @@ export function IngredientInput({ value, onChange, label, placeholder }: Props) 
   };
 
   const commitText = () => {
-    const tokens = text.split(",").map((t) => t.trim()).filter(Boolean);
+    const tokens = text
+      .split(",")
+      .map((t) => t.trim())
+      .filter(Boolean);
     const ids = tokens.flatMap((t, idx) => {
       // The token being typed uses the highlighted suggestion.
       if (idx === tokens.length - 1 && showList) return [options[active].id];
@@ -82,7 +82,11 @@ export function IngredientInput({ value, onChange, label, placeholder }: Props) 
           {value.map((v) => (
             <li key={v} className={styles.chip}>
               {ingredientName(v, lang)}
-              <button type="button" onClick={() => onChange(value.filter((x) => x !== v))} aria-label={t.remove(ingredientName(v, lang))}>
+              <button
+                type="button"
+                onClick={() => onChange(value.filter((x) => x !== v))}
+                aria-label={t.remove(ingredientName(v, lang))}
+              >
                 ×
               </button>
             </li>
@@ -121,7 +125,11 @@ export function IngredientInput({ value, onChange, label, placeholder }: Props) 
               // mousedown keeps focus in the input so blur does not close the list first.
               onMouseDown={(e) => {
                 e.preventDefault();
-                const done = text.split(",").slice(0, -1).map((t) => t.trim()).filter(Boolean);
+                const done = text
+                  .split(",")
+                  .slice(0, -1)
+                  .map((t) => t.trim())
+                  .filter(Boolean);
                 const earlier = done.flatMap((t) => searchIngredients(t, 1).map((x) => x.id));
                 add([...earlier, o.id]);
               }}

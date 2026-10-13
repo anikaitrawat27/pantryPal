@@ -26,7 +26,13 @@ const friedRice = summary({
   slug: "fried-rice",
   title: "Fried Rice",
   cuisine: "chinese",
-  ingredients: [{ id: "rice", qty: 1, unit: "cup" }, { id: "eggs", qty: 2 }, { id: "canned-peas", qty: 0.5, unit: "can" }, { id: "oil", qty: 1, unit: "tbsp" }, { id: "soy-sauce", qty: 1, unit: "tbsp", optional: true }],
+  ingredients: [
+    { id: "rice", qty: 1, unit: "cup" },
+    { id: "eggs", qty: 2 },
+    { id: "canned-peas", qty: 0.5, unit: "can" },
+    { id: "oil", qty: 1, unit: "tbsp" },
+    { id: "soy-sauce", qty: 1, unit: "tbsp", optional: true },
+  ],
 });
 const smoothie = summary({
   slug: "smoothie",
@@ -36,7 +42,11 @@ const smoothie = summary({
   equipment: ["blender"],
   totalMin: 5,
   diets: ["vegetarian", "gluten-free"],
-  ingredients: [{ id: "strawberries", qty: 1, unit: "cup" }, { id: "yogurt", qty: 0.5, unit: "cup" }, { id: "ice", qty: 1, unit: "handful" }],
+  ingredients: [
+    { id: "strawberries", qty: 1, unit: "cup" },
+    { id: "yogurt", qty: 0.5, unit: "cup" },
+    { id: "ice", qty: 1, unit: "handful" },
+  ],
 });
 const cheesyBeans = summary({
   slug: "cheesy-beans",
@@ -46,7 +56,11 @@ const cheesyBeans = summary({
   difficulty: 2,
   totalMin: 45,
   usesExtras: true,
-  ingredients: [{ id: "black-beans", qty: 1, unit: "can" }, { id: "cheese", qty: 0.5, unit: "cup" }, { id: "cumin", qty: 1, unit: "tsp" }],
+  ingredients: [
+    { id: "black-beans", qty: 1, unit: "can" },
+    { id: "cheese", qty: 0.5, unit: "cup" },
+    { id: "cumin", qty: 1, unit: "tsp" },
+  ],
 });
 const ALL = [friedRice, smoothie, cheesyBeans];
 const slugs = (f: Partial<FilterState>) => filterRecipes(ALL, { ...EMPTY_FILTERS, ...f }).map((r) => r.recipe.slug);
@@ -77,7 +91,11 @@ describe("includesAll", () => {
 
 describe("matchPantry", () => {
   it("counts salt, pepper, oil, water, and ice as on hand and skips optional items", () => {
-    expect(matchPantry(friedRice.ingredients, ["rice", "eggs", "canned-peas"])).toEqual({ missing: [], swaps: [], used: 3 });
+    expect(matchPantry(friedRice.ingredients, ["rice", "eggs", "canned-peas"])).toEqual({
+      missing: [],
+      swaps: [],
+      used: 3,
+    });
   });
 
   it("covers a missing item with a swap the cook can make", () => {
@@ -124,7 +142,8 @@ describe("filterRecipes", () => {
       { ...smoothie, cost: 1.5, nutrition: { kcal: 200, protein: 6, fiber: 3 } },
       { ...cheesyBeans, cost: 2.5, nutrition: { kcal: 350, protein: 18, fiber: 9 } },
     ];
-    const run = (f: Partial<FilterState>) => filterRecipes(priced, { ...EMPTY_FILTERS, ...f }).map((r) => r.recipe.slug);
+    const run = (f: Partial<FilterState>) =>
+      filterRecipes(priced, { ...EMPTY_FILTERS, ...f }).map((r) => r.recipe.slug);
     expect(run({ maxCost: 2 })).toEqual(["smoothie", "fried-rice"]);
     expect(run({ sort: "cost" })).toEqual(["fried-rice", "smoothie", "cheesy-beans"]);
     expect(run({ sort: "time" })).toEqual(["smoothie", "fried-rice", "cheesy-beans"]);
@@ -170,8 +189,18 @@ describe("URL round trip", () => {
   });
 
   it("drops unknown or malformed values", () => {
-    const f = parseFilters(new URLSearchParams("course=main,nope&time=abc&level=9&have=rice,unicorn&mode=weird&sort=best&cost=-1"));
-    expect(f).toMatchObject({ courses: ["main"], maxTime: undefined, maxLevel: undefined, maxCost: undefined, have: ["rice"], haveMode: "includes", sort: "az" });
+    const f = parseFilters(
+      new URLSearchParams("course=main,nope&time=abc&level=9&have=rice,unicorn&mode=weird&sort=best&cost=-1"),
+    );
+    expect(f).toMatchObject({
+      courses: ["main"],
+      maxTime: undefined,
+      maxLevel: undefined,
+      maxCost: undefined,
+      have: ["rice"],
+      haveMode: "includes",
+      sort: "az",
+    });
   });
 
   it("serializes the empty state to an empty query", () => {

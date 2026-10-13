@@ -13,7 +13,9 @@ export function FavoritesList({ recipes }: { recipes: RecipeSummary[] }) {
   const { favorites } = useFavorites();
   const lang = useLang();
   const t = useDict().favorites;
-  const saved = favorites.map((slug) => recipes.find((r) => r.slug === slug)).filter((r): r is RecipeSummary => Boolean(r));
+  const saved = favorites
+    .map((slug) => recipes.find((r) => r.slug === slug))
+    .filter((r): r is RecipeSummary => Boolean(r));
 
   if (saved.length === 0) {
     return (

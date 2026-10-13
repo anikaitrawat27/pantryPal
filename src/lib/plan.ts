@@ -56,7 +56,9 @@ export function removeEntry(plan: Plan, id: string): Plan {
 export function toggleChecked(plan: Plan, ingredientId: string): Plan {
   return {
     ...plan,
-    checked: plan.checked.includes(ingredientId) ? plan.checked.filter((c) => c !== ingredientId) : [...plan.checked, ingredientId],
+    checked: plan.checked.includes(ingredientId)
+      ? plan.checked.filter((c) => c !== ingredientId)
+      : [...plan.checked, ingredientId],
   };
 }
 

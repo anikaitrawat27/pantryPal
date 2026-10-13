@@ -29,7 +29,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "very-berry-blend",
     title: "Very Berry Blend",
-    blurb: "Mixed berries blended with yogurt and a little milk into a thick, tangy smoothie. Good for a quick breakfast or an afternoon snack.",
+    blurb:
+      "Mixed berries blended with yogurt and a little milk into a thick, tangy smoothie. Good for a quick breakfast or an afternoon snack.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -85,7 +86,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "strawana-smoothie",
     title: "Strawana Smoothie",
-    blurb: "The classic pairing of strawberries and banana, blended with yogurt. A sweet, thick smoothie to start the day.",
+    blurb:
+      "The classic pairing of strawberries and banana, blended with yogurt. A sweet, thick smoothie to start the day.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -139,7 +141,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "peanut-butter-banana-smoothie",
     title: "Peanut Butter Banana Smoothie",
-    blurb: "Banana, peanut butter, and milk blended into a thick, filling shake. A breakfast you can drink on the way out the door.",
+    blurb:
+      "Banana, peanut butter, and milk blended into a thick, filling shake. A breakfast you can drink on the way out the door.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -191,7 +194,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "green-smoothie",
     title: "Green Smoothie",
-    blurb: "Leafy greens blended with banana and frozen fruit until the leaves disappear. The fruit sets the flavor, and the greens add color.",
+    blurb:
+      "Leafy greens blended with banana and frozen fruit until the leaves disappear. The fruit sets the flavor, and the greens add color.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -217,7 +221,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "apple-pie-smoothie",
     title: "Apple Pie Smoothie",
-    blurb: "Fresh apple, yogurt, oats, and cinnamon blended to taste like apple pie filling. A fall breakfast in a glass.",
+    blurb:
+      "Fresh apple, yogurt, oats, and cinnamon blended to taste like apple pie filling. A fall breakfast in a glass.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -245,7 +250,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "simmered-apple-cider",
     title: "Simmered Apple Cider",
-    blurb: "Whole apples simmered with orange and cinnamon, then strained into a warm, spiced drink. Makes the kitchen smell like fall.",
+    blurb:
+      "Whole apples simmered with orange and cinnamon, then strained into a warm, spiced drink. Makes the kitchen smell like fall.",
     course: "drink",
     meal: ["snack"],
     cuisine: "american",
@@ -275,7 +281,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "orange-cream-smoothie",
     title: "Orange Cream Smoothie",
-    blurb: "Fresh orange blended with yogurt and vanilla, like a creamsicle in a glass. Bright, creamy, and ready in five minutes.",
+    blurb:
+      "Fresh orange blended with yogurt and vanilla, like a creamsicle in a glass. Bright, creamy, and ready in five minutes.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "american",
@@ -302,7 +309,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "horchata",
     title: "Horchata",
-    blurb: "A cold, creamy Mexican rice drink flavored with cinnamon. Soak the rice the night before and blend it in the morning.",
+    blurb:
+      "A cold, creamy Mexican rice drink flavored with cinnamon. Soak the rice the night before and blend it in the morning.",
     course: "drink",
     meal: ["snack"],
     cuisine: "mexican",
@@ -333,7 +341,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "strawberry-agua-fresca",
     title: "Strawberry Agua Fresca",
-    blurb: "Fresh strawberries blended with water and a little sugar into a light Mexican fruit drink. Make a pitcher for a hot afternoon.",
+    blurb:
+      "Fresh strawberries blended with water and a little sugar into a light Mexican fruit drink. Make a pitcher for a hot afternoon.",
     course: "drink",
     meal: ["snack"],
     cuisine: "mexican",
@@ -419,7 +428,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "sweet-lassi",
     title: "Sweet Lassi",
-    blurb: "A cold, frothy Indian yogurt drink, lightly sweetened. Serve it with a spicy meal or on its own on a hot day.",
+    blurb:
+      "A cold, frothy Indian yogurt drink, lightly sweetened. Serve it with a spicy meal or on its own on a hot day.",
     course: "drink",
     meal: ["snack"],
     cuisine: "indian",
@@ -444,7 +454,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "ayran",
     title: "Ayran",
-    blurb: "A salty, tangy yogurt drink served cold across Turkey and the Middle East. It goes well with grilled meat, rice, or anything spicy.",
+    blurb:
+      "A salty, tangy yogurt drink served cold across Turkey and the Middle East. It goes well with grilled meat, rice, or anything spicy.",
     course: "drink",
     meal: ["snack"],
     cuisine: "middle-eastern",
@@ -469,7 +480,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "korean-style-banana-milk",
     title: "Korean-Style Banana Milk",
-    blurb: "A homemade take on the sweet banana milk sold in Korean convenience stores. Ripe banana blended with cold milk and a little honey.",
+    blurb:
+      "A homemade take on the sweet banana milk sold in Korean convenience stores. Ripe banana blended with cold milk and a little honey.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "korean",
@@ -494,7 +506,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "ichigo-milk-strawberry-milk",
     title: "Ichigo Milk (Strawberry Milk)",
-    blurb: "Japanese cafe-style strawberry milk: chopped berries soaked in sugar until syrupy, then topped with cold milk. Stir it as you drink.",
+    blurb:
+      "Japanese cafe-style strawberry milk: chopped berries soaked in sugar until syrupy, then topped with cold milk. Stir it as you drink.",
     course: "drink",
     meal: ["snack"],
     cuisine: "japanese",
@@ -519,7 +532,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "lemon-granizado",
     title: "Lemon Granizado",
-    blurb: "A Spanish lemon slush of sweetened lemon juice and crushed ice. Serve it with a spoon on the hottest day of summer.",
+    blurb:
+      "A Spanish lemon slush of sweetened lemon juice and crushed ice. Serve it with a spoon on the hottest day of summer.",
     course: "drink",
     meal: ["snack"],
     cuisine: "spanish",
@@ -541,12 +555,15 @@ export const DRINKS = defineRecipes([
       "Blend until slushy, with no large chunks of ice left.",
       "Spoon into glasses and serve right away.",
     ],
-    tips: ["Without a blender, freeze the lemon mixture in a shallow dish and scrape it with a fork every 30 minutes until icy."],
+    tips: [
+      "Without a blender, freeze the lemon mixture in a shallow dish and scrape it with a fork every 30 minutes until icy.",
+    ],
   },
   {
     slug: "lait-chaud-au-miel-warm-honey-milk",
     title: "Lait Chaud au Miel (Warm Honey Milk)",
-    blurb: "Warm milk sweetened with honey, a French bedtime drink for children and adults. Make it on a cold evening or when you cannot sleep.",
+    blurb:
+      "Warm milk sweetened with honey, a French bedtime drink for children and adults. Make it on a cold evening or when you cannot sleep.",
     course: "drink",
     meal: ["snack"],
     cuisine: "french",
@@ -597,7 +614,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "nam-manao-thai-lemon-drink",
     title: "Nam Manao (Thai Lemon Drink)",
-    blurb: "A Thai street-stall drink that is sour, sweet, and a little salty, served over plenty of ice. Made with bottled lemon juice in place of lime.",
+    blurb:
+      "A Thai street-stall drink that is sour, sweet, and a little salty, served over plenty of ice. Made with bottled lemon juice in place of lime.",
     course: "drink",
     meal: ["snack"],
     cuisine: "thai",
@@ -623,7 +641,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "jamaican-carrot-juice",
     title: "Jamaican Carrot Juice",
-    blurb: "Fresh carrots blended and strained, then sweetened with sugar, milk, and vanilla. A creamy Jamaican favorite served ice cold.",
+    blurb:
+      "Fresh carrots blended and strained, then sweetened with sugar, milk, and vanilla. A creamy Jamaican favorite served ice cold.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "caribbean",
@@ -652,7 +671,8 @@ export const DRINKS = defineRecipes([
   {
     slug: "peanut-punch",
     title: "Peanut Punch",
-    blurb: "A thick Caribbean shake of peanut butter, milk, and a little spice. Popular in Trinidad and Jamaica as a filling breakfast drink.",
+    blurb:
+      "A thick Caribbean shake of peanut butter, milk, and a little spice. Popular in Trinidad and Jamaica as a filling breakfast drink.",
     course: "drink",
     meal: ["breakfast", "snack"],
     cuisine: "caribbean",

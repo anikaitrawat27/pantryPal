@@ -15,7 +15,11 @@ const base: RecipeInput = {
   prep: 1,
   cook: 4,
   serves: 1,
-  ingredients: [["bread", 2, "slice"], ["butter", 1, "tbsp"], ["salt", "to taste"]],
+  ingredients: [
+    ["bread", 2, "slice"],
+    ["butter", 1, "tbsp"],
+    ["salt", "to taste"],
+  ],
   steps: ["Melt the butter in a skillet.", "Toast the bread until golden."],
 };
 
@@ -24,7 +28,14 @@ const check = (over: Partial<RecipeInput>) =>
 
 describe("recipe schema", () => {
   it("normalizes ingredient tuples", () => {
-    const r = recipeSchema.parse({ ...base, ingredients: [["onion", 1, { note: "diced" }], ["salt", "to taste"], ["milk", 0.5, "cup", { optional: true }]] });
+    const r = recipeSchema.parse({
+      ...base,
+      ingredients: [
+        ["onion", 1, { note: "diced" }],
+        ["salt", "to taste"],
+        ["milk", 0.5, "cup", { optional: true }],
+      ],
+    });
     expect(r.ingredients).toEqual([
       { id: "onion", qty: 1, note: "diced" },
       { id: "salt", fixed: true },
@@ -49,7 +60,14 @@ describe("validateRecipes", () => {
 
   it("rejects unknown and duplicate ingredients", () => {
     expect(check({ ingredients: [["unicorn", 1]] }).join()).toMatch(/unknown ingredient "unicorn"/);
-    expect(check({ ingredients: [["bread", 1, "slice"], ["bread", 1, "slice"]] }).join()).toMatch(/listed twice/);
+    expect(
+      check({
+        ingredients: [
+          ["bread", 1, "slice"],
+          ["bread", 1, "slice"],
+        ],
+      }).join(),
+    ).toMatch(/listed twice/);
   });
 
   it("rejects oven words but allows baking powder", () => {
@@ -73,7 +91,9 @@ describe("validateRecipes", () => {
 
   it("does not read 'air fry' as a stovetop step", () => {
     expect(check({ equipment: ["air-fryer"], steps: ["Air fry the bread for 4 minutes."] })).toEqual([]);
-    expect(check({ equipment: ["air-fryer"], steps: ["Fry the bread in the air fryer."] }).join()).toMatch(/mention stovetop/);
+    expect(check({ equipment: ["air-fryer"], steps: ["Fry the bread in the air fryer."] }).join()).toMatch(
+      /mention stovetop/,
+    );
   });
 
   it("flags duplicate slugs and titles", () => {
@@ -86,7 +106,9 @@ describe("validateRecipes", () => {
   });
 
   it("validates per-recipe substitutions", () => {
-    expect(check({ ingredients: [["butter", 1, "tbsp", { subs: [{ id: "lard" }] }]] }).join()).toMatch(/"lard" is not in the pantry/);
+    expect(check({ ingredients: [["butter", 1, "tbsp", { subs: [{ id: "lard" }] }]] }).join()).toMatch(
+      /"lard" is not in the pantry/,
+    );
   });
 });
 

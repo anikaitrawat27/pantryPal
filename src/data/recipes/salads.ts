@@ -38,7 +38,8 @@ export const SALADS = defineRecipes([
   {
     slug: "chicken-salad",
     title: "Chicken Salad",
-    blurb: "Canned chicken mixed with mayo, diced apple, and onion for crunch. Eat it on bread, in a lettuce leaf, or with chips.",
+    blurb:
+      "Canned chicken mixed with mayo, diced apple, and onion for crunch. Eat it on bread, in a lettuce leaf, or with chips.",
     course: "salad",
     meal: ["lunch"],
     cuisine: "american",
@@ -66,7 +67,8 @@ export const SALADS = defineRecipes([
   {
     slug: "fruit-salad",
     title: "Fruit Salad",
-    blurb: "Strawberries, blueberries, oranges, bananas, and apple tossed in a light honey dressing. Good for brunch or a hot afternoon.",
+    blurb:
+      "Strawberries, blueberries, oranges, bananas, and apple tossed in a light honey dressing. Good for brunch or a hot afternoon.",
     course: "salad",
     meal: ["lunch"],
     cuisine: "american",
@@ -96,7 +98,8 @@ export const SALADS = defineRecipes([
   {
     slug: "greek-salad",
     title: "Greek Salad",
-    blurb: "Lettuce, tomato, bell pepper, and onion with cheese and a simple oil and vinegar dressing. Add chickpeas to make it a meal.",
+    blurb:
+      "Lettuce, tomato, bell pepper, and onion with cheese and a simple oil and vinegar dressing. Add chickpeas to make it a meal.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "mediterranean",
@@ -129,7 +132,8 @@ export const SALADS = defineRecipes([
   {
     slug: "pasta-salad",
     title: "Pasta Salad",
-    blurb: "Cold pasta with bell pepper, tomato, corn, and parmesan in an oil dressing. Make it ahead for lunches or a cookout.",
+    blurb:
+      "Cold pasta with bell pepper, tomato, corn, and parmesan in an oil dressing. Make it ahead for lunches or a cookout.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "italian",
@@ -163,7 +167,8 @@ export const SALADS = defineRecipes([
   {
     slug: "coleslaw",
     title: "Coleslaw",
-    blurb: "Shredded cabbage and carrot in a creamy mayo dressing. A classic side for sandwiches, chili, or anything off the grill.",
+    blurb:
+      "Shredded cabbage and carrot in a creamy mayo dressing. A classic side for sandwiches, chili, or anything off the grill.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -191,7 +196,8 @@ export const SALADS = defineRecipes([
   {
     slug: "three-bean-salad",
     title: "Three-Bean Salad",
-    blurb: "Green beans, kidney beans, and chickpeas in a sweet and sour dressing. Keeps well, so make it a day ahead for lunches or a potluck.",
+    blurb:
+      "Green beans, kidney beans, and chickpeas in a sweet and sour dressing. Keeps well, so make it a day ahead for lunches or a potluck.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -223,7 +229,8 @@ export const SALADS = defineRecipes([
   {
     slug: "tuna-salad",
     title: "Tuna Salad",
-    blurb: "Canned tuna mixed with mayo, onion, and a little lemon. Spread it on bread or spoon it into lettuce for a five-minute lunch.",
+    blurb:
+      "Canned tuna mixed with mayo, onion, and a little lemon. Spread it on bread or spoon it into lettuce for a five-minute lunch.",
     course: "salad",
     meal: ["lunch"],
     cuisine: "american",
@@ -281,7 +288,8 @@ export const SALADS = defineRecipes([
   {
     slug: "taco-salad",
     title: "Taco Salad",
-    blurb: "Seasoned ground beef over lettuce and tomato with beans, cheddar, and crunchy tortilla chips. A quick weeknight dinner.",
+    blurb:
+      "Seasoned ground beef over lettuce and tomato with beans, cheddar, and crunchy tortilla chips. A quick weeknight dinner.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -315,7 +323,8 @@ export const SALADS = defineRecipes([
   {
     slug: "mediterranean-chickpea-salad",
     title: "Mediterranean Chickpea Salad",
-    blurb: "Chickpeas with tomato, bell pepper, and onion in a lemony olive oil dressing. Holds up well in a lunch box.",
+    blurb:
+      "Chickpeas with tomato, bell pepper, and onion in a lemony olive oil dressing. Holds up well in a lunch box.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "mediterranean",
@@ -347,7 +356,8 @@ export const SALADS = defineRecipes([
   {
     slug: "potato-salad",
     title: "Potato Salad",
-    blurb: "Tender boiled potatoes in a creamy mayo dressing with onion and chopped egg. A make-ahead side for picnics and cookouts.",
+    blurb:
+      "Tender boiled potatoes in a creamy mayo dressing with onion and chopped egg. A make-ahead side for picnics and cookouts.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -381,7 +391,8 @@ export const SALADS = defineRecipes([
   {
     slug: "corn-and-black-bean-salad",
     title: "Corn and Black Bean Salad",
-    blurb: "Black beans and corn with tomato, bell pepper, and a cumin and lemon dressing. Eat it with chips or as a side for tacos.",
+    blurb:
+      "Black beans and corn with tomato, bell pepper, and a cumin and lemon dressing. Eat it with chips or as a side for tacos.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -447,7 +458,8 @@ export const SALADS = defineRecipes([
   {
     slug: "japanese-style-cabbage-salad",
     title: "Japanese-Style Cabbage Salad",
-    blurb: "Finely shredded cabbage and carrot in a light soy and vinegar dressing. A crisp side for rice bowls and noodle dishes.",
+    blurb:
+      "Finely shredded cabbage and carrot in a light soy and vinegar dressing. A crisp side for rice bowls and noodle dishes.",
     course: "salad",
     meal: ["lunch", "dinner"],
     cuisine: "japanese",

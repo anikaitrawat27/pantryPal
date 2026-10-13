@@ -37,7 +37,16 @@ export function ThemeToggle() {
       aria-label={theme === "dark" ? t.themeLight : t.themeDark}
       style={{ background: "none", border: 0, padding: 4, cursor: "pointer", minWidth: 36, minHeight: 36 }}
     >
-      <svg viewBox="0 0 32 32" width={26} height={26} aria-hidden="true" fill="none" stroke="currentColor" strokeWidth={2.4} strokeLinecap="round">
+      <svg
+        viewBox="0 0 32 32"
+        width={26}
+        height={26}
+        aria-hidden="true"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2.4}
+        strokeLinecap="round"
+      >
         {theme === "dark" ? (
           <>
             <circle cx="16" cy="16" r="6" />

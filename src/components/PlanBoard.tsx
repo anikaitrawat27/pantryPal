@@ -51,7 +51,8 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
 
   const shelf = useMemo(() => {
     const q = normalize(query);
-    const pool = tab === "favorites" ? favorites.map((s) => bySlug.get(s)).filter((r): r is RecipeSummary => Boolean(r)) : recipes;
+    const pool =
+      tab === "favorites" ? favorites.map((s) => bySlug.get(s)).filter((r): r is RecipeSummary => Boolean(r)) : recipes;
     return pool.filter((r) => !q || normalize(r.title).includes(q)).slice(0, SHELF_LIMIT);
   }, [query, tab, favorites, bySlug, recipes]);
 
@@ -67,7 +68,11 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
     e.preventDefault();
     try {
       const p = JSON.parse(e.dataTransfer.getData(DRAG_TYPE)) as Picked;
-      if ((p.kind === "recipe" && bySlug.has(p.slug)) || (p.kind === "entry" && plan.entries.some((x) => x.id === p.id))) place(p, day, meal);
+      if (
+        (p.kind === "recipe" && bySlug.has(p.slug)) ||
+        (p.kind === "entry" && plan.entries.some((x) => x.id === p.id))
+      )
+        place(p, day, meal);
     } catch {
       // Not one of our drags.
     }
@@ -88,22 +93,42 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
         <p className={styles.hint}>{t.shelfHint}</p>
         <div className={styles.tabs} role="group" aria-label={t.which}>
           {(["all", "favorites"] as const).map((which) => (
-            <button key={which} type="button" className={ui.chip} aria-pressed={tab === which} onClick={() => setTab(which)}>
+            <button
+              key={which}
+              type="button"
+              className={ui.chip}
+              aria-pressed={tab === which}
+              onClick={() => setTab(which)}
+            >
               {which === "all" ? t.all : t.favorites(favorites.length)}
             </button>
           ))}
         </div>
         <label className={styles.search}>
           <span className="sr-only">{t.search}</span>
-          <input type="search" placeholder={t.searchPlaceholder} value={query} onChange={(e) => setQuery(e.target.value)} />
+          <input
+            type="search"
+            placeholder={t.searchPlaceholder}
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
         </label>
         <ul className={styles.shelfList}>
           {shelf.length === 0 && <li className={styles.hint}>{tab === "favorites" ? t.noFavorites : t.noMatches}</li>}
           {shelf.map((r) => {
             const isPicked = picked?.kind === "recipe" && picked.slug === r.slug;
             return (
-              <li key={r.slug} {...dragProps({ kind: "recipe", slug: r.slug })} className={styles.shelfItem} data-picked={isPicked}>
-                <button type="button" aria-pressed={isPicked} onClick={() => setPicked(isPicked ? null : { kind: "recipe", slug: r.slug })}>
+              <li
+                key={r.slug}
+                {...dragProps({ kind: "recipe", slug: r.slug })}
+                className={styles.shelfItem}
+                data-picked={isPicked}
+              >
+                <button
+                  type="button"
+                  aria-pressed={isPicked}
+                  onClick={() => setPicked(isPicked ? null : { kind: "recipe", slug: r.slug })}
+                >
                   <CourseDoodle course={r.course} size={30} />
                   <span>
                     {r.title}
@@ -129,7 +154,11 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
               {t.shopping}
             </Link>
             {entries.length > 0 && (
-              <button type="button" className={styles.linkBtn} onClick={() => window.confirm(t.confirmClear) && clear()}>
+              <button
+                type="button"
+                className={styles.linkBtn}
+                onClick={() => window.confirm(t.confirmClear) && clear()}
+              >
                 {t.clear}
               </button>
             )}
@@ -173,7 +202,12 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
                           const r = bySlug.get(entry.slug)!;
                           const isPicked = picked?.kind === "entry" && picked.id === entry.id;
                           return (
-                            <li key={entry.id} className={styles.entry} data-picked={isPicked} {...dragProps({ kind: "entry", id: entry.id })}>
+                            <li
+                              key={entry.id}
+                              className={styles.entry}
+                              data-picked={isPicked}
+                              {...dragProps({ kind: "entry", id: entry.id })}
+                            >
                               <Link href={localePath(lang, `/recipes/${r.slug}`)} className={styles.entryTitle}>
                                 {r.title}
                               </Link>
@@ -204,7 +238,11 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
                                 >
                                   {t.move}
                                 </button>
-                                <button type="button" onClick={() => remove(entry.id)} aria-label={t.remove(r.title, slotName(dayIndex, meal))}>
+                                <button
+                                  type="button"
+                                  onClick={() => remove(entry.id)}
+                                  aria-label={t.remove(r.title, slotName(dayIndex, meal))}
+                                >
                                   ×
                                 </button>
                               </div>

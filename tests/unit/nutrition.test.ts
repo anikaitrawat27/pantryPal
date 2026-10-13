@@ -67,7 +67,8 @@ describe("facts coverage", () => {
   });
 
   it("can weigh every ingredient line in the catalog", () => {
-    for (const r of RECIPES) for (const ing of r.ingredients) expect(() => gramsOf(ing), `${r.slug} ${ing.id}`).not.toThrow();
+    for (const r of RECIPES)
+      for (const ing of r.ingredients) expect(() => gramsOf(ing), `${r.slug} ${ing.id}`).not.toThrow();
   });
 
   it("produces plausible estimates for every recipe", () => {

@@ -40,13 +40,27 @@ export const VOLUME_IN_TSP: Partial<Record<Unit, number>> = { tsp: 1, tbsp: 3, c
 export const WEIGHT_IN_OZ: Partial<Record<Unit, number>> = { oz: 1, lb: 16 };
 
 /** Units whose items are counted, so they round to whole numbers. */
-const WHOLE_UNITS: ReadonlySet<Unit> = new Set(["slice", "clove", "link", "packet", "pinch", "dash", "splash", "handful", "leaf"]);
+const WHOLE_UNITS: ReadonlySet<Unit> = new Set([
+  "slice",
+  "clove",
+  "link",
+  "packet",
+  "pinch",
+  "dash",
+  "splash",
+  "handful",
+  "leaf",
+]);
 
 /**
  * Picks the largest unit in the family that expresses `base` cleanly
  * (within 10% after rounding to a friendly fraction), e.g. 6 tsp -> 2 tbsp.
  */
-export function bestUnit(base: number, table: Partial<Record<Unit, number>>, minimums: Partial<Record<Unit, number>>): { qty: number; unit: Unit } {
+export function bestUnit(
+  base: number,
+  table: Partial<Record<Unit, number>>,
+  minimums: Partial<Record<Unit, number>>,
+): { qty: number; unit: Unit } {
   const units = (Object.entries(table) as [Unit, number][]).sort((a, b) => b[1] - a[1]);
   for (const [unit, size] of units) {
     const qty = base / size;
@@ -72,7 +86,10 @@ export interface ScaledAmount {
  * Scales an ingredient amount by `factor` (target servings / base servings)
  * and normalizes it into something measurable.
  */
-export function scaleAmount(ing: Pick<RecipeIngredient, "id" | "qty" | "unit" | "fixed" | "frying">, factor: number): ScaledAmount {
+export function scaleAmount(
+  ing: Pick<RecipeIngredient, "id" | "qty" | "unit" | "fixed" | "frying">,
+  factor: number,
+): ScaledAmount {
   if (ing.qty === undefined) return { unit: ing.unit };
   if (ing.fixed || ing.frying || factor === 1) return { qty: ing.qty, unit: ing.unit };
 

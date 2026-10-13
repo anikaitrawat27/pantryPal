@@ -3,7 +3,8 @@ import { defineRecipesEs } from "../../recipe-es";
 export const SOUPS_ES = defineRecipesEs({
   "creamy-tomato-soup": {
     title: "Sopa cremosa de tomate",
-    blurb: "Una sopa de tomate suave hecha con puré de tomate enlatado, caldo y un chorrito de leche. Está lista en unos 20 minutos y va bien con un sándwich de queso a la plancha.",
+    blurb:
+      "Una sopa de tomate suave hecha con puré de tomate enlatado, caldo y un chorrito de leche. Está lista en unos 20 minutos y va bien con un sándwich de queso a la plancha.",
     steps: [
       "Caliente el aceite en una olla a fuego medio durante 1 minuto.",
       "Agregue el puré de tomate y cocine a fuego lento durante 10 minutos, revolviendo de vez en cuando.",
@@ -12,11 +13,14 @@ export const SOUPS_ES = defineRecipesEs({
       "Cocine durante 5 minutos hasta que salga vapor, sin dejar que hierva.",
       "Sazone con sal y pimienta y sirva caliente.",
     ],
-    tips: ["Lo que sobre se conserva en el refrigerador por 3 días. Recaliente a fuego suave para que la leche no se corte."],
+    tips: [
+      "Lo que sobre se conserva en el refrigerador por 3 días. Recaliente a fuego suave para que la leche no se corte.",
+    ],
   },
   "veggie-delight-soup": {
     title: "Sopa de verduras",
-    blurb: "Un caldo ligero con zanahorias y verduras mixtas enlatadas. Use las verduras que tenga y tenga la cena lista en 20 minutos.",
+    blurb:
+      "Un caldo ligero con zanahorias y verduras mixtas enlatadas. Use las verduras que tenga y tenga la cena lista en 20 minutos.",
     steps: [
       "Ponga a hervir el caldo en una olla a fuego medio-alto.",
       "Agregue la zanahoria y la cebolla y baje el fuego para que hierva suavemente.",
@@ -34,7 +38,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "noodle-soup": {
     title: "Sopa de fideos",
-    blurb: "Fideos en un caldo de pollo rápido con zanahoria, hojas verdes y pollo enlatado si tiene. Un almuerzo rápido y calientito con lo que hay en la despensa.",
+    blurb:
+      "Fideos en un caldo de pollo rápido con zanahoria, hojas verdes y pollo enlatado si tiene. Un almuerzo rápido y calientito con lo que hay en la despensa.",
     steps: [
       "Cocine los fideos en una olla con agua hirviendo según las instrucciones del paquete y luego escúrralos.",
       "Caliente el caldo en otra olla a fuego medio hasta que hierva suavemente.",
@@ -52,7 +57,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "lentil-soup": {
     title: "Sopa de lentejas",
-    blurb: "Una sopa espesa de lentejas y tomate con hojas verdes agregadas al final. Llena, es barata y alcanza para los almuerzos de toda la semana.",
+    blurb:
+      "Una sopa espesa de lentejas y tomate con hojas verdes agregadas al final. Llena, es barata y alcanza para los almuerzos de toda la semana.",
     steps: [
       "Caliente el aceite en una olla grande a fuego medio.",
       "Agregue la cebolla y cocine durante 5 minutos hasta que esté suave.",
@@ -73,7 +79,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "potato-soup": {
     title: "Sopa de papa",
-    blurb: "Una sopa cremosa de papa con queso cheddar, hecha en una sola olla. Machacar la mitad de las papas la espesa sin necesidad de licuadora.",
+    blurb:
+      "Una sopa cremosa de papa con queso cheddar, hecha en una sola olla. Machacar la mitad de las papas la espesa sin necesidad de licuadora.",
     steps: [
       "Derrita la mantequilla en una olla grande a fuego medio.",
       "Espolvoree la harina y revuelva de 1 a 2 minutos hasta que quede suave.",
@@ -92,7 +99,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "vegan-tomato-soup": {
     title: "Sopa vegana de tomate",
-    blurb: "Una sopa de tomate sencilla hecha con agua, cebolla y pasta de ajo y jengibre en lugar de caldo. Es de origen vegetal y está lista en unos 25 minutos.",
+    blurb:
+      "Una sopa de tomate sencilla hecha con agua, cebolla y pasta de ajo y jengibre en lugar de caldo. Es de origen vegetal y está lista en unos 25 minutos.",
     steps: [
       "Caliente el aceite en una olla a fuego medio durante 1 minuto.",
       "Si usa cebolla, cocínela durante 4 minutos hasta que esté suave.",
@@ -108,7 +116,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "tom-yum-chicken-soup": {
     title: "Tom Yum de pollo (sopa tailandesa)",
-    blurb: "Un caldo picante y ácido al estilo tailandés con tiras delgadas de pollo, jugo de limón y pasta de ajo y jengibre. Ligero y rápido para una noche fría.",
+    blurb:
+      "Un caldo picante y ácido al estilo tailandés con tiras delgadas de pollo, jugo de limón y pasta de ajo y jengibre. Ligero y rápido para una noche fría.",
     steps: [
       "Ponga a hervir el caldo, el agua y la pasta de ajo y jengibre en una olla a fuego alto.",
       "Agregue la cebolla y el tomate y cocine a fuego lento durante 3 minutos.",
@@ -125,7 +134,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "black-bean-soup": {
     title: "Sopa de frijoles negros",
-    blurb: "Una sopa espesa de frijoles negros sazonada con comino y ajo. Se machaca en parte para darle cuerpo y es una cena de origen vegetal en 30 minutos.",
+    blurb:
+      "Una sopa espesa de frijoles negros sazonada con comino y ajo. Se machaca en parte para darle cuerpo y es una cena de origen vegetal en 30 minutos.",
     steps: [
       "Caliente el aceite en una olla a fuego medio.",
       "Cocine la cebolla durante 5 minutos hasta que esté suave.",
@@ -144,7 +154,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "pantry-minestrone": {
     title: "Minestrone de despensa",
-    blurb: "Una sopa italiana de verduras con pasta pequeña, frijoles, verduras enlatadas y tomate. Una comida completa en una sola olla.",
+    blurb:
+      "Una sopa italiana de verduras con pasta pequeña, frijoles, verduras enlatadas y tomate. Una comida completa en una sola olla.",
     steps: [
       "Caliente el aceite en una olla grande a fuego medio.",
       "Cocine la cebolla y la zanahoria durante 6 minutos hasta que la cebolla esté suave.",
@@ -169,7 +180,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "egg-drop-soup": {
     title: "Sopa de huevo al estilo chino",
-    blurb: "Un caldo al estilo chino, ligeramente espeso, con hilos de huevo. Toma 15 minutos y sirve como entrada o como almuerzo ligero.",
+    blurb:
+      "Un caldo al estilo chino, ligeramente espeso, con hilos de huevo. Toma 15 minutos y sirve como entrada o como almuerzo ligero.",
     steps: [
       "Ponga a hervir el caldo, la pasta de ajo y jengibre y la salsa de soya en una olla a fuego medio-alto.",
       "En un tazón pequeño, bata la harina con el agua hasta que no tenga grumos.",
@@ -183,7 +195,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "simple-dal": {
     title: "Dal sencillo (lentejas de la India)",
-    blurb: "Lentejas al estilo de la India cocidas hasta quedar suaves con cebolla, tomate y pasta de ajo y jengibre, y terminadas con comino tostado en mantequilla. Sírvalo sobre arroz.",
+    blurb:
+      "Lentejas al estilo de la India cocidas hasta quedar suaves con cebolla, tomate y pasta de ajo y jengibre, y terminadas con comino tostado en mantequilla. Sírvalo sobre arroz.",
     steps: [
       "Ponga a hervir las lentejas, el agua y una pizca de sal en una olla a fuego medio-alto.",
       "Baje el fuego, tape la olla a medias y cocine a fuego lento durante 30 minutos hasta que las lentejas estén muy suaves, revolviendo de vez en cuando.",
@@ -195,7 +208,9 @@ export const SOUPS_ES = defineRecipesEs({
       "Vierta la mezcla de cebolla en las lentejas y cocine a fuego lento durante 2 minutos.",
       "Agregue el jugo de limón, sazone con sal y sirva.",
     ],
-    tips: ["Las lentejas rojas se cocinan más rápido, en unos 20 minutos. Agregue un chorrito de agua si el dal queda muy espeso."],
+    tips: [
+      "Las lentejas rojas se cocinan más rápido, en unos 20 minutos. Agregue un chorrito de agua si el dal queda muy espeso.",
+    ],
     notes: {
       lentils: "enjuagadas",
       onion: "picada finamente",
@@ -204,7 +219,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "corn-chowder": {
     title: "Crema espesa de elote",
-    blurb: "Una sopa cremosa de maíz enlatado y papa en cubitos en un caldo con leche. Rinde para una cena con una rebanada de pan tostado.",
+    blurb:
+      "Una sopa cremosa de maíz enlatado y papa en cubitos en un caldo con leche. Rinde para una cena con una rebanada de pan tostado.",
     steps: [
       "Derrita la mantequilla en una olla grande a fuego medio.",
       "Cocine la cebolla durante 5 minutos hasta que esté suave.",
@@ -224,7 +240,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "turkey-chili": {
     title: "Chili de pavo",
-    blurb: "Un chili de tomate y frijoles rojos hecho con pavo molido y pimiento. Alcanza para la cena y un par de almuerzos.",
+    blurb:
+      "Un chili de tomate y frijoles rojos hecho con pavo molido y pimiento. Alcanza para la cena y un par de almuerzos.",
     steps: [
       "Caliente el aceite en una olla grande a fuego medio-alto.",
       "Agregue el pavo y cocine de 6 a 8 minutos, desmenuzándolo, hasta que ya no se vea rosado.",
@@ -245,7 +262,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "white-chicken-chili": {
     title: "Chili blanco de pollo",
-    blurb: "Un chili cremoso de frijoles blancos, pollo enlatado, maíz y comino. Usa casi puras latas y está listo en 25 minutos.",
+    blurb:
+      "Un chili cremoso de frijoles blancos, pollo enlatado, maíz y comino. Usa casi puras latas y está listo en 25 minutos.",
     steps: [
       "Caliente el aceite en una olla a fuego medio.",
       "Cocine la cebolla durante 5 minutos hasta que esté suave.",
@@ -256,7 +274,9 @@ export const SOUPS_ES = defineRecipesEs({
       "Agregue el queso crema y revuelva hasta que se derrita.",
       "Sazone con sal y pimienta y sirva caliente.",
     ],
-    tips: ["Para usar pollo fresco, cocine una pechuga en el caldo a fuego lento durante 18 minutos hasta que ya no se vea rosada y luego desmenúcela."],
+    tips: [
+      "Para usar pollo fresco, cocine una pechuga en el caldo a fuego lento durante 18 minutos hasta que ya no se vea rosada y luego desmenúcela.",
+    ],
     notes: {
       onion: "picada",
       garlic: "picado finamente",
@@ -268,7 +288,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "chicken-tortilla-soup": {
     title: "Sopa de tortilla con pollo",
-    blurb: "Un caldo mexicano de tomate con pollo deshebrado, frijoles negros y maíz, servido con totopos triturados y queso encima.",
+    blurb:
+      "Un caldo mexicano de tomate con pollo deshebrado, frijoles negros y maíz, servido con totopos triturados y queso encima.",
     steps: [
       "Caliente el aceite en una olla grande a fuego medio.",
       "Cocine la cebolla durante 5 minutos hasta que esté suave.",
@@ -293,7 +314,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "korean-style-cabbage-and-egg-soup": {
     title: "Sopa de repollo y huevo al estilo coreano",
-    blurb: "Un caldo ligero al estilo coreano con repollo suave, ajo, salsa de soya e hilos de huevo. Rápida y suave, va bien con un plato de arroz.",
+    blurb:
+      "Un caldo ligero al estilo coreano con repollo suave, ajo, salsa de soya e hilos de huevo. Rápida y suave, va bien con un plato de arroz.",
     steps: [
       "Ponga a hervir el caldo en una olla a fuego medio-alto.",
       "Agregue la cebolla, el ajo y el repollo y cocine a fuego lento durante 8 minutos hasta que el repollo esté suave.",
@@ -311,7 +333,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "stovetop-french-onion-soup": {
     title: "Sopa francesa de cebolla en la estufa",
-    blurb: "Cebollas cocidas lentamente en caldo, con pan tostado en sartén y queso derretido en el microondas. Una sopa de fin de semana que requiere más paciencia que habilidad.",
+    blurb:
+      "Cebollas cocidas lentamente en caldo, con pan tostado en sartén y queso derretido en el microondas. Una sopa de fin de semana que requiere más paciencia que habilidad.",
     steps: [
       "Derrita la mantequilla en una olla grande a fuego medio-bajo.",
       "Agregue las cebollas y una pizca de sal y cocine durante 10 minutos, revolviendo de vez en cuando, hasta que estén suaves.",
@@ -331,7 +354,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "italian-wedding-soup": {
     title: "Sopa italiana de albóndigas",
-    blurb: "Albóndigas pequeñitas de pavo y queso parmesano cocidas en caldo con pasta pequeña y hojas verdes. Un buen proyecto para una tarde tranquila.",
+    blurb:
+      "Albóndigas pequeñitas de pavo y queso parmesano cocidas en caldo con pasta pequeña y hojas verdes. Un buen proyecto para una tarde tranquila.",
     steps: [
       "Mezcle las migas de pan y el huevo en un tazón y deje reposar durante 2 minutos.",
       "Agregue el pavo, el queso parmesano, el ajo, las hierbas italianas y una pizca de sal y pimienta, y mezcle con cuidado.",
@@ -357,7 +381,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "caribbean-red-bean-soup": {
     title: "Sopa caribeña de frijoles rojos",
-    blurb: "Una sopa espesa al estilo caribeño de frijoles rojos, papa y zanahoria con ajo y salsa picante. Es de origen vegetal y llena bien.",
+    blurb:
+      "Una sopa espesa al estilo caribeño de frijoles rojos, papa y zanahoria con ajo y salsa picante. Es de origen vegetal y llena bien.",
     steps: [
       "Caliente el aceite en una olla grande a fuego medio.",
       "Cocine la cebolla durante 5 minutos hasta que esté suave.",
@@ -378,7 +403,8 @@ export const SOUPS_ES = defineRecipesEs({
   },
   "lentil-and-rice-soup": {
     title: "Sopa de lentejas y arroz",
-    blurb: "Una sopa de lentejas y arroz al estilo del Medio Oriente con comino, servida con cebolla dorada y unas gotas de limón. Barata y llena bien.",
+    blurb:
+      "Una sopa de lentejas y arroz al estilo del Medio Oriente con comino, servida con cebolla dorada y unas gotas de limón. Barata y llena bien.",
     steps: [
       "Caliente el aceite en una olla grande a fuego medio.",
       "Cocine las cebollas de 12 a 15 minutos, revolviendo seguido, hasta que estén bien doradas.",

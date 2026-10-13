@@ -9,7 +9,10 @@ import styles from "./PantryView.module.css";
 export function PantryView({ lang }: { lang: Lang }) {
   const t = getDict(lang).pantry;
   const usage = Object.fromEntries(
-    INGREDIENTS.map((ing) => [ing.id, RECIPES.filter((r) => r.ingredients.some((ri) => related(ri.id, ing.id))).length]),
+    INGREDIENTS.map((ing) => [
+      ing.id,
+      RECIPES.filter((r) => r.ingredients.some((ri) => related(ri.id, ing.id))).length,
+    ]),
   );
   return (
     <div className="container" lang={lang}>

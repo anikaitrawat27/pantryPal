@@ -48,12 +48,15 @@ test("swapping an ingredient rewrites the line and can be undone", async ({ page
 });
 
 test("filters match the expected recipe count and live in the URL", async ({ page }) => {
-  const expected = filterRecipes(RECIPES.map((r) => toSummary(r)), {
-    ...EMPTY_FILTERS,
-    diets: ["vegan"],
-    tools: ["microwave"],
-    noExtras: true,
-  }).length;
+  const expected = filterRecipes(
+    RECIPES.map((r) => toSummary(r)),
+    {
+      ...EMPTY_FILTERS,
+      diets: ["vegan"],
+      tools: ["microwave"],
+      noExtras: true,
+    },
+  ).length;
 
   await page.goto("/recipes");
   await page.getByRole("button", { name: "Vegan", exact: true }).click();

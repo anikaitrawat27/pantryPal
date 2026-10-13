@@ -4,7 +4,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "chicken-rollups",
     title: "Chicken Rollups",
-    blurb: "Tortillas spread with a creamy chicken and cheese filling, rolled up, and sliced into pinwheels. Good for a party tray or a packed lunch.",
+    blurb:
+      "Tortillas spread with a creamy chicken and cheese filling, rolled up, and sliced into pinwheels. Good for a party tray or a packed lunch.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "american",
@@ -37,7 +38,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "mini-pizza-bites",
     title: "Mini Pizza Bites",
-    blurb: "Crisp tortilla wedges topped with pizza sauce and melted mozzarella. A quick snack for when you want pizza without the wait.",
+    blurb:
+      "Crisp tortilla wedges topped with pizza sauce and melted mozzarella. A quick snack for when you want pizza without the wait.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "italian",
@@ -52,7 +54,15 @@ export const APPETIZERS = defineRecipes([
         2,
         {
           note: "flour or corn",
-          subs: [{ id: "bread", from: "count", unit: "slice", ratio: 2, note: "Cut each slice into rounds with a small glass." }],
+          subs: [
+            {
+              id: "bread",
+              from: "count",
+              unit: "slice",
+              ratio: 2,
+              note: "Cut each slice into rounds with a small glass.",
+            },
+          ],
         },
       ],
       ["pasta-sauce", 0.5, "cup"],
@@ -73,7 +83,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "loaded-nachos",
     title: "Loaded Nachos",
-    blurb: "A vegetarian platter of tortilla chips covered in melted cheese, corn, and black beans, finished with cool yogurt. Made for sharing on game night.",
+    blurb:
+      "A vegetarian platter of tortilla chips covered in melted cheese, corn, and black beans, finished with cool yogurt. Made for sharing on game night.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "mexican",
@@ -105,7 +116,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "meaty-nachos",
     title: "Meaty Nachos",
-    blurb: "Chips layered with melted cheese and shredded canned chicken, warmed in two quick rounds in the microwave. A filling snack for two.",
+    blurb:
+      "Chips layered with melted cheese and shredded canned chicken, warmed in two quick rounds in the microwave. A filling snack for two.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "mexican",
@@ -121,7 +133,10 @@ export const APPETIZERS = defineRecipes([
         "canned-chicken",
         1,
         "can",
-        { note: "drained and shredded", subs: [{ id: "canned-turkey" }, { id: "canned-meat", note: "Dice it small." }] },
+        {
+          note: "drained and shredded",
+          subs: [{ id: "canned-turkey" }, { id: "canned-meat", note: "Dice it small." }],
+        },
       ],
       ["tomato", 1, { note: "diced", optional: true }],
       ["hot-sauce", "to taste", { optional: true }],
@@ -139,7 +154,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "veggie-chips",
     title: "Veggie Chips",
-    blurb: "Thin potato slices crisped in the microwave in small batches, with salt and a little oil. A homemade chip for an afternoon snack.",
+    blurb:
+      "Thin potato slices crisped in the microwave in small batches, with salt and a little oil. A homemade chip for an afternoon snack.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -149,7 +165,11 @@ export const APPETIZERS = defineRecipes([
     cook: 20,
     serves: 2,
     ingredients: [
-      ["potato", 2, { note: "medium", subs: [{ id: "carrot", ratio: 2, note: "Use large carrots, sliced into thin coins." }] }],
+      [
+        "potato",
+        2,
+        { note: "medium", subs: [{ id: "carrot", ratio: 2, note: "Use large carrots, sliced into thin coins." }] },
+      ],
       ["oil", 1, "tbsp"],
       ["salt", "to taste"],
     ],
@@ -171,7 +191,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "potato-puffs",
     title: "Potato Puffs",
-    blurb: "Soft yogurt dough wrapped around seasoned mashed potato and pan-fried until golden, like a small stuffed flatbread. A filling snack served warm.",
+    blurb:
+      "Soft yogurt dough wrapped around seasoned mashed potato and pan-fried until golden, like a small stuffed flatbread. A filling snack served warm.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "indian",
@@ -207,7 +228,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "classic-deviled-eggs",
     title: "Classic Deviled Eggs",
-    blurb: "Hard-boiled egg halves filled with a creamy, seasoned yolk mixture. A make-ahead appetizer for potlucks and holidays.",
+    blurb:
+      "Hard-boiled egg halves filled with a creamy, seasoned yolk mixture. A make-ahead appetizer for potlucks and holidays.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -239,7 +261,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "warm-bean-dip",
     title: "Warm Bean Dip",
-    blurb: "Mashed pinto beans with cumin and chili powder under a layer of melted cheese. Serve it hot with chips for a party or movie night.",
+    blurb:
+      "Mashed pinto beans with cumin and chili powder under a layer of melted cheese. Serve it hot with chips for a party or movie night.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "mexican",
@@ -268,7 +291,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "chickpea-hummus",
     title: "Chickpea Hummus",
-    blurb: "A smooth chickpea spread made with peanut butter in place of tahini. Serve it with tortilla wedges, chips, or carrot sticks.",
+    blurb:
+      "A smooth chickpea spread made with peanut butter in place of tahini. Serve it with tortilla wedges, chips, or carrot sticks.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "middle-eastern",
@@ -299,7 +323,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "fresh-tomato-salsa",
     title: "Fresh Tomato Salsa",
-    blurb: "Chopped tomato, onion, and garlic with a squeeze of lemon. A fresh dip for chips or a topping for quesadillas and eggs.",
+    blurb:
+      "Chopped tomato, onion, and garlic with a squeeze of lemon. A fresh dip for chips or a topping for quesadillas and eggs.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "mexican",
@@ -328,7 +353,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "stovetop-queso-dip",
     title: "Stovetop Queso Dip",
-    blurb: "A smooth, warm cheese sauce with diced tomatoes and a little chili powder. Set it out with tortilla chips for a crowd.",
+    blurb:
+      "A smooth, warm cheese sauce with diced tomatoes and a little chili powder. Set it out with tortilla chips for a crowd.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "mexican",
@@ -361,7 +387,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "pigs-in-a-blanket",
     title: "Pigs in a Blanket",
-    blurb: "Hot dog pieces wrapped in strips of biscuit dough and cooked in a covered skillet until golden. A party snack kids and adults both reach for.",
+    blurb:
+      "Hot dog pieces wrapped in strips of biscuit dough and cooked in a covered skillet until golden. A party snack kids and adults both reach for.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -389,7 +416,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "cheese-quesadilla-triangles",
     title: "Cheese Quesadilla Triangles",
-    blurb: "Crisp tortillas folded around melted cheese and cut into small triangles for dipping. Quick to make for an after-school snack.",
+    blurb:
+      "Crisp tortillas folded around melted cheese and cut into small triangles for dipping. Quick to make for an after-school snack.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "mexican",
@@ -418,7 +446,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "potato-latkes",
     title: "Potato Latkes",
-    blurb: "Shredded potato and onion pancakes, pan-fried until crisp at the edges. Serve them hot with yogurt or applesauce as a snack or starter.",
+    blurb:
+      "Shredded potato and onion pancakes, pan-fried until crisp at the edges. Serve them hot with yogurt or applesauce as a snack or starter.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -454,7 +483,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "onion-pakoras",
     title: "Onion Pakoras",
-    blurb: "Sliced onions in a spiced flour batter, fried in small clusters until crisp. A street-style snack for a rainy afternoon with tea.",
+    blurb:
+      "Sliced onions in a spiced flour batter, fried in small clusters until crisp. A street-style snack for a rainy afternoon with tea.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "indian",
@@ -491,7 +521,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "onion-scallion-style-pancakes",
     title: "Onion Scallion-Style Pancakes",
-    blurb: "Flaky pan-fried flatbreads layered with finely minced onion, cut into wedges and dipped in soy sauce. A Chinese-style snack made with pantry flour.",
+    blurb:
+      "Flaky pan-fried flatbreads layered with finely minced onion, cut into wedges and dipped in soy sauce. A Chinese-style snack made with pantry flour.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "chinese",
@@ -525,7 +556,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "cabbage-okonomiyaki",
     title: "Cabbage Okonomiyaki",
-    blurb: "A savory Japanese pancake packed with shredded cabbage, topped with mayo and a sweet soy glaze. Cut it into wedges to share.",
+    blurb:
+      "A savory Japanese pancake packed with shredded cabbage, topped with mayo and a sweet soy glaze. Cut it into wedges to share.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "japanese",
@@ -561,7 +593,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "vegetable-pajeon",
     title: "Vegetable Pajeon",
-    blurb: "A thin, crisp Korean pancake full of sliced onion and carrot, with a soy and vinegar dipping sauce. Good for sharing at the start of a meal.",
+    blurb:
+      "A thin, crisp Korean pancake full of sliced onion and carrot, with a soy and vinegar dipping sauce. Good for sharing at the start of a meal.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "korean",
@@ -598,7 +631,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "patatas-bravas",
     title: "Patatas Bravas",
-    blurb: "Crisp pan-fried potato cubes with a smoky paprika tomato sauce. A Spanish tapas dish to share with toothpicks.",
+    blurb:
+      "Crisp pan-fried potato cubes with a smoky paprika tomato sauce. A Spanish tapas dish to share with toothpicks.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "spanish",
@@ -632,7 +666,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "street-corn-cups",
     title: "Street Corn Cups",
-    blurb: "Skillet-charred corn tossed with mayo, parmesan, and chili powder, served in small cups. A take on Mexican esquites made with canned corn.",
+    blurb:
+      "Skillet-charred corn tossed with mayo, parmesan, and chili powder, served in small cups. A take on Mexican esquites made with canned corn.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "mexican",
@@ -661,7 +696,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "tuna-stuffed-tomatoes",
     title: "Tuna Stuffed Tomatoes",
-    blurb: "Hollowed tomatoes filled with tuna, onion, olive oil, and lemon. A light no-cook starter or lunch for a warm day.",
+    blurb:
+      "Hollowed tomatoes filled with tuna, onion, olive oil, and lemon. A light no-cook starter or lunch for a warm day.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "mediterranean",
@@ -692,7 +728,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "parmesan-cheese-crisps",
     title: "Parmesan Cheese Crisps",
-    blurb: "Lacy, crunchy rounds of melted parmesan made in the microwave in about two minutes. A savory nibble on their own or on top of soup.",
+    blurb:
+      "Lacy, crunchy rounds of melted parmesan made in the microwave in about two minutes. A savory nibble on their own or on top of soup.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "italian",
@@ -702,7 +739,15 @@ export const APPETIZERS = defineRecipes([
     cook: 6,
     serves: 2,
     ingredients: [
-      ["parmesan", 1, "cup", { note: "shredded or grated", subs: [{ id: "cheddar", note: "Shredded. The crisps come out softer and oilier." }] }],
+      [
+        "parmesan",
+        1,
+        "cup",
+        {
+          note: "shredded or grated",
+          subs: [{ id: "cheddar", note: "Shredded. The crisps come out softer and oilier." }],
+        },
+      ],
       ["italian-seasoning", 0.25, "tsp", { optional: true }],
       ["pepper", "to taste", { optional: true }],
     ],
@@ -718,7 +763,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "cinnamon-sugar-tortilla-chips",
     title: "Cinnamon Sugar Tortilla Chips",
-    blurb: "Flour tortilla wedges toasted crisp and tossed in cinnamon sugar. A sweet, crunchy snack to dip in yogurt or eat by the handful.",
+    blurb:
+      "Flour tortilla wedges toasted crisp and tossed in cinnamon sugar. A sweet, crunchy snack to dip in yogurt or eat by the handful.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -746,7 +792,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "apple-ants-on-a-log",
     title: "Apple Ants on a Log",
-    blurb: "Apple wedges spread with peanut butter and dotted with cereal, a twist on the classic celery snack. Quick for kids to help make.",
+    blurb:
+      "Apple wedges spread with peanut butter and dotted with cereal, a twist on the classic celery snack. Quick for kids to help make.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -771,7 +818,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "apple-nachos",
     title: "Apple Nachos",
-    blurb: "Thin apple slices spread on a plate and drizzled with warm peanut butter and honey. A sweet snack platter that is easy to share.",
+    blurb:
+      "Thin apple slices spread on a plate and drizzled with warm peanut butter and honey. A sweet snack platter that is easy to share.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -798,7 +846,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "peanut-butter-energy-bites",
     title: "Peanut Butter Energy Bites",
-    blurb: "Chewy no-cook balls of oats, peanut butter, and honey. Make a batch ahead for school snacks or a quick bite on the way out.",
+    blurb:
+      "Chewy no-cook balls of oats, peanut butter, and honey. Make a batch ahead for school snacks or a quick bite on the way out.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -827,7 +876,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "glazed-sausage-bites",
     title: "Glazed Sausage Bites",
-    blurb: "Browned sausage coins tossed in a sticky honey and soy glaze. Serve them on toothpicks at a party or game night.",
+    blurb:
+      "Browned sausage coins tossed in a sticky honey and soy glaze. Serve them on toothpicks at a party or game night.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -855,7 +905,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "mini-corn-fritters",
     title: "Mini Corn Fritters",
-    blurb: "Small, golden pan-fried fritters packed with sweet corn. Serve them warm with yogurt or salsa as a snack or starter.",
+    blurb:
+      "Small, golden pan-fried fritters packed with sweet corn. Serve them warm with yogurt or salsa as a snack or starter.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "american",
@@ -889,7 +940,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "crispy-spiced-chickpeas",
     title: "Crispy Spiced Chickpeas",
-    blurb: "Canned chickpeas pan-roasted with paprika and cumin until crunchy. A savory snack to keep in a bowl for nibbling.",
+    blurb:
+      "Canned chickpeas pan-roasted with paprika and cumin until crunchy. A savory snack to keep in a bowl for nibbling.",
     course: "appetizer",
     meal: ["snack"],
     cuisine: "mediterranean",
@@ -918,7 +970,8 @@ export const APPETIZERS = defineRecipes([
   {
     slug: "chickpea-falafel-patties",
     title: "Chickpea Falafel Patties",
-    blurb: "Small chickpea patties flavored with garlic, onion, and cumin, pan-fried until crisp and served with a lemony yogurt sauce.",
+    blurb:
+      "Small chickpea patties flavored with garlic, onion, and cumin, pan-fried until crisp and served with a lemony yogurt sauce.",
     course: "appetizer",
     meal: ["snack", "lunch"],
     cuisine: "middle-eastern",

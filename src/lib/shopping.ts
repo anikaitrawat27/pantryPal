@@ -53,7 +53,16 @@ interface Tally {
   recipes: Set<string>;
 }
 
-const GROUP_ORDER: IngredientGroup[] = ["produce", "dairy-eggs", "protein", "grains", "canned", "baking", "condiments", "extras"];
+const GROUP_ORDER: IngredientGroup[] = [
+  "produce",
+  "dairy-eggs",
+  "protein",
+  "grains",
+  "canned",
+  "baking",
+  "condiments",
+  "extras",
+];
 const NAME_ORDER = new Map(INGREDIENTS.map((ing, i) => [ing.id, i]));
 
 /** Shopping amounts round up: nobody buys a third of an onion. */
@@ -77,7 +86,9 @@ export function formatShoppingLine(id: string, amounts: readonly ScaledAmount[],
     const qty = amounts[0].qty!;
     return `${formatNumber(qty)} ${qty > 1 ? ingredientPlural(id, lang) : ingredientName(id, lang)}`;
   }
-  const parts = amounts.map((a) => (a.unit ? `${formatNumber(a.qty!)} ${unitName(a.unit, a.qty!, lang)}` : formatNumber(a.qty!)));
+  const parts = amounts.map((a) =>
+    a.unit ? `${formatNumber(a.qty!)} ${unitName(a.unit, a.qty!, lang)}` : formatNumber(a.qty!),
+  );
   const name = amounts.every((a) => a.unit === "can") ? ingredientCanName(id, lang) : ingredientName(id, lang);
   return joinAmount(parts.join(" + "), name, lang);
 }
@@ -169,13 +180,20 @@ export function buildShoppingList(
     });
   }
 
-  items.sort((a, b) => GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || NAME_ORDER.get(a.id)! - NAME_ORDER.get(b.id)!);
+  items.sort(
+    (a, b) =>
+      GROUP_ORDER.indexOf(a.group) - GROUP_ORDER.indexOf(b.group) || NAME_ORDER.get(a.id)! - NAME_ORDER.get(b.id)!,
+  );
   const total = Math.round(items.reduce((sum, i) => sum + (i.status === "have" ? 0 : i.cost), 0) * 100) / 100;
   return { items, total };
 }
 
 /** Plain-text version for copying into a notes app or a text message. */
-export function shoppingListText(list: ShoppingList, checked: readonly string[] = [], label: (l: string) => string = (l) => l): string {
+export function shoppingListText(
+  list: ShoppingList,
+  checked: readonly string[] = [],
+  label: (l: string) => string = (l) => l,
+): string {
   return list.items
     .filter((i) => i.status !== "have" && !checked.includes(i.id))
     .map((i) => `- ${i.line}${i.packages > 0 && i.packLabel ? ` (${i.packages} × ${label(i.packLabel)})` : ""}`)

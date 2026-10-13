@@ -22,7 +22,10 @@ const HARD_CODED_AMOUNT =
 const TOOL_HINTS: [Equipment, RegExp][] = [
   ["microwave", /\bmicrowav/i],
   // "air fry" belongs to the air fryer, so "fry" only counts when "air" does not precede it.
-  ["stovetop", /\b(skillet|pan|pot|saucepan|stovetop|stove|boil\w*|simmer\w*|saut[eé]\w*|griddle|wok)\b|(?<!\bair[- ])\b(fry|fries|fried|frying)\b/i],
+  [
+    "stovetop",
+    /\b(skillet|pan|pot|saucepan|stovetop|stove|boil\w*|simmer\w*|saut[eé]\w*|griddle|wok)\b|(?<!\bair[- ])\b(fry|fries|fried|frying)\b/i,
+  ],
   ["blender", /\bblend(er)?\b/i],
   ["toaster", /\btoaster\b/i],
   ["air-fryer", /\bair[- ]fry/i],
@@ -70,7 +73,8 @@ function validateRecipe(r: Recipe): string[] {
   }
 
   const steps = r.steps.join(" ");
-  if (r.equipment.includes("no-cook") && r.equipment.length > 1) at(`"no-cook" cannot be combined with other equipment`);
+  if (r.equipment.includes("no-cook") && r.equipment.length > 1)
+    at(`"no-cook" cannot be combined with other equipment`);
   for (const [tool, hint] of TOOL_HINTS) {
     const mentioned = hint.test(steps);
     if (mentioned && !r.equipment.includes(tool)) at(`steps mention ${tool} but equipment does not list it`);

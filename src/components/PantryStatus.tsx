@@ -14,7 +14,8 @@ export function PantryStatus({ ingredients }: { ingredients: readonly RecipeIngr
   const { pantry } = useMyPantry();
   if (pantry.have.length === 0) return null;
   const { missing, swaps } = matchPantry(ingredients, pantry.have);
-  if (missing.length === 0) return <p className={styles.ready}>{swaps.length ? t.readyWithSwaps(swaps.length) : t.ready}</p>;
+  if (missing.length === 0)
+    return <p className={styles.ready}>{swaps.length ? t.readyWithSwaps(swaps.length) : t.ready}</p>;
   const names = missing.map((id) => ingredientName(id, lang));
   return (
     <p className={styles.need}>

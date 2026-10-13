@@ -4,7 +4,8 @@ export const SIDES = defineRecipes([
   {
     slug: "stuffed-potato",
     title: "Stuffed Potato",
-    blurb: "Microwaved potatoes scooped out, mashed with cream cheese and cheddar, and filled back into their skins. A side or a light meal.",
+    blurb:
+      "Microwaved potatoes scooped out, mashed with cream cheese and cheddar, and filled back into their skins. A side or a light meal.",
     course: "side",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -35,7 +36,8 @@ export const SIDES = defineRecipes([
   {
     slug: "deconstructed-elote",
     title: "Deconstructed Elote",
-    blurb: "Skillet-charred corn tossed with mayo, cheese, lemon juice, and chili powder. The flavor of Mexican street corn from a can.",
+    blurb:
+      "Skillet-charred corn tossed with mayo, cheese, lemon juice, and chili powder. The flavor of Mexican street corn from a can.",
     course: "side",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -65,7 +67,8 @@ export const SIDES = defineRecipes([
   {
     slug: "mashed-potatoes",
     title: "Mashed Potatoes",
-    blurb: "Soft, buttery mashed potatoes with warm milk. The everyday side for chicken, meatloaf, or anything with gravy.",
+    blurb:
+      "Soft, buttery mashed potatoes with warm milk. The everyday side for chicken, meatloaf, or anything with gravy.",
     course: "side",
     meal: ["dinner"],
     cuisine: "american",
@@ -93,7 +96,8 @@ export const SIDES = defineRecipes([
   {
     slug: "mexican-rice",
     title: "Mexican Rice",
-    blurb: "Rice toasted in oil and simmered with tomato, garlic, and broth until fluffy. Serve with beans, tacos, or grilled chicken.",
+    blurb:
+      "Rice toasted in oil and simmered with tomato, garlic, and broth until fluffy. Serve with beans, tacos, or grilled chicken.",
     course: "side",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -125,7 +129,8 @@ export const SIDES = defineRecipes([
   {
     slug: "refried-beans",
     title: "Refried Beans",
-    blurb: "Canned pinto beans mashed in a skillet with onion, garlic, and cumin. Ready in 15 minutes for tacos, burritos, or a side.",
+    blurb:
+      "Canned pinto beans mashed in a skillet with onion, garlic, and cumin. Ready in 15 minutes for tacos, burritos, or a side.",
     course: "side",
     meal: ["lunch", "dinner"],
     cuisine: "mexican",
@@ -185,7 +190,8 @@ export const SIDES = defineRecipes([
   {
     slug: "honey-butter-glazed-carrots",
     title: "Honey Butter Glazed Carrots",
-    blurb: "Carrot coins simmered until tender, then glazed in honey and butter. A sweet side for roast chicken or pork.",
+    blurb:
+      "Carrot coins simmered until tender, then glazed in honey and butter. A sweet side for roast chicken or pork.",
     course: "side",
     meal: ["dinner"],
     cuisine: "american",
@@ -214,7 +220,8 @@ export const SIDES = defineRecipes([
   {
     slug: "creamed-spinach",
     title: "Creamed Spinach",
-    blurb: "Spinach in a garlicky cream cheese sauce with a little parmesan. A rich side for steak, chicken, or potatoes.",
+    blurb:
+      "Spinach in a garlicky cream cheese sauce with a little parmesan. A rich side for steak, chicken, or potatoes.",
     course: "side",
     meal: ["dinner"],
     cuisine: "american",
@@ -247,7 +254,8 @@ export const SIDES = defineRecipes([
   {
     slug: "skillet-potatoes",
     title: "Skillet Potatoes",
-    blurb: "Diced potatoes steamed and then browned in a covered skillet until crisp outside and soft inside. Good with eggs or dinner.",
+    blurb:
+      "Diced potatoes steamed and then browned in a covered skillet until crisp outside and soft inside. Good with eggs or dinner.",
     course: "side",
     meal: ["lunch", "dinner"],
     cuisine: "american",
@@ -277,7 +285,8 @@ export const SIDES = defineRecipes([
   {
     slug: "skillet-garlic-bread",
     title: "Skillet Garlic Bread",
-    blurb: "Bread slices spread with garlic butter and toasted in a skillet until crisp. Serve with pasta, soup, or salad.",
+    blurb:
+      "Bread slices spread with garlic butter and toasted in a skillet until crisp. Serve with pasta, soup, or salad.",
     course: "side",
     meal: ["lunch", "dinner"],
     cuisine: "italian",
@@ -305,7 +314,8 @@ export const SIDES = defineRecipes([
   {
     slug: "buttery-sauteed-cabbage",
     title: "Buttery Sauteed Cabbage",
-    blurb: "Sliced cabbage and onion cooked in butter until soft and browned at the edges. An inexpensive side for sausage or chicken.",
+    blurb:
+      "Sliced cabbage and onion cooked in butter until soft and browned at the edges. An inexpensive side for sausage or chicken.",
     course: "side",
     meal: ["dinner"],
     cuisine: "american",
@@ -363,7 +373,8 @@ export const SIDES = defineRecipes([
   {
     slug: "rice-and-peas",
     title: "Rice and Peas",
-    blurb: "Caribbean rice cooked with kidney beans, garlic, and onion. Serve it with stewed chicken or as a meal with a side of greens.",
+    blurb:
+      "Caribbean rice cooked with kidney beans, garlic, and onion. Serve it with stewed chicken or as a meal with a side of greens.",
     course: "side",
     meal: ["lunch", "dinner"],
     cuisine: "caribbean",
@@ -423,7 +434,8 @@ export const SIDES = defineRecipes([
   {
     slug: "japanese-style-sweet-soy-carrots",
     title: "Japanese-Style Sweet Soy Carrots",
-    blurb: "Thin carrot strips stir-fried and glazed with soy sauce and sugar. A small side for rice bowls or a packed lunch.",
+    blurb:
+      "Thin carrot strips stir-fried and glazed with soy sauce and sugar. A small side for rice bowls or a packed lunch.",
     course: "side",
     meal: ["lunch", "dinner"],
     cuisine: "japanese",
