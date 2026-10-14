@@ -9,6 +9,7 @@ import { dietsFor } from "@/lib/diet";
 import { related } from "@/lib/match";
 import { costPerServing, nutritionPerServing } from "@/lib/nutrition";
 import { formatIngredientLine, scaleAmount } from "@/lib/scale";
+import { toggled } from "@/lib/sets";
 import { applySub, resolveSubs } from "@/lib/substitute";
 import ui from "../ui.module.css";
 import { AddToPlan } from "./AddToPlan";
@@ -55,14 +56,6 @@ export function RecipeBody({ slug, title, meal, ingredients, notes, steps, baseS
   const lineFor = (ing: RecipeIngredient) => formatIngredientLine(ing.id, scaleAmount(ing, factor), lang);
   const name = (id: string) => ingredientName(id, lang);
 
-  const toggleChecked = (i: number) =>
-    setChecked((prev) => {
-      const next = new Set(prev);
-      if (next.has(i)) next.delete(i);
-      else next.add(i);
-      return next;
-    });
-
   const undoSwap = (i: number) =>
     setSwaps((prev) => {
       const next = { ...prev };
@@ -96,7 +89,7 @@ export function RecipeBody({ slug, title, meal, ingredients, notes, steps, baseS
                 swapped={Boolean(swap)}
                 inPantry={pantry.have.some((h) => related(ing.id, h))}
                 checked={checked.has(i)}
-                onToggleChecked={() => toggleChecked(i)}
+                onToggleChecked={() => setChecked((prev) => toggled(prev, i))}
                 onSwap={(option) => setSwaps((prev) => ({ ...prev, [i]: option }))}
                 onUndoSwap={() => undoSwap(i)}
               />

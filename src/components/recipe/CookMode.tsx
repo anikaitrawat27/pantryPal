@@ -1,14 +1,12 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useDict, useLang } from "@/i18n/client";
-import { ingredientName } from "@/i18n/ingredients";
-import { playAlarm, unlockAudio } from "@/client/alarm";
-import { related } from "@/lib/match";
-import { useMyPantry } from "@/client/my-pantry";
-import { formatClock, parseTimers } from "@/lib/timers";
+import { useCookTimers } from "@/client/use-cook-timers";
 import { useWakeLock } from "@/client/use-wake-lock";
+import { useDict } from "@/i18n/client";
+import { formatClock, parseTimers } from "@/lib/timers";
 import styles from "./CookMode.module.css";
+import { CookModeFinished } from "./CookModeFinished";
 
 interface Props {
   title: string;
@@ -18,26 +16,21 @@ interface Props {
   onClose: () => void;
 }
 
-interface RunningTimer {
-  key: string;
-  label: string;
-  step: number;
-  endsAt: number;
-  done: boolean;
-}
+/** A timer label that is a range, like "8 to 10 minutes", starts at the low end. */
+const isRange = (label: string) => /\d+\s*(to|-|–|or|a|o)\s*\d+/.test(label);
 
 /**
- * Full-screen, one-step-at-a-time view for cooking. Timers keep running while
- * the cook moves between steps, and the screen stays awake where supported.
+ * Full-screen, one-step-at-a-time view for cooking. Arrow keys move between steps,
+ * Escape exits, timers keep running across steps, and the screen stays awake where supported.
  */
 export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
   const t = useDict().cook;
   const [step, setStep] = useState(0);
   const [showIngredients, setShowIngredients] = useState(false);
-  const [timers, setTimers] = useState<RunningTimer[]>([]);
-  const [now, setNow] = useState(() => Date.now());
+  const timers = useCookTimers();
   const wake = useWakeLock(true);
   const dialog = useRef<HTMLDivElement>(null);
+  /** One past the last step is the "All done" screen. */
   const finished = step === steps.length;
 
   const go = useCallback(
@@ -45,12 +38,13 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
     [steps.length],
   );
 
+  // Take over the screen: focus the dialog and stop the page behind it from scrolling.
   useEffect(() => {
     dialog.current?.focus();
-    const prevOverflow = document.body.style.overflow;
+    const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
-      document.body.style.overflow = prevOverflow;
+      document.body.style.overflow = previous;
     };
   }, []);
 
@@ -63,34 +57,6 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [go, onClose]);
-
-  // Tick once a second while any timer is running, and ring when one finishes.
-  const running = timers.some((t) => !t.done);
-  useEffect(() => {
-    if (!running) return;
-    const id = setInterval(() => {
-      const t = Date.now();
-      setNow(t);
-      setTimers((prev) => {
-        if (!prev.some((x) => !x.done && x.endsAt <= t)) return prev;
-        playAlarm();
-        return prev.map((x) => (!x.done && x.endsAt <= t ? { ...x, done: true } : x));
-      });
-    }, 1000);
-    return () => clearInterval(id);
-  }, [running]);
-
-  const startTimer = (label: string, seconds: number) => {
-    unlockAudio();
-    const t = Date.now();
-    setNow(t);
-    setTimers((prev) => [
-      ...prev,
-      { key: `${step}-${label}-${t}`, label, step, endsAt: t + seconds * 1000, done: false },
-    ]);
-  };
-
-  const dismiss = (key: string) => setTimers((prev) => prev.filter((t) => t.key !== key));
 
   return (
     <div
@@ -125,19 +91,19 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
         <span style={{ width: `${(Math.min(step + 1, steps.length) / steps.length) * 100}%` }} />
       </div>
 
-      {timers.length > 0 && (
+      {timers.timers.length > 0 && (
         <ul className={styles.timers} aria-label={t.timers}>
-          {timers.map((timer) => (
+          {timers.timers.map((timer) => (
             <li key={timer.key} className={styles.timer} data-done={timer.done}>
               <span className={styles.clock} role={timer.done ? "alert" : undefined}>
-                {timer.done ? t.timesUp : formatClock((timer.endsAt - now) / 1000)}
+                {timer.done ? t.timesUp : formatClock(timers.secondsLeft(timer))}
               </span>
               <span className={styles.timerLabel}>
                 {t.stepShort(timer.step + 1)} · {timer.label}
               </span>
               <button
                 type="button"
-                onClick={() => dismiss(timer.key)}
+                onClick={() => timers.dismiss(timer.key)}
                 aria-label={timer.done ? t.dismiss : t.cancel(timer.label)}
               >
                 ×
@@ -157,7 +123,7 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
 
       <div className={styles.stage}>
         {finished ? (
-          <Finished ingredientIds={ingredientLines.map((i) => i.id)} onClose={onClose} />
+          <CookModeFinished ingredientIds={ingredientLines.map((i) => i.id)} onClose={onClose} />
         ) : (
           <>
             <p className={styles.counter}>{t.stepOf(step + 1, steps.length)}</p>
@@ -166,19 +132,17 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
             </p>
             <div className={styles.timerButtons}>
               {parseTimers(steps[step]).map((found) => {
-                const isRunning = timers.some((x) => x.step === step && x.label === found.label && !x.done);
+                const running = timers.isRunning(step, found.label);
                 return (
                   <button
                     key={found.label}
                     type="button"
                     className={styles.startTimer}
-                    disabled={isRunning}
-                    onClick={() => startTimer(found.label, found.seconds)}
+                    disabled={running}
+                    onClick={() => timers.start(step, found.label, found.seconds)}
                   >
-                    {isRunning ? t.running : t.start(formatClock(found.seconds))}
-                    {!isRunning && /\d+\s*(to|-|–|or|a|o)\s*\d+/.test(found.label) && (
-                      <small>{t.lowEnd(found.label)}</small>
-                    )}
+                    {running ? t.running : t.start(formatClock(found.seconds))}
+                    {!running && isRange(found.label) && <small>{t.lowEnd(found.label)}</small>}
                   </button>
                 );
               })}
@@ -195,62 +159,6 @@ export function CookMode({ title, steps, ingredientLines, onClose }: Props) {
           {step === steps.length - 1 ? t.finish : t.next}
         </button>
       </nav>
-    </div>
-  );
-}
-
-/** End screen: lets the cook flag pantry items that are now running low. */
-function Finished({ ingredientIds, onClose }: { ingredientIds: readonly string[]; onClose: () => void }) {
-  const t = useDict().cook;
-  const lang = useLang();
-  const { pantry, markLow } = useMyPantry();
-  const owned = ingredientIds
-    .filter((id) => pantry.have.some((h) => related(id, h)))
-    .map((id) => pantry.have.find((h) => related(id, h))!);
-  const unique = [...new Set(owned)];
-  const [low, setLow] = useState<ReadonlySet<string>>(new Set());
-  const [saved, setSaved] = useState(false);
-
-  return (
-    <div className={styles.finished}>
-      <p className={styles.step}>{t.done}</p>
-      {unique.length > 0 && !saved && (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            markLow([...low], true);
-            setSaved(true);
-          }}
-        >
-          <fieldset>
-            <legend>{t.lowQuestion}</legend>
-            {unique.map((id) => (
-              <label key={id}>
-                <input
-                  type="checkbox"
-                  checked={low.has(id)}
-                  onChange={() =>
-                    setLow((prev) => {
-                      const next = new Set(prev);
-                      if (next.has(id)) next.delete(id);
-                      else next.add(id);
-                      return next;
-                    })
-                  }
-                />
-                {ingredientName(id, lang)}
-              </label>
-            ))}
-          </fieldset>
-          <button type="submit" className={styles.startTimer} disabled={low.size === 0}>
-            {t.lowSubmit}
-          </button>
-        </form>
-      )}
-      {saved && <p role="status">{t.lowSaved}</p>}
-      <button type="button" className={styles.next} onClick={onClose}>
-        {t.backToRecipe}
-      </button>
     </div>
   );
 }

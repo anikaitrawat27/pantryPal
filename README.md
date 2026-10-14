@@ -60,43 +60,27 @@ curl "http://localhost:3000/api/recipes/creamy-tomato-soup?servings=6&swap=chick
 - **Errors:** errors share one shape, `{ "error": { "code", "message", "fields"? } }`, where `fields` maps each invalid input path to a message.
 - **Caching:** GET responses are cacheable at the CDN for an hour, because the catalog only changes on deploy.
 - **Docs:** `/developers` renders the OpenAPI description with live examples.
-- **Code layout:** the route handlers in `src/app/api/` stay thin. The logic lives in `src/lib/api/recipes.ts` and reuses the same filtering, scaling, and shopping code the pages use.
+- **Code layout:** the route handlers in `src/app/api/` stay thin. The logic lives in `src/lib/api/`, one file per endpoint (`search.ts`, `recipe-detail.ts`, `shopping-list.ts`), and reuses the same filtering, scaling, and shopping code the pages use.
 - **Used by the site:** the shopping list page calls `POST /api/shopping-list`.
 
 ## How it is organized
 
+For a guided tour of the code, start with [docs/WALKTHROUGH.md](docs/WALKTHROUGH.md). It follows each feature from the page to the code that answers it.
+
 ```
 src/
-  data/
-    pantry.ts          every allowed ingredient, with aliases, groups, and diet flags
-    facts.ts           grams per unit, nutrition per 100 g, and a typical package price for each ingredient
-    schema.ts          recipe schema (Zod) and the allowed courses, cuisines, tools, units
-    substitutions.ts   default ingredient swaps
-    recipes/*.ts       the recipes, one file per course
-  i18n/
-    config.ts          languages and URL helpers (English at /, Spanish at /es)
-    dict.ts            every interface string in both languages
-    ingredients.ts     localized ingredient names, units, package labels, and swap notes
-    recipes.ts         picks a recipe's text in the page language
-    es/                Spanish ingredient glossary and recipe translations, one file per course
-  lib/
-    api/               request schemas, endpoint logic, error handling, OpenAPI description, typed client
-    catalog.ts         parses recipes and derives diet labels, nutrition, cost, and "uses extras"
-    scale.ts           serving-size scaling and friendly fractions (1 1/2 cups, 3 tbsp -> 1/4 cup)
-    nutrition.ts       weights, nutrition, and cost estimates
-    substitute.ts      resolves and applies swaps
-    match.ts           ingredient autocomplete and "what can I make" matching
-    filter.ts          browse filters, sorting, and their URL encoding
-    plan.ts            weekly meal plan model
-    shopping.ts        combines planned meals into one shopping list
-    timers.ts          finds cooking times in steps, in English and Spanish
-    my-pantry.ts       the visitor's saved pantry
-    storage.ts         localStorage-backed state shared across components
-    validate.ts        English content rules; validate-es.ts checks translations
-  views/               page bodies shared by the English and Spanish routes
-  components/          UI, including the hand-drawn SVG doodles
-  app/                 routes; app/es mirrors every English page
-docs/recipe-guide.md   how to write and translate a recipe
+  data/         content: pantry ingredients, recipe schema, 250 recipes, weights and prices, default swaps
+  lib/          pure logic, runs anywhere: scaling, matching, filtering, nutrition, shopping list, validation
+    api/        request validation and logic for the public API, one file per endpoint
+  i18n/         English and Spanish: strings/, ingredient names, recipe translations in es/
+  client/       browser only: saved pantry, plan, favorites, sign-in, sync, API calls
+  server/       server only: database (db/), passwords and sessions (auth/), chatbot (chat/, one file per tool in chat/tools/)
+  components/   UI grouped by feature: browse, recipe, plan, pantry, auth, chat, my-recipes, layout
+  views/        page bodies shared by the English and Spanish routes
+  app/          Next.js routes; app/es mirrors every page, app/api holds the API routes
+docs/
+  WALKTHROUGH.md   how the code fits together
+  recipe-guide.md  how to write and translate a recipe
 ```
 
 ### Ingredients
@@ -126,7 +110,7 @@ English pages live at `/` and Spanish pages at `/es`, both generated at build ti
 `/chat` talks to Claude Sonnet 5.5 (`claude-sonnet-5-5`) through `POST /api/chat`, which streams server-sent events: text as it is written, tool activity, recipe cards, and generated recipes. The code is in `src/server/chat/`.
 
 - **The loop (`loop.ts`)** is a hand-written streaming tool loop. Each model call can use four tools. The loop runs them in parallel, returns all results in one message, and stops after 6 model calls per user message. Refusals and cut-off replies are handled explicitly; a tool call cut off mid-input is never run. Effort is `low` for fast, cheap chat turns, and server-side fallbacks (`fallbacks: "default"`) are on.
-- **Tools (`tools.ts`):**
+- **Tools (`tools/`, one file per tool):**
   - `search_recipes`, `what_can_i_make` (which uses the user's saved pantry), and `get_recipe` reuse the same functions as the public API.
   - `generate_recipe` writes a new recipe.
   - Tool schemas are generated from Zod and marked `strict`. Every input is validated again before the tool runs, and invalid input goes back to the model as an error result.
