@@ -123,7 +123,7 @@ describe("chat loop", () => {
     expect((rows[1].content as Block[])[0]).toEqual({ type: "thinking", thinking: "", signature: "sig" });
   });
 
-  it("sends the configured model, fallbacks, low effort, strict tools, and prompt caching", async () => {
+  it("sends the configured model, fallbacks, low effort, and prompt caching", async () => {
     const { client, streamCalls } = fakeClient([text("Hi.")]);
     await turn(client, "hello");
     expect(streamCalls[0]).toMatchObject({
@@ -133,7 +133,8 @@ describe("chat loop", () => {
       output_config: { effort: "low" },
       cache_control: { type: "ephemeral" },
     });
-    for (const t of streamCalls[0].tools as { strict: boolean }[]) expect(t.strict).toBe(true);
+    // Strict mode made the model drop optional filters; inputs are validated with Zod instead.
+    for (const t of streamCalls[0].tools as { strict?: boolean }[]) expect(t.strict).toBeUndefined();
   });
 
   it("replays history append-only on the next turn", async () => {
@@ -233,6 +234,26 @@ describe("chat loop", () => {
     expect(body.recipes.map((r: { slug: string }) => r.slug)).toContain("chinese-fried-rice");
   });
 
+  it("applies the model's search filters and echoes them back", async () => {
+    const filters = { meals: ["dinner"], diets: ["vegetarian"], maxMinutes: 30 };
+    const { client, streamCalls } = fakeClient([toolUse("search_recipes", filters), text("Here you go.")]);
+    const { events } = await turn(client, "Vegetarian dinners under 30 minutes");
+
+    const recipes = events.find((e) => e.type === "recipes") as {
+      items: { meals: string[]; diets: string[]; totalMinutes: number }[];
+    };
+    expect(recipes.items.length).toBeGreaterThan(0);
+    for (const r of recipes.items) {
+      expect(r.meals).toContain("dinner");
+      expect(r.diets).toContain("vegetarian");
+      expect(r.totalMinutes).toBeLessThanOrEqual(30);
+    }
+
+    const second = streamCalls[1].messages as Anthropic.Beta.BetaMessageParam[];
+    const result = (second[2].content as Anthropic.Beta.BetaToolResultBlockParam[])[0];
+    expect(JSON.parse(result.content as string).appliedFilters).toEqual(filters);
+  });
+
   it("reloads a conversation as it was shown", async () => {
     const { client } = fakeClient([toolUse("search_recipes", { query: "rice", limit: 1 }), text("Found one.")]);
     const { conversationId } = await turn(client, "rice dishes");
@@ -265,7 +286,7 @@ describe("echoSafe", () => {
 });
 
 describe("tool definitions", () => {
-  it("are strict, closed, and free of unsupported keywords", () => {
+  it("are closed and free of noise keywords", () => {
     const json = JSON.stringify(API_TOOLS);
     expect(json).not.toContain("$schema");
     expect(json).not.toContain('"minimum"');

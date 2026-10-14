@@ -51,6 +51,7 @@ export const searchRecipesTool = defineTool({
       }),
     );
     if (res.data.length) ctx.emit({ type: "recipes", items: res.data });
-    return forModel(res.data, res.total);
+    // Echo the filters that were applied, so the model can tell a real empty or broad result from a bad call.
+    return { appliedFilters: i, ...forModel(res.data, res.total) };
   },
 });
