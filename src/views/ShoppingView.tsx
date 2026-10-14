@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ShoppingListView } from "@/components/ShoppingListView";
+import { ShoppingListView } from "@/components/plan/ShoppingListView";
 import { localePath, type Lang } from "@/i18n/config";
 import { getDict } from "@/i18n/dict";
 

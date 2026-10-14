@@ -8,7 +8,7 @@ import { ingredientName } from "@/i18n/ingredients";
 import { EMPTY_FILTERS, serializeFilters } from "@/lib/filter";
 import { useMyPantry } from "@/client/my-pantry";
 import styles from "@/views/PantryView.module.css";
-import ui from "./ui.module.css";
+import ui from "../ui.module.css";
 
 const GROUP_ORDER: IngredientGroup[] = [
   "produce",

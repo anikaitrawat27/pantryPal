@@ -1,7 +1,7 @@
 "use client";
 
 import { useDict } from "@/i18n/client";
-import ui from "./ui.module.css";
+import ui from "../ui.module.css";
 
 export function PrintButton() {
   const t = useDict().recipe;

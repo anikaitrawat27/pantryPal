@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Kalam, Nunito } from "next/font/google";
-import { SiteFooter, SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter, SiteHeader } from "@/components/layout/SiteHeader";
 import { getDict } from "@/i18n/dict";
 import "./globals.css";
 import styles from "./layout.module.css";

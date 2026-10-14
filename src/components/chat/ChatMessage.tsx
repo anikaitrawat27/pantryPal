@@ -1,7 +1,7 @@
 "use client";
 
 import { useDict } from "@/i18n/client";
-import type { DisplayMessage } from "@/server/chat/history";
+import type { DisplayMessage } from "@/server/chat/conversations";
 import type { UiEvent } from "@/server/chat/tools";
 import { RichText } from "../RichText";
 import styles from "./chat.module.css";

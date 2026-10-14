@@ -1,5 +1,5 @@
 import { json } from "@/lib/api/http";
-import { deleteConversation, loadDisplayMessages } from "@/server/chat/history";
+import { deleteConversation, loadDisplayMessages } from "@/server/chat/conversations";
 import { authedRoute } from "@/server/route";
 
 type Params = { id: string };

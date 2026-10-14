@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { RecipeBrowser } from "@/components/RecipeBrowser";
+import { RecipeBrowser } from "@/components/browse/RecipeBrowser";
 import type { Lang } from "@/i18n/config";
 import { getDict } from "@/i18n/dict";
 import { RECIPES, toSummary } from "@/lib/catalog";

@@ -6,9 +6,9 @@ import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
 import { EMPTY_FILTERS, serializeFilters } from "@/lib/filter";
 import { useMyPantry } from "@/client/my-pantry";
-import { IngredientInput } from "./IngredientInput";
+import { IngredientInput } from "../browse/IngredientInput";
 import styles from "./PantrySearch.module.css";
-import ui from "./ui.module.css";
+import ui from "../ui.module.css";
 
 /** Home page entry point: pick ingredients, then see what can be made with only those. */
 export function PantrySearch() {

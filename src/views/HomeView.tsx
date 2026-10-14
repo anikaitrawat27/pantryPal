@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { CourseDoodle, JarLogo, ToolIcon } from "@/components/Doodle";
-import { PantrySearch } from "@/components/PantrySearch";
+import { PantrySearch } from "@/components/pantry/PantrySearch";
 import { RandomRecipeButton } from "@/components/RandomRecipeButton";
 import ui from "@/components/ui.module.css";
 import { COURSES, type Equipment } from "@/data/schema";

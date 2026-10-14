@@ -1,5 +1,5 @@
 import { json } from "@/lib/api/http";
-import { listConversations } from "@/server/chat/history";
+import { listConversations } from "@/server/chat/conversations";
 import { authedRoute } from "@/server/route";
 
 /** GET /api/chat/conversations: the user's 20 most recent chats. */

@@ -5,7 +5,7 @@ import { useDict } from "@/i18n/client";
 import { DIETS } from "@/lib/diet";
 import type { FilterState } from "@/lib/filter";
 import styles from "./FilterPanel.module.css";
-import ui from "./ui.module.css";
+import ui from "../ui.module.css";
 
 type ListKey = "courses" | "meals" | "cuisines" | "diets" | "tools";
 

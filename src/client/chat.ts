@@ -2,7 +2,7 @@
 
 import type { ChatEvent } from "@/server/chat/loop";
 import type { GeneratedRecipe } from "@/server/chat/generate";
-import type { DisplayMessage } from "@/server/chat/history";
+import type { DisplayMessage } from "@/server/chat/conversations";
 import { ApiClientError, apiFetch } from "./api";
 
 /**

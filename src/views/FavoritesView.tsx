@@ -1,4 +1,4 @@
-import { FavoritesList } from "@/components/FavoritesList";
+import { FavoritesList } from "@/components/browse/FavoritesList";
 import type { Lang } from "@/i18n/config";
 import { getDict } from "@/i18n/dict";
 import { RECIPES, toSummary } from "@/lib/catalog";

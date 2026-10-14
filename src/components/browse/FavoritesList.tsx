@@ -5,7 +5,7 @@ import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
 import type { RecipeSummary } from "@/lib/catalog";
 import { useFavorites } from "@/client/favorites";
-import { HeartIcon } from "./Doodle";
+import { HeartIcon } from "../Doodle";
 import { RecipeCard } from "./RecipeCard";
 import styles from "./RecipeBrowser.module.css";
 

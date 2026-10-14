@@ -2,8 +2,8 @@
 
 import { useDict } from "@/i18n/client";
 import { useFavorites } from "@/client/favorites";
-import { HeartIcon } from "./Doodle";
-import ui from "./ui.module.css";
+import { HeartIcon } from "../Doodle";
+import ui from "../ui.module.css";
 
 export function FavoriteButton({ slug, title }: { slug: string; title: string }) {
   const t = useDict().recipe;

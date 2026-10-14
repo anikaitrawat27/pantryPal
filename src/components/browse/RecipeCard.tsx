@@ -5,10 +5,10 @@ import { ingredientName } from "@/i18n/ingredients";
 import type { RecipeSummary } from "@/lib/catalog";
 import type { PantryMatch } from "@/lib/match";
 import { formatUsd } from "@/lib/nutrition";
-import { CourseDoodle, ToolIcon } from "./Doodle";
+import { CourseDoodle, ToolIcon } from "../Doodle";
 import { PantryStatus } from "./PantryStatus";
 import styles from "./RecipeCard.module.css";
-import ui from "./ui.module.css";
+import ui from "../ui.module.css";
 
 /** Only the most useful diet labels go on cards; the full list is on the recipe page. */
 const CARD_DIETS = ["vegan", "vegetarian"] as const;

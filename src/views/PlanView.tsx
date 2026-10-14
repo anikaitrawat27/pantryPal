@@ -1,4 +1,4 @@
-import { PlanBoard } from "@/components/PlanBoard";
+import { PlanBoard } from "@/components/plan/PlanBoard";
 import type { Lang } from "@/i18n/config";
 import { getDict } from "@/i18n/dict";
 import { RECIPES, toSummary } from "@/lib/catalog";

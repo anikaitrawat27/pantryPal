@@ -3,7 +3,7 @@ import { eq } from "drizzle-orm";
 import { beforeAll, beforeEach, describe, expect, it } from "vitest";
 import { randomId } from "@/server/auth/crypto";
 import { checkGenerated, generateRecipe } from "@/server/chat/generate";
-import { loadDisplayMessages } from "@/server/chat/history";
+import { loadDisplayMessages } from "@/server/chat/conversations";
 import { echoSafe, MAX_STEPS, runChatTurn, type ChatEvent } from "@/server/chat/loop";
 import { API_TOOLS } from "@/server/chat/tools";
 import { openPglite, type Db } from "@/server/db";
@@ -179,6 +179,27 @@ describe("chat loop", () => {
     expect(events.find((e) => e.type === "error")).toMatchObject({ code: "refusal" });
     const rows = await db.select().from(chatMessages).where(eq(chatMessages.conversationId, conversationId));
     expect(rows.map((r) => r.role)).toEqual(["user"]);
+  });
+
+  it("never runs a tool call that was cut off, and reports only the cut-off", async () => {
+    const cut = { ...toolUse("search_recipes", { query: "ri" }), stop_reason: "max_tokens" };
+    const { client, streamCalls } = fakeClient([cut]);
+    const { events, conversationId } = await turn(client, "long question");
+    expect(streamCalls).toHaveLength(1);
+    expect(events.filter((e) => e.type === "error")).toEqual([
+      { type: "error", code: "truncated", message: "The reply was cut short." },
+    ]);
+    expect(events.some((e) => e.type === "recipes")).toBe(false);
+    // The dangling tool call is answered with an error so the transcript stays valid for the next turn.
+    const rows = await db.select().from(chatMessages).where(eq(chatMessages.conversationId, conversationId));
+    expect(rows.map((r) => r.role)).toEqual(["user", "assistant", "user"]);
+    expect((rows[2].content as Block[])[0]).toMatchObject({ type: "tool_result", is_error: true });
+  });
+
+  it("emits exactly one error on refusal", async () => {
+    const { client } = fakeClient([{ content: [], stop_reason: "refusal" }]);
+    const { events } = await turn(client, "x");
+    expect(events.filter((e) => e.type === "error").map((e) => (e as { code: string }).code)).toEqual(["refusal"]);
   });
 
   it(`stops after ${MAX_STEPS} model calls`, async () => {

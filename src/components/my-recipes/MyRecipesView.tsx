@@ -8,11 +8,11 @@ import { localePath } from "@/i18n/config";
 import { useAccount } from "@/client/account";
 import { formatUsd } from "@/lib/nutrition";
 import { getGeneratedRecipe, listSavedRecipes, setRecipeSaved, type SavedRecipe } from "@/client/chat";
-import { CourseDoodle } from "./Doodle";
+import { CourseDoodle } from "../Doodle";
 import styles from "./MyRecipesView.module.css";
-import { RecipeBody } from "./RecipeBody";
-import { SignInGate } from "./SignInGate";
-import ui from "./ui.module.css";
+import { RecipeBody } from "../recipe/RecipeBody";
+import { SignInGate } from "../SignInGate";
+import ui from "../ui.module.css";
 
 type Saved = SavedRecipe;
 

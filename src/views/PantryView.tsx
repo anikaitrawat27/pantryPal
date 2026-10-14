@@ -1,4 +1,4 @@
-import { PantryShelves } from "@/components/PantryShelves";
+import { PantryShelves } from "@/components/pantry/PantryShelves";
 import { INGREDIENTS } from "@/data/pantry";
 import type { Lang } from "@/i18n/config";
 import { getDict } from "@/i18n/dict";

@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { MyRecipesView } from "@/components/MyRecipesView";
+import { MyRecipesView } from "@/components/my-recipes/MyRecipesView";
 import { getDict } from "@/i18n/dict";
 import { pageMeta } from "@/views/meta";
 

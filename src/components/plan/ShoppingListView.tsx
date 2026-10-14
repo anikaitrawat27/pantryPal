@@ -12,7 +12,7 @@ import { formatUsd } from "@/lib/nutrition";
 import { usePlan } from "@/client/plan-store";
 import { shoppingTextLine } from "@/lib/shopping";
 import styles from "./ShoppingListView.module.css";
-import ui from "./ui.module.css";
+import ui from "../ui.module.css";
 
 type Item = ShoppingListResponse["items"][number];
 type State = { status: "loading" } | { status: "error" } | { status: "ready"; list: ShoppingListResponse };

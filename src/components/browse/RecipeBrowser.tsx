@@ -19,7 +19,7 @@ import { IngredientInput } from "./IngredientInput";
 import { useMyPantry } from "@/client/my-pantry";
 import { useDict, useLang } from "@/i18n/client";
 import { RecipeCard } from "./RecipeCard";
-import ui from "./ui.module.css";
+import ui from "../ui.module.css";
 
 const PAGE_SIZE = 24;
 

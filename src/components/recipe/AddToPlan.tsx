@@ -7,7 +7,7 @@ import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
 import { usePlan } from "@/client/plan-store";
 import styles from "./AddToPlan.module.css";
-import ui from "./ui.module.css";
+import ui from "../ui.module.css";
 
 /** Today's index with Monday as 0, matching the plan's day numbering. */
 const today = () => (new Date().getDay() + 6) % 7;
