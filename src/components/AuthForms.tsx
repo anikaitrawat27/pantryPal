@@ -14,9 +14,9 @@ import {
   resetPassword,
   signUp,
   useAccount,
-} from "@/lib/account";
+} from "@/client/account";
 import { checkCredentials, PASSWORD_MAX, PASSWORD_MIN, safeNext, type CredentialProblem } from "@/lib/account-rules";
-import { ApiClientError } from "@/lib/api/client";
+import { ApiClientError } from "@/client/api";
 import styles from "./AuthForms.module.css";
 import ui from "./ui.module.css";
 

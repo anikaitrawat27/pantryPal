@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { OPENAPI } from "@/lib/api/openapi";
-import { parseDetailQuery, parseSearchQuery, recipeDetail, searchRecipes, shoppingList } from "@/lib/api/recipes";
+import { parseDetailQuery, recipeDetail } from "@/lib/api/recipe-detail";
+import { parseSearchQuery, searchRecipes } from "@/lib/api/search";
+import { shoppingList } from "@/lib/api/shopping-list";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {

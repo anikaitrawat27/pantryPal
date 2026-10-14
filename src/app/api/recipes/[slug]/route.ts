@@ -1,5 +1,5 @@
 import { CACHE_PUBLIC, handle, json } from "@/lib/api/http";
-import { parseDetailQuery, recipeDetail } from "@/lib/api/recipes";
+import { parseDetailQuery, recipeDetail } from "@/lib/api/recipe-detail";
 
 /** GET /api/recipes/{slug}: one recipe, scaled and with swaps applied. See /api/openapi.json. */
 export const GET = handle(

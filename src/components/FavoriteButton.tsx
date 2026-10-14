@@ -1,7 +1,7 @@
 "use client";
 
 import { useDict } from "@/i18n/client";
-import { useFavorites } from "@/lib/favorites";
+import { useFavorites } from "@/client/favorites";
 import { HeartIcon } from "./Doodle";
 import ui from "./ui.module.css";
 

@@ -5,7 +5,7 @@ import { useId, useState } from "react";
 import { MEALS, type Meal } from "@/data/schema";
 import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
-import { usePlan } from "@/lib/plan-store";
+import { usePlan } from "@/client/plan-store";
 import styles from "./AddToPlan.module.css";
 import ui from "./ui.module.css";
 

@@ -5,7 +5,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useEffect } from "react";
 import { useDict, useLang } from "@/i18n/client";
 import { localePath, switchLangPath } from "@/i18n/config";
-import { loadAccount, useAccount } from "@/lib/account";
+import { loadAccount, useAccount } from "@/client/account";
 import { JarLogo, Squiggle } from "./Doodle";
 import styles from "./SiteHeader.module.css";
 import { ThemeToggle } from "./ThemeToggle";

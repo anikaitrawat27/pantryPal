@@ -3,11 +3,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDict, useLang } from "@/i18n/client";
 import { ingredientName } from "@/i18n/ingredients";
-import { playAlarm, unlockAudio } from "@/lib/alarm";
+import { playAlarm, unlockAudio } from "@/client/alarm";
 import { related } from "@/lib/match";
-import { useMyPantry } from "@/lib/my-pantry";
+import { useMyPantry } from "@/client/my-pantry";
 import { formatClock, parseTimers } from "@/lib/timers";
-import { useWakeLock } from "@/lib/use-wake-lock";
+import { useWakeLock } from "@/client/use-wake-lock";
 import styles from "./CookMode.module.css";
 
 interface Props {

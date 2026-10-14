@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { GET as getRecipe } from "@/app/api/recipes/[slug]/route";
 import { GET as searchRecipes } from "@/app/api/recipes/route";
 import { POST as postShoppingList } from "@/app/api/shopping-list/route";
-import { encodeCursor } from "@/lib/api/recipes";
+import { encodeCursor } from "@/lib/api/params";
 import { RECIPES } from "@/lib/catalog";
 
 const BASE = "http://localhost/api";
@@ -197,7 +197,8 @@ describe("handle()", () => {
 describe("OpenAPI description", () => {
   it("documents exactly the parameters the endpoints accept", async () => {
     const { OPENAPI } = await import("@/lib/api/openapi");
-    const { SEARCH_PARAMS, DETAIL_PARAMS } = await import("@/lib/api/recipes");
+    const { SEARCH_PARAMS } = await import("@/lib/api/search");
+    const { DETAIL_PARAMS } = await import("@/lib/api/recipe-detail");
     const names = (path: "/api/recipes" | "/api/recipes/{slug}") =>
       (OPENAPI.paths[path].get.parameters as readonly { name: string; in: string }[])
         .filter((p) => p.in === "query")
@@ -209,7 +210,7 @@ describe("OpenAPI description", () => {
 
   it("documents the shopping-list body fields the endpoint accepts", async () => {
     const { OPENAPI } = await import("@/lib/api/openapi");
-    const { shoppingListBodySchema } = await import("@/lib/api/recipes");
+    const { shoppingListBodySchema } = await import("@/lib/api/shopping-list");
     const documented = Object.keys(
       OPENAPI.paths["/api/shopping-list"].post.requestBody.content["application/json"].schema.properties,
     ).sort();

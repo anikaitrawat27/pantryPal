@@ -16,7 +16,7 @@ import {
 import styles from "./RecipeBrowser.module.css";
 import { FilterPanel } from "./FilterPanel";
 import { IngredientInput } from "./IngredientInput";
-import { useMyPantry } from "@/lib/my-pantry";
+import { useMyPantry } from "@/client/my-pantry";
 import { useDict, useLang } from "@/i18n/client";
 import { RecipeCard } from "./RecipeCard";
 import ui from "./ui.module.css";

@@ -1,5 +1,5 @@
-import type { ApiErrorBody } from "./http";
-import type { ShoppingListBody, ShoppingListResponse } from "./recipes";
+import type { ApiErrorBody } from "@/lib/api/http";
+import type { ShoppingListBody, ShoppingListResponse } from "@/lib/api/shopping-list";
 
 /** A non-2xx response from the API, carrying its parsed error body when there is one. */
 export class ApiClientError extends Error {

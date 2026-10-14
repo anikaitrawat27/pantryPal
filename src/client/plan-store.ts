@@ -11,7 +11,7 @@ import {
   setEntryServings,
   toggleChecked,
   type Plan,
-} from "./plan";
+} from "@/lib/plan";
 import { createLocalStore } from "./storage";
 
 export const planStore = createLocalStore<Plan>("pantrypal:plan", parsePlan, EMPTY_PLAN);

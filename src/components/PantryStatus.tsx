@@ -4,7 +4,7 @@ import type { RecipeIngredient } from "@/data/schema";
 import { useDict, useLang } from "@/i18n/client";
 import { ingredientName } from "@/i18n/ingredients";
 import { matchPantry } from "@/lib/match";
-import { useMyPantry } from "@/lib/my-pantry";
+import { useMyPantry } from "@/client/my-pantry";
 import styles from "./RecipeCard.module.css";
 
 /** Shows how a recipe compares to the saved pantry. Renders nothing until a pantry is saved. */

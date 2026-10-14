@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { parseMyPantry, setLow, toggleHave } from "@/lib/my-pantry";
+import { parseMyPantry, setLow, toggleHave } from "@/client/my-pantry";
 
 describe("my pantry", () => {
   it("parses stored data and drops unknown, free, duplicate, and orphaned low items", () => {

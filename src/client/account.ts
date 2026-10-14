@@ -1,10 +1,10 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
-import { ApiClientError } from "./api/client";
+import { ApiClientError } from "./api";
 import { favoritesStore } from "./favorites";
 import { pantryStore, type MyPantry } from "./my-pantry";
-import { EMPTY_PLAN, type Plan } from "./plan";
+import { EMPTY_PLAN, type Plan } from "@/lib/plan";
 import { planStore } from "./plan-store";
 
 export type AccountState =

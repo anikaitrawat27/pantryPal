@@ -7,7 +7,7 @@ import { useDict, useLang } from "@/i18n/client";
 import { ingredientName, subNote } from "@/i18n/ingredients";
 import { dietsFor } from "@/lib/diet";
 import { related } from "@/lib/match";
-import { useMyPantry } from "@/lib/my-pantry";
+import { useMyPantry } from "@/client/my-pantry";
 import { costPerServing, formatUsd, nutritionPerServing } from "@/lib/nutrition";
 import { formatIngredientLine, scaleAmount } from "@/lib/scale";
 import { applySub, resolveSubs } from "@/lib/substitute";

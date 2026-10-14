@@ -1,7 +1,7 @@
 "use client";
 
 import type { ChatEvent } from "@/server/chat/loop";
-import { ApiClientError } from "./api/client";
+import { ApiClientError } from "./api";
 
 /**
  * Sends one chat message and calls `onEvent` for each server-sent event as it arrives.

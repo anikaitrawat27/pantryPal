@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
 import { EMPTY_FILTERS, serializeFilters } from "@/lib/filter";
-import { useMyPantry } from "@/lib/my-pantry";
+import { useMyPantry } from "@/client/my-pantry";
 import { IngredientInput } from "./IngredientInput";
 import styles from "./PantrySearch.module.css";
 import ui from "./ui.module.css";

@@ -5,7 +5,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
-import { useAccount } from "@/lib/account";
+import { useAccount } from "@/client/account";
 import { formatUsd } from "@/lib/nutrition";
 import type { GeneratedRecipe } from "@/server/chat/generate";
 import { CourseDoodle } from "./Doodle";
