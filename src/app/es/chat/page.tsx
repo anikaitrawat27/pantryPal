@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { ChatView } from "@/components/ChatView";
+import { ChatView } from "@/components/chat/ChatView";
 import { getDict } from "@/i18n/dict";
 import { pageMeta } from "@/views/meta";
 

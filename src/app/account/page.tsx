@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { AccountPanel } from "@/components/AuthForms";
+import { AccountPanel } from "@/components/auth/AccountPanel";
 import { getDict } from "@/i18n/dict";
 import { pageMeta } from "@/views/meta";
 

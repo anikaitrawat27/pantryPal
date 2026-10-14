@@ -264,8 +264,3 @@
   background: var(--card);
   font: inherit;
 }
-
-.gate {
-  max-width: 560px;
-  padding: 20px 24px;
-}

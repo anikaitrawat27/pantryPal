@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { ResetForm } from "@/components/AuthForms";
+import { ResetForm } from "@/components/auth/ResetForm";
 import { getDict } from "@/i18n/dict";
 import { pageMeta } from "@/views/meta";
 

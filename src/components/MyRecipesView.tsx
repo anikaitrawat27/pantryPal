@@ -7,13 +7,14 @@ import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
 import { useAccount } from "@/client/account";
 import { formatUsd } from "@/lib/nutrition";
-import type { GeneratedRecipe } from "@/server/chat/generate";
+import { getGeneratedRecipe, listSavedRecipes, setRecipeSaved, type SavedRecipe } from "@/client/chat";
 import { CourseDoodle } from "./Doodle";
 import styles from "./MyRecipesView.module.css";
 import { RecipeBody } from "./RecipeBody";
+import { SignInGate } from "./SignInGate";
 import ui from "./ui.module.css";
 
-type Saved = GeneratedRecipe & { id: string; saved: boolean };
+type Saved = SavedRecipe;
 
 function useText(r: Saved) {
   const lang = useLang();
@@ -58,11 +59,7 @@ function One({ r }: { r: Saved }) {
               type="button"
               className={ui.button}
               onClick={async () => {
-                await fetch(`/api/my-recipes/${r.id}`, {
-                  method: "PUT",
-                  headers: { "content-type": "application/json" },
-                  body: JSON.stringify({ saved: false }),
-                });
+                await setRecipeSaved(r.id, false);
                 router.replace(pathname);
               }}
             >
@@ -115,7 +112,6 @@ export function MyRecipesView() {
   const d = useDict();
   const t = d.myRecipes;
   const lang = useLang();
-  const pathname = usePathname();
   const account = useAccount();
   const id = useSearchParams().get("id");
   const [list, setList] = useState<Saved[] | null>(null);
@@ -125,26 +121,18 @@ export function MyRecipesView() {
     if (account.status !== "user") return;
     if (id) {
       setOne(null);
-      void fetch(`/api/my-recipes/${id}`).then(async (res) => setOne(res.ok ? await res.json() : "missing"));
+      getGeneratedRecipe(id)
+        .then(setOne)
+        .catch(() => setOne("missing"));
     } else {
-      void fetch("/api/my-recipes").then(async (res) => setList(res.ok ? (await res.json()).recipes : []));
+      listSavedRecipes()
+        .then(setList)
+        .catch(() => setList([]));
     }
   }, [id, account.status]);
 
   if (account.status === "loading") return null;
-  if (account.status === "guest") {
-    return (
-      <div className={`${ui.card} ${styles.gate}`}>
-        <p>{t.signIn}</p>
-        <Link
-          href={`${localePath(lang, "/login")}?next=${encodeURIComponent(pathname)}`}
-          className={`${ui.button} ${ui.primary}`}
-        >
-          {d.auth.signIn}
-        </Link>
-      </div>
-    );
-  }
+  if (account.status === "guest") return <SignInGate message={t.signIn} />;
   if (id) {
     if (one === null) return null;
     if (one === "missing") return <p>{t.notFound}</p>;

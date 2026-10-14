@@ -11,18 +11,27 @@ export class ApiClientError extends Error {
   }
 }
 
-async function request<T>(path: string, init: RequestInit): Promise<T> {
-  const res = await fetch(path, { ...init, headers: { "content-type": "application/json", ...init.headers } });
-  if (!res.ok) {
-    const body = (await res.json().catch(() => null)) as ApiErrorBody | null;
-    throw new ApiClientError(res.status, body);
-  }
-  return (await res.json()) as T;
+/**
+ * Calls one of this site's API routes. Sends `body` as JSON, returns the parsed JSON
+ * response (or null for 204 No Content), and throws ApiClientError on any non-2xx status.
+ */
+export async function apiFetch<T>(
+  path: string,
+  { method = "GET", body, signal }: { method?: string; body?: unknown; signal?: AbortSignal } = {},
+): Promise<T> {
+  const res = await fetch(path, {
+    method,
+    signal,
+    credentials: "same-origin",
+    ...(body === undefined ? {} : { headers: { "content-type": "application/json" }, body: JSON.stringify(body) }),
+  });
+  if (!res.ok) throw new ApiClientError(res.status, (await res.json().catch(() => null)) as ApiErrorBody | null);
+  return (res.status === 204 ? null : await res.json()) as T;
 }
 
 export function fetchShoppingList(
   body: Partial<ShoppingListBody> & Pick<ShoppingListBody, "meals">,
   signal?: AbortSignal,
 ) {
-  return request<ShoppingListResponse>("/api/shopping-list", { method: "POST", body: JSON.stringify(body), signal });
+  return apiFetch<ShoppingListResponse>("/api/shopping-list", { method: "POST", body, signal });
 }

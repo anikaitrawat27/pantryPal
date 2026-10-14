@@ -1,7 +1,9 @@
 "use client";
 
 import type { ChatEvent } from "@/server/chat/loop";
-import { ApiClientError } from "./api";
+import type { GeneratedRecipe } from "@/server/chat/generate";
+import type { DisplayMessage } from "@/server/chat/history";
+import { ApiClientError, apiFetch } from "./api";
 
 /**
  * Sends one chat message and calls `onEvent` for each server-sent event as it arrives.
@@ -34,4 +36,38 @@ export async function streamChat(
       if (line) onEvent(JSON.parse(line.slice(6)) as ChatEvent);
     }
   }
+}
+
+// The chat's regular (non-streaming) endpoints.
+
+export interface ConversationRow {
+  id: string;
+  title: string;
+}
+
+export async function listConversations(): Promise<ConversationRow[]> {
+  return (await apiFetch<{ conversations: ConversationRow[] }>("/api/chat/conversations")).conversations;
+}
+
+export async function loadConversation(id: string): Promise<DisplayMessage[]> {
+  return (await apiFetch<{ messages: DisplayMessage[] }>(`/api/chat/conversations/${id}`)).messages;
+}
+
+export function deleteConversation(id: string) {
+  return apiFetch(`/api/chat/conversations/${id}`, { method: "DELETE" });
+}
+
+/** Adds a generated recipe to, or removes it from, My recipes. */
+export function setRecipeSaved(id: string, saved: boolean) {
+  return apiFetch(`/api/my-recipes/${id}`, { method: "PUT", body: { saved } });
+}
+
+export type SavedRecipe = GeneratedRecipe & { id: string; saved: boolean };
+
+export async function listSavedRecipes(): Promise<SavedRecipe[]> {
+  return (await apiFetch<{ recipes: SavedRecipe[] }>("/api/my-recipes")).recipes;
+}
+
+export function getGeneratedRecipe(id: string): Promise<SavedRecipe> {
+  return apiFetch<SavedRecipe>(`/api/my-recipes/${id}`);
 }
