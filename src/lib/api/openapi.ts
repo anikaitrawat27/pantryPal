@@ -49,7 +49,7 @@ export const OPENAPI = {
           query(
             "q",
             { type: "string", maxLength: 100 },
-            "Words that must all appear in the title, blurb, cuisine, or ingredient names.",
+            "Words that must all appear in the recipe title.",
           ),
           query("course", csv(COURSES, "Courses.")),
           query("meal", csv(MEALS, "Meals; a recipe matches if it fits any.")),

@@ -137,10 +137,10 @@ describe("filterRecipes", () => {
     expect(filterRecipes([salad], { ...EMPTY_FILTERS, tools: ["microwave"] })).toHaveLength(1);
   });
 
-  it("searches titles and ingredient aliases with every word", () => {
+  it("searches recipe titles only, with every word", () => {
     expect(slugs({ q: "fried" })).toEqual(["fried-rice"]);
-    expect(slugs({ q: "garbanzo" })).toEqual([]);
-    expect(slugs({ q: "beans cheese" })).toEqual(["cheesy-beans"]);
+    expect(slugs({ q: "beans cheesy" })).toEqual(["cheesy-beans"]);
+    expect(slugs({ q: "eggs" })).toEqual([]);
   });
 
   it("filters by cost and sorts by cost, time, and protein", () => {

@@ -8,7 +8,7 @@ import { clampLimit, forModel, query } from "./shared";
 import { defineTool, ingredientIds } from "./types";
 
 const searchInput = z.strictObject({
-  query: z.string().optional().describe("Words to match in titles and ingredient names."),
+  query: z.string().optional().describe("Words to match in recipe titles only. Use ingredients to filter by ingredient."),
   courses: z.array(z.enum(COURSES)).optional(),
   meals: z.array(z.enum(MEALS)).optional(),
   cuisines: z.array(z.enum(CUISINES)).optional(),

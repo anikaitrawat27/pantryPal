@@ -1,5 +1,4 @@
 import { INGREDIENTS_BY_ID } from "@/data/pantry";
-import { ingredientSearchNames } from "@/i18n/ingredients";
 import {
   COURSES,
   CUISINES,
@@ -65,12 +64,11 @@ export interface FilterResult {
   match?: PantryMatch;
 }
 
+/** Search matches the recipe name only, so "alf" finds Alfredo but not a blurb that says "half". */
 function matchesText(r: RecipeSummary, q: string): boolean {
   if (!q) return true;
-  const haystack = normalize(
-    [r.title, r.blurb, r.cuisine, ...r.ingredients.flatMap((i) => ingredientSearchNames(i.id))].join(" "),
-  );
-  return q.split(" ").every((word) => haystack.includes(word));
+  const title = normalize(r.title);
+  return q.split(" ").every((word) => title.includes(word));
 }
 
 function passesFacets(r: RecipeSummary, f: FilterState, q: string): boolean {
