@@ -1,9 +1,9 @@
 "use client";
 
-import { COURSES, CUISINES, EQUIPMENT, MEALS } from "@/data/schema";
+import { CUISINES, EQUIPMENT, MEALS } from "@/data/schema";
 import { useDict } from "@/i18n/client";
 import { DIETS } from "@/lib/diet";
-import type { FilterState } from "@/lib/filter";
+import { COURSE_FILTERS, type FilterState } from "@/lib/filter";
 import styles from "./FilterPanel.module.css";
 import ui from "../ui.module.css";
 
@@ -66,7 +66,7 @@ export function FilterPanel({ filters, onChange }: Props) {
     <div className={styles.panel}>
       <ChipGroup
         legend={t.course}
-        options={COURSES}
+        options={COURSE_FILTERS}
         labels={d.courses}
         selected={filters.courses}
         onToggle={(v) => toggle("courses", v)}

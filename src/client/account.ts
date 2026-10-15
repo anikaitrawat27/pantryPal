@@ -10,7 +10,10 @@ export type AccountState =
   | { status: "guest" }
   | { status: "user"; username: string; recoveryCodesLeft: number };
 
-let state: AccountState = { status: "loading" };
+/** One shared object: React requires the server snapshot to return the same value every time. */
+const LOADING: AccountState = { status: "loading" };
+
+let state: AccountState = LOADING;
 const listeners = new Set<() => void>();
 
 function setState(next: AccountState) {
@@ -25,7 +28,7 @@ export function useAccount(): AccountState {
       return () => listeners.delete(listener);
     },
     () => state,
-    () => ({ status: "loading" }) as AccountState,
+    () => LOADING,
   );
 }
 

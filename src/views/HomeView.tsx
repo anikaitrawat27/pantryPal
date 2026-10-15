@@ -3,7 +3,7 @@ import { CourseDoodle, JarLogo, ToolIcon } from "@/components/Doodle";
 import { PantrySearch } from "@/components/pantry/PantrySearch";
 import { RandomRecipeButton } from "@/components/RandomRecipeButton";
 import ui from "@/components/ui.module.css";
-import { COURSES, type Equipment } from "@/data/schema";
+import { COURSES, type Course, type Equipment } from "@/data/schema";
 import { localePath, type Lang } from "@/i18n/config";
 import { getDict } from "@/i18n/dict";
 import { RECIPES } from "@/lib/catalog";
@@ -15,7 +15,11 @@ export function HomeView({ lang }: { lang: Lang }) {
   const d = getDict(lang);
   const t = d.home;
   const href = (p: string) => localePath(lang, p);
-  const counts = Object.fromEntries(COURSES.map((c) => [c, RECIPES.filter((r) => r.course === c).length]));
+  // The breakfast shelf opens the Breakfast meal filter, which matches how the browse page offers it.
+  const shelf = (c: Course) =>
+    c === "breakfast"
+      ? { query: "meal=breakfast", count: RECIPES.filter((r) => r.meal.includes("breakfast")).length }
+      : { query: `course=${c}`, count: RECIPES.filter((r) => r.course === c).length };
   return (
     <div className="container" lang={lang}>
       <section className={styles.hero}>
@@ -46,13 +50,13 @@ export function HomeView({ lang }: { lang: Lang }) {
           {COURSES.map((c, i) => (
             <li key={c}>
               <Link
-                href={`${href("/recipes")}?course=${c}`}
+                href={`${href("/recipes")}?${shelf(c).query}`}
                 className={`${ui.card} ${styles.tile}`}
                 style={{ "--tilt": `${[-1.5, 1, -0.6, 1.4][i % 4]}deg` } as React.CSSProperties}
               >
                 <CourseDoodle course={c} size={72} />
                 <span className={styles.tileName}>{d.courses[c]}</span>
-                <span className={styles.tileCount}>{t.recipesCount(counts[c])}</span>
+                <span className={styles.tileCount}>{t.recipesCount(shelf(c).count)}</span>
               </Link>
             </li>
           ))}

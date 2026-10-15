@@ -133,11 +133,21 @@ function pickInt(params: URLSearchParams, key: string, min: number, max: number)
   return Number.isInteger(n) && n >= min && n <= max ? n : undefined;
 }
 
+/**
+ * "Breakfast" is both a course and a meal. Browsing offers it once, as a meal, which also
+ * covers every breakfast-course recipe. The API and chat still accept the course.
+ */
+export const COURSE_FILTERS = COURSES.filter((c) => c !== "breakfast");
+
 export function parseFilters(params: URLSearchParams): FilterState {
+  const courses = pickList(params, "course", COURSES);
+  const meals = pickList(params, "meal", MEALS);
+  // Older links used course=breakfast; read it as the meal so no hidden filter is left on.
+  const breakfast = courses.includes("breakfast");
   return {
     q: (params.get("q") ?? "").slice(0, 100),
-    courses: pickList(params, "course", COURSES),
-    meals: pickList(params, "meal", MEALS),
+    courses: breakfast ? courses.filter((c) => c !== "breakfast") : courses,
+    meals: breakfast && !meals.includes("breakfast") ? [...meals, "breakfast"] : meals,
     cuisines: pickList(params, "cuisine", CUISINES),
     diets: pickList(params, "diet", DIETS),
     tools: pickList(params, "tools", EQUIPMENT),

@@ -1,6 +1,13 @@
 import { describe, expect, it } from "vitest";
-import type { RecipeSummary } from "@/lib/catalog";
-import { EMPTY_FILTERS, filterRecipes, parseFilters, serializeFilters, type FilterState } from "@/lib/filter";
+import { RECIPES, type RecipeSummary } from "@/lib/catalog";
+import {
+  COURSE_FILTERS,
+  EMPTY_FILTERS,
+  filterRecipes,
+  parseFilters,
+  serializeFilters,
+  type FilterState,
+} from "@/lib/filter";
 import { includesAll, matchPantry, searchIngredients } from "@/lib/match";
 
 function summary(over: Partial<RecipeSummary> & Pick<RecipeSummary, "slug" | "ingredients">): RecipeSummary {
@@ -201,6 +208,22 @@ describe("URL round trip", () => {
       haveMode: "includes",
       sort: "az",
     });
+  });
+
+  it("reads the old breakfast course link as the breakfast meal", () => {
+    expect(parseFilters(new URLSearchParams("course=breakfast,soup"))).toMatchObject({
+      courses: ["soup"],
+      meals: ["breakfast"],
+    });
+    expect(parseFilters(new URLSearchParams("course=breakfast&meal=breakfast,lunch")).meals).toEqual([
+      "breakfast",
+      "lunch",
+    ]);
+  });
+
+  it("offers breakfast once, as a meal, without losing any breakfast-course recipe", () => {
+    expect(COURSE_FILTERS).not.toContain("breakfast");
+    for (const r of RECIPES.filter((r) => r.course === "breakfast")) expect(r.meal).toContain("breakfast");
   });
 
   it("serializes the empty state to an empty query", () => {
