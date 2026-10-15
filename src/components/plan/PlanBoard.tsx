@@ -2,15 +2,12 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
-import { useMyPantry } from "@/client/my-pantry";
 import { usePlan } from "@/client/plan-store";
 import { MEALS, type Meal } from "@/data/schema";
 import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
 import type { RecipeSummary } from "@/lib/catalog";
-import { formatUsd } from "@/lib/nutrition";
 import { entriesFor } from "@/lib/plan";
-import { buildShoppingList } from "@/lib/shopping";
 import ui from "../ui.module.css";
 import { isPicked, readDrop, type Picked } from "./picking";
 import styles from "./PlanBoard.module.css";
@@ -21,7 +18,6 @@ import { RecipeShelf } from "./RecipeShelf";
 /** The weekly planner: a recipe shelf beside seven days of breakfast, lunch, dinner, and snack slots. */
 export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
   const { plan, add, move, setServings, remove, clear } = usePlan();
-  const { pantry } = useMyPantry();
   const d = useDict();
   const t = d.plan;
   const lang = useLang();
@@ -30,10 +26,6 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
   const bySlug = useMemo(() => new Map(recipes.map((r) => [r.slug, r])), [recipes]);
   // Ignore entries for recipes that no longer exist.
   const entries = plan.entries.filter((e) => bySlug.has(e.slug));
-  const weekTotal = useMemo(
-    () => buildShoppingList(entries, bySlug, pantry, lang).total,
-    [entries, bySlug, pantry, lang],
-  );
   const slotName = (day: number, meal: Meal) => `${t.days[day]} (${d.meals[meal].toLowerCase()})`;
 
   /** Adds a shelf recipe to the slot, or moves a planned meal there. */
@@ -55,7 +47,6 @@ export function PlanBoard({ recipes }: { recipes: RecipeSummary[] }) {
         <div className={`${styles.summary} no-print`}>
           <p>
             <strong className="hand">{entries.length}</strong> {t.planned(entries.length)}
-            {entries.length > 0 && t.toBuy(formatUsd(weekTotal))}
           </p>
           <div className={styles.summaryActions}>
             <Link href={localePath(lang, "/plan/shopping")} className={`${ui.button} ${ui.primary}`}>

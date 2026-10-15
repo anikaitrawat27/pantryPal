@@ -205,7 +205,6 @@ export const en = {
     noFavorites: "No favorites yet.",
     noMatches: "No matches.",
     planned: (n: number) => `${n === 1 ? "meal" : "meals"} planned`,
-    toBuy: (usd: string) => ` · about ${usd} to buy`,
     shopping: "Shopping list",
     clear: "Clear week",
     confirmClear: "Clear the whole week?",

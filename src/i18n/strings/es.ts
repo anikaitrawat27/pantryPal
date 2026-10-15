@@ -208,7 +208,6 @@ export const es: Dict = {
     noFavorites: "Aún no tiene favoritas.",
     noMatches: "No hay resultados.",
     planned: (n) => `${n === 1 ? "comida planeada" : "comidas planeadas"}`,
-    toBuy: (usd) => ` · unos ${usd} por comprar`,
     shopping: "Lista de compras",
     clear: "Borrar semana",
     confirmClear: "¿Borrar toda la semana?",
