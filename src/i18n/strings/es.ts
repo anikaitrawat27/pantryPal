@@ -341,7 +341,6 @@ export const es: Dict = {
     sending: "Pensando…",
     label: "Mensaje",
     suggestions: [
-      "¿Qué puedo preparar con mi despensa guardada?",
       "Cenas vegetarianas en menos de 30 minutos",
       "Los desayunos más baratos",
       "Escríbame una receta con garbanzos, arroz y tomate",

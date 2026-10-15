@@ -332,7 +332,6 @@ export const en = {
     sending: "Thinking…",
     label: "Message",
     suggestions: [
-      "What can I make with my saved pantry?",
       "Vegetarian dinners under 30 minutes",
       "Cheapest breakfasts",
       "Write me a recipe with chickpeas, rice, and tomato",
