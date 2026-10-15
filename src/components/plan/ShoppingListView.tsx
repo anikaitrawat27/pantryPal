@@ -7,7 +7,6 @@ import { useDict, useLang } from "@/i18n/client";
 import { localePath } from "@/i18n/config";
 import { fetchShoppingList } from "@/client/api";
 import type { ShoppingListResponse } from "@/lib/api/shopping-list";
-import { useMyPantry } from "@/client/my-pantry";
 import { formatUsd } from "@/lib/nutrition";
 import { usePlan } from "@/client/plan-store";
 import { shoppingTextLine } from "@/lib/shopping";
@@ -26,20 +25,20 @@ export function ShoppingListView() {
   const lang = useLang();
   const d = useDict();
   const t = d.shopping;
-  const { pantry } = useMyPantry();
   const [copied, setCopied] = useState(false);
   const [state, setState] = useState<State>({ status: "loading" });
   const [attempt, setAttempt] = useState(0);
 
-  // Refetch when the plan, pantry, or language changes; abort the previous request so a slow
+  // Refetch when the plan or language changes; abort the previous request so a slow
   // response can never overwrite a newer one.
   const meals = plan.entries.map((e) => ({ slug: e.slug, servings: e.servings }));
-  const requestKey = JSON.stringify([meals, pantry, lang]);
+  const requestKey = JSON.stringify([meals, lang]);
   useEffect(() => {
-    const [m, p, l] = JSON.parse(requestKey) as [typeof meals, typeof pantry, typeof lang];
+    const [m, l] = JSON.parse(requestKey) as [typeof meals, typeof lang];
     const controller = new AbortController();
     setState({ status: "loading" });
-    fetchShoppingList({ meals: m, pantry: { have: [...p.have], low: [...p.low] }, lang: l }, controller.signal)
+    // No pantry is sent, so every ingredient is listed to buy except salt, pepper, and oil.
+    fetchShoppingList({ meals: m, lang: l }, controller.signal)
       .then((list) => setState({ status: "ready", list }))
       .catch((err: unknown) => {
         if (!controller.signal.aborted) {
@@ -79,8 +78,8 @@ export function ShoppingListView() {
     );
   }
 
+  // Salt, pepper, and oil come back as "have"; they are assumed on hand and left off.
   const toBuy = list.items.filter((i) => i.status !== "have");
-  const have = list.items.filter((i) => i.status === "have");
   const groups = [...new Set(toBuy.map((i) => i.group))] as IngredientGroup[];
   const remaining = toBuy.filter((i) => !plan.checked.includes(i.id));
 
@@ -104,12 +103,11 @@ export function ShoppingListView() {
           <input type="checkbox" checked={done} onChange={() => toggleChecked(item.id)} />
           <span>
             <span className={styles.line}>{item.line}</span>
-            {item.status === "low" && <span className={styles.low}>{t.low}</span>}
             <small>
               {item.packages > 0 &&
                 item.packageLabel &&
                 t.buy(item.packages, item.packageLabel, formatUsd(item.costUsd))}
-              {item.recipes.length > 0 ? t.for(item.recipes.join(", ")) : t.restock}
+              {t.for(item.recipes.join(", "))}
             </small>
           </span>
         </label>
@@ -140,9 +138,7 @@ export function ShoppingListView() {
           )}
         </div>
       </div>
-      <p className={styles.note}>
-        {t.noteStart} <Link href={localePath(lang, "/pantry")}>{t.noteLink}</Link> {t.noteEnd}
-      </p>
+      <p className={styles.note}>{t.note}</p>
 
       {groups.map((g) => (
         <section key={g} className={styles.group} aria-labelledby={`aisle-${g}`}>
@@ -150,19 +146,6 @@ export function ShoppingListView() {
           <ul>{toBuy.filter((i) => i.group === g).map(renderItem)}</ul>
         </section>
       ))}
-
-      {have.length > 0 && (
-        <details className={styles.have}>
-          <summary>{t.have(have.length)}</summary>
-          <ul>
-            {have.map((i) => (
-              <li key={i.id}>
-                {i.line} <small>{t.for(i.recipes.join(", "))}</small>
-              </li>
-            ))}
-          </ul>
-        </details>
-      )}
     </div>
   );
 }

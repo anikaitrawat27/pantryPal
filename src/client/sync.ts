@@ -105,7 +105,8 @@ export function startSync(data: AccountData, sessionEnded: () => void, localBefo
   stopSync();
   onSessionEnded = sessionEnded;
   const local = localData();
-  const keepLocal = (c: Collection) => localBefore !== undefined && localBefore[c] !== JSON.stringify(payload(c, local));
+  const keepLocal = (c: Collection) =>
+    localBefore !== undefined && localBefore[c] !== JSON.stringify(payload(c, local));
   applying = true;
   try {
     if (!keepLocal("pantry")) pantryStore.set({ have: data.pantry.have, low: data.pantry.low });

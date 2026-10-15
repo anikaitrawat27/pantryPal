@@ -60,8 +60,7 @@
   padding-bottom: 2px;
 }
 
-.group ul,
-.have ul {
+.group ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -114,38 +113,6 @@
 .item[data-done="true"] .line {
   text-decoration: line-through;
   text-decoration-thickness: 2px;
-  color: var(--ink-soft);
-}
-
-.low {
-  margin-left: 8px;
-  font-size: 0.75rem;
-  font-weight: 800;
-  padding: 0 6px;
-  border-radius: 8px;
-  background: var(--tomato-soft);
-  color: var(--tomato);
-}
-
-.have {
-  margin-top: 10px;
-  padding: 10px 14px;
-  border: 2px dashed var(--line);
-  border-radius: 12px 16px 10px 14px;
-}
-
-.have summary {
-  font-family: var(--font-hand);
-  font-size: 1.3rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.have li {
-  padding: 4px 0;
-}
-
-.have small {
   color: var(--ink-soft);
 }
 
