@@ -36,8 +36,6 @@ test("guest data merges into a new account and syncs to another device", async (
   const username = unique();
   await signUp(page, username);
   await page.goto("/pantry");
-  // Wait for the account to load; a change made before then is overwritten by the account's copy.
-  await expect(page.getByTestId("account-link")).toHaveText(username);
   await expect(page.getByRole("button", { name: "milk", exact: true })).toHaveAttribute("aria-pressed", "true");
 
   // Signed in: a change saves to the account.
@@ -51,6 +49,38 @@ test("guest data merges into a new account and syncs to another device", async (
   await logIn(page2, username);
   await page2.goto("/pantry");
   await expect(page2.getByRole("button", { name: "milk", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await expect(page2.getByRole("button", { name: "rice", exact: true })).toHaveAttribute("aria-pressed", "true");
+  await other.close();
+});
+
+test("a pantry change made while the account is loading is saved", async ({ page, browser }) => {
+  const username = unique();
+  await signUp(page, username);
+
+  // Hold the account's data so the click below lands while the page is still loading it.
+  let release = () => {};
+  const held = new Promise<void>((resolve) => (release = resolve));
+  await page.route("**/api/me/data", async (route) => {
+    await held;
+    await route.continue();
+  });
+  const dataRequested = page.waitForRequest((r) => r.url().endsWith("/api/me/data"));
+  await page.goto("/pantry");
+  await dataRequested;
+
+  const saved = page.waitForResponse(
+    (r) => r.url().endsWith("/api/me/pantry") && r.request().method() === "PUT" && r.status() === 204,
+  );
+  await page.getByRole("button", { name: "rice", exact: true }).click();
+  release();
+  await saved;
+  await expect(page.getByTestId("account-link")).toHaveText(username);
+  await expect(page.getByRole("button", { name: "rice", exact: true })).toHaveAttribute("aria-pressed", "true");
+
+  const other = await browser.newContext();
+  const page2 = await other.newPage();
+  await logIn(page2, username);
+  await page2.goto("/pantry");
   await expect(page2.getByRole("button", { name: "rice", exact: true })).toHaveAttribute("aria-pressed", "true");
   await other.close();
 });

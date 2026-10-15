@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 import { apiFetch } from "./api";
-import { clearLocalData, localData, startSync, type AccountData } from "./sync";
+import { clearLocalData, localData, snapshotLocalData, startSync, type AccountData } from "./sync";
 
 /** Who is signed in. Starts as "loading" until loadAccount() has asked the server. */
 export type AccountState =
@@ -50,10 +50,12 @@ let loadStarted = false;
 export async function loadAccount() {
   if (loadStarted) return;
   loadStarted = true;
+  // Changes made while the requests below are in flight must survive the account's copy.
+  const localBefore = snapshotLocalData();
   try {
     const me = await apiFetch<Me>("/api/me");
     if (!me.user) return becomeGuest();
-    startSync(await apiFetch<AccountData>("/api/me/data"), becomeGuest);
+    startSync(await apiFetch<AccountData>("/api/me/data"), becomeGuest, localBefore);
     setState({ status: "user", ...me.user });
   } catch (err) {
     // Accounts are optional: if the server or database is unavailable, keep working as a guest.
