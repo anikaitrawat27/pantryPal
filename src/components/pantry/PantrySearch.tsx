@@ -19,7 +19,7 @@ export function PantrySearch() {
   const { pantry } = useMyPantry();
 
   const go = () => {
-    const qs = serializeFilters({ ...EMPTY_FILTERS, have, haveMode: "only" }).toString();
+    const qs = serializeFilters({ ...EMPTY_FILTERS, have }).toString();
     router.push(`${localePath(lang, "/recipes")}${qs ? `?${qs}` : ""}`);
   };
 

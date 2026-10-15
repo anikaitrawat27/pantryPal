@@ -47,40 +47,6 @@
   transform: rotate(0.3deg);
 }
 
-.mode {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 18px;
-}
-
-.modeOption {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.modeOption input {
-  appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--line);
-  border-radius: 50% 46% 52% 48%;
-  background: var(--card);
-  display: grid;
-  place-content: center;
-  cursor: pointer;
-}
-
-.modeOption input:checked::after {
-  content: "";
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--tomato);
-}
-
 .hint {
   margin: 0;
   font-size: 0.9rem;

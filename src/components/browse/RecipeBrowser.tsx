@@ -98,33 +98,11 @@ export function RecipeBrowser({ recipes }: { recipes: RecipeSummary[] }) {
             placeholder={d.search.placeholderBrowse}
           />
           {pantry.have.length > 0 && (
-            <button
-              type="button"
-              className={styles.usePantry}
-              onClick={() => update({ have: [...pantry.have], haveMode: "only" })}
-            >
+            <button type="button" className={styles.usePantry} onClick={() => update({ have: [...pantry.have] })}>
               {t.usePantry(pantry.have.length)}
             </button>
           )}
-          <div className={styles.mode} role="radiogroup" aria-label={t.modeLabel}>
-            {(
-              [
-                ["includes", t.modeIncludes],
-                ["only", t.modeOnly],
-              ] as const
-            ).map(([mode, label]) => (
-              <label key={mode} className={styles.modeOption}>
-                <input
-                  type="radio"
-                  name="have-mode"
-                  checked={filters.haveMode === mode}
-                  onChange={() => update({ haveMode: mode })}
-                />
-                <span>{label}</span>
-              </label>
-            ))}
-          </div>
-          {filters.haveMode === "only" && <p className={styles.hint}>{t.onlyHint}</p>}
+          {filters.have.length > 0 && <p className={styles.hint}>{t.onlyHint}</p>}
           <label className={styles.textSearch}>
             <span className="sr-only">{t.searchName}</span>
             <input type="search" placeholder={t.searchPlaceholder} value={q} onChange={(e) => setQ(e.target.value)} />

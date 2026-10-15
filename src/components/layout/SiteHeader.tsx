@@ -79,7 +79,6 @@ export function SiteHeader() {
           </Link>
           <nav aria-label={t.main} className={styles.nav}>
             <Link href={href("/recipes")}>{t.recipes}</Link>
-            <Link href={href("/pantry")}>{t.pantry}</Link>
             <Link href={href("/plan")}>{t.plan}</Link>
             <Link href={href("/chat")}>{t.chat}</Link>
             <Link href={href("/favorites")}>{t.favorites}</Link>

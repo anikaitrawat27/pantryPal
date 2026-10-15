@@ -36,6 +36,10 @@ export interface FilterState {
   sort: Sort;
   noExtras: boolean;
   have: string[];
+  /**
+   * How `have` is matched. The browse page always uses "only" (what can I make with these);
+   * the public API and the chat's search tool can also ask for "includes".
+   */
   haveMode: HaveMode;
 }
 
@@ -48,7 +52,7 @@ export const EMPTY_FILTERS: FilterState = {
   tools: [],
   noExtras: false,
   have: [],
-  haveMode: "includes",
+  haveMode: "only",
   sort: "az",
 };
 
@@ -157,7 +161,7 @@ export function parseFilters(params: URLSearchParams): FilterState {
     sort: (SORTS as readonly string[]).includes(params.get("sort") ?? "") ? (params.get("sort") as Sort) : "az",
     noExtras: params.get("noextras") === "1",
     have: pickList(params, "have", [...INGREDIENTS_BY_ID.keys()]),
-    haveMode: params.get("mode") === "only" ? "only" : "includes",
+    haveMode: "only",
   };
 }
 
@@ -174,7 +178,6 @@ export function serializeFilters(f: FilterState): URLSearchParams {
   if (f.maxCost !== undefined) p.set("cost", String(f.maxCost));
   if (f.noExtras) p.set("noextras", "1");
   if (f.have.length) p.set("have", f.have.join(","));
-  if (f.haveMode === "only") p.set("mode", "only");
   if (f.sort !== "az") p.set("sort", f.sort);
   return p;
 }

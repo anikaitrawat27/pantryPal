@@ -15,7 +15,7 @@ async function signUp(page: Page, username: string): Promise<string[]> {
   await expect(page.getByRole("button", { name: "Continue" })).toBeDisabled();
   await page.getByLabel("I saved my recovery codes").check();
   await page.getByRole("button", { name: "Continue" }).click();
-  await expect(page).toHaveURL(/\/pantry$/);
+  await expect(page).toHaveURL(/\/recipes$/);
   await expect(page.getByTestId("account-link")).toHaveText(username);
   return codes;
 }
@@ -35,6 +35,9 @@ test("guest data merges into a new account and syncs to another device", async (
 
   const username = unique();
   await signUp(page, username);
+  await page.goto("/pantry");
+  // Wait for the account to load; a change made before then is overwritten by the account's copy.
+  await expect(page.getByTestId("account-link")).toHaveText(username);
   await expect(page.getByRole("button", { name: "milk", exact: true })).toHaveAttribute("aria-pressed", "true");
 
   // Signed in: a change saves to the account.
@@ -53,7 +56,10 @@ test("guest data merges into a new account and syncs to another device", async (
 });
 
 test("signing out clears this device's copy", async ({ page }) => {
-  await signUp(page, unique());
+  const username = unique();
+  await signUp(page, username);
+  await page.goto("/pantry");
+  await expect(page.getByTestId("account-link")).toHaveText(username);
   await page.getByRole("button", { name: "egg", exact: true }).click();
   await page.waitForResponse((r) => r.url().endsWith("/api/me/pantry"));
   await page.getByTestId("account-link").click();

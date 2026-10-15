@@ -27,7 +27,7 @@ export function PantryShelves({ usage }: { usage: Record<string, number> }) {
   const lang = useLang();
   const d = useDict();
   const t = d.pantry;
-  const cookHref = `${localePath(lang, "/recipes")}?${serializeFilters({ ...EMPTY_FILTERS, have: [...pantry.have], haveMode: "only" })}`;
+  const cookHref = `${localePath(lang, "/recipes")}?${serializeFilters({ ...EMPTY_FILTERS, have: [...pantry.have] })}`;
 
   return (
     <>

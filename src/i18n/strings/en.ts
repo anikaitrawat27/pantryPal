@@ -5,7 +5,6 @@ import type { Diet } from "@/lib/diet";
 export const en = {
   nav: {
     recipes: "Recipes",
-    pantry: "My pantry",
     plan: "Plan",
     chat: "Ask",
     myRecipes: "My recipes",
@@ -83,9 +82,6 @@ export const en = {
     filters: "Filters",
     done: "Done",
     usePantry: (n: number) => `Use my saved pantry (${n} items)`,
-    modeLabel: "How to match ingredients",
-    modeIncludes: "Recipes using all of these",
-    modeOnly: "What can I make with only these?",
     onlyHint: "Salt, pepper, oil, and water are assumed. Recipes missing up to two items are shown, fewest first.",
     searchName: "Search recipes by name",
     searchPlaceholder: "Search by name…",

@@ -170,8 +170,8 @@ describe("filterRecipes", () => {
   });
 
   it("'includes' mode requires every item", () => {
-    expect(slugs({ have: ["rice", "eggs"] })).toEqual(["fried-rice"]);
-    expect(slugs({ have: ["rice", "yogurt"] })).toEqual([]);
+    expect(slugs({ have: ["rice", "eggs"], haveMode: "includes" })).toEqual(["fried-rice"]);
+    expect(slugs({ have: ["rice", "yogurt"], haveMode: "includes" })).toEqual([]);
   });
 });
 
@@ -205,9 +205,14 @@ describe("URL round trip", () => {
       maxLevel: undefined,
       maxCost: undefined,
       have: ["rice"],
-      haveMode: "includes",
+      haveMode: "only",
       sort: "az",
     });
+  });
+
+  it("always browses ingredients as what-can-I-make, even from an old mode=includes link", () => {
+    expect(parseFilters(new URLSearchParams("have=rice&mode=includes")).haveMode).toBe("only");
+    expect(serializeFilters({ ...EMPTY_FILTERS, have: ["rice"] }).toString()).toBe("have=rice");
   });
 
   it("reads the old breakfast course link as the breakfast meal", () => {

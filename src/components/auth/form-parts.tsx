@@ -82,5 +82,5 @@ export function useAfterAuth() {
   const router = useRouter();
   const lang = useLang();
   const params = useSearchParams();
-  return () => router.push(safeNext(params.get("next"), localePath(lang, "/pantry")));
+  return () => router.push(safeNext(params.get("next"), localePath(lang, "/recipes")));
 }

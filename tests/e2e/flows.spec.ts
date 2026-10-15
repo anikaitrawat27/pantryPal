@@ -12,7 +12,7 @@ test("home pantry search lists recipes that use those ingredients", async ({ pag
   await expect(page.getByRole("button", { name: "Remove canned peas" })).toBeVisible();
   await page.getByRole("button", { name: "Show me what I can make" }).click();
 
-  await expect(page).toHaveURL(/\/recipes\?have=rice%2Ceggs%2Ccanned-peas&mode=only/);
+  await expect(page).toHaveURL(/\/recipes\?have=rice%2Ceggs%2Ccanned-peas$/);
   await expect(page.getByRole("heading", { name: "Chinese Fried Rice" })).toBeVisible();
 });
 

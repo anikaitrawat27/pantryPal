@@ -4,7 +4,6 @@ import type { Dict } from "./en";
 export const es: Dict = {
   nav: {
     recipes: "Recetas",
-    pantry: "Mi despensa",
     plan: "Plan",
     chat: "Preguntar",
     myRecipes: "Mis recetas",
@@ -85,9 +84,6 @@ export const es: Dict = {
     filters: "Filtros",
     done: "Listo",
     usePantry: (n) => `Usar mi despensa guardada (${n} productos)`,
-    modeLabel: "Cómo buscar los ingredientes",
-    modeIncludes: "Recetas que usan todos estos",
-    modeOnly: "¿Qué puedo preparar solo con estos?",
     onlyHint:
       "Se da por hecho que tiene sal, pimienta, aceite y agua. Se muestran recetas a las que les faltan hasta dos productos, primero las que menos.",
     searchName: "Buscar recetas por nombre",
