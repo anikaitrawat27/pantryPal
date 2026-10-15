@@ -5,7 +5,7 @@ import { related } from "./match";
 import { gramsOf } from "./nutrition";
 import type { Lang } from "@/i18n/config";
 import { ingredientCanName, ingredientName, ingredientPlural, joinAmount, unitName } from "@/i18n/ingredients";
-import { bestVolume, bestWeight, formatNumber, VOLUME_IN_TSP, WEIGHT_IN_OZ, type ScaledAmount } from "./scale";
+import { bestShoppingVolume, bestWeight, formatNumber, VOLUME_IN_TSP, WEIGHT_IN_OZ, type ScaledAmount } from "./scale";
 
 export interface PlannedRecipe {
   slug: string;
@@ -73,7 +73,7 @@ function roundUp(qty: number, unit: Unit | "each"): number {
 
 function amountsOf(t: Tally): ScaledAmount[] {
   const out: ScaledAmount[] = [];
-  if (t.tsp > 0) out.push(bestVolume(t.tsp));
+  if (t.tsp > 0) out.push(...bestShoppingVolume(t.tsp));
   if (t.oz > 0) out.push(bestWeight(t.oz));
   for (const [unit, qty] of t.other) out.push({ qty: roundUp(qty, unit), unit: unit === "each" ? undefined : unit });
   return out;

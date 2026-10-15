@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { formatIngredientLine, formatNumber, roundFriendly, scaleAmount } from "@/lib/scale";
+import { bestShoppingVolume, formatIngredientLine, formatNumber, roundFriendly, scaleAmount } from "@/lib/scale";
 
 describe("formatNumber", () => {
   it.each([
@@ -95,4 +95,18 @@ describe("formatIngredientLine", () => {
   it("renders to-taste lines", () => {
     expect(formatIngredientLine("salt", {})).toBe("salt, to taste");
   });
+});
+
+describe("bestShoppingVolume", () => {
+  it.each([
+    [3, [{ qty: 1, unit: "tbsp" }]],
+    [9, [{ qty: 3, unit: "tbsp" }]],
+    [12, [{ qty: 0.25, unit: "cup" }]],
+    [48, [{ qty: 1, unit: "cup" }]],
+    // 0.57 cup: too far from 1/2 cup, so the leftover is given in tablespoons.
+    [27.33, [{ qty: 0.5, unit: "cup" }, { qty: 1, unit: "tbsp" }]],
+    // 1 1/8 cups never uses a 1/8 cup measure.
+    [54, [{ qty: 1, unit: "cup" }, { qty: 2, unit: "tbsp" }]],
+    [123, [{ qty: 2.5, unit: "cup" }]],
+  ])("%d tsp", (tsp, expected) => expect(bestShoppingVolume(tsp)).toEqual(expected));
 });

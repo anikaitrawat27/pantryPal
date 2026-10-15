@@ -167,6 +167,55 @@ describe("buildShoppingList", () => {
   });
 });
 
+describe("shopping list volumes", () => {
+  const volumeRecipes = new Map<string, PlannedRecipe>([
+    [
+      "taco-rice",
+      {
+        slug: "taco-rice",
+        title: "Taco Rice",
+        serves: 4,
+        ingredients: [{ id: "rice", qty: 4, unit: "cup", cooked: true }],
+      },
+    ],
+    [
+      "spiced",
+      {
+        slug: "spiced",
+        title: "Spiced",
+        serves: 1,
+        ingredients: [
+          { id: "cumin", qty: 3, unit: "tsp" },
+          { id: "soy-sauce", qty: 16, unit: "tbsp" },
+          { id: "honey", qty: 7, unit: "tbsp" },
+        ],
+      },
+    ],
+  ]);
+  const lineOf = (slug: string, id: string, servings: number, lang: "en" | "es" = "en") =>
+    buildShoppingList([{ slug, servings }], volumeRecipes, { have: [], low: [] }, lang).items.find(
+      (i) => i.id === id,
+    )?.line;
+
+  it("gives converted dry rice in cups instead of tablespoons", () => {
+    // 2 cooked cups is about 0.57 dry cups: 1/2 cup and 1 tbsp left over.
+    expect(lineOf("taco-rice", "rice", 2)).toBe("1/2 cup + 1 tbsp rice");
+    expect(lineOf("taco-rice", "rice", 2, "es")).toBe("1/2 taza + 1 cucharada de arroz");
+  });
+
+  it("steps 3 tsp up to 1 tbsp and 16 tbsp up to 1 cup", () => {
+    expect(lineOf("spiced", "cumin", 1)).toBe("1 tbsp cumin");
+    expect(lineOf("spiced", "soy-sauce", 1)).toBe("1 cup soy sauce");
+    expect(lineOf("spiced", "soy-sauce", 1, "es")).toBe("1 taza de salsa de soya");
+  });
+
+  it("splits a large tablespoon total into cups and tablespoons", () => {
+    // 7 tbsp is 1/3 cup (5 1/3 tbsp) plus about 1 1/2 tbsp.
+    expect(lineOf("spiced", "honey", 1)).toBe("1/3 cup + 1 1/2 tbsp honey");
+    expect(lineOf("spiced", "honey", 1, "es")).toBe("1/3 taza + 1 1/2 cucharadas de miel");
+  });
+});
+
 describe("formatShoppingLine", () => {
   it("joins mixed units", () => {
     expect(

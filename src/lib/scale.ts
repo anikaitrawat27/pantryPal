@@ -82,6 +82,34 @@ export interface ScaledAmount {
   unit?: Unit;
 }
 
+/** Cup fractions in a standard measuring-cup set, from 0 up to a whole cup. */
+const CUP_FRACTIONS = FRACTIONS.map(([f]) => f).filter((f) => f !== 1 / 8);
+
+/**
+ * Expresses a teaspoon total for a shopping list. Totals under 1/4 cup use
+ * {@link bestVolume}, so 3 tsp reads "1 tbsp". Larger totals are given in cups
+ * using only 1/4, 1/3, 1/2, 2/3, and 3/4: the nearest cup measure when it is
+ * within 10%, otherwise the largest cup measure that fits plus the leftover
+ * tablespoons to the nearest half, so 27 tsp reads "1/2 cup + 1 tbsp".
+ */
+export function bestShoppingVolume(tsp: number): ScaledAmount[] {
+  const cupSize = VOLUME_IN_TSP.cup!;
+  const cups = tsp / cupSize;
+  if (cups < 1 / 4 - 1e-9) return [bestVolume(tsp)];
+
+  const whole = Math.floor(cups);
+  const frac = cups - whole;
+  const nearest =
+    whole + CUP_FRACTIONS.reduce((best, f) => (Math.abs(frac - f) < Math.abs(frac - best) ? f : best));
+  if (Math.abs(nearest - cups) / cups <= 0.1) return [{ qty: nearest, unit: "cup" }];
+
+  const below = whole + Math.max(...CUP_FRACTIONS.filter((f) => f <= frac + 1e-9));
+  const tbsp = Math.round(((tsp - below * cupSize) / VOLUME_IN_TSP.tbsp!) * 2) / 2;
+  const out: ScaledAmount[] = [{ qty: below, unit: "cup" }];
+  if (tbsp > 0) out.push({ qty: tbsp, unit: "tbsp" });
+  return out;
+}
+
 /**
  * Scales an ingredient amount by `factor` (target servings / base servings)
  * and normalizes it into something measurable.
